@@ -1,5 +1,6 @@
 ## Intro ##
 Beer Buddy will make it easier for breweries to feature their beer on their website.
+
 ## Features ##
 * Add custom fields to a Post, and will set the template of the Post to a beer buddy template to display the content.  It should run on most themes, but will run better on themes that are optimized for the plugin (obviously all of mine would support it out of the box.)
 * Creates custom taxonomies to organize beer easily
@@ -16,21 +17,21 @@ Beer
 * Settings
 
 ### The Beer Post Creation Process: ###
-*"Add new beer" Window pops up with form:
-* * Beer Name
-* * Beer Type
-* * Beer Photo
-* * Beer Description
-* * Beer Video
-* * ABV
-* * Availability
-* * O.G.
-* * IBU
-* * Pair With
-* * Untappd URL
-* * On Tap (Checkbox)
-* * Tags
-* * Beer Group (Custom Taxonomy)
+* "Add new beer" Window pops up with form:
+  * Beer Name
+  * Beer Type
+  * Beer Photo
+  * Beer Description
+  * Beer Video
+  * ABV
+  * Availability
+  * O.G.
+  * IBU
+  * Pair With
+  * Untappd URL
+  * On Tap (Checkbox)
+  * Tags
+  * Beer Group (Custom Taxonomy)
 * Click "Submit beer"
 
 ### Plugin: ###
@@ -68,20 +69,20 @@ Beer
 
 ## Options: ##
 * Force fallback theme
-* * Forces the plugin to use the fallback theme when loading a beer page
+  * Forces the plugin to use the fallback theme when loading a beer page
 * Debug info
-* * Shows debug information for support
+  * Shows debug information for support
 * Disable JavaScript
-* * Manually Disables JavaScript in settings pages
+ * Manually Disables JavaScript in settings pages
 * Disable Beer Shortcode Popup
-* * Disables the beer shortcode popup on-hover (Some themes won't play nice with this)
+  * Disables the beer shortcode popup on-hover (Some themes won't play nice with this)
 
 
 ### Future Options (Perhaps in a paid version): ###
 * Multiple Layouts
 * Store Finder
 * Import Beers
-* * Imports CSV of beers
+  * Imports CSV of beers
 * Export Beers
-* * Exports CSV of beers on website.  Useful when switching to a new website
+  * Exports CSV of beers on website.  Useful when switching to a new website
 * WYSIWYG support for `[beer]` shortcode
