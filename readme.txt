@@ -1,3 +1,4 @@
+##Intro##
 Beer Buddy will make it easier for breweries to feature their beer on their website.
 ##How it will work:##
 *Beer Buddy will add custom fields to a Post, and will set the template of the Post to a beer buddy template to display the content.  It should run on most themes, but will run better on themes that are optimized for the plugin (obviously all of mine would support it out of the box.)
@@ -11,15 +12,15 @@ Beer
 
 ###The Beer Post Creation Process:###
 *"Add new beer" > Window pops up with form:
-**Beer Name
-**Beer Type
-**Beer Photo
-**Beer Description
-**Beer Video
-**ABV
-**Availability
-**O.G.
-**IBU
+* * Beer Name
+* * Beer Type
+* * Beer Photo
+* * Beer Description
+* * Beer Video
+* * ABV
+* * Availability
+* * O.G.
+* * IBU
 * * Pair With
 * * Untappd URL
 * * On Tap (Checkbox)
