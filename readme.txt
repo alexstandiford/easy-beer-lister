@@ -1,7 +1,7 @@
 Beer Buddy will make it easier for breweries to feature their beer on their website.
 ##How it will work:##
-* Beer Buddy will add custom fields to a Post, and will set the template of the Post to a beer buddy template to display the content.  It should run on most themes, but will run better on themes that are optimized for the plugin (obviously all of mine would support it out of the box.)
-* Beer Buddy will dynamically change the Post layout to accommodate the data that is given to it about the beer.  Don't have a video of the beer?
+*Beer Buddy will add custom fields to a Post, and will set the template of the Post to a beer buddy template to display the content.  It should run on most themes, but will run better on themes that are optimized for the plugin (obviously all of mine would support it out of the box.)
+*Beer Buddy will dynamically change the Post layout to accommodate the data that is given to it about the beer.  Don't have a video of the beer?
 
 ### Back-end Top-level menu: ###
 Beer
