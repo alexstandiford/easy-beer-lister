@@ -5,21 +5,21 @@ Beer Buddy will make it easier for breweries to feature their beer on their webs
 
 ### Back-end Top-level menu: ###
 Beer
-* Add New Beer
-* Manage Beers
-* Settings
+*Add New Beer
+*Manage Beers
+*Settings
 
-### The Beer Post Creation Process: ###
-* "Add new beer" > Window pops up with form:
-* * Beer Name
-* * Beer Type
-* * Beer Photo
-* * Beer Description
-* * Beer Video
-* * ABV
-* * Availability
-* * O.G.
-* * IBU
+###The Beer Post Creation Process:###
+*"Add new beer" > Window pops up with form:
+**Beer Name
+**Beer Type
+**Beer Photo
+**Beer Description
+**Beer Video
+**ABV
+**Availability
+**O.G.
+**IBU
 * * Pair With
 * * Untappd URL
 * * On Tap (Checkbox)
