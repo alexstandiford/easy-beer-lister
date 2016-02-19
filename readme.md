@@ -18,20 +18,20 @@ Beer
 
 ### The Beer Post Creation Process: ###
 * "Add new beer" Window pops up with form:
-  * Beer Name
-  * Beer Type
-  * Beer Photo
-  * Beer Description
-  * Beer Video
-  * ABV
-  * Availability
-  * O.G.
-  * IBU
-  * Pair With
-  * Untappd URL
-  * On Tap (Checkbox)
-  * Tags
-  * Beer Group (Custom Taxonomy)
+    * Beer Name
+    * Beer Type
+    * Beer Photo
+    * Beer Description
+    * Beer Video
+    * ABV
+    * Availability
+    * O.G.
+    * IBU
+    * Pair With
+    * Untappd URL
+    * On Tap (Checkbox)
+    * Tags
+    * Beer Group (Custom Taxonomy)
 * Click "Submit beer"
 
 ### Plugin: ###
@@ -69,20 +69,20 @@ Beer
 
 ## Options: ##
 * Force fallback theme
-  * Forces the plugin to use the fallback theme when loading a beer page
+    * Forces the plugin to use the fallback theme when loading a beer page
 * Debug info
-  * Shows debug information for support
+    * Shows debug information for support
 * Disable JavaScript
  * Manually Disables JavaScript in settings pages
 * Disable Beer Shortcode Popup
-  * Disables the beer shortcode popup on-hover (Some themes won't play nice with this)
+    * Disables the beer shortcode popup on-hover (Some themes won't play nice with this)
 
 
 ### Future Options (Perhaps in a paid version): ###
 * Multiple Layouts
 * Store Finder
 * Import Beers
-  * Imports CSV of beers
+    * Imports CSV of beers
 * Export Beers
-  * Exports CSV of beers on website.  Useful when switching to a new website
+    * Exports CSV of beers on website.  Useful when switching to a new website
 * WYSIWYG support for `[beer]` shortcode
