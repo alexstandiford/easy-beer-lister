@@ -1,6 +1,7 @@
 <?php
 $bbcount = 1;
 
+/*--- RETURNS BEER INFORMATION LOOP ---*/
 function get_beer_info($taxonomy,$info = 'name',$post_id = null){
   if($post_id == null){
     $post_id = get_the_id();
@@ -73,7 +74,7 @@ function beer_is_on_tap($post_id = null){
   }
 }
 
-/*------BEER SHORTCODE------*/
+/*--- BEER SHORTCODE ---*/
 function tasbb_beer_shortcode($atts){
   $a = shortcode_atts( array(
     'beer' => 'name',
@@ -135,6 +136,7 @@ return $r;
 }
 add_shortcode( 'beer', 'tasbb_beer_shortcode' );
 
+/*--- FALLBACK FIELD POPULATOR ---*/
 function tasbb_add_fields(){
   if(!file_exists(get_template_directory(). '/single-beers.php')){
     if(get_field('og') || get_field('ibu') || get_field('abv') || get_field('untappd_url')){
