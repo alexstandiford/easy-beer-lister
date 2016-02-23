@@ -132,7 +132,7 @@ function tasbb_beer_styles_init(){
   }
   echo $result;
 }
-add_action('wp_head','tasbb_beer_styles_init');
+add_action('wp_footer','tasbb_beer_styles_init');
 
 include_once(dirname(__FILE__).'/fields.php');
 include_once(dirname(__FILE__).'/functions.php');
