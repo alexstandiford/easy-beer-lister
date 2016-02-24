@@ -3,23 +3,32 @@ $bbcount = 1;
 
 /*--- RETURNS BEER INFORMATION LOOP ---*/
 function get_beer_info($taxonomy,$info = 'name',$post_id = null){
-  if($post_id == null){
-    $post_id = get_the_id();
-  };
-  $beer_info_process = wp_get_post_terms($post_id,$taxonomy);
-  $beer_info = [];
-  foreach($beer_info_process as $beer_info_item){
-    array_push($beer_info,$beer_info_item->$info);
+  if(taxonomy_exists($taxonomy)){
+      if($post_id == null){
+        $post_id = get_the_id();
+      };
+      $beer_info_process = wp_get_post_terms($post_id,$taxonomy);
+      $beer_info = [];
+      foreach($beer_info_process as $beer_info_item){
+        array_push($beer_info,$beer_info_item->$info);
+      }
+    }
+  else{
+    $beer_info = get_field($taxonomy);
   }
   return $beer_info;
 }
 
 /*--- SPITS OUT BEER INFORMATION ---*/
-function beer_info($taxonomy,$tag = 'li',$post_id = null){
+function beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false){
   if(taxonomy_exists($taxonomy)){
   $names = get_beer_info($taxonomy,'name',$post_id);
   $ids = get_beer_info($taxonomy,'term_id',$post_id);
   $i = 0;
+  if($single == true){
+    echo $names[0];
+    return;
+  }
   foreach($names as $name){
     if($name != 'On-Tap'){
       $result .= '<'.$tag.'>';
@@ -32,7 +41,7 @@ function beer_info($taxonomy,$tag = 'li',$post_id = null){
   }
   echo $result;
   }
-  else{
+  elseif(beer_info_exists($taxonomy)){
     $result = get_field($taxonomy);
 
     if($taxonomy == 'abv'){
@@ -42,17 +51,39 @@ function beer_info($taxonomy,$tag = 'li',$post_id = null){
   };
 }
 
+/*--- SPITS OUT BEER INFORMATION ---*/
+function beer_info_url($taxonomy,$post_id = null, $single = false){
+  if(taxonomy_exists($taxonomy)){
+  $names = get_beer_info($taxonomy,'name',$post_id);
+  $ids = get_beer_info($taxonomy,'term_id',$post_id);
+  $i = 0;
+  if($single == true){
+    echo get_term_link($ids[$i],$taxonomy);
+    return;
+  }
+  foreach($names as $name){
+      $result .= get_term_link($ids[$i],$taxonomy);
+      $i++;
+  }
+  echo $result;
+}
+}
+
 /*--- SPITS OUT BEER PHOTOS AS GALLERY ---*/
-function beer_photos(){
+function beer_photos($columns = '3'){
+  if(beer_info_exists('additional_photos')){
   $images = get_field('additional_photos');
   $img_ids = [];
   foreach($images as $image){
     array_push($img_ids,$image['id']);
   }
   $img_ids = implode(',',$img_ids);
-  $result .= '<h3>Additional Images</h3>';
-  $result .= do_shortcode('[gallery ids="'.$img_ids.'"]');
+  $result .= do_shortcode('[gallery ids="'.$img_ids.'" columns="'.$columns.'"]');
   echo $result;
+  }
+  else{
+    return;
+  }
 }
 
 /*--- SPITS OUT BEER VIDEO ---*/
@@ -74,14 +105,24 @@ function beer_is_on_tap($post_id = null){
   }
 }
 
+/*--- CHECK IF A VALUE EXISTS FOR A FIELD ---*/
+function beer_info_exists($taxonomy,$info = 'name', $post_id = null){
+  if(get_beer_info($taxonomy,$info,$post_id) == null){
+    $r = false;
+  }
+  else{
+    $r = true;
+  }
+  return $r;
+}
 /*--- BEER SHORTCODE ---*/
 function tasbb_beer_shortcode($atts){
   $a = shortcode_atts( array(
-    'beer' => 'name',
+    'name' => '',
     'text'  => ''
   ), $atts );
 $args=array(
-  'name' => $name,
+  'name' => $a['name'],
   'post_type' => 'beers',
   'post_status' => 'publish',
   'showposts' => 1,
@@ -131,6 +172,7 @@ $e .= '<aside>available during '.$post_availability.'</aside>';
 };
 $e .='</figure>';
 $bbcount++;
+wp_reset_postdata();
 echo $e;
 return $r;
 }

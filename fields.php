@@ -52,7 +52,6 @@ if(function_exists("register_field_group"))
 				'name' => 'ibu',
 				'type' => 'number',
 				'instructions' => 'Enter the IBU value of the beer here',
-				'required' => 1,
 				'default_value' => '',
 				'placeholder' => '',
 				'prepend' => '',
