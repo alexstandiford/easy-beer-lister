@@ -121,6 +121,8 @@ function tasbb_beer_shortcode($atts){
     'name' => '',
     'text'  => ''
   ), $atts );
+$a['name'] = str_replace('-',' ',$a['name']);
+$a['name'] = strtolower($a['name']);
 $args=array(
   'name' => $a['name'],
   'post_type' => 'beers',
@@ -139,6 +141,7 @@ if($a['text'] == ''){
   $a['text'] = $post_title;
 };
 global $bbcount;
+
 ?>
 <?php
 $r .='<a id="beer-'.$bbcount.'" class="beer-url" href="'.get_permalink($post_id).'">'.$a['text'].'</a>';
