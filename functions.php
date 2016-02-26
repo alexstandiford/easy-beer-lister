@@ -183,7 +183,7 @@ add_shortcode( 'beer', 'tasbb_beer_shortcode' );
 
 /*--- FALLBACK FIELD POPULATOR ---*/
 function tasbb_add_fields(){
-  if(!file_exists(get_template_directory(). '/single-beers.php')){
+  if(!file_exists(get_template_directory(). '/single-beers.php') && is_singular('beers')){
     if(get_field('og') || get_field('ibu') || get_field('abv') || get_field('untappd_url')){
     $e .='<h3>Beer Info</h3>';
     $e .='<dl>';
@@ -250,5 +250,6 @@ function tasbb_add_fields(){
     echo $e;
   }
 }
+
 add_action('loop_end','tasbb_add_fields');
 ?>

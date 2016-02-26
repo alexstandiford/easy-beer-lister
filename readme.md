@@ -1,90 +1,65 @@
 ## Intro ##
-Beer Buddy will make it easier for breweries to feature their beer on their website.
+Brew Buddy makes it easier for brewers, and bars to feature their beer on their website.  Sort beers by what is on tap, and feature beers on your blog posts with the `[beer]` shortcode.
 
 ## Features ##
-* Add custom fields to a page, and will set the template of the page to a beer buddy template to display the content.  It should run on most themes, but will run better on themes that are optimized for the plugin (obviously all of mine would support it out of the box.)
-* Creates custom taxonomies to organize beer easily
-* Support a dynamic default layout to accommodate the data that is given to it about the beer.
-* Support WordPress theme structure, allowing developers to design for the plugin.
-* Custom Shortcode `[beer name="Old Leghumper"]` will allow users to reference a beer in a blog page.
----
-## How it will work ##
+* Special Beer tab separates your beers from blog posts, and pages.
+* Sort your beers by availaiblity, food pairings, custom tags, and beer style.
+* Special fields for ABV, OG, IBU, untappd URL, and a photo gallery
+* Interface matches existing WordPress interface
+* Custom Shortcode `[beer]` will allow users to reference a beer in a blog or page.
+* Bulk-edit sorting methods, such as availability, food pairings, and what's on tap.
 
-### Back-end Top-level menu: ###
-Beer
-* Add New Beer
-* Manage Beers
-* Settings
+## Shortcodes ##
+* `[beer name="#NAME OF BEER" text="#URL TEXT FOR BEER"]` - Create a URL to a specified beer.  This link will also show a preview of the beer when you hover over it with your mouse.
+    * `name` - The name of the beer you want to link to.  Case insensitive
+    * `text` - (Optional) The text you want in the URL.  Defaults to the name of the beer.
 
-### The Beer page Creation Process: ###
-* "Add new beer" Window pops up with form:
-    * Beer Name
-    * Beer Type
-    * Beer Photo
-    * Beer Description
-    * Beer Video
-    * ABV
-    * Availability
-    * O.G.
-    * IBU
-    * Pair With
-    * Untappd URL
-    * On Tap (Checkbox)
-    * Tags
-    * Beer Group (Custom Taxonomy)
-* Click "Submit beer"
+## Getting Started ##
 
-### Plugin: ###
-* Creates page, makes beer name the title
-* Checks for On Tap Checkbox.  Creates category if checked, and category doesn't exist
-* Adds taxonomy to beer based on beer style.  Creates taxonomy if it doesn't exist
-* Adds taxonomy to beer based on IBUs.  Creates taxonomy if it doesn't exist
-* Adds taxonomy to beer based on O.G.  Creates taxonomy if it doesn't exist
-* Adds taxonomy to beer based on ABV.  Creates taxonomy if it doesn't exist
-* Checks Theme for compatible template, and set the template
-* If theme doesn't exist, use the plugin-supplied fallback(s) instead
-* Publishes page
-* Add page to menu
+### Add a Beer ###
+To add a beer, follow these steps:
 
-### The Beer Edit Process: ###
-* "Manage Beers" -> "Click on Beer to Edit" -> Window pops up with pre-populated form values
-* Make Changes
-* Click "Submit Changes"
-* page Reloads with confirmation and CTA to view page
+1. Visit your WordPress Dashboard
+2. On the left-hand column, hover over "Beers"
+3. Click "Add New"
+4. Fill in all of the information on the page
+5. Click "Publish"
 
-### The Beer Removal Process: ###
-* "Manage Beers" > "Click on Beer to Delete" > Window pops up with pre-populated form values
-* Click "Delete Beer" > Confirmation Window Pops Up
-* Click "Delete Beer" again
+### View Your Beers ###
+Brew Buddy automatically builds the relevant pages for you, based on what information you add to your beers.  To view these pages, follow these steps:
 
-### The Beer Hide Process: ###
-* "Manage Beers" > "Click on Beer to Delete" > Window pops up with pre-populated form values
-* Check "Hide Beer"
-* Click "Submit Changes"
-* page reloads with confirmation and CTA to view page
+#### View All Beers ####
+To view all beers, you usually need to visit `YOURSITE.COM/beers/`.  If that doesn't work, follow these steps to figure out your beers URL:
 
-### Beer Shortcode: ###
-* Creates a link that can be clicked on to go to that specific beer page
-* Creates a script that enables hovering to learn more about that beer
+1. Visit your WordPress Dashboard
+2. On the left-hand side, hover over "Appearance"
+3. Click "Menus"
+4. On the left-hand column of the menu interface, click "Beers"
+5. Click "View All"
+6. Check "All Beers" and click "Add to Menu"
+7. Click Save Menu.  This will add the All Beers link to your menu.
+8. Click on the All Beers link in your menu to visit the page.
+9. Optional - delete the All Beers link from your menu.
 
-## Options: ##
-* Force fallback theme
-    * Forces the plugin to use the fallback theme when loading a beer page
-* Debug info
-    * Shows debug information for support
-* Disable JavaScript
- * Manually Disables JavaScript in settings pages
-* Disable Beer Shortcode Popup
-    * Disables the beer shortcode popup on-hover (Some themes won't play nice with this)
-* Disable Default Beer Type Population
-    * Disables the automatic population of beer styles on page reload
+#### View Beer By Information ####
 
-### Future Options (Perhaps in a paid version): ###
-* Multiple Layouts
-* Store Finder
-* Import Beers
-    * Imports CSV of beers
-* Export Beers
-    * Exports CSV of beers on website.  Useful when switching to a new website
-* WYSIWYG support for `[beer]` shortcode
-* Sidebar functionality
+1. Visit your WordPress Dashboard
+2. On the left-hand column, hover over "Beers"
+3. Click on either "Beer Styles", "Pairings", "Availability", or "Tags", depending on which page you would like to view.
+4. In the right-side of the interface, hover over the term you would like to sort by and click "view".
+
+### Batch-edit Beers ###
+
+One of the most powerful features of Brew Buddy is the ability to batch-edit your beer information.  To do this, follow these steps:
+
+1. Visit your WordPress Dashboard
+2. On the left-hand column, hover over "Beers"
+3. Click on "All Beers"
+4. Check all of the beers that you want to edit
+5. Click on the "Bulk Actions" dropdown menu, and click "edit"
+6. Click "Apply"
+7. Apply the changes you want to make, and click "update"
+
+## Coming Soon ##
+* Widgets
+* More shortcodes

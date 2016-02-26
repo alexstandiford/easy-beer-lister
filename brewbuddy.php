@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: What's On Tap?
-Description: Manage Your Beers, and What's On Tap
+Plugin Name: BrewBuddy
+Description: Manage Your Beers, Beer Pairings, and What's on Tap Easily
 Version:     1.0
 Author:      Alex Standiford
-Author URI:  http://www.alexstandiford.com
+Author URI:  http://www.fillyourtaproom.com
 */
 
 /*--- REGISTERS POST TYPE ---*/
