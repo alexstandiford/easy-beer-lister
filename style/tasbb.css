@@ -60,3 +60,23 @@
     float:left;
     text-align:center;
 }
+
+/*---BEER PAGE---*/
+.tasbb-beer-info-wrapper {
+    max-width: 80%;
+    width: 600px;
+    margin: auto;
+    display:flex;
+    justify-content:space-around;
+}
+
+.tasbb-primary-content-wrapper h3{
+	text-align:center;
+	width:100%;
+	display:block;
+}
+
+.tasbb-primary-content-wrapper .jetpack-video-wrapper{
+    display: flex;
+    justify-content: space-around;
+}

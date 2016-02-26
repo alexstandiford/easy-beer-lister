@@ -109,6 +109,16 @@ function tasbb_beer_tags_taxonomy_init(){
 }
 add_action( 'init', 'tasbb_beer_tags_taxonomy_init' );
 
+/*---REGISTERS DEFAULT BEER PAGE TEMPLATE---*/
+function tasbb_beer_page_template( $template ) {
+	if (is_singular('beers') && !file_exists(get_template_directory().'/single-beers.php')) {
+		$new_template = dirname(__FILE__).'/tasbb-beer-template.php';
+			return $new_template ;
+	}
+	return $template;
+}
+add_filter( 'template_include', 'tasbb_beer_page_template');
+
 /*--- CUSTOM STYLES ---*/
 function tasbb_beer_styles_init(){
   $styles = [
