@@ -22,7 +22,7 @@
         </blockquote>
         <?php if(function_exists('beer_info')){?>
           <?php if(beer_info_exists('untappd_url')){?>
-          <a href="<?php beer_info('untappd_url');?>" target="blank">View on Untappd</a>
+          <a class="untappd-url btn" href="<?php beer_info('untappd_url');?>" target="blank">View on Untappd</a>
           <?php }; ?>
           <?php if(beer_info_exists('abv') || beer_info_exists('ibu') || beer_info_exists('og')){?>
 					<h3>Beer Info</h3>
@@ -32,19 +32,19 @@
            <?php if(beer_info_exists('abv')){?>
            <div>
            <dt>ABV:</dt>
-         <?php beer_info('abv','dd'); ?>
+             <dd><?php beer_info('abv'); ?></dd>
            </div>
            <?php };
             if(beer_info_exists('ibu')){?>
            <div>
            <dt>IBU:</dt>
-         <?php beer_info('ibu','dd'); ?>
+             <dd><?php beer_info('ibu'); ?></dd>
            </div>
            <?php };
             if(beer_info_exists('og')){?>
            <div>
            <dt>Original Gravity:</dt>
-         <?php beer_info('og','dd'); ?>
+             <dd><?php beer_info('og'); ?></dd>
            </div>
            <?php };
             //if(beer_info_exists('pairing')){?>

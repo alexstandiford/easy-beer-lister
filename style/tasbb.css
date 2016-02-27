@@ -7,7 +7,8 @@
 .beer-popup {
     position: absolute;
     background:rgba(255,255,255,0.95);
-    transform:translateY(110px);
+    transform:translateY(10px);
+    transform:translateX(10px);
     width:400px;
     max-width:100%;
     opacity:1;
@@ -39,7 +40,7 @@
 
 .beer-popup img{
     float:left;
-    width:30%;
+    width:30%!important;
     height:auto;
 
 }
@@ -76,7 +77,31 @@
 	display:block;
 }
 
-.tasbb-primary-content-wrapper .jetpack-video-wrapper{
+.tasbb-primary-content-wrapper .jetpack-video-wrapper,
+.tasbb-primary-content-wrapper .wp-video{
     display: flex;
     justify-content: space-around;
+    margin:auto;
+}
+
+.tasbb-beer-info-wrapper img{
+  max-height:400px;
+  width:auto;
+}
+
+.tasbb-primary-content .untappd-url{
+  width:30%;
+  margin:auto;
+  display:block;
+  text-align:center;
+}
+
+@media (orientation: portrait) and (max-device-width: 750px){
+  .tasbb-beer-info-wrapper img{
+    margin:auto;
+    display:block;
+  }
+  .tasbb-beer-info-wrapper{
+    display:block;
+  }
 }
