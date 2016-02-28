@@ -7,8 +7,6 @@
 .beer-popup {
     position: absolute;
     background:rgba(255,255,255,0.95);
-    transform:translateY(10px);
-    transform:translateX(10px);
     width:400px;
     max-width:100%;
     opacity:1;

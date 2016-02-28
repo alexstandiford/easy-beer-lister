@@ -144,7 +144,21 @@ function tasbb_beer_styles_init(){
 }
 add_action('wp_footer','tasbb_beer_styles_init');
 
+/*--- STYLE TAGS ---*/
+function tasbb_beer_inline_style_overrides(){
+  $e .= '<!--- BeerBuddy Style Overrides --->';
+  $e .= '<!--- These values can be adjusted in the BeerBuddy settings --->';
+  $e .= '<style>';
+  $e .=   '.beer-popup{';
+  $e .=     'transform:translate('.get_option('tasbb_js_hover_x').'px,'.get_option('tasbb_js_hover_y').'px);';
+  $e .=   '}';
+  $e .= '</style>';
+  echo $e;
+}
+add_action('wp_head','tasbb_beer_inline_style_overrides');
+
 include_once(dirname(__FILE__).'/fields.php');
 include_once(dirname(__FILE__).'/functions.php');
 include_once(dirname(__FILE__).'/tasbb-settings.php');
+include_once(dirname(__FILE__).'/widgets.php');
 ?>

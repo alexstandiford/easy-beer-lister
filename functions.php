@@ -145,28 +145,29 @@ global $bbcount;
 ?>
 <?php
 $r .='<a id="beer-'.$bbcount.'" class="beer-url" href="'.get_permalink($post_id).'">'.$a['text'].'</a>';
-$e .='<figure id="beer-'.$bbcount.'-popup" class="beer-popup hidden">';
-$e .=  '<h2>'.$post_title.'</h2>';
-if(beer_is_on_tap($post_id)){
-$e .=  '<h3>On Tap Now!</h3>';
+if(get_option('tasbb_js_hover') == FALSE){
+  $e .='<figure id="beer-'.$bbcount.'-popup" class="beer-popup hidden">';
+  $e .=  '<h2>'.$post_title.'</h2>';
+  if(beer_is_on_tap($post_id)){
+  $e .=  '<h3>On Tap Now!</h3>';
+  };
+  $e .=  '<img src="'.$post_img.'">';
+  $e .=  '<figcaption>'.$post_excerpt.'</figcaption>';
+  $e .=  '<dl>';
+  $e .=    '<div>';
+  $e .=      '<dt>O.G.</dt>';
+  $e .=      '<dd>'.get_field('og',$post_id).'</dd>';
+  $e .=    '</div>';
+  $e .=    '<div>';
+  $e .=      '<dt>IBUs</dt>';
+  $e .=      '<dd>'.get_field('ibu',$post_id).'</dd>';
+  $e .=    '</div>';
+  $e .=    '<div>';
+  $e .=      '<dt>ABV</dt>';
+  $e .=      '<dd>'.get_field('abv',$post_id).'%</dd>';
+  $e .=    '</div>';
+  $e .=  '</dl>';
 };
-$e .=  '<img src="'.$post_img.'">';
-$e .=  '<figcaption>'.$post_excerpt.'</figcaption>';
-$e .=  '<dl>';
-$e .=    '<div>';
-$e .=      '<dt>O.G.</dt>';
-$e .=      '<dd>'.get_field('og',$post_id).'</dd>';
-$e .=    '</div>';
-$e .=    '<div>';
-$e .=      '<dt>IBUs</dt>';
-$e .=      '<dd>'.get_field('ibu',$post_id).'</dd>';
-$e .=    '</div>';
-$e .=    '<div>';
-$e .=      '<dt>ABV</dt>';
-$e .=      '<dd>'.get_field('abv',$post_id).'%</dd>';
-$e .=    '</div>';
-$e .=  '</dl>';
-
 if($post_availability == 'Year-Round'){
 $e .= '<aside>available year-round</aside>';
 }
