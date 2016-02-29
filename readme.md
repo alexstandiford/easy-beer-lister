@@ -59,8 +59,3 @@ One of the most powerful features of Brew Buddy is the ability to batch-edit you
 5. Click on the "Bulk Actions" dropdown menu, and click "edit"
 6. Click "Apply"
 7. Apply the changes you want to make, and click "update"
-
-
-## Coming Soon ##
-* Widgets
-* More shortcodes

@@ -115,6 +115,7 @@ function beer_info_exists($taxonomy,$info = 'name', $post_id = null){
   }
   return $r;
 }
+
 /*--- BEER SHORTCODE ---*/
 function tasbb_beer_shortcode($atts){
   $a = shortcode_atts( array(
