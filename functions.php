@@ -46,7 +46,7 @@ function beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false){
 
     if($taxonomy == 'abv'){
       $result .= '%';
-    }
+    };
     echo $result;
   };
 }
@@ -194,6 +194,7 @@ function tasbb_beer_list_shortcode($atts){
     'tags' => null,
     'availability' => null,
     'show_description' => true,
+		'show_price' => false
   ), $atts );
   $args = [
     'post_type' => 'beers',
@@ -263,8 +264,15 @@ function tasbb_beer_list_shortcode($atts){
   if($a['show_description'] == TRUE){
   $r .= '<dd class="tasbb-shortcode-beer-description">';
   $r .= get_the_excerpt();
-  $r .= '</dd>';
   };
+	if($a['show_price'] == TRUE){
+	$r .= '<span class="price">';
+	$r .= '$'.get_beer_info('price');
+	$r .= '</span>';
+	}
+	if($a['show_price'] == TRUE || $a['show_description'] == TRUE){
+  $r .= '</dd>';
+	}
   $r .= '</'.$a['wrapper'].'>';
   endwhile; endif;
   return $r;

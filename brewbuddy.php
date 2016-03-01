@@ -160,5 +160,6 @@ add_action('wp_head','tasbb_beer_inline_style_overrides');
 include_once(dirname(__FILE__).'/fields.php');
 include_once(dirname(__FILE__).'/functions.php');
 include_once(dirname(__FILE__).'/tasbb-settings.php');
+include_once(dirname(__FILE__).'/tasbb-export.php');
 include_once(dirname(__FILE__).'/widgets.php');
 ?>
