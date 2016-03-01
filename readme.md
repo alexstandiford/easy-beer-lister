@@ -13,6 +13,15 @@ Brew Buddy makes it easier for brewers, and bars to feature their beer on their 
 * `[beer name="#NAME OF BEER" text="#URL TEXT FOR BEER"]` - Create a URL to a specified beer.  This link will also show a preview of the beer when you hover over it with your mouse.
     * `name` - The name of the beer you want to link to.  Case insensitive
     * `text` - (Optional) The text you want in the URL.  Defaults to the name of the beer.
+* `[beer_list wrapper="div" show_description="true" sort="desc" style="BEER STYLE" on-tap="IS ON TAP" pairings="PAIRINGS TO SHOW" tags="TAGS TO SHOW" availability="AVAILABILITY TO SHOW"]`
+    * 'wrapper' - (Optional) The HTML tag that wraps the list.  Defaults to div.
+    * 'show_description' - (Optional) Show the beer excerpt (description) after the name of the beer.  Defaults to false.
+    * 'on-tap - (Optional) Only show beers that are on-tap.  defaults to false.
+    * 'sort' - (Optional) Sorting method of the beer list.  Can be desc (descending), asc (ascending), or rand (random)
+    * 'style' - (Optional) Name of the beer style(s) you want to show.  Separate each value by a comma (example: stout,lambic,pilsner,ipa)
+    * 'pairings' - (Optional) Name of the beer food pairings(s) you want to show.  Separate each value by a comma (example: chocolate,cheesecake,steak)
+    * 'tags' - (Optional) Name of the beer tags(s) you want to show.  Separate each value by a comma (example: featured,favorite,seasonal)
+    * 'availability' - (Optional) Beer availability time(s) you want to show.  Separate each value by a comma (example: winter,summer,spring)
 
 ## Getting Started ##
 

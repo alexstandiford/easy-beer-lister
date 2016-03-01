@@ -183,4 +183,91 @@ return $r;
 }
 add_shortcode( 'beer', 'tasbb_beer_shortcode' );
 
+/*--- BEER LOOP SHORTCODE ---*/
+function tasbb_beer_list_shortcode($atts){
+  $a = shortcode_atts( array(
+    'wrapper' => 'div',
+    'sort' => 'desc',
+    'style' => null,
+    'on-tap'  => null,
+    'pairings' => null,
+    'tags' => null,
+    'availability' => null,
+    'show_description' => true,
+  ), $atts );
+  $args = [
+    'post_type' => 'beers',
+    'orderby' => $a['sort'],
+    "tax_query" => []
+    ];
+  
+    //--- ON TAP ---//
+  if($a['on-tap'] != null){
+    array_push($args['tax_query'], [
+        "taxonomy"  => "availability",
+        "field" => "slug",
+        "terms" => "on-tap"
+      ]);
+  };
+    //--- Pairings ---//
+  if($a['pairings'] != null){
+    $a['pairings'] = str_replace(' ','-',$a['pairings']);
+    $a['pairings'] = strtolower($a['pairings']);
+    $a['pairings'] = str_getcsv($a['pairings']);
+    array_push($args['tax_query'],[
+      'taxonomy' => 'pairing',
+      'field' => 'slug',
+      'terms' => $a['pairings']
+    ]);
+  };
+    //--- Tags ---//
+  if($a['tags'] != null){
+    $a['tags'] = str_replace(' ','-',$a['tags']);
+    $a['tags'] = strtolower($a['tags']);
+    $a['tags'] = str_getcsv($a['tags']);
+    array_push($args['tax_query'],[
+      'taxonomy' => 'tags',
+      'field' => 'slug',
+      'terms' => $a['tags']
+    ]);
+  };
+    //--- Availability ---//
+  if($a['availability'] != null){
+    $a['availability'] = str_replace(' ','-',$a['availability']);
+    $a['availability'] = strtolower($a['availability']);
+    $a['availability'] = str_getcsv($a['availability']);
+    array_push($args['tax_query'],[
+      'taxonomy' => 'availability',
+      'field' => 'slug',
+      'terms' => $a['availability']
+    ]);
+  };
+    //--- type ---//
+  if($a['style'] != null){
+    $a['style'] = str_replace(' ','-',$a['style']);
+    $a['style'] = strtolower($a['style']);
+    $a['style'] = str_getcsv($a['style']);
+    array_push($args['tax_query'],[
+      'taxonomy' => 'style',
+      'field' => 'slug',
+      'terms' => $a['style']
+    ]);
+  };
+  $beers = new WP_Query($args);
+  if($beers->have_posts()) : while($beers->have_posts()) : $beers->the_post();
+  $r .= '<'.$a['wrapper'].'>';
+  $r .= '<dl><a href="'.get_post_permalink().'">';
+  $r .=  get_the_title();
+  $r .= '</a></dl>';
+  //--- DESCRIPTION ---//
+  if($a['show_description'] == TRUE){
+  $r .= '<dd class="tasbb-shortcode-beer-description">';
+  $r .= get_the_excerpt();
+  $r .= '</dd>';
+  };
+  $r .= '</'.$a['wrapper'].'>';
+  endwhile; endif;
+  return $r;
+}
+add_shortcode( 'beer_list', 'tasbb_beer_list_shortcode' );
 ?>
