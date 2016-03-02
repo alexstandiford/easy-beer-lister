@@ -1,4 +1,12 @@
 <?php
+$tasbb_debug = [];
+
+function dump_tasbb_debug(){
+	global $tasbb_debug;
+	echo "<style>.xdebug-var-dump{position:fixed; left:50%; top:50%; z-index:1; background:white;}</style>";
+	var_dump($tasbb_debug);
+}
+add_action( 'shutdown','dump_tasbb_debug');
 
 //---THE META BOX FIELDS---//
 function tasbb_post_class_meta_box($object, $box) { ?>
@@ -8,13 +16,15 @@ function tasbb_post_class_meta_box($object, $box) { ?>
     <label for="tasbb-abv">ABV</label><br>
     <?php _e( "Enter the ABV of the beer here. (do not include the % sign)"); ?>
     </p>
-    <input class="widefat" type="number" name="tasbb-abv" id="tasbb-abv" value="<?php echo esc_attr(get_post_meta( $object->ID, 'tasbb_abv', true)); ?>" size="30" />
+    <input class="widefat" type="text" name="tasbb-abv" id="tasbb-abv" value="<?php echo esc_attr(get_post_meta( $object->ID, 'tasbb_abv', true)); ?>" />
   </div>
-<?php }
+<?php global $tasbb_debug; array_push($tasbb_debug, "tasbb_post_class_meta_box Ran"); ?>
+<?php  }
 
 //---THE META BOX SUBMISSION AND VALIDATION---//
 function tasbb_save_post_class_meta($post_id, $post) {
-
+	global $tasbb_debug;
+	array_push($tasbb_debug, "tasbb_save_post_class_meta Ran");
   /* Verify the nonce before proceeding. */
   if (!isset($_POST['tasbb_post_class_nonce']) || !wp_verify_nonce($_POST['tasbb_post_class_nonce'], basename(__FILE__)))
     return $post_id;
@@ -26,34 +36,31 @@ function tasbb_save_post_class_meta($post_id, $post) {
   if (!current_user_can($post_type->cap->edit_post, $post_id))
     return $post_id;
 
-  class tasbb_meta{
-    function __construct(){
-      $this->meta_key = null;
-      $this->meta_value = null;
+  class meta_item{
+    function __construct($key, $value){
+      $this->key = $key;
+			$this->oldValue = get_post_meta( $post_id, $this->key, true );
+      $this->newValue = ( isset( $_POST[$value] ) ? $_POST[$value] : '' );
     }
   }
-  //------ START HERE ------//
-  ( isset( $_POST['tasbb-abv'] ) ? $_POST['tasbb-abv'] : '' )
-  $meta_key = 'tasbb_post_class';
-  
-  /* Get the posted data and sanitize it for use as an HTML class. */
-  $tasbb_metas = [
-    ];
-
-  /* Get the meta value of the custom field key. */
-  $meta_value = get_post_meta( $post_id, $meta_key, true );
-
+	$metas = [
+	new meta_item('tasbb_abv','tasbb-abv'),
+	];
+	array_push($tasbb_debug, $metas);
+	foreach($metas as $meta){
+	array_push($tasbb_debug, $meta);
   /* If a new meta value was added and there was no previous value, add it. */
-  if ( $new_meta_value && '' == $meta_value )
-    add_post_meta( $post_id, $meta_key, $new_meta_value, true );
+  if ( $meta->newValue && '' == $meta->oldValue )
+    add_post_meta( $post_id, $meta->key, $meta->newValue, true );
 
   /* If the new meta value does not match the old value, update it. */
-  elseif ( $new_meta_value && $new_meta_value != $meta_value )
-    update_post_meta( $post_id, $meta_key, $new_meta_value );
+  elseif ( $meta->newValue && $meta->newValue != $meta->oldValue )
+    update_post_meta( $post_id, $meta->key, $meta->newValue, $meta->oldValue );
 
   /* If there is no new meta value but an old value exists, delete it. */
-  elseif ( '' == $new_meta_value && $meta_value )
-    delete_post_meta( $post_id, $meta_key, $meta_value );
+  elseif ( '' == $meta->newValue && $meta->oldValue )
+    delete_post_meta( $post_id, $meta->key, $meta->oldValue );
+	}
 }
 
 function tasbb_add_post_meta_boxes() {
@@ -62,12 +69,13 @@ function tasbb_add_post_meta_boxes() {
     esc_html__( 'Beer Info' ),                // Title
     'tasbb_post_class_meta_box',              // Callback function
     'beers',                                  // Admin page (or post type)
-    'normal',                                   // Context
+    'normal',                                 // Context
     'default'                                 // Priority
   );
 }
 
 function tasbb_post_meta_boxes_setup() {
+	global $tasbb_debug; array_push($tasbb_debug, "tasbb_post_meta_boxes_setup Ran");
   /* Save post meta on the 'save_post' hook. */
   add_action( 'save_post', 'tasbb_save_post_class_meta', 10, 2 );
   /* Add meta boxes on the 'add_meta_boxes' hook. */
@@ -76,8 +84,6 @@ function tasbb_post_meta_boxes_setup() {
 
 add_action( 'load-post.php', 'tasbb_post_meta_boxes_setup' );
 add_action( 'load-post-new.php', 'tasbb_post_meta_boxes_setup' );
-
-
 
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -100,7 +106,7 @@ add_action( 'load-post-new.php', 'tasbb_post_meta_boxes_setup' );
 
 
 // 1. customize ACF path
-add_filter('acf/settings/path', 'my_acf_settings_path');
+//add_filter('acf/settings/path', 'my_acf_settings_path');
  
 function my_acf_settings_path($path) {
     $path = dirname(__FILE__ ).'/acf/';
@@ -120,8 +126,8 @@ function remove_acf_menu() {
 	add_action( 'admin_menu', 'remove_acf_menu', 999);
 
 // 4. Include ACF
-include_once( dirname(__FILE__ ).'/acf/acf.php' );
-include_once( dirname(__FILE__ ).'/acf-gallery/acf-gallery.php' );
+//include_once( dirname(__FILE__ ).'/acf/acf.php' );
+//include_once( dirname(__FILE__ ).'/acf-gallery/acf-gallery.php' );
 
 // 5. Register fields
 
