@@ -1,5 +1,104 @@
 <?php
 
+//---THE META BOX FIELDS---//
+function tasbb_post_class_meta_box($object, $box) { ?>
+  <?php wp_nonce_field( basename( __FILE__ ), 'tasbb_post_class_nonce' ); ?>
+  <div class="tasbb-field">
+    <p class="label">
+    <label for="tasbb-abv">ABV</label><br>
+    <?php _e( "Enter the ABV of the beer here. (do not include the % sign)"); ?>
+    </p>
+    <input class="widefat" type="number" name="tasbb-abv" id="tasbb-abv" value="<?php echo esc_attr(get_post_meta( $object->ID, 'tasbb_abv', true)); ?>" size="30" />
+  </div>
+<?php }
+
+//---THE META BOX SUBMISSION AND VALIDATION---//
+function tasbb_save_post_class_meta($post_id, $post) {
+
+  /* Verify the nonce before proceeding. */
+  if (!isset($_POST['tasbb_post_class_nonce']) || !wp_verify_nonce($_POST['tasbb_post_class_nonce'], basename(__FILE__)))
+    return $post_id;
+
+  /* Get the post type object. */
+  $post_type = get_post_type_object( $post->post_type );
+  
+  /* Check if the current user has permission to edit the post. */
+  if (!current_user_can($post_type->cap->edit_post, $post_id))
+    return $post_id;
+
+  class tasbb_meta{
+    function __construct(){
+      $this->meta_key = null;
+      $this->meta_value = null;
+    }
+  }
+  //------ START HERE ------//
+  ( isset( $_POST['tasbb-abv'] ) ? $_POST['tasbb-abv'] : '' )
+  $meta_key = 'tasbb_post_class';
+  
+  /* Get the posted data and sanitize it for use as an HTML class. */
+  $tasbb_metas = [
+    ];
+
+  /* Get the meta value of the custom field key. */
+  $meta_value = get_post_meta( $post_id, $meta_key, true );
+
+  /* If a new meta value was added and there was no previous value, add it. */
+  if ( $new_meta_value && '' == $meta_value )
+    add_post_meta( $post_id, $meta_key, $new_meta_value, true );
+
+  /* If the new meta value does not match the old value, update it. */
+  elseif ( $new_meta_value && $new_meta_value != $meta_value )
+    update_post_meta( $post_id, $meta_key, $new_meta_value );
+
+  /* If there is no new meta value but an old value exists, delete it. */
+  elseif ( '' == $new_meta_value && $meta_value )
+    delete_post_meta( $post_id, $meta_key, $meta_value );
+}
+
+function tasbb_add_post_meta_boxes() {
+  add_meta_box(
+    'tasbb-beer-info',                        // Unique ID
+    esc_html__( 'Beer Info' ),                // Title
+    'tasbb_post_class_meta_box',              // Callback function
+    'beers',                                  // Admin page (or post type)
+    'normal',                                   // Context
+    'default'                                 // Priority
+  );
+}
+
+function tasbb_post_meta_boxes_setup() {
+  /* Save post meta on the 'save_post' hook. */
+  add_action( 'save_post', 'tasbb_save_post_class_meta', 10, 2 );
+  /* Add meta boxes on the 'add_meta_boxes' hook. */
+  add_action( 'add_meta_boxes', 'tasbb_add_post_meta_boxes' );
+}
+
+add_action( 'load-post.php', 'tasbb_post_meta_boxes_setup' );
+add_action( 'load-post-new.php', 'tasbb_post_meta_boxes_setup' );
+
+
+
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+//////////////                                /////////////////////
+//////////////     THE FIELD OF BULLSHIT      /////////////////////
+//////////////                                /////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+
+
+
 // 1. customize ACF path
 add_filter('acf/settings/path', 'my_acf_settings_path');
  
