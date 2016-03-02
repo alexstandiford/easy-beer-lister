@@ -1,6 +1,14 @@
 <?php
 $bbcount = 1;
 
+/*--- GET BEER FIELD ---*/
+function tasbb_get_field($taxonomy,$post_id = null,$format_value = null){
+	if($post_id == null){
+		$post_id = get_the_id();
+	}
+	return get_post_meta( $post_id, $taxonomy, true);
+}
+
 /*--- RETURNS BEER INFORMATION LOOP ---*/
 function get_beer_info($taxonomy,$info = 'name',$post_id = null){
   if(taxonomy_exists($taxonomy)){
@@ -14,7 +22,7 @@ function get_beer_info($taxonomy,$info = 'name',$post_id = null){
       }
     }
   else{
-    $beer_info = get_field($taxonomy);
+    $beer_info = tasbb_get_field($taxonomy);
   }
   return $beer_info;
 }
@@ -42,7 +50,7 @@ function beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false){
   echo $result;
   }
   elseif(beer_info_exists($taxonomy)){
-    $result = get_field($taxonomy);
+    $result = tasbb_get_field($taxonomy);
 
     if($taxonomy == 'abv'){
       $result .= '%';
@@ -69,26 +77,9 @@ function beer_info_url($taxonomy,$post_id = null, $single = false){
 }
 }
 
-/*--- SPITS OUT BEER PHOTOS AS GALLERY ---*/
-function beer_photos($columns = '3'){
-  if(beer_info_exists('additional_photos')){
-  $images = get_field('additional_photos');
-  $img_ids = [];
-  foreach($images as $image){
-    array_push($img_ids,$image['id']);
-  }
-  $img_ids = implode(',',$img_ids);
-  $result .= do_shortcode('[gallery ids="'.$img_ids.'" columns="'.$columns.'"]');
-  echo $result;
-  }
-  else{
-    return;
-  }
-}
-
 /*--- SPITS OUT BEER VIDEO ---*/
 function beer_video(){
-  $result = do_shortcode('[video src="'.get_field('video').'"]');
+  $result = do_shortcode('[video src="'.tasbb_get_field('video').'"]');
   echo $result;
 }
 
@@ -157,15 +148,15 @@ if(get_option('tasbb_js_hover') == FALSE){
   $e .=  '<dl>';
   $e .=    '<div>';
   $e .=      '<dt>O.G.</dt>';
-  $e .=      '<dd>'.get_field('og',$post_id).'</dd>';
+  $e .=      '<dd>'.tasbb_get_field('tasbb_og',$post_id).'</dd>';
   $e .=    '</div>';
   $e .=    '<div>';
   $e .=      '<dt>IBUs</dt>';
-  $e .=      '<dd>'.get_field('ibu',$post_id).'</dd>';
+  $e .=      '<dd>'.tasbb_get_field('tasbb_ibu',$post_id).'</dd>';
   $e .=    '</div>';
   $e .=    '<div>';
   $e .=      '<dt>ABV</dt>';
-  $e .=      '<dd>'.get_field('abv',$post_id).'%</dd>';
+  $e .=      '<dd>'.tasbb_get_field('tasbb_abv',$post_id).'%</dd>';
   $e .=    '</div>';
   $e .=  '</dl>';
 };
