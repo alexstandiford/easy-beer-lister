@@ -44,6 +44,8 @@ function tasbb_export_options(){
     add_settings_field("tasbb_export_show_abv", "Show ABV on Menu", "tasbb_export_show_abv", "tasbb-export", "tasbb_export_settings");
     add_settings_field("tasbb_export_show_og", "Show OG on Menu", "tasbb_export_show_og", "tasbb-export", "tasbb_export_settings");
     add_settings_field("tasbb_export_show_price", "Show Price on Menu", "tasbb_export_show_price", "tasbb-export", "tasbb_export_settings");
+    add_settings_field("tasbb_export_sortby", "Sort Beers by", "tasbb_export_sortby", "tasbb-export", "tasbb_export_settings");
+    add_settings_field("tasbb_export_sort_order", "Sort Order", "tasbb_export_sort_order", "tasbb-export", "tasbb_export_settings");
     add_settings_field("export_ontap", "Only Show What's On Tap", "tasbb_export_ontap", "tasbb-export", "tasbb_export_settings");
     add_settings_field("tasbb_export_menu_css", "Custom CSS Overrides", "tasbb_export_menu_css", "tasbb-export", "tasbb_export_settings");
     add_settings_field("tasbb_export_pairings", "Pairings", "tasbb_export_pairings", "tasbb-export", "tasbb_export_settings");
@@ -64,6 +66,8 @@ function tasbb_export_options(){
     register_setting("tasbb_export_settings", "tasbb_export_show_abv");
     register_setting("tasbb_export_settings", "tasbb_export_show_og");
     register_setting("tasbb_export_settings", "tasbb_export_show_price");
+    register_setting("tasbb_export_settings", "tasbb_export_sortby");
+    register_setting("tasbb_export_settings", "tasbb_export_sort_order");
     register_setting("tasbb_export_settings", "tasbb_export_menu_css");
     register_setting("tasbb_export_settings", "tasbb_export_pairings");
     register_setting("tasbb_export_settings", "tasbb_export_styles");
@@ -192,6 +196,29 @@ function tasbb_export_availability(){
     //id and name of form element should be same as the setting name.
     ?>
         <input type="text" id="tasbb_export_availability" name="tasbb_export_availability" value="<?php echo get_option('tasbb_export_availability');?>" />
+    <?php
+}
+
+function tasbb_export_sort_order(){
+    //id and name of form element should be same as the setting name.
+    ?>
+        <select id="tasbb_export_sort_order" name="tasbb_export_sort_order">
+					<option value="asc" <?php selected( get_option('tasbb_export_sort_order'), 'asc');?>>Ascending</option>
+					<option value="desc" <?php selected( get_option('tasbb_export_sort_order'), 'desc');?>>Descending</option>
+				</select>
+    <?php
+}
+
+function tasbb_export_sortby(){
+    //id and name of form element should be same as the setting name.
+    ?>
+        <select id="tasbb_export_sortby" name="tasbb_export_sortby">
+					<option value="tasbb_abv" <?php selected( get_option('tasbb_export_sortby'), 'tasbb_abv');?>>ABV</option>
+					<option value="tasbb_ibu" <?php selected( get_option('tasbb_export_sortby'), 'tasbb_ibu');?>>IBU</option>
+					<option value="tasbb_og" <?php selected( get_option('tasbb_export_sortby'), 'tasbb_og');?>>OG</option>
+					<option value="tasbb_price" <?php selected( get_option('tasbb_export_sortby'), 'tasbb_price');?>>Price</option>
+					<option value="name" <?php selected( get_option('tasbb_export_sortby'), 'name');?>>Name</option>
+				</select>
     <?php
 }
 

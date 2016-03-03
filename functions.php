@@ -184,7 +184,7 @@ function tasbb_beer_list_shortcode($atts){
     'pairings' => null,
     'tags' => null,
     'availability' => null,
-    'show_description' => true,
+    'show_description' => false,
 		'show_price' => false
   ), $atts );
   $args = [

@@ -11,7 +11,8 @@
 ?>
 <?php
 $a = [
-    'sort' => 'asc',
+    'sort' => get_option('tasbb_export_sort_order'),
+    'sortby' => get_option('tasbb_export_sortby'),
     'on-tap'  => get_option('tasbb_export_ontap'),
     'pairings' => get_option('tasbb_export_pairings'),
     'tags' => get_option('tasbb_export_tags'),
@@ -27,11 +28,16 @@ $a = [
 ];
   $args = [
     'post_type' => 'beers',
-    'order'     => 'asc',
-		'orderby'   => 'name',
+    'order'     => $a['sort'],
+		'orderby' => 'meta_value_num',
+		'meta_key' => $a['sortby'],
     "tax_query" => []
     ];
   
+	if($a['sortby'] == 'name'){
+		$args['orderby'] = 'name';
+		unset($args['meta_key']);
+	}
     //--- ON TAP ---//
   if($a['on-tap'] != null){
     array_push($args['tax_query'], [
