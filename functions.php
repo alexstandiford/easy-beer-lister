@@ -10,7 +10,7 @@ function tasbb_get_field($taxonomy,$post_id = null,$format_value = null){
 }
 
 /*--- RETURNS BEER INFORMATION LOOP ---*/
-function get_beer_info($taxonomy,$info = 'name',$post_id = null){
+function tasbb_get_beer_info($taxonomy,$info = 'name',$post_id = null){
   if(taxonomy_exists($taxonomy)){
       if($post_id == null){
         $post_id = get_the_id();
@@ -28,10 +28,10 @@ function get_beer_info($taxonomy,$info = 'name',$post_id = null){
 }
 
 /*--- SPITS OUT BEER INFORMATION ---*/
-function beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false){
+function tasbb_beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false){
   if(taxonomy_exists($taxonomy)){
-  $names = get_beer_info($taxonomy,'name',$post_id);
-  $ids = get_beer_info($taxonomy,'term_id',$post_id);
+  $names = tasbb_get_beer_info($taxonomy,'name',$post_id);
+  $ids = tasbb_get_beer_info($taxonomy,'term_id',$post_id);
   $i = 0;
   if($single == true){
     echo $names[0];
@@ -49,7 +49,7 @@ function beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false){
   }
   echo $result;
   }
-  elseif(beer_info_exists($taxonomy)){
+  elseif(tasbb_beer_info_exists($taxonomy)){
     $result = tasbb_get_field($taxonomy);
 
     if($taxonomy == 'abv'){
@@ -60,10 +60,10 @@ function beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false){
 }
 
 /*--- SPITS OUT BEER INFORMATION ---*/
-function beer_info_url($taxonomy,$post_id = null, $single = false){
+function tasbb_beer_info_url($taxonomy,$post_id = null, $single = false){
   if(taxonomy_exists($taxonomy)){
-  $names = get_beer_info($taxonomy,'name',$post_id);
-  $ids = get_beer_info($taxonomy,'term_id',$post_id);
+  $names = tasbb_get_beer_info($taxonomy,'name',$post_id);
+  $ids = tasbb_get_beer_info($taxonomy,'term_id',$post_id);
   $i = 0;
   if($single == true){
     echo get_term_link($ids[$i],$taxonomy);
@@ -78,17 +78,17 @@ function beer_info_url($taxonomy,$post_id = null, $single = false){
 }
 
 /*--- SPITS OUT BEER VIDEO ---*/
-function beer_video(){
-  $result = do_shortcode('[video src="'.tasbb_get_field('video').'"]');
+function tasbb_beer_video(){
+  $result = do_shortcode('[video src="'.tasbb_get_field('tasbb_video').'"]');
   echo $result;
 }
 
 /*--- CHECK IF BEER IS ON-TAP ---*/
-function beer_is_on_tap($post_id = null){
+function tasbb_beer_is_on_tap($post_id = null){
   if($post_id == null){
     $post_id = get_the_id();
   };
-  if(in_array('On-Tap',get_beer_info('availability','name',$post_id))){
+  if(in_array('On-Tap',tasbb_get_beer_info('availability','name',$post_id))){
     return true;
   }
   else{
@@ -97,8 +97,8 @@ function beer_is_on_tap($post_id = null){
 }
 
 /*--- CHECK IF A VALUE EXISTS FOR A FIELD ---*/
-function beer_info_exists($taxonomy,$info = 'name', $post_id = null){
-  if(get_beer_info($taxonomy,$info,$post_id) == null){
+function tasbb_beer_info_exists($taxonomy,$info = 'name', $post_id = null){
+  if(tasbb_get_beer_info($taxonomy,$info,$post_id) == null){
     $r = false;
   }
   else{
@@ -126,7 +126,7 @@ $post_id = $my_posts->posts[0]->ID;
 $post_img = wp_get_attachment_url( get_post_thumbnail_id($post_id));
 $post_title = get_the_title($post_id);
 $post_excerpt = $my_posts->posts[0]->post_excerpt;
-$post_availability = get_beer_info('availability','name',$post_id);
+$post_availability = tasbb_get_beer_info('availability','name',$post_id);
 unset($post_availability[array_search('On-Tap',$post_availability)]);
 $post_availability = implode(', ',$post_availability);
 if($a['text'] == ''){
@@ -140,7 +140,7 @@ $r .='<a id="beer-'.$bbcount.'" class="beer-url" href="'.get_permalink($post_id)
 if(get_option('tasbb_js_hover') == FALSE){
   $e .='<figure id="beer-'.$bbcount.'-popup" class="beer-popup hidden">';
   $e .=  '<h2>'.$post_title.'</h2>';
-  if(beer_is_on_tap($post_id)){
+  if(tasbb_beer_is_on_tap($post_id)){
   $e .=  '<h3>On Tap Now!</h3>';
   };
   $e .=  '<img src="'.$post_img.'">';
@@ -258,7 +258,7 @@ function tasbb_beer_list_shortcode($atts){
   };
 	if($a['show_price'] == TRUE){
 	$r .= '<span class="price">';
-	$r .= '$'.get_beer_info('price');
+	$r .= '$'.tasbb_get_beer_info('tasbb_price');
 	$r .= '</span>';
 	}
 	if($a['show_price'] == TRUE || $a['show_description'] == TRUE){

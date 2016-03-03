@@ -108,15 +108,15 @@ if($beers->have_posts()) : while($beers->have_posts()) : $beers->the_post(); ?>
 		<?php echo get_the_title(); ?>
 	<?php
 	//--- PRICE ---//
-	if($a['show_price'] == TRUE && beer_info_exists('price')){?>
+	if($a['show_price'] == TRUE && tasbb_beer_info_exists('tasbb_price')){?>
 	<span class="price"> - 
-		$<?php beer_info('price');?>
+		$<?php tasbb_beer_info('tasbb_price');?>
 	</span>
 	</dt>
 	<?php }; ?>
 <?php if($a['show_style'] == TRUE){?>
 <dd>
-	<em><?php beer_info('style',null,null,true); ?></em>
+	<em><?php tasbb_beer_info('style',null,null,true); ?></em>
 </dd>
 <?php }; ?>
 <?php
@@ -131,9 +131,9 @@ if($a['show_description'] == TRUE){?>
 <?php }; ?>
 <?php if($a['show_ibu'] == TRUE || $a['show_abv'] == TRUE || $a['show_og'] == TRUE){?>
 <dd>
-	<span>ABV: <?php if($a['show_abv'] == TRUE){ beer_info('abv'); };?></span>
-	<span>IBU: <?php if($a['show_ibu'] == TRUE){ beer_info('ibu'); };?></span>
-	<span>OG: <?php if($a['show_og'] == TRUE){ beer_info('og'); };?></span>
+	<span>ABV: <?php if($a['show_abv'] == TRUE){ tasbb_beer_info('tasbb_abv'); };?></span>
+	<span>IBU: <?php if($a['show_ibu'] == TRUE){ tasbb_beer_info('tasbb_ibu'); };?></span>
+	<span>OG: <?php if($a['show_og'] == TRUE){ tasbb_beer_info('tasbb_og'); };?></span>
 </dd>
 <?php }; ?>
 <?php endwhile; endif; ?>

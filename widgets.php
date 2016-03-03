@@ -94,7 +94,7 @@ if($tasbb_random_beer->have_posts()) : while($tasbb_random_beer->have_posts()) :
   <h3><a href="<?php echo get_post_permalink();?>"><?php the_title(); ?></a></h3>
   <p><?php the_excerpt();?></p>
   <?php echo wp_get_attachment_image( get_post_thumbnail_id(),'small' );?>
-  <?php if(beer_info_exists('untappd_url')){?>
+  <?php if(tasbb_beer_info_exists('tasbb_untappd_url')){?>
   <?php }; ?>
 </div>
 <?php endwhile; endif;
