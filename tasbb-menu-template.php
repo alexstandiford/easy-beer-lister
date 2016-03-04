@@ -1,5 +1,4 @@
 <?php
-    require( dirname( __FILE__ ) . '/../../../' . 'wp-blog-header.php' );
 		if(!is_user_logged_in()){
 			echo '<h1>Please log in to view this content</h1>';
 			die;
@@ -11,20 +10,20 @@
 ?>
 <?php
 $a = [
-    'sort' => get_option('tasbb_export_sort_order'),
-    'sortby' => get_option('tasbb_export_sortby'),
-    'on-tap'  => get_option('tasbb_export_ontap'),
-    'pairings' => get_option('tasbb_export_pairings'),
-    'tags' => get_option('tasbb_export_tags'),
-    'style' => get_option('tasbb_export_styles'),
-    'availability' => get_option('tasbb_export_availability'),
-    'show_description' => get_option('tasbb_export_show_description'),
-		'show_price' => get_option('tasbb_export_show_price'),
-		'show_image' => get_option('tasbb_export_show_img'),
-		'show_ibu' => get_option('tasbb_export_show_ibu'),
-		'show_abv' => get_option('tasbb_export_show_abv'),
-		'show_og' => get_option('tasbb_export_show_og'),
-		'show_style' => get_option('tasbb_export_show_style'),
+    'sort' => get_post_meta('tasbb_export_sort_order'),
+    'sortby' => get_post_meta('tasbb_export_sortby'),
+    'on-tap'  => get_post_meta('tasbb_export_ontap'),
+    'pairings' => get_post_meta('tasbb_export_pairings'),
+    'tags' => get_post_meta('tasbb_export_tags'),
+    'style' => get_post_meta('tasbb_export_styles'),
+    'availability' => get_post_meta('tasbb_export_availability'),
+    'show_description' => get_post_meta('tasbb_export_show_description'),
+		'show_price' => get_post_meta('tasbb_export_show_price'),
+		'show_image' => get_post_meta('tasbb_export_show_img'),
+		'show_ibu' => get_post_meta('tasbb_export_show_ibu'),
+		'show_abv' => get_post_meta('tasbb_export_show_abv'),
+		'show_og' => get_post_meta('tasbb_export_show_og'),
+		'show_style' => get_post_meta('tasbb_export_show_style'),
 ];
   $args = [
     'post_type' => 'beers',
@@ -96,12 +95,12 @@ $a = [
 <link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__).'tasbb-print.css'?>">
 </head>
 <style>
-<?php echo get_option('tasbb_export_menu_css'); ?>
+<?php echo get_post_meta('tasbb_export_menu_css'); ?>
 </style>
 <html>
-<h1><?php echo get_option('tasbb_export_menu_heading'); ?></h1>
-<h2><?php echo get_option('tasbb_export_menu_subheading'); ?></h2>
-<p><?php echo get_option('tasbb_export_menu_before_menu'); ?></p>
+<h1><?php echo get_post_meta('tasbb_export_menu_heading'); ?></h1>
+<h2><?php echo get_post_meta('tasbb_export_menu_subheading'); ?></h2>
+<p><?php echo get_post_meta('tasbb_export_menu_before_menu'); ?></p>
 <dl>
 <?php
 $beers = new WP_Query($args);
@@ -144,5 +143,5 @@ if($a['show_description'] == TRUE){?>
 <?php }; ?>
 <?php endwhile; endif; ?>
 </dl>
-<p><?php echo get_option('tasbb_export_menu_after_menu'); ?></p>
+<p><?php echo get_post_meta('tasbb_export_menu_after_menu'); ?></p>
 </html>

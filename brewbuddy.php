@@ -7,7 +7,7 @@ Author:      Alex Standiford
 Author URI:  http://www.fillyourtaproom.com
 */
 
-/*--- REGISTERS POST TYPE ---*/
+/*--- REGISTERS BEER POST TYPE ---*/
 function tasbb_beer_page_init(){
   register_post_type(
     'beers',
@@ -18,9 +18,10 @@ function tasbb_beer_page_init(){
       'show_in_menu'       => true,
       'show_ui'            => true,
       'show_in_admin_bar'  => true,
+      'can_export'         => true,
       'menu_position'      => 5,
       'supports'           => array( 'title','editor','excerpt', 'revisions', 'thumbnail' ),
-      'menu_icon'          => plugin_dir_url( __FILE__ ).'/media/icon.png',
+      'menu_icon'          => plugin_dir_url( __FILE__ ).'/media/beer-icon.png',
       //---BEGIN LABELS---//
       'labels'             =>[
         'name'               => __( 'Beers'),
@@ -40,6 +41,44 @@ function tasbb_beer_page_init(){
   );
 }
 add_action( 'init', 'tasbb_beer_page_init' );
+
+/*--- REGISTERS MENU POST TYPE ---*/
+function tasbb_menu_page_init(){
+  register_post_type(
+    'menus',
+    [
+      'public'             => true,
+      'has_archive'        => false,
+      'capability_type'    => 'page',
+      'post-formats'       => true,
+      'show_in_menu'       => true,
+      'show_ui'            => true,
+      'show_in_admin_bar'  => true,
+      'exclude_from_search'=> true,
+      'show_in_nav_menus'  => false,
+      'menu_position'      => 6,
+      'supports'           => array('revisions', 'title','template'),
+      'menu_icon'          => plugin_dir_url( __FILE__ ).'/media/menu-icon.png',
+      //---BEGIN LABELS---//
+      'labels'             =>[
+        'name'               => __( 'Menus'),
+        'singular_name'      => __( 'Menu'),
+      'label'              => __( 'Menus' ),
+		'add_new'            => _x( 'Add New', 'menu'),
+		'add_new_item'       => __( 'Add New Menu'),
+		'new_item'           => __( 'New Menu'),
+		'edit_item'          => __( 'Edit Menu'),
+		'view_item'          => __( 'View Menu'),
+		'all_items'          => __( 'All Menus'),
+		'search_items'       => __( 'Search Menus'),
+		'not_found'          => __( 'No menu found.'),
+		'not_found_in_trash' => __( 'No menu found in Trash.')
+      ],
+    ]
+  );
+}
+add_action( 'init', 'tasbb_menu_page_init' );
+
 /*--- REGISTERS TAXONOMY ---*/
 function tasbb_beer_taxonomy_init(){
 	register_taxonomy(
@@ -119,30 +158,36 @@ function tasbb_beer_page_template( $template ) {
 }
 add_filter( 'template_include', 'tasbb_beer_page_template');
 
+/*---REGISTERS DEFAULT MENU PAGE TEMPLATE---*/
+function tasbb_menu_page_template( $template ) {
+	if (is_singular('menus') && !file_exists(get_template_directory().'/single-menus.php')) {
+		$new_template = dirname(__FILE__).'/tasbb-menu-template.php';
+			return $new_template ;
+	}
+	return $template;
+}
+add_filter( 'template_include', 'tasbb_menu_page_template');
+
 /*--- CUSTOM STYLES ---*/
 function tasbb_beer_styles_init(){
   $styles = [
-    'style/tasbb.css'
+    'tasbb.css'
   ];
-  $scripts = [
-    'js/tasbb.js'
-  ];
-
-  $result .= '<!-- BEGIN TASBB STYLES -->';
   foreach($styles as $style){
-    $result .= '<link rel="stylesheet" href="';
-    $result .= plugin_dir_url(__FILE__).$style;
-    $result .= '">';
+    wp_enqueue_style($style,plugin_dir_url(__FILE__).'style/'.$style);
   }
-  $result .= '<!-- BEGIN TASBB SCRIPTS -->';
-  foreach($scripts as $script){
-    $result .= '<script src="';
-    $result .= plugin_dir_url(__FILE__).$script;
-    $result .= '"></script>';
-  }
-  echo $result;
 }
-add_action('wp_footer','tasbb_beer_styles_init');
+add_action('wp_enqueue_scripts','tasbb_beer_styles_init');
+
+function tasbb_beer_scripts_init(){
+  $scripts = [
+    'tasbb.js'
+  ];
+  foreach($scripts as $script){
+    wp_enqueue_script($script,plugin_dir_url(__FILE__).'js/'.$script);
+  }
+}
+add_action('wp_footer','tasbb_beer_scripts_init');
 
 /*--- STYLE TAGS ---*/
 function tasbb_beer_inline_style_overrides(){
@@ -155,7 +200,7 @@ function tasbb_beer_inline_style_overrides(){
   $e .= '</style>';
   echo $e;
 }
-add_action('wp_head','tasbb_beer_inline_style_overrides');
+add_action('wp_head','tasbb_beer_inline_style_overrides',30);
 
 include_once(dirname(__FILE__).'/fields.php');
 include_once(dirname(__FILE__).'/functions.php');
