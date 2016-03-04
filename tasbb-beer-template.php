@@ -57,13 +57,7 @@
          </dl>
 					</div>
 					<span class="tasbb-row"></span>
-          <?php }; ?>
-          <?php if(tasbb_beer_info_exists('additional_photos')){?>
-          <div class="beer-gallery-wrapper">
-         <?php beer_photos();?>
-          </div>
-          <?php }; ?>
-         <?php
+          <?php }; 
          };
 		   the_content();
          if(function_exists('tasbb_beer_info')){
