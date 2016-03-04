@@ -1,5 +1,26 @@
 <?php
 
+function tasbb_menu_head(){
+		if(!is_user_logged_in()){
+			echo '<h1>Please log in to view this content</h1>';
+			die;
+		}
+}
+
+function tasbb_parse_taxonomy_checkbox($taxonomy){
+	$terms = get_terms($taxonomy,['orderby' => 'name', 'order' => 'asc', 'hide_empty' => true]);
+	$result = [];
+	
+	foreach($terms as $term){
+		$tax_meta = get_post_meta(get_the_ID(),$term->slug,true);
+		if($tax_meta == 1){
+			array_push($result, $term->slug);
+		}
+		
+	};
+		return $result;
+	}
+
 //---THE BEER PAGE META BOX FIELDS---//
 function tasbb_beer_meta_box($object, $box) { ?>
   <?php wp_nonce_field( basename( __FILE__ ), 'tasbb_beer_nonce' ); ?>
@@ -72,61 +93,125 @@ function tasbb_menu_meta_box($object, $box) { ?>
     </p>
 		<textarea class="widefat" id="tasbb_export_menu_after_menu" name="tasbb_export_menu_after_menu"><?php echo esc_attr(get_post_meta( $object->ID, 'tasbb_export_menu_after_menu', true)); ?></textarea>
   </div>
+  <div class="tasbb-field tasbb-full-width">
+    <p class="label">
+    <label for="tasbb-abv">Sort By</label><br>
+    <?php _e( "Specify the Beer Value you want to sort by."); ?>
+    </p>
+        <select id="tasbb_export_sortby" name="tasbb_export_sortby">
+					<option value="tasbb_abv" <?php selected( get_post_meta( $object->ID,'tasbb_export_sortby',true), 'tasbb_abv');?>>ABV</option>
+					<option value="tasbb_ibu" <?php selected( get_post_meta( $object->ID,'tasbb_export_sortby',true), 'tasbb_ibu');?>>IBU</option>
+					<option value="tasbb_og" <?php selected( get_post_meta( $object->ID,'tasbb_export_sortby',true), 'tasbb_og');?>>OG</option>
+					<option value="tasbb_price" <?php selected( get_post_meta( $object->ID,'tasbb_export_sortby',true), 'tasbb_price');?>>Price</option>
+					<option value="name" <?php selected( get_post_meta( $object->ID,'tasbb_export_sortby',true), 'name');?>>Name</option>
+				</select>
+  </div>
+  <div class="tasbb-field tasbb-full-width">
+    <p class="label">
+    <label for="tasbb-abv">Sort Order</label><br>
+    <?php _e( "Specify the order of the menu.  Ascending (A-Z), or Descending (Z-A)"); ?>
+    </p>
+        <select id="tasbb_export_sort_order" name="tasbb_export_sort_order">
+					<option value="asc" <?php selected( get_post_meta( $object->ID, 'tasbb_export_sort_order', true), 'asc');?>>Ascending</option>
+					<option value="desc" <?php selected( get_post_meta( $object->ID, 'tasbb_export_sort_order', true), 'desc');?>>Descending</option>
+				</select>
+  </div>
+
   <div class="tasbb-field">
     <p class="label">
     <label for="tasbb-abv">Only Show On-Tap Beers</label><br>
     <?php _e( "Only show beers that are marked as on-tap in the beers menu"); ?>
     </p>
-    <input type="checkbox" id="tasbb_export_ontap" name="tasbb_export_ontap" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_ontap', false));  ?>/>
+    <input type="checkbox" id="tasbb_export_ontap" name="tasbb_export_ontap" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_ontap', true));  ?>/>
   </div>
   <div class="tasbb-field">
     <p class="label">
     <label for="tasbb-abv">Show Beer Image</label><br>
     <?php _e( "Show image of beer in beer menu"); ?>
     </p>
-    <input type="checkbox" id="tasbb_export_show_img" name="tasbb_export_show_img" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_img', false));  ?>/>
+    <input type="checkbox" id="tasbb_export_show_img" name="tasbb_export_show_img" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_img', true));  ?>/>
   </div>
   <div class="tasbb-field">
     <p class="label">
     <label for="tasbb-abv">Show Beer Description</label><br>
     <?php _e( "Show the description (also known as the excerpt) of beer in beer menu"); ?>
     </p>
-    <input type="checkbox" id="tasbb_export_show_description" name="tasbb_export_show_description" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_description', false));  ?>/>
+    <input type="checkbox" id="tasbb_export_show_description" name="tasbb_export_show_description" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_description', true));  ?>/>
   </div>
   <div class="tasbb-field">
     <p class="label">
     <label for="tasbb-abv">Show Beer Style</label><br>
     <?php _e( "Show the style of beer in beer menu"); ?>
     </p>
-    <input type="checkbox" id="tasbb_export_show_style" name="tasbb_export_show_style" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_style', false));  ?>/>
+    <input type="checkbox" id="tasbb_export_show_style" name="tasbb_export_show_style" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_style', true));  ?>/>
   </div>
   <div class="tasbb-field">
     <p class="label">
     <label for="tasbb-abv">Show Beer OG</label><br>
     <?php _e( "Show the Original Gravity (OG) of beer in beer menu"); ?>
     </p>
-    <input type="checkbox" id="tasbb_export_show_og" name="tasbb_export_show_og" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_og', false));  ?>/>
+    <input type="checkbox" id="tasbb_export_show_og" name="tasbb_export_show_og" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_og', true));  ?>/>
   </div>
   <div class="tasbb-field">
     <p class="label">
     <label for="tasbb-abv">Show Beer IBU</label><br>
     <?php _e( "Show the International Bittering Units (IBU) of beer in beer menu"); ?>
     </p>
-    <input type="checkbox" id="tasbb_export_show_ibu" name="tasbb_export_show_ibu" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_ibu', false));  ?>/>
+    <input type="checkbox" id="tasbb_export_show_ibu" name="tasbb_export_show_ibu" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_ibu', true));  ?>/>
   </div>
   <div class="tasbb-field">
     <p class="label">
     <label for="tasbb-abv">Show Beer ABV</label><br>
     <?php _e( "Show the Alcohol by Volume (ABV) of beer in beer menu"); ?>
     </p>
-    <input type="checkbox" id="tasbb_export_show_abv" name="tasbb_export_show_abv" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_abv', false));  ?>/>
+    <input type="checkbox" id="tasbb_export_show_abv" name="tasbb_export_show_abv" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_abv', true));  ?>/>
   </div>
   <div class="tasbb-field">
     <p class="label">
     <label for="tasbb-abv">Show Beer Price</label><br>
     <?php _e( "Show the price of beer in beer menu"); ?>
     </p>
-    <input type="checkbox" id="tasbb_export_show_price" name="tasbb_export_show_price" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_price', false));  ?>/>
+    <input type="checkbox" id="tasbb_export_show_price" name="tasbb_export_show_price" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'tasbb_export_show_price', true));  ?>/>
+  </div>
+  <div class="tasbb-field">
+    <p class="label">
+    <label for="tasbb-style">Filter by Style</label><br>
+    <?php _e( "Select the Beer Style you want to filter.  If all are unchecked, all beer styles will be used."); ?>
+    </p>
+<?php
+	$tasbb_terms = get_terms('style',['orderby' => 'name', 'order' => 'asc', 'hide_empty' => true]);
+	
+	foreach($tasbb_terms as $tasbb_term){?>
+	<input type="checkbox" id="<?php echo $tasbb_term->slug; ?>" name="<?php echo $tasbb_term->slug; ?>" value="1" <?php echo checked(1, get_post_meta( $object->ID, $tasbb_term->slug, true));  ?>/>
+	<label for="<?php echo $tasbb_term->slug;?>"><?php echo $tasbb_term->name; ?></label><br/>
+<?php }; ?>
+  </div>
+  <div class="tasbb-field">
+    <p class="label">
+    <label for="tasbb-availability">Filter by Availability</label><br>
+    <?php _e( "Select the Beer Availability you want to filter.  If all are unchecked, all beer availabilities will be used."); ?>
+    </p>
+<?php
+	$tasbb_terms = get_terms('availability',['orderby' => 'name', 'order' => 'asc', 'hide_empty' => true]);
+	
+	foreach($tasbb_terms as $tasbb_term){
+	if($tasbb_term->slug != 'on-tap'){?>
+	<input type="checkbox" id="<?php echo $tasbb_term->slug; ?>" name="<?php echo $tasbb_term->slug; ?>" value="1" <?php echo checked(1, get_post_meta( $object->ID, $tasbb_term->slug, true));  ?>/>
+	<label for="<?php echo $tasbb_term->slug;?>"><?php echo $tasbb_term->name; ?></label><br/>
+<?php };}; ?>
+  </div>
+  <div class="tasbb-field">
+    <p class="label">
+    <label for="tasbb-tag">Filter by Beer Tag</label><br>
+    <?php _e( "Select the Beer Tag you want to filter.  If all are unchecked, all beer tags will be used."); ?>
+    </p>
+<?php
+	$tasbb_terms = get_terms('tags',['orderby' => 'name', 'order' => 'asc', 'hide_empty' => true]);
+	
+	foreach($tasbb_terms as $tasbb_term){?>
+	<input type="checkbox" id="<?php echo $tasbb_term->slug; ?>" name="<?php echo $tasbb_term->slug; ?>" value="1" <?php echo checked(1, get_post_meta( $object->ID, $tasbb_term->slug, true));  ?>/>
+	<label for="<?php echo $tasbb_term->slug;?>"><?php echo $tasbb_term->name; ?></label><br/>
+<?php }; ?>
   </div>
 <?php  }
 
@@ -206,7 +291,35 @@ function tasbb_save_menu_meta($post_id, $post) {
 	new tasbb_menu_meta_item('tasbb_export_show_ibu','tasbb_export_show_ibu'),
 	new tasbb_menu_meta_item('tasbb_export_show_abv','tasbb_export_show_abv'),
 	new tasbb_menu_meta_item('tasbb_export_show_price','tasbb_export_show_price'),
+	new tasbb_menu_meta_item('tasbb_export_show_img','tasbb_export_show_img'),
+	new tasbb_menu_meta_item('tasbb_export_show_description','tasbb_export_show_description'),
+	new tasbb_menu_meta_item('tasbb_export_sort_order','tasbb_export_sort_order'),
+	new tasbb_menu_meta_item('tasbb_export_sortby','tasbb_export_sortby'),
 	];
+
+	//--- PUSHES STYLE TAXONOMY TO ARRAY ---//
+	$tasbb_terms = get_terms('style',['orderby' => 'name', 'order' => 'asc', 'hide_empty' => true]);	
+	if(class_exists('tasbb_menu_meta_item')){
+		foreach($tasbb_terms as $tasbb_term){
+			array_push($metas, new tasbb_menu_meta_item($tasbb_term->slug,$tasbb_term->slug));
+		};
+	};
+	//--- PUSHES AVAILABILITY TAXONOMY TO ARRAY ---//
+	$tasbb_terms = get_terms('availability',['orderby' => 'name', 'order' => 'asc', 'hide_empty' => true]);	
+	if(class_exists('tasbb_menu_meta_item')){
+		foreach($tasbb_terms as $tasbb_term){
+			array_push($metas, new tasbb_menu_meta_item($tasbb_term->slug,$tasbb_term->slug));
+		};
+	};
+	//--- PUSHES AVAILABILITY TAXONOMY TO ARRAY ---//
+	$tasbb_terms = get_terms('tags',['orderby' => 'name', 'order' => 'asc', 'hide_empty' => true]);	
+	if(class_exists('tasbb_menu_meta_item')){
+		foreach($tasbb_terms as $tasbb_term){
+			array_push($metas, new tasbb_menu_meta_item($tasbb_term->slug,$tasbb_term->slug));
+		};
+	};
+	
+
 	foreach($metas as $meta){
 	$meta->oldValue = get_post_meta( $post_id, $meta->theKey, true );
   /* If a new meta value was added and there was no previous value, add it. */

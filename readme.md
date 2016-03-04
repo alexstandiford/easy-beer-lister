@@ -1,14 +1,25 @@
-## Intro ##
-Brew Buddy makes it easier for brewers, and bars to feature their beer on their website.  Sort beers by what is on tap, and feature beers on your blog posts with the `[beer]` shortcode.
+=== BrewBuddy ===
+Contributors: tstandiford
+Donate link: http://www.brewbuddy.io/recommends/donate
+Tags: beer, beers, brewery, untappd, beer menu
+Requires at least: 3.0.1
+Tested up to: 4.4.2
+Stable tag: 4.3
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Brew Buddy makes it easier for brewers, and bars to manage their beer information. Sort beers on your website, and create print-friendly menus.
+
+== Description ==
 
 ## Features ##
-* Special Beer tab separates your beers from blog posts, and pages.
+* Special Beer Post Type separates your beers from blog posts, and pages.
 * Sort your beers by availaiblity, food pairings, custom tags, and beer style.
-* Special fields for ABV, OG, IBU, untappd URL, and a photo gallery
+* Special fields for ABV, OG, IBU, untappd URL, and video.
 * Interface matches existing WordPress interface
 * Custom Shortcode `[beer]` will allow users to reference a beer in a blog or page.
 * Bulk-edit sorting methods, such as availability, food pairings, and what's on tap.
-* Generate print-able menus quickly and easily
+* Special Menus Post Type allows you to create auto-populating custom menus for quick printing, or display on a TV screen.
 
 ## Shortcodes ##
 * `[beer name="#NAME OF BEER" text="#URL TEXT FOR BEER"]` - Create a URL to a specified beer.  This link will also show a preview of the beer when you hover over it with your mouse.
@@ -72,54 +83,70 @@ One of the most powerful features of Brew Buddy is the ability to batch-edit you
 7. Apply the changes you want to make, and click "update"
 
 ## Creating Beer Menus ##
+**NOTE** Menus are only visible to the user if they're logged in, so you don't have to worry about displaying your price.
 
-### Print a menu ###
-To print your menu, follow these steps:
-
+### Add a Menu ###
+To add a menu, follow these steps:
 1. Visit your WordPress Dashboard
-2. On the left-hand side, hover over "Beers"
-3. Click "Export Menu"
-4. Click on the "View/Print Menu", located at the top of the page.
-5. Print the file using your web browser settings (Usually located under file>>>print)
-		* Tip: Set all margins to 0, and turn off header and footer settings when printing for best results
+2. On the left-hand column, hover over "Menus"
+3. Click "Add New"
+4. Fill in all of the information on the page
+5. Click "Publish"
 
-### Menu Configuration ###
-There are many different options that can be set to configure what does (and does not) display on your menu.  These options are very similar to the configuration options that you can do with the `[beer_list]` shortcode.  To get to these options, follow these steps:
+### Print a Menu ###
+To print a menu, follow these steps:
 
-1. Visit your WordPress Dashboard
-2. On the left-hand side, hover over "Beers"
-3. Click "Export Menu"
+1. Navigate to the menu that you wish to print
+	1. Visit your WordPress Dashboard
+	2. On the left-hand column, hover over "Menus"
+	3. Click "All Menus"
+	4. Hover over the menu and click "View"
+2. Print the menu
+	1. click file>>>print (or press CONTROL+P)
+	2. For best results, make sure the margins are set to none. (in Chromse this is found after pressing the "more settings" button)
+	3. click Print
 
-Once there, you can configure the options shown therein.
+== Installation ==
 
-#### Filters ####
-Filters allow you to specify criteria that determines what displays on your menu.  These filters can be combined with other styles.
+1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
+2. Activate the plugin through the 'Plugins' screen in WordPress
+3. Start adding your beers under Beers->Add New
 
-_Example: `style: Stout` and `pairings: Chocolate` will show all stouts that pair well with chocolate_
+== Frequently Asked Questions ==
 
- * Pairings
- 	* (multiple values, separated by commas) Only show beers with food pairings you specify
-	* _example: chocolate,burger,bleu cheese_
- * Styles
- 	* (multiple values, separated by commas) Only show beers with beer styles you specify
-	* _example: stout,ipa,porter_
- * Tags
- 	* (multiple values, separated by commas) Only show beers with tags you specify
-	* _example: favorite,seasonal,christmas favorite_
- * Availability
- 	* (multiple values, separated by commas) Only show beers with availability you specify
-	* _example: winter,summer,fall_
-	
-#### Show/Hide Options ####
-You can specify which items you want to show/hide from you menu.  Here's a list of what can be shown/hidden from the Export Menu options page (mentioned above):
+= How do I display an image of my beer =
 
-  * Images
-  * Description
-  * Style
-  * IBU
-  * ABV
-  * OG
-  * Price
+When creating your Beer, set the "featured image" option in the sidebar to the beer image you wish to use.  Most themes automatically use this option out of the box.
 
-#### Customize CSS of Menu Page ####
-Don't like the default CSS of the menu page?  You can add any style overrides inside of the `custom CSS overrides` field under the Export Menu.  This is added as an inline style to the head of the menu, so anything that you put in this document will override your defaults.
+
+= How do I display a beer on a page or post? =
+
+Use the `[beer name=# text=#]` shortcode inside your page editor to add a beer to any page. Replace the "#" with the name of the beer, as well as the text that you want to show in the link.
+
+
+= How do I display a list of all my beers? =
+
+Use the `[beer_list]` shortcode inside your page editor to add a list of all your beers to any page.  See the getting started section to learn more about this shortcode.
+
+= My printed menu looks funny =
+
+Be sure to remove the default margins when you print your menu!
+
+= When I hover over a beer, the preview popup is way off! =
+
+Since BrewBuddy is designed to work with as many themes as possible, I created a way to adjust this hover.  Go to settings->BrewBuddy settings and set some offset values until you get it right.  Use trial and error until it looks good
+
+== Screenshots ==
+
+1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
+the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets 
+directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png` 
+(or jpg, jpeg, gif).
+2. This is the second screen shot
+
+== Changelog ==
+
+= 1.0 =
+* Initial Launch.  Hooray!
+
+== Upgrade Notice ==

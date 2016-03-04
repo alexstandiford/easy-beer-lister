@@ -1,8 +1,8 @@
 <?php
-function my_plugin_menu() {
+function tasbb_plugin_menu() {
 	add_options_page( 'BrewBuddy Settings', 'BrewBuddy Settings', 'manage_options', 'tasbb-settings', 'tasbb_options' );
 }
-add_action( 'admin_menu', 'my_plugin_menu' );
+add_action( 'admin_menu', 'tasbb_plugin_menu' );
 
 
 

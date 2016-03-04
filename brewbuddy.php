@@ -79,7 +79,6 @@ function tasbb_menu_page_init(){
 }
 add_action( 'init', 'tasbb_menu_page_init' );
 
-/*--- REGISTERS TAXONOMY ---*/
 function tasbb_beer_taxonomy_init(){
 	register_taxonomy(
 		'style',
@@ -137,6 +136,7 @@ function tasbb_beer_taxonomy_defaults_init(){
 
 add_action( 'init', 'tasbb_beer_taxonomy_defaults_init' );
 
+
 function tasbb_beer_tags_taxonomy_init(){
 	register_taxonomy(
 		'tags',
@@ -161,8 +161,7 @@ add_filter( 'template_include', 'tasbb_beer_page_template');
 /*---REGISTERS DEFAULT MENU PAGE TEMPLATE---*/
 function tasbb_menu_page_template( $template ) {
 	if (is_singular('menus') && !file_exists(get_template_directory().'/single-menus.php')) {
-		$new_template = dirname(__FILE__).'/tasbb-menu-template.php';
-			return $new_template ;
+		$template = dirname(__FILE__).'/tasbb-menu-template.php';
 	}
 	return $template;
 }
@@ -205,6 +204,5 @@ add_action('wp_head','tasbb_beer_inline_style_overrides',30);
 include_once(dirname(__FILE__).'/fields.php');
 include_once(dirname(__FILE__).'/functions.php');
 include_once(dirname(__FILE__).'/tasbb-settings.php');
-include_once(dirname(__FILE__).'/tasbb-export.php');
 include_once(dirname(__FILE__).'/widgets.php');
 ?>
