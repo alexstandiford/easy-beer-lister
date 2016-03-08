@@ -8,13 +8,11 @@ Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-BrewBuddy makes it easier for brewers, and bars to manage their beer information. Sort beers on your website, and create print-friendly menus.
+Brew Buddy makes it easier for brewers, and bars to manage their beer information. Sort beers on your website, and create print-friendly menus.
 
 == Description ==
 
-BrewBuddy is a beer management plugin that allows users to add beers to the site.  Once the beers are added, pages are automatically populated much like blog posts are.  Beers can be viewed by style, availability, what's on tap, and pairings.  Once beers are added, custom print-friendly beer menus can be made and printed, using a multitude of filtering and sorting options to make creating a menu fast and easy.  Update what's on tap in less places with BrewBuddy.
-
-= Features =
+## Features ##
 * Special Beer Post Type separates your beers from blog posts, and pages.
 * Sort your beers by availaiblity, food pairings, custom tags, and beer style.
 * Special fields for ABV, OG, IBU, untappd URL, and video.
@@ -22,9 +20,8 @@ BrewBuddy is a beer management plugin that allows users to add beers to the site
 * Custom Shortcode `[beer]` will allow users to reference a beer in a blog or page.
 * Bulk-edit sorting methods, such as availability, food pairings, and what's on tap.
 * Special Menus Post Type allows you to create auto-populating custom menus for quick printing, or display on a TV screen.
-* Widgets show a list of what's on tap, or a single random beer
 
-= Shortcodes =
+## Shortcodes ##
 * `[beer name="#NAME OF BEER" text="#URL TEXT FOR BEER"]` - Create a URL to a specified beer.  This link will also show a preview of the beer when you hover over it with your mouse.
     * `name` - The name of the beer you want to link to.  Case insensitive
     * `text` - (Optional) The text you want in the URL.  Defaults to the name of the beer.
@@ -39,9 +36,9 @@ BrewBuddy is a beer management plugin that allows users to add beers to the site
     * 'tags' - (Optional) Name of the beer tags(s) you want to show.  Separate each value by a comma (example: featured,favorite,seasonal)
     * 'availability' - (Optional) Beer availability time(s) you want to show.  Separate each value by a comma (example: winter,summer,spring)
 
-= Getting Started =
+## Getting Started ##
 
-= Add a Beer =
+### Add a Beer ###
 To add a beer, follow these steps:
 
 1. Visit your WordPress Dashboard
@@ -50,10 +47,10 @@ To add a beer, follow these steps:
 4. Fill in all of the information on the page
 5. Click "Publish"
 
-= View Your Beers =
-BrewBuddy automatically builds the relevant pages for you, based on what information you add to your beers.  To view these pages, follow these steps:
+### View Your Beers ###
+Brew Buddy automatically builds the relevant pages for you, based on what information you add to your beers.  To view these pages, follow these steps:
 
-= View All Beers =
+#### View All Beers ####
 To view all beers, you usually need to visit `YOURSITE.COM/beers/`.  If that doesn't work, follow these steps to figure out your beers URL:
 
 1. Visit your WordPress Dashboard
@@ -66,16 +63,16 @@ To view all beers, you usually need to visit `YOURSITE.COM/beers/`.  If that doe
 8. Click on the All Beers link in your menu to visit the page.
 9. Optional - delete the All Beers link from your menu.
 
-= View Beer By Information =
+#### View Beer By Information ####
 
 1. Visit your WordPress Dashboard
 2. On the left-hand column, hover over "Beers"
 3. Click on either "Beer Styles", "Pairings", "Availability", or "Tags", depending on which page you would like to view.
 4. In the right-side of the interface, hover over the term you would like to sort by and click "view".
 
-= Batch-edit Beers =
+### Batch-edit Beers ###
 
-One of the most powerful features of BrewBuddy is the ability to batch-edit your beer information.  To do this, follow these steps:
+One of the most powerful features of Brew Buddy is the ability to batch-edit your beer information.  To do this, follow these steps:
 
 1. Visit your WordPress Dashboard
 2. On the left-hand column, hover over "Beers"
@@ -85,10 +82,10 @@ One of the most powerful features of BrewBuddy is the ability to batch-edit your
 6. Click "Apply"
 7. Apply the changes you want to make, and click "update"
 
-= Creating Beer Menus =
+## Creating Beer Menus ##
 **NOTE** Menus are only visible to the user if they're logged in, so you don't have to worry about displaying your price.
 
-= Add a Menu =
+### Add a Menu ###
 To add a menu, follow these steps:
 1. Visit your WordPress Dashboard
 2. On the left-hand column, hover over "Menus"
@@ -96,7 +93,7 @@ To add a menu, follow these steps:
 4. Fill in all of the information on the page
 5. Click "Publish"
 
-= Print a Menu =
+### Print a Menu ###
 To print a menu, follow these steps:
 
 1. Navigate to the menu that you wish to print
@@ -124,7 +121,7 @@ When creating your Beer, set the "featured image" option in the sidebar to the b
 
 = How do I display a beer on a page or post? =
 
-Use the `[beer name= text=]` shortcode inside your page editor to add a beer to any page. Replace the "#" with the name of the beer, as well as the text that you want to show in the link.
+Use the `[beer name=# text=#]` shortcode inside your page editor to add a beer to any page. Replace the "#" with the name of the beer, as well as the text that you want to show in the link.
 
 
 = How do I display a list of all my beers? =
@@ -141,14 +138,11 @@ Since BrewBuddy is designed to work with as many themes as possible, I created a
 
 == Screenshots ==
 
-1. All Beers Page.  Beers can be modified, viewed, or edited in-bulk here
-2. Single Beer Page
-3. Menus and Beer menu on sidebar
-4. Add Beer screen
-5. Beer bulk-editor option in all beers page.
-6. Add Menu screen
-7. Hover effect on link using `[beer]` shortcode
-8. Print preview of beer menu
+1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
+the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets 
+directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png` 
+(or jpg, jpeg, gif).
+2. This is the second screen shot
 
 == Changelog ==
 
@@ -156,6 +150,3 @@ Since BrewBuddy is designed to work with as many themes as possible, I created a
 * Initial Launch.  Hooray!
 
 == Upgrade Notice ==
-
-= 1.0 =
-* Current version, no changes needed

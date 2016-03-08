@@ -178,6 +178,19 @@ function tasbb_beer_styles_init(){
 }
 add_action('wp_enqueue_scripts','tasbb_beer_styles_init');
 
+
+/*--- CUSTOM STYLES FOR SETTINGS PAGES ---*/
+function tasbb_beer_admin_styles_init(){
+  $styles = [
+    'tasbb-settings.css'
+  ];
+  foreach($styles as $style){
+    wp_enqueue_style($style,plugin_dir_url(__FILE__).'style/'.$style);
+  }
+}
+add_action('admin_enqueue_scripts','tasbb_beer_admin_styles_init');
+
+
 function tasbb_beer_scripts_init(){
   $scripts = [
     'tasbb.js'
