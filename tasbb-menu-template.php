@@ -25,7 +25,8 @@ $a = [
     'order'     => $a['sort'],
 		'orderby' => 'meta_value_num',
 		'meta_key' => $a['sortby'],
-    "tax_query" => []
+    "tax_query" => [],
+		'posts_per_page' => -1
     ];
   
 	if($a['sortby'] == 'name'){
@@ -84,6 +85,7 @@ $a = [
 <?php echo get_post_meta(get_the_ID(),'tasbb_export_menu_css',true); ?>
 </style>
 <html>
+	<h1 class="warning">There is a known bug with Google Chrome that prevents menus from printing properly.  To get the best print results, use <a href="http://www.firefox.com/">Mozilla Firefox</a>, or <a href="https://www.microsoft.com/en-us/windows/microsoft-edge">Microsoft Edge.</a></h1>
 <h1><?php echo get_post_meta(get_the_ID(),'tasbb_export_menu_heading',true); ?></h1>
 <h2><?php echo get_post_meta(get_the_ID(),'tasbb_export_menu_subheading',true); ?></h2>
 <p><?php echo get_post_meta(get_the_ID(),'tasbb_export_menu_before_menu',true); ?></p>
@@ -91,41 +93,43 @@ $a = [
 <?php
 $beers = new WP_Query($args);
 if($beers->have_posts()) : while($beers->have_posts()) : $beers->the_post(); ?>
-	<dt><?php
-	//--- IMAGE ---//
-	if($a['show_image'] == true){
-		the_post_thumbnail('medium');
-	}; ?>
-		<?php echo get_the_title(); ?>
-	<?php
-	//--- PRICE ---//
-	if($a['show_price'] == TRUE && tasbb_beer_info_exists('tasbb_price')){?>
-	<span class="price"> - 
-		$<?php tasbb_beer_info('tasbb_price');?>
-	</span>
-	</dt>
-	<?php }; ?>
-<?php if($a['show_style'] == TRUE){?>
-<dd>
-	<em><?php tasbb_beer_info('style',null,null,true); ?></em>
-</dd>
-<?php }; ?>
-<?php
-//--- DESCRIPTION ---//
-if($a['show_description'] == TRUE){?>
-<dd class="tasbb-shortcode-beer-description">
-	<?php echo get_the_excerpt();?>
-	<?php }; ?>
-	<?php
-	if($a['show_price'] == TRUE || $a['show_description'] == TRUE){?>
-</dd>
-<?php }; ?>
-<?php if($a['show_ibu'] == TRUE || $a['show_abv'] == TRUE || $a['show_og'] == TRUE){?>
-<dd>
-	<span>ABV: <?php if($a['show_abv'] == TRUE){ tasbb_beer_info('tasbb_abv'); };?></span>
-	<span>IBU: <?php if($a['show_ibu'] == TRUE){ tasbb_beer_info('tasbb_ibu'); };?></span>
-	<span>OG: <?php if($a['show_og'] == TRUE){ tasbb_beer_info('tasbb_og'); };?></span>
-</dd>
+	<div class="print-wrap">
+		<dt><?php
+		//--- IMAGE ---//
+		if($a['show_image'] == true){
+			the_post_thumbnail('medium');
+		}; ?>
+			<?php echo get_the_title(); ?>
+		<?php
+		//--- PRICE ---//
+		if($a['show_price'] == TRUE && tasbb_beer_info_exists('tasbb_price')){?>
+		<span class="price"> - 
+			$<?php tasbb_beer_info('tasbb_price');?>
+		</span>
+		</dt>
+		<?php }; ?>
+		<?php if($a['show_style'] == TRUE){?>
+		<dd>
+			<em><?php tasbb_beer_info('style',null,null,true); ?></em>
+		</dd>
+		<?php }; ?>
+		<?php
+		//--- DESCRIPTION ---//
+		if($a['show_description'] == TRUE){?>
+		<dd class="tasbb-shortcode-beer-description">
+			<?php echo get_the_excerpt();?>
+			<?php }; ?>
+			<?php
+			if($a['show_price'] == TRUE || $a['show_description'] == TRUE){?>
+		</dd>
+		<?php }; ?>
+		<?php if($a['show_ibu'] == TRUE || $a['show_abv'] == TRUE || $a['show_og'] == TRUE){?>
+		<dd>
+			<span>ABV: <?php if($a['show_abv'] == TRUE){ tasbb_beer_info('tasbb_abv'); };?></span>
+			<span>IBU: <?php if($a['show_ibu'] == TRUE){ tasbb_beer_info('tasbb_ibu'); };?></span>
+			<span>OG: <?php if($a['show_og'] == TRUE){ tasbb_beer_info('tasbb_og'); };?></span>
+		</dd>
+	</div>
 <?php }; ?>
 <?php endwhile; endif; ?>
 </dl>
