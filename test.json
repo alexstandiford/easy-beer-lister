@@ -1,0 +1,3137 @@
+{
+  "meta": {
+    "code": 200,
+    "response_time": {
+      "time": 0.389,
+      "measure": "seconds"
+    },
+    "init_time": {
+      "time": 0.001,
+      "measure": "seconds"
+    }
+  },
+  "notifications": [],
+  "response": {
+    "brewery": {
+      "brewery_id": 459,
+      "brewery_name": "Dogfish Head Craft Brewery",
+      "brewery_slug": "dogfish-head-craft-brewery",
+      "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+      "country_name": "United States",
+      "brewery_in_production": 0,
+      "is_independent": 1,
+      "claimed_status": {
+        "is_claimed": true,
+        "claimed_slug": "dogfishbeer",
+        "follow_status": false,
+        "follower_count": 167140,
+        "uid": 108982,
+        "mute_status": "none"
+      },
+      "beer_count": 624,
+      "contact": {
+        "twitter": "dogfishbeer",
+        "facebook": "http://www.facebook.com/dogfishheadbeer",
+        "instagram": "dogfishbeer",
+        "url": "http://www.dogfish.com/"
+      },
+      "brewery_type": "Micro Brewery",
+      "brewery_type_id": 2,
+      "location": {
+        "brewery_address": "6 Cannery Village Blvd",
+        "brewery_city": "Milton",
+        "brewery_state": "DE",
+        "brewery_lat": 38.7776,
+        "brewery_lng": -75.3099
+      },
+      "rating": {
+        "count": 2227995,
+        "rating_score": 3.853
+      },
+      "brewery_description": "Dogfish Head started in June 1995 when the Dogfish Head Brewings & Eats was established in the beach community of Rehoboth Beach, Delaware. Dogfish Head was the first brewpub of the state. The original plan to deliver great music, delicious food and fine beers to the community came to life when the first batch of Shelter Pale Ale beers were started. Soon, Dogfish Head engaged in brewing 12 gallons of beer batches to supply the restaurant’s need. Dogfish Head brewery quickly achieved popularity beyond the state and reaches to nearby areas like Philadelphia and Washington D.C. By 2000, Dogfish Head is selling over 20 types of beers to more than 25 states.",
+      "stats": {
+        "total_count": 3507883,
+        "unique_count": 533873,
+        "monthly_count": 80924,
+        "weekly_count": 18849,
+        "user_count": 0,
+        "age_on_service": 2001.5726273148
+      },
+      "owners": {
+        "count": 0,
+        "items": []
+      },
+      "media": {
+        "count": 15,
+        "items": [
+          {
+            "photo_id": 68958678,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/e811e6ee3a86198f1df86d76ee47f587_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/e811e6ee3a86198f1df86d76ee47f587_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/e811e6ee3a86198f1df86d76ee47f587_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/e811e6ee3a86198f1df86d76ee47f587_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 12:07:23 +0000",
+            "checkin_id": 286302358,
+            "beer": {
+              "bid": 4669,
+              "beer_name": "Chateau Jiahu",
+              "beer_abv": 10,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhJiahu.jpg",
+              "beer_style": "Herbed / Spiced Beer",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 186797,
+              "user_name": "jbeerme",
+              "first_name": "jon",
+              "last_name": "b",
+              "user_avatar": "https://untappd.akamaized.net/profile/5d1439f2c2b6774e2f15fe94f10ab0d0_thumb.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": {
+              "venue_id": 26183,
+              "venue_name": "Harry Caray's Seventh Inning Stretch",
+              "venue_slug": "harry-carays-seventh-inning-stretch",
+              "primary_category": "Food",
+              "parent_category_id": "4d4b7105d754a06374d81259",
+              "categories": {
+                "count": 4,
+                "items": [
+                  {
+                    "category_name": "American Restaurant",
+                    "category_id": "4bf58dd8d48988d14e941735",
+                    "is_primary": true
+                  },
+                  {
+                    "category_name": "Bar",
+                    "category_id": "4bf58dd8d48988d116941735",
+                    "is_primary": false
+                  },
+                  {
+                    "category_name": "Sports Bar",
+                    "category_id": "4bf58dd8d48988d11d941735",
+                    "is_primary": false
+                  },
+                  {
+                    "category_name": "Airport Terminal",
+                    "category_id": "4bf58dd8d48988d1eb931735",
+                    "is_primary": false
+                  }
+                ]
+              },
+              "location": {
+                "venue_address": "Concourse B",
+                "venue_city": "Chicago",
+                "venue_state": "IL",
+                "lat": 41.788,
+                "lng": -87.7423
+              },
+              "contact": {
+                "twitter": "",
+                "venue_url": "http://www.harrycarays.com"
+              },
+              "private_venue": true,
+              "foursquare": {
+                "foursquare_id": "4a722721f964a52079da1fe3",
+                "foursquare_url": "http://4sq.com/6SHSj5"
+              },
+              "venue_icon": {
+                "sm": "https://ss3.4sqi.net/img/categories_v2/food/default_bg_64.png",
+                "md": "https://ss3.4sqi.net/img/categories_v2/food/default_bg_88.png",
+                "lg": "https://ss3.4sqi.net/img/categories_v2/food/default_bg_88.png"
+              }
+            }
+          },
+          {
+            "photo_id": 68958438,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/14582e356d5e2f8c243d60c414cda77b_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/14582e356d5e2f8c243d60c414cda77b_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/14582e356d5e2f8c243d60c414cda77b_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/14582e356d5e2f8c243d60c414cda77b_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 11:51:47 +0000",
+            "checkin_id": 286301644,
+            "beer": {
+              "bid": 8056,
+              "beer_name": "90 Minute IPA",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-8056_948fa_sm.jpeg",
+              "beer_style": "IPA - Imperial / Double",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 1192644,
+              "user_name": "Hendo_21",
+              "first_name": "Christopher",
+              "last_name": "H",
+              "user_avatar": "https://untappd.akamaized.net/profile/6551782da24bc6c56fa644deda5d2b6f_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": []
+          },
+          {
+            "photo_id": 68958340,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/67949e20e09de0db611f171626127270_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/67949e20e09de0db611f171626127270_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/67949e20e09de0db611f171626127270_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/67949e20e09de0db611f171626127270_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 11:45:17 +0000",
+            "checkin_id": 286301369,
+            "beer": {
+              "bid": 3952,
+              "beer_name": "60 Minute IPA",
+              "beer_abv": 6,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-3952_a5c9d_sm.jpeg",
+              "beer_style": "IPA - American",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 1259217,
+              "user_name": "ilia_4e",
+              "first_name": "Ilia",
+              "last_name": "G",
+              "user_avatar": "https://untappd.akamaized.net/profile/779dc7e4ee60f2cc9842ef2abbc87be3_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": []
+          },
+          {
+            "photo_id": 68957982,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/46f0951a12222b8c326a48a68ecdb68a_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/46f0951a12222b8c326a48a68ecdb68a_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/46f0951a12222b8c326a48a68ecdb68a_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/46f0951a12222b8c326a48a68ecdb68a_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 11:18:59 +0000",
+            "checkin_id": 286300434,
+            "beer": {
+              "bid": 8056,
+              "beer_name": "90 Minute IPA",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-8056_948fa_sm.jpeg",
+              "beer_style": "IPA - Imperial / Double",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 3052550,
+              "user_name": "paganyu",
+              "first_name": "小寒",
+              "last_name": "陈",
+              "user_avatar": "https://untappd.akamaized.net/profile/74b22ab5765e183aeee3d8a3939c2e65_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": []
+          },
+          {
+            "photo_id": 68957854,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/566472ab1318cf2a1beeca4fdd9e352a_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/566472ab1318cf2a1beeca4fdd9e352a_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/566472ab1318cf2a1beeca4fdd9e352a_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/566472ab1318cf2a1beeca4fdd9e352a_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 11:08:36 +0000",
+            "checkin_id": 286300080,
+            "beer": {
+              "bid": 3952,
+              "beer_name": "60 Minute IPA",
+              "beer_abv": 6,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-3952_a5c9d_sm.jpeg",
+              "beer_style": "IPA - American",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 1192644,
+              "user_name": "Hendo_21",
+              "first_name": "Christopher",
+              "last_name": "H",
+              "user_avatar": "https://untappd.akamaized.net/profile/6551782da24bc6c56fa644deda5d2b6f_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": []
+          },
+          {
+            "photo_id": 68957016,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/b54f211cec6e8b27ac48c1ed7e21ec42_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/b54f211cec6e8b27ac48c1ed7e21ec42_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/b54f211cec6e8b27ac48c1ed7e21ec42_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/b54f211cec6e8b27ac48c1ed7e21ec42_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 09:55:59 +0000",
+            "checkin_id": 286297818,
+            "beer": {
+              "bid": 1405166,
+              "beer_name": "Beer To Drink Music To",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-1405166_635f6_sm.jpeg",
+              "beer_style": "Belgian Tripel",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 1942038,
+              "user_name": "tommyk1029",
+              "first_name": "thomas",
+              "last_name": "k",
+              "user_avatar": "https://untappd.akamaized.net/profile/63cef22f131f08ad60d989f34192996f_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": []
+          },
+          {
+            "photo_id": 68956806,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/7e92af2d83fd5e9c624647c5d923aa1b_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/7e92af2d83fd5e9c624647c5d923aa1b_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/7e92af2d83fd5e9c624647c5d923aa1b_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/7e92af2d83fd5e9c624647c5d923aa1b_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 09:33:37 +0000",
+            "checkin_id": 286297264,
+            "beer": {
+              "bid": 6226,
+              "beer_name": "Saison du Buff",
+              "beer_abv": 6.8,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhSaisonDuBUFF.jpg",
+              "beer_style": "Saison / Farmhouse Ale",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 2159345,
+              "user_name": "Mudvayne104",
+              "first_name": "Christopher",
+              "last_name": "L",
+              "user_avatar": "https://untappd.akamaized.net/profile/06388a8f9584dae3a2742e8f7305284d_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": []
+          },
+          {
+            "photo_id": 68956713,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/5bf4e7a47004f1badb5de82880ed72f9_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/5bf4e7a47004f1badb5de82880ed72f9_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/5bf4e7a47004f1badb5de82880ed72f9_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/5bf4e7a47004f1badb5de82880ed72f9_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 09:25:41 +0000",
+            "checkin_id": 286297037,
+            "beer": {
+              "bid": 14172,
+              "beer_name": "Midas Touch",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhMidaTouch.jpg",
+              "beer_style": "Herbed / Spiced Beer",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 1289853,
+              "user_name": "partytrap",
+              "first_name": "Braden",
+              "last_name": "G",
+              "user_avatar": "https://untappd.akamaized.net/profile/d66033b992a4e22bfcf6ba5a7a9d3a55_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": []
+          },
+          {
+            "photo_id": 68956435,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/64a2386b214568a1fbe5bb554e438c3c_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/64a2386b214568a1fbe5bb554e438c3c_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/64a2386b214568a1fbe5bb554e438c3c_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/64a2386b214568a1fbe5bb554e438c3c_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 09:03:06 +0000",
+            "checkin_id": 286296259,
+            "beer": {
+              "bid": 8056,
+              "beer_name": "90 Minute IPA",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-8056_948fa_sm.jpeg",
+              "beer_style": "IPA - Imperial / Double",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 839200,
+              "user_name": "Roargie",
+              "first_name": "Mike",
+              "last_name": "L",
+              "user_avatar": "https://untappd.akamaized.net/profile/bf80fb1e39c287ddd06568bcbb87ec88_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": {
+              "venue_id": 2561023,
+              "venue_name": "The Lodge Sports Grille Mill Creek",
+              "venue_slug": "lodge-sports-grille-mill-creek",
+              "primary_category": "Nightlife Spot",
+              "parent_category_id": "4d4b7105d754a06376d81259",
+              "categories": {
+                "count": 1,
+                "items": [
+                  {
+                    "category_name": "Bar",
+                    "category_id": "4bf58dd8d48988d116941735",
+                    "is_primary": true
+                  }
+                ]
+              },
+              "location": {
+                "venue_address": "15117 Main St #B101",
+                "venue_city": "Mill Creek",
+                "venue_state": "WA",
+                "lat": 47.8608,
+                "lng": -122.22
+              },
+              "contact": {
+                "twitter": "",
+                "venue_url": ""
+              },
+              "private_venue": true,
+              "foursquare": {
+                "foursquare_id": "54d182b4498efee27c9fa243",
+                "foursquare_url": "http://4sq.com/1zztW7r"
+              },
+              "venue_icon": {
+                "sm": "https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_64.png",
+                "md": "https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_88.png",
+                "lg": "https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_88.png"
+              }
+            }
+          },
+          {
+            "photo_id": 68955640,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/e606227663b04bd1bbe4c2cad41534ef_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/e606227663b04bd1bbe4c2cad41534ef_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/e606227663b04bd1bbe4c2cad41534ef_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/e606227663b04bd1bbe4c2cad41534ef_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 07:56:24 +0000",
+            "checkin_id": 286293553,
+            "beer": {
+              "bid": 1135768,
+              "beer_name": "Higher Math",
+              "beer_abv": 17,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-1135768_6182d_sm.jpeg",
+              "beer_style": "Strong Ale - American",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 3988,
+              "user_name": "Jones103103",
+              "first_name": "Jones",
+              "last_name": "",
+              "user_avatar": "https://untappd.akamaized.net/profile/e9f5b7ea26c623e54c28deabc2805e88_thumb.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": {
+              "venue_id": 1533414,
+              "venue_name": "The Korova Milk Bar",
+              "venue_slug": "korova-milk-bar",
+              "primary_category": "Residence",
+              "parent_category_id": "4e67e38e036454776db1fb3a",
+              "categories": {
+                "count": 1,
+                "items": [
+                  {
+                    "category_name": "Residential Building (Apartment / Condo)",
+                    "category_id": "4d954b06a243a5684965b473",
+                    "is_primary": true
+                  }
+                ]
+              },
+              "location": {
+                "venue_address": "",
+                "venue_city": "Twin Peaks",
+                "venue_state": "CA",
+                "lat": 34.2376,
+                "lng": -117.222
+              },
+              "contact": {
+                "twitter": "",
+                "venue_url": ""
+              },
+              "private_venue": false,
+              "foursquare": {
+                "foursquare_id": "534a300811d27fad3acf3c61",
+                "foursquare_url": "http://4sq.com/1qT53wI"
+              },
+              "venue_icon": {
+                "sm": "https://ss3.4sqi.net/img/categories_v2/building/apartment_bg_64.png",
+                "md": "https://ss3.4sqi.net/img/categories_v2/building/apartment_bg_88.png",
+                "lg": "https://ss3.4sqi.net/img/categories_v2/building/apartment_bg_88.png"
+              }
+            }
+          },
+          {
+            "photo_id": 68955531,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/018885e6cc8dc35fc7ee6f915daa0d77_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/018885e6cc8dc35fc7ee6f915daa0d77_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/018885e6cc8dc35fc7ee6f915daa0d77_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/018885e6cc8dc35fc7ee6f915daa0d77_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 07:49:27 +0000",
+            "checkin_id": 286293183,
+            "beer": {
+              "bid": 6730,
+              "beer_name": "World Wide Stout",
+              "beer_abv": 18,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhWWS.jpg",
+              "beer_style": "Stout - American Imperial / Double",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 318929,
+              "user_name": "Whychaseme",
+              "first_name": "Chase",
+              "last_name": "S",
+              "user_avatar": "https://untappd.akamaized.net/profile/da4d04c55544497988f5b46defcbba64_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": {
+              "venue_id": 2316733,
+              "venue_name": "Eggbeater Jesus",
+              "venue_slug": "eggbeater-jesus",
+              "primary_category": "Professional & Other Places",
+              "parent_category_id": "4d4b7105d754a06375d81259",
+              "categories": {
+                "count": 1,
+                "items": [
+                  {
+                    "category_name": "Community Center",
+                    "category_id": "52e81612bcbc57f1066b7a34",
+                    "is_primary": true
+                  }
+                ]
+              },
+              "location": {
+                "venue_address": "",
+                "venue_city": "Huntsville",
+                "venue_state": "AL",
+                "lat": 34.7201,
+                "lng": -86.5884
+              },
+              "contact": {
+                "twitter": "",
+                "venue_url": ""
+              },
+              "private_venue": true,
+              "foursquare": {
+                "foursquare_id": "5458efea498ec07de7f83781",
+                "foursquare_url": "http://4sq.com/1yULXMr"
+              },
+              "venue_icon": {
+                "sm": "https://ss3.4sqi.net/img/categories_v2/building/default_bg_64.png",
+                "md": "https://ss3.4sqi.net/img/categories_v2/building/default_bg_88.png",
+                "lg": "https://ss3.4sqi.net/img/categories_v2/building/default_bg_88.png"
+              }
+            }
+          },
+          {
+            "photo_id": 68955411,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/ca1f630f1ae7bc4ad7d548a34ae9a446_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/ca1f630f1ae7bc4ad7d548a34ae9a446_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/ca1f630f1ae7bc4ad7d548a34ae9a446_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/ca1f630f1ae7bc4ad7d548a34ae9a446_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 07:41:20 +0000",
+            "checkin_id": 286292753,
+            "beer": {
+              "bid": 1405166,
+              "beer_name": "Beer To Drink Music To",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-1405166_635f6_sm.jpeg",
+              "beer_style": "Belgian Tripel",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 2404617,
+              "user_name": "Mrinn30",
+              "first_name": "Patrick",
+              "last_name": "R",
+              "user_avatar": "https://untappd.akamaized.net/profile/d99dd0f4f94cb19d3e83fd92bb5e585e_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": {
+              "venue_id": 2840602,
+              "venue_name": "Deep Sea Fishing",
+              "venue_slug": "deep-sea-fishing",
+              "primary_category": "Outdoors & Recreation",
+              "parent_category_id": "4d4b7105d754a06377d81259",
+              "categories": {
+                "count": 1,
+                "items": [
+                  {
+                    "category_name": "Harbor / Marina",
+                    "category_id": "4bf58dd8d48988d1e0941735",
+                    "is_primary": true
+                  }
+                ]
+              },
+              "location": {
+                "venue_address": "",
+                "venue_city": "",
+                "venue_state": "NJ",
+                "lat": 40.4453,
+                "lng": -74.1156
+              },
+              "contact": {
+                "twitter": "",
+                "venue_url": ""
+              },
+              "private_venue": true,
+              "foursquare": {
+                "foursquare_id": "4e3c82b67d8b0e96105d89d1",
+                "foursquare_url": "http://4sq.com/qU6btc"
+              },
+              "venue_icon": {
+                "sm": "https://ss3.4sqi.net/img/categories_v2/parks_outdoors/harbor_bg_64.png",
+                "md": "https://ss3.4sqi.net/img/categories_v2/parks_outdoors/harbor_bg_88.png",
+                "lg": "https://ss3.4sqi.net/img/categories_v2/parks_outdoors/harbor_bg_88.png"
+              }
+            }
+          },
+          {
+            "photo_id": 68955385,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/93bea37ea3b5dfe46ef8e9bf593fe7a7_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/93bea37ea3b5dfe46ef8e9bf593fe7a7_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/93bea37ea3b5dfe46ef8e9bf593fe7a7_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/93bea37ea3b5dfe46ef8e9bf593fe7a7_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 07:39:29 +0000",
+            "checkin_id": 286292647,
+            "beer": {
+              "bid": 1135768,
+              "beer_name": "Higher Math",
+              "beer_abv": 17,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-1135768_6182d_sm.jpeg",
+              "beer_style": "Strong Ale - American",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 13575,
+              "user_name": "joetheyounger",
+              "first_name": "Joe",
+              "last_name": "T",
+              "user_avatar": "https://untappd.akamaized.net/profile/19061f75eab84b665e33097d046a621c_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": []
+          },
+          {
+            "photo_id": 68954733,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/984cf874377f5831c46542303ca68a07_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/984cf874377f5831c46542303ca68a07_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/984cf874377f5831c46542303ca68a07_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/984cf874377f5831c46542303ca68a07_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 07:04:36 +0000",
+            "checkin_id": 286290450,
+            "beer": {
+              "bid": 1135768,
+              "beer_name": "Higher Math",
+              "beer_abv": 17,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-1135768_6182d_sm.jpeg",
+              "beer_style": "Strong Ale - American",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 1392827,
+              "user_name": "vegasbish",
+              "first_name": "Jen ",
+              "last_name": "",
+              "user_avatar": "https://untappd.akamaized.net/profile/1cb19afb1653f216ea6e46814f09bf98_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": []
+          },
+          {
+            "photo_id": 68954649,
+            "photo": {
+              "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/6bc178ae5248b17c5273b7c712f1ef55_100x100.jpg",
+              "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/6bc178ae5248b17c5273b7c712f1ef55_320x320.jpg",
+              "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/6bc178ae5248b17c5273b7c712f1ef55_640x640.jpg",
+              "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/6bc178ae5248b17c5273b7c712f1ef55_raw.jpg"
+            },
+            "created_at": "Fri, 11 Mar 2016 07:00:44 +0000",
+            "checkin_id": 286290165,
+            "beer": {
+              "bid": 4660,
+              "beer_name": "Fort",
+              "beer_abv": 18,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-Fort_4660.jpeg",
+              "beer_style": "Fruit Beer",
+              "auth_rating": 0,
+              "wish_list": false
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "user": {
+              "uid": 2053070,
+              "user_name": "radasauruswrex",
+              "first_name": "Kenny and Sarah ",
+              "last_name": "K",
+              "user_avatar": "https://untappd.akamaized.net/profile/a3f9c501ce9eb8801d0c526378c8f14d_100x100.jpg",
+              "relationship": "none",
+              "is_private": 0
+            },
+            "venue": []
+          }
+        ]
+      },
+      "checkins": {
+        "mem": false,
+        "count": 15,
+        "items": [
+          {
+            "checkin_id": 286302661,
+            "created_at": "Fri, 11 Mar 2016 12:14:14 +0000",
+            "checkin_comment": "Rarely meet a dogfish I don't like!",
+            "rating_score": 4.25,
+            "user": {
+              "uid": 1327330,
+              "user_name": "StorminNorman737",
+              "first_name": "Stephen",
+              "last_name": "N.",
+              "location": "",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://untappd.akamaized.net/profile/b363da99115092bd4c175d4364673508_100x100.jpg",
+              "is_private": 0,
+              "contact": []
+            },
+            "beer": {
+              "bid": 1405166,
+              "beer_name": "Beer To Drink Music To",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-1405166_635f6_sm.jpeg",
+              "beer_style": "Belgian Tripel",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": {
+              "venue_id": 732258,
+              "venue_name": "The Beer Market",
+              "primary_category": "Nightlife Spot",
+              "categories": {
+                "count": 1,
+                "items": [
+                  {
+                    "category_name": "Beer Garden",
+                    "category_id": "4bf58dd8d48988d117941735",
+                    "is_primary": true
+                  }
+                ]
+              },
+              "venue_icon": {
+                "sm": "https://ss3.4sqi.net/img/categories_v2/nightlife/beergarden_bg_64.png",
+                "md": "https://ss3.4sqi.net/img/categories_v2/nightlife/beergarden_bg_88.png",
+                "lg": "https://ss3.4sqi.net/img/categories_v2/nightlife/beergarden_bg_88.png"
+              },
+              "location": {
+                "venue_address": "110 Federal St",
+                "venue_city": "Pittsburgh",
+                "venue_state": "PA",
+                "lat": 40.4478,
+                "lng": -80.0041
+              },
+              "contact": {
+                "twitter": "",
+                "venue_url": "http://the-beer-market.com"
+              },
+              "foursquare": {
+                "foursquare_id": "51916b182fc6e6543d7eebf9",
+                "foursquare_url": "http://4sq.com/167ycPF"
+              }
+            },
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 0,
+              "items": []
+            },
+            "source": {
+              "app_name": "Untappd for iPhone - (V2)",
+              "app_website": "http://untpd.it/iphoneapp"
+            },
+            "badges": {
+              "count": 1,
+              "items": [
+                {
+                  "badge_id": 3458,
+                  "user_badge_id": 105178134,
+                  "badge_name": "Dubbel, Tripel and Quad Oh My!",
+                  "badge_description": "Dubbel, Tripel, or Quad, you can’t go wrong with these amazing feats of Belgian style brewing. Whether you’re looking for something light and golden or dark and boozy, one of these will do the trick! That's 5 different beers with the style of Dubbel, Tripel or Quad! Try 5 more for Level 2!",
+                  "created_at": "Fri, 11 Mar 2016 12:14:14 +0000",
+                  "badge_image": {
+                    "sm": "https://untappd.akamaized.net/badges/bdg_DubTripQuad_sm.jpg",
+                    "md": "https://untappd.akamaized.net/badges/bdg_DubTripQuad_md.jpg",
+                    "lg": "https://untappd.akamaized.net/badges/bdg_DubTripQuad_lg.jpg"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "checkin_id": 286302428,
+            "created_at": "Fri, 11 Mar 2016 12:08:37 +0000",
+            "checkin_comment": "",
+            "rating_score": 3.75,
+            "user": {
+              "uid": 394759,
+              "user_name": "rwolveron",
+              "first_name": "Ricky",
+              "last_name": "W.",
+              "location": "",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://untappd.akamaized.net/profile/365beb1e386a63251283feeb922e0558_100x100.jpg",
+              "is_private": 0,
+              "contact": {
+                "twitter": "rwolvertonjr",
+                "foursquare": "1888227",
+                "facebook": "22306275"
+              }
+            },
+            "beer": {
+              "bid": 798393,
+              "beer_name": "Olde School (2014)",
+              "beer_abv": 15,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhOldeSchool.jpg",
+              "beer_style": "Barleywine - American",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": {
+              "venue_id": 990421,
+              "venue_name": "KegKillerz Brewcopia",
+              "primary_category": "Nightlife Spot",
+              "categories": {
+                "count": 1,
+                "items": [
+                  {
+                    "category_name": "Beer Garden",
+                    "category_id": "4bf58dd8d48988d117941735",
+                    "is_primary": true
+                  }
+                ]
+              },
+              "venue_icon": {
+                "sm": "https://ss3.4sqi.net/img/categories_v2/nightlife/beergarden_bg_64.png",
+                "md": "https://ss3.4sqi.net/img/categories_v2/nightlife/beergarden_bg_88.png",
+                "lg": "https://ss3.4sqi.net/img/categories_v2/nightlife/beergarden_bg_88.png"
+              },
+              "location": {
+                "venue_address": "32 5th Ave",
+                "venue_city": "Hamilton",
+                "venue_state": "NJ",
+                "lat": 40.2443,
+                "lng": -74.7269
+              },
+              "contact": {
+                "twitter": "",
+                "venue_url": ""
+              },
+              "foursquare": {
+                "foursquare_id": "52211aa6bce61a88454f6ed9",
+                "foursquare_url": "http://4sq.com/1cp87eL"
+              }
+            },
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 0,
+              "items": []
+            },
+            "source": {
+              "app_name": "Untappd for iPhone - (V2)",
+              "app_website": "http://untpd.it/iphoneapp"
+            },
+            "badges": {
+              "count": 1,
+              "items": [
+                {
+                  "badge_id": 3396,
+                  "user_badge_id": 105178051,
+                  "badge_name": "Hopped Up (Level 39)",
+                  "badge_description": "Load up those hops, watch the IBU grow and drink it down! Now you’re all hopped up. The more bitter, the better. That's 195 different beers with an IBU of 65 or higher. Try 5 more for Level 40!",
+                  "created_at": "Fri, 11 Mar 2016 12:08:37 +0000",
+                  "badge_image": {
+                    "sm": "https://untappd.akamaized.net/badges/bdg_HoppedUp_sm.jpg",
+                    "md": "https://untappd.akamaized.net/badges/bdg_HoppedUp_md.jpg",
+                    "lg": "https://untappd.akamaized.net/badges/bdg_HoppedUp_lg.jpg"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "checkin_id": 286302358,
+            "created_at": "Fri, 11 Mar 2016 12:07:19 +0000",
+            "checkin_comment": "",
+            "rating_score": 3.5,
+            "user": {
+              "uid": 186797,
+              "user_name": "jbeerme",
+              "first_name": "jon",
+              "last_name": "b.",
+              "location": "",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://untappd.akamaized.net/profile/5d1439f2c2b6774e2f15fe94f10ab0d0_thumb.jpg",
+              "is_private": 0,
+              "contact": {
+                "facebook": "1400172464",
+                "foursquare": "31117368"
+              }
+            },
+            "beer": {
+              "bid": 4669,
+              "beer_name": "Chateau Jiahu",
+              "beer_abv": 10,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhJiahu.jpg",
+              "beer_style": "Herbed / Spiced Beer",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": {
+              "venue_id": 26183,
+              "venue_name": "Harry Caray's Seventh Inning Stretch",
+              "primary_category": "Food",
+              "categories": {
+                "count": 4,
+                "items": [
+                  {
+                    "category_name": "American Restaurant",
+                    "category_id": "4bf58dd8d48988d14e941735",
+                    "is_primary": true
+                  },
+                  {
+                    "category_name": "Bar",
+                    "category_id": "4bf58dd8d48988d116941735",
+                    "is_primary": false
+                  },
+                  {
+                    "category_name": "Sports Bar",
+                    "category_id": "4bf58dd8d48988d11d941735",
+                    "is_primary": false
+                  },
+                  {
+                    "category_name": "Airport Terminal",
+                    "category_id": "4bf58dd8d48988d1eb931735",
+                    "is_primary": false
+                  }
+                ]
+              },
+              "venue_icon": {
+                "sm": "https://ss3.4sqi.net/img/categories_v2/food/default_bg_64.png",
+                "md": "https://ss3.4sqi.net/img/categories_v2/food/default_bg_88.png",
+                "lg": "https://ss3.4sqi.net/img/categories_v2/food/default_bg_88.png"
+              },
+              "location": {
+                "venue_address": "Concourse B",
+                "venue_city": "Chicago",
+                "venue_state": "IL",
+                "lat": 41.788,
+                "lng": -87.7423
+              },
+              "contact": {
+                "twitter": "",
+                "venue_url": "http://www.harrycarays.com"
+              },
+              "foursquare": {
+                "foursquare_id": "4a722721f964a52079da1fe3",
+                "foursquare_url": "http://4sq.com/6SHSj5"
+              }
+            },
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 1,
+              "items": [
+                {
+                  "photo_id": 68958678,
+                  "photo": {
+                    "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/e811e6ee3a86198f1df86d76ee47f587_100x100.jpg",
+                    "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/e811e6ee3a86198f1df86d76ee47f587_320x320.jpg",
+                    "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/e811e6ee3a86198f1df86d76ee47f587_640x640.jpg",
+                    "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/e811e6ee3a86198f1df86d76ee47f587_raw.jpg"
+                  }
+                }
+              ]
+            },
+            "source": {
+              "app_name": "Untappd for Android - (V2)",
+              "app_website": "http://untpd.it/androidapp"
+            },
+            "badges": {
+              "count": 1,
+              "items": [
+                {
+                  "badge_id": 338,
+                  "user_badge_id": 105178013,
+                  "badge_name": "Layover (Level 2)",
+                  "badge_description": "Bad weather? Strike? Flight delayed? Head over to the nearest bar and kill some time! \r\n\r\nThat's a beer at 10 different venues categorized as an Airport! Try 5 more different ones for Level 3!",
+                  "created_at": "Fri, 11 Mar 2016 12:07:19 +0000",
+                  "badge_image": {
+                    "sm": "https://untappd.akamaized.net/badges/bdg_layover_sm.jpg",
+                    "md": "https://untappd.akamaized.net/badges/bdg_layover_md.jpg",
+                    "lg": "https://untappd.akamaized.net/badges/bdg_layover_lg.jpg"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "checkin_id": 286302173,
+            "created_at": "Fri, 11 Mar 2016 12:03:09 +0000",
+            "checkin_comment": "",
+            "rating_score": 3.75,
+            "user": {
+              "uid": 413378,
+              "user_name": "scowoski",
+              "first_name": "Shane",
+              "last_name": "C.",
+              "location": "",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://untappd.akamaized.net/profile/46e72574241aac975bcf114dbdf04654_100x100.jpg",
+              "is_private": 0,
+              "contact": []
+            },
+            "beer": {
+              "bid": 1405166,
+              "beer_name": "Beer To Drink Music To",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-1405166_635f6_sm.jpeg",
+              "beer_style": "Belgian Tripel",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 0,
+              "items": []
+            },
+            "source": {
+              "app_name": "Untappd for iPhone - (V2)",
+              "app_website": "http://untpd.it/iphoneapp"
+            },
+            "badges": {
+              "count": 1,
+              "items": [
+                {
+                  "badge_id": 3459,
+                  "user_badge_id": 105177935,
+                  "badge_name": "Dubbel, Tripel and Quad Oh My! (Level 2)",
+                  "badge_description": "Dubbel, Tripel, or Quad, you can’t go wrong with these amazing feats of Belgian style brewing. Whether you’re looking for something light and golden or dark and boozy, one of these will do the trick! That's 10 different beers with the style of Dubbel, Tripel or Quad! Try 5 more for Level 3!",
+                  "created_at": "Fri, 11 Mar 2016 12:03:09 +0000",
+                  "badge_image": {
+                    "sm": "https://untappd.akamaized.net/badges/bdg_DubTripQuad_sm.jpg",
+                    "md": "https://untappd.akamaized.net/badges/bdg_DubTripQuad_md.jpg",
+                    "lg": "https://untappd.akamaized.net/badges/bdg_DubTripQuad_lg.jpg"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "checkin_id": 286302004,
+            "created_at": "Fri, 11 Mar 2016 11:59:30 +0000",
+            "checkin_comment": "",
+            "rating_score": 3.25,
+            "user": {
+              "uid": 3088251,
+              "user_name": "Henryto638",
+              "first_name": "Henry",
+              "last_name": "T.",
+              "location": "CT",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://gravatar.com/avatar/2108d96610929f1742b89a9bb8aa4ba7?size=100&d=https%3A%2F%2Funtappd.akamaized.net%2Fsite%2Fassets%2Fimages%2Fdefault_avatar_v2.jpg%3Fv%3D1",
+              "is_private": 0,
+              "contact": []
+            },
+            "beer": {
+              "bid": 3952,
+              "beer_name": "60 Minute IPA",
+              "beer_abv": 6,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-3952_a5c9d_sm.jpeg",
+              "beer_style": "IPA - American",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 0,
+              "items": []
+            },
+            "source": {
+              "app_name": "Untappd Web",
+              "app_website": "http://untappd.com"
+            },
+            "badges": {
+              "count": 1,
+              "items": [
+                {
+                  "badge_id": 92,
+                  "user_badge_id": 105177864,
+                  "badge_name": "I Believe in IPA! (Level 4)",
+                  "badge_description": "We believe in IPA and you should too. You certainly have a taste for the hops! That's 20 different IPAs. Try 5 more for Level 5.",
+                  "created_at": "Fri, 11 Mar 2016 11:59:30 +0000",
+                  "badge_image": {
+                    "sm": "https://untappd.akamaized.net/badges/bdg_hoptopia_sm.jpg",
+                    "md": "https://untappd.akamaized.net/badges/bdg_hoptopia_md.jpg",
+                    "lg": "https://untappd.akamaized.net/badges/bdg_hoptopia_lg.jpg"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "checkin_id": 286301644,
+            "created_at": "Fri, 11 Mar 2016 11:51:43 +0000",
+            "checkin_comment": "Amazing!!!!!",
+            "rating_score": 5,
+            "user": {
+              "uid": 1192644,
+              "user_name": "Hendo_21",
+              "first_name": "Christopher",
+              "last_name": "H.",
+              "location": "Gnangara Dve",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://untappd.akamaized.net/profile/6551782da24bc6c56fa644deda5d2b6f_100x100.jpg",
+              "is_private": 0,
+              "contact": {
+                "facebook": "602608282"
+              }
+            },
+            "beer": {
+              "bid": 8056,
+              "beer_name": "90 Minute IPA",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-8056_948fa_sm.jpeg",
+              "beer_style": "IPA - Imperial / Double",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 1,
+              "items": [
+                {
+                  "photo_id": 68958438,
+                  "photo": {
+                    "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/14582e356d5e2f8c243d60c414cda77b_100x100.jpg",
+                    "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/14582e356d5e2f8c243d60c414cda77b_320x320.jpg",
+                    "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/14582e356d5e2f8c243d60c414cda77b_640x640.jpg",
+                    "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/14582e356d5e2f8c243d60c414cda77b_raw.jpg"
+                  }
+                }
+              ]
+            },
+            "source": {
+              "app_name": "Untappd for iPhone - (V2)",
+              "app_website": "http://untpd.it/iphoneapp"
+            },
+            "badges": {
+              "count": 1,
+              "items": [
+                {
+                  "badge_id": 1818,
+                  "user_badge_id": 105177698,
+                  "badge_name": "Photogenic Brew  (Level 32)",
+                  "badge_description": "It takes the perfect amount light, the right framing and a touch of creative love to get the perfect picture of your brew. Now it’s time to drink it! That’s 160 check-ins with a photo. ",
+                  "created_at": "Fri, 11 Mar 2016 11:51:43 +0000",
+                  "badge_image": {
+                    "sm": "https://untappd.akamaized.net/badges/bdg_beertography_sm.jpg",
+                    "md": "https://untappd.akamaized.net/badges/bdg_beertography_md.jpg",
+                    "lg": "https://untappd.akamaized.net/badges/bdg_beertography_lg.jpg"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "checkin_id": 286301369,
+            "created_at": "Fri, 11 Mar 2016 11:45:25 +0000",
+            "checkin_comment": "Старая школа.",
+            "rating_score": 5,
+            "user": {
+              "uid": 1259217,
+              "user_name": "ilia_4e",
+              "first_name": "Ilia",
+              "last_name": "G.",
+              "location": "",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://untappd.akamaized.net/profile/779dc7e4ee60f2cc9842ef2abbc87be3_100x100.jpg",
+              "is_private": 0,
+              "contact": {
+                "facebook": "1221721377844427"
+              }
+            },
+            "beer": {
+              "bid": 3952,
+              "beer_name": "60 Minute IPA",
+              "beer_abv": 6,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-3952_a5c9d_sm.jpeg",
+              "beer_style": "IPA - American",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 1,
+              "count": 1,
+              "auth_toast": null,
+              "items": [
+                {
+                  "uid": 499356,
+                  "user": {
+                    "uid": 499356,
+                    "user_name": "martun",
+                    "first_name": "Marat",
+                    "last_name": "S.",
+                    "bio": "The Cosmic City O.G.B & Bottle Share.\nhttp://bottleshare.ru",
+                    "location": "Korolev/Minsk",
+                    "user_avatar": "https://untappd.akamaized.net/profile/4fe632caaefdf46a2ae7ebb0abe8cfc9_100x100.jpg",
+                    "user_link": "https://untappd.com/user/martun",
+                    "account_type": "user",
+                    "brewery_details": []
+                  },
+                  "like_id": 201665487,
+                  "like_owner": false,
+                  "created_at": "Fri, 11 Mar 2016 11:47:03 +0000"
+                }
+              ]
+            },
+            "media": {
+              "count": 1,
+              "items": [
+                {
+                  "photo_id": 68958340,
+                  "photo": {
+                    "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/67949e20e09de0db611f171626127270_100x100.jpg",
+                    "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/67949e20e09de0db611f171626127270_320x320.jpg",
+                    "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/67949e20e09de0db611f171626127270_640x640.jpg",
+                    "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/67949e20e09de0db611f171626127270_raw.jpg"
+                  }
+                }
+              ]
+            },
+            "source": {
+              "app_name": "Untappd for Android - (V2)",
+              "app_website": "http://untpd.it/androidapp"
+            },
+            "badges": {
+              "count": 1,
+              "items": [
+                {
+                  "badge_id": 2599,
+                  "user_badge_id": 105177561,
+                  "badge_name": "I Believe in IPA!  (Level 13)",
+                  "badge_description": "We believe in IPA and you should too. You certainly have a taste for the hops! That's 65 different IPAs. Try 5 more for Level 14!",
+                  "created_at": "Fri, 11 Mar 2016 11:45:25 +0000",
+                  "badge_image": {
+                    "sm": "https://untappd.akamaized.net/badges/bdg_hoptopia_sm.jpg",
+                    "md": "https://untappd.akamaized.net/badges/bdg_hoptopia_md.jpg",
+                    "lg": "https://untappd.akamaized.net/badges/bdg_hoptopia_lg.jpg"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "checkin_id": 286300481,
+            "created_at": "Fri, 11 Mar 2016 11:19:58 +0000",
+            "checkin_comment": "",
+            "rating_score": 4,
+            "user": {
+              "uid": 3113646,
+              "user_name": "peterjongbloud",
+              "first_name": "Peter",
+              "last_name": "J.",
+              "location": "CT",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://gravatar.com/avatar/17b66a38bff6d9688b449949530b9e20?size=100&d=https%3A%2F%2Funtappd.akamaized.net%2Fsite%2Fassets%2Fimages%2Fdefault_avatar_v2.jpg%3Fv%3D1",
+              "is_private": 0,
+              "contact": []
+            },
+            "beer": {
+              "bid": 14172,
+              "beer_name": "Midas Touch",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhMidaTouch.jpg",
+              "beer_style": "Herbed / Spiced Beer",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 0,
+              "items": []
+            },
+            "source": {
+              "app_name": "Untappd Web",
+              "app_website": "http://untappd.com"
+            },
+            "badges": {
+              "count": 1,
+              "items": [
+                {
+                  "badge_id": 1999,
+                  "user_badge_id": 105177200,
+                  "badge_name": "Land of the Free  (Level 13)",
+                  "badge_description": "You’ve pledged allegiance, and now it’s time to enjoy some beer! Now remember, not all American beer is fizzy and yellow. That’s 65 different beers from a brewery in the United States. Try 5 more for Level 14.",
+                  "created_at": "Fri, 11 Mar 2016 11:19:59 +0000",
+                  "badge_image": {
+                    "sm": "https://untappd.akamaized.net/badges/bdg_america_sm.jpg",
+                    "md": "https://untappd.akamaized.net/badges/bdg_america_md.jpg",
+                    "lg": "https://untappd.akamaized.net/badges/bdg_america_lg.jpg"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "checkin_id": 286300434,
+            "created_at": "Fri, 11 Mar 2016 11:18:41 +0000",
+            "checkin_comment": "",
+            "rating_score": 3.75,
+            "user": {
+              "uid": 3052550,
+              "user_name": "paganyu",
+              "first_name": "小寒",
+              "last_name": "陈.",
+              "location": "",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://untappd.akamaized.net/profile/74b22ab5765e183aeee3d8a3939c2e65_100x100.jpg",
+              "is_private": 0,
+              "contact": []
+            },
+            "beer": {
+              "bid": 8056,
+              "beer_name": "90 Minute IPA",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-8056_948fa_sm.jpeg",
+              "beer_style": "IPA - Imperial / Double",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 1,
+              "items": [
+                {
+                  "photo_id": 68957982,
+                  "photo": {
+                    "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/46f0951a12222b8c326a48a68ecdb68a_100x100.jpg",
+                    "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/46f0951a12222b8c326a48a68ecdb68a_320x320.jpg",
+                    "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/46f0951a12222b8c326a48a68ecdb68a_640x640.jpg",
+                    "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/46f0951a12222b8c326a48a68ecdb68a_raw.jpg"
+                  }
+                }
+              ]
+            },
+            "source": {
+              "app_name": "Untappd for iPhone - (V2)",
+              "app_website": "http://untpd.it/iphoneapp"
+            },
+            "badges": {
+              "count": 1,
+              "items": [
+                {
+                  "badge_id": 1801,
+                  "user_badge_id": 105177173,
+                  "badge_name": "Photogenic Brew  (Level 15)",
+                  "badge_description": "It takes the perfect amount light, the right framing and a touch of creative love to get the perfect picture of your brew. Now it’s time to drink it! That’s 75 check-ins with a photo. ",
+                  "created_at": "Fri, 11 Mar 2016 11:18:41 +0000",
+                  "badge_image": {
+                    "sm": "https://untappd.akamaized.net/badges/bdg_beertography_sm.jpg",
+                    "md": "https://untappd.akamaized.net/badges/bdg_beertography_md.jpg",
+                    "lg": "https://untappd.akamaized.net/badges/bdg_beertography_lg.jpg"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "checkin_id": 286300080,
+            "created_at": "Fri, 11 Mar 2016 11:08:21 +0000",
+            "checkin_comment": "Watched the show, now drink the beer.... Delicious!!!",
+            "rating_score": 4.5,
+            "user": {
+              "uid": 1192644,
+              "user_name": "Hendo_21",
+              "first_name": "Christopher",
+              "last_name": "H.",
+              "location": "Gnangara Dve",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://untappd.akamaized.net/profile/6551782da24bc6c56fa644deda5d2b6f_100x100.jpg",
+              "is_private": 0,
+              "contact": {
+                "facebook": "602608282"
+              }
+            },
+            "beer": {
+              "bid": 3952,
+              "beer_name": "60 Minute IPA",
+              "beer_abv": 6,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-3952_a5c9d_sm.jpeg",
+              "beer_style": "IPA - American",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 1,
+              "items": [
+                {
+                  "photo_id": 68957854,
+                  "photo": {
+                    "photo_img_sm": "https://untappd.akamaized.net/photo/2016_03_11/566472ab1318cf2a1beeca4fdd9e352a_100x100.jpg",
+                    "photo_img_md": "https://untappd.akamaized.net/photo/2016_03_11/566472ab1318cf2a1beeca4fdd9e352a_320x320.jpg",
+                    "photo_img_lg": "https://untappd.akamaized.net/photo/2016_03_11/566472ab1318cf2a1beeca4fdd9e352a_640x640.jpg",
+                    "photo_img_og": "https://untappd.akamaized.net/photo/2016_03_11/566472ab1318cf2a1beeca4fdd9e352a_raw.jpg"
+                  }
+                }
+              ]
+            },
+            "source": {
+              "app_name": "Untappd for iPhone - (V2)",
+              "app_website": "http://untpd.it/iphoneapp"
+            },
+            "badges": {
+              "count": 0,
+              "items": []
+            }
+          },
+          {
+            "checkin_id": 286299339,
+            "created_at": "Fri, 11 Mar 2016 10:45:25 +0000",
+            "checkin_comment": "",
+            "rating_score": 4.25,
+            "user": {
+              "uid": 1738059,
+              "user_name": "Tpayne89",
+              "first_name": "Tyler",
+              "last_name": "P.",
+              "location": "",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://gravatar.com/avatar/06d73cb773db72b2b63f51cafc4ed40a?size=100&d=https%3A%2F%2Funtappd.akamaized.net%2Fsite%2Fassets%2Fimages%2Fdefault_avatar_v2.jpg%3Fv%3D1",
+              "is_private": 0,
+              "contact": {
+                "facebook": "695502923"
+              }
+            },
+            "beer": {
+              "bid": 6400,
+              "beer_name": "Namaste",
+              "beer_abv": 4.8,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhNamaste.jpg",
+              "beer_style": "Witbier",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 0,
+              "items": []
+            },
+            "source": {
+              "app_name": "Untappd for Android - (V2)",
+              "app_website": "http://untpd.it/androidapp"
+            },
+            "badges": {
+              "count": 0,
+              "items": []
+            }
+          },
+          {
+            "checkin_id": 286299164,
+            "created_at": "Fri, 11 Mar 2016 10:39:44 +0000",
+            "checkin_comment": "",
+            "rating_score": 0,
+            "user": {
+              "uid": 3158657,
+              "user_name": "samueldreed",
+              "first_name": "samuel",
+              "last_name": "R.",
+              "location": "",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://gravatar.com/avatar/0fd5fdd1b6ba775da20eefe1c9178234?size=100&d=https%3A%2F%2Funtappd.akamaized.net%2Fsite%2Fassets%2Fimages%2Fdefault_avatar_v2.jpg%3Fv%3D1",
+              "is_private": 0,
+              "contact": []
+            },
+            "beer": {
+              "bid": 3950,
+              "beer_name": "120 Minute IPA",
+              "beer_abv": 18,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfh120minuteIPA.jpg",
+              "beer_style": "IPA - Imperial / Double",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 0,
+              "items": []
+            },
+            "source": {
+              "app_name": "Untappd for iPhone - (V2)",
+              "app_website": "http://untpd.it/iphoneapp"
+            },
+            "badges": {
+              "count": 1,
+              "items": [
+                {
+                  "badge_id": 406,
+                  "user_badge_id": 105176609,
+                  "badge_name": "Land of the Free",
+                  "badge_description": "You’ve pledged allegiance, and now it’s time to enjoy some beer! Now remember, not all American beer is fizzy and yellow. That’s 5 different beers from a brewery in the United States. Try 5 more for Level 2.",
+                  "created_at": "Fri, 11 Mar 2016 10:39:44 +0000",
+                  "badge_image": {
+                    "sm": "https://untappd.akamaized.net/badges/bdg_america_sm.jpg",
+                    "md": "https://untappd.akamaized.net/badges/bdg_america_md.jpg",
+                    "lg": "https://untappd.akamaized.net/badges/bdg_america_lg.jpg"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "checkin_id": 286299161,
+            "created_at": "Fri, 11 Mar 2016 10:39:38 +0000",
+            "checkin_comment": "",
+            "rating_score": 0,
+            "user": {
+              "uid": 3158657,
+              "user_name": "samueldreed",
+              "first_name": "samuel",
+              "last_name": "R.",
+              "location": "",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://gravatar.com/avatar/0fd5fdd1b6ba775da20eefe1c9178234?size=100&d=https%3A%2F%2Funtappd.akamaized.net%2Fsite%2Fassets%2Fimages%2Fdefault_avatar_v2.jpg%3Fv%3D1",
+              "is_private": 0,
+              "contact": []
+            },
+            "beer": {
+              "bid": 301756,
+              "beer_name": "Sixty-One",
+              "beer_abv": 6.5,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-301756_9d9e9_sm.jpeg",
+              "beer_style": "IPA - American",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 0,
+              "items": []
+            },
+            "source": {
+              "app_name": "Untappd for iPhone - (V2)",
+              "app_website": "http://untpd.it/iphoneapp"
+            },
+            "badges": {
+              "count": 0,
+              "items": []
+            }
+          },
+          {
+            "checkin_id": 286299156,
+            "created_at": "Fri, 11 Mar 2016 10:39:30 +0000",
+            "checkin_comment": "",
+            "rating_score": 0,
+            "user": {
+              "uid": 3158657,
+              "user_name": "samueldreed",
+              "first_name": "samuel",
+              "last_name": "R.",
+              "location": "",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://gravatar.com/avatar/0fd5fdd1b6ba775da20eefe1c9178234?size=100&d=https%3A%2F%2Funtappd.akamaized.net%2Fsite%2Fassets%2Fimages%2Fdefault_avatar_v2.jpg%3Fv%3D1",
+              "is_private": 0,
+              "contact": []
+            },
+            "beer": {
+              "bid": 8056,
+              "beer_name": "90 Minute IPA",
+              "beer_abv": 9,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-8056_948fa_sm.jpeg",
+              "beer_style": "IPA - Imperial / Double",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 0,
+              "items": []
+            },
+            "source": {
+              "app_name": "Untappd for iPhone - (V2)",
+              "app_website": "http://untpd.it/iphoneapp"
+            },
+            "badges": {
+              "count": 0,
+              "items": []
+            }
+          },
+          {
+            "checkin_id": 286299148,
+            "created_at": "Fri, 11 Mar 2016 10:39:20 +0000",
+            "checkin_comment": "",
+            "rating_score": 0,
+            "user": {
+              "uid": 3158657,
+              "user_name": "samueldreed",
+              "first_name": "samuel",
+              "last_name": "R.",
+              "location": "",
+              "url": "",
+              "is_supporter": 0,
+              "bio": "",
+              "relationship": null,
+              "user_avatar": "https://gravatar.com/avatar/0fd5fdd1b6ba775da20eefe1c9178234?size=100&d=https%3A%2F%2Funtappd.akamaized.net%2Fsite%2Fassets%2Fimages%2Fdefault_avatar_v2.jpg%3Fv%3D1",
+              "is_private": 0,
+              "contact": []
+            },
+            "beer": {
+              "bid": 3952,
+              "beer_name": "60 Minute IPA",
+              "beer_abv": 6,
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-3952_a5c9d_sm.jpeg",
+              "beer_style": "IPA - American",
+              "auth_rating": 0,
+              "wish_list": false,
+              "beer_active": 1
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "venue": [],
+            "comments": {
+              "total_count": 0,
+              "count": 0,
+              "items": []
+            },
+            "toasts": {
+              "total_count": 0,
+              "count": 0,
+              "auth_toast": null,
+              "items": []
+            },
+            "media": {
+              "count": 0,
+              "items": []
+            },
+            "source": {
+              "app_name": "Untappd for iPhone - (V2)",
+              "app_website": "http://untpd.it/iphoneapp"
+            },
+            "badges": {
+              "count": 0,
+              "items": []
+            }
+          }
+        ]
+      },
+      "beer_list": {
+        "is_super": false,
+        "sort": "",
+        "filter": "all",
+        "count": 15,
+        "items": [
+          {
+            "has_had": null,
+            "total_count": 486233,
+            "beer": {
+              "bid": 3952,
+              "beer_name": "60 Minute IPA",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-3952_a5c9d_sm.jpeg",
+              "beer_style": "IPA - American",
+              "beer_abv": 6,
+              "beer_ibu": 60,
+              "beer_slug": "dogfish-head-craft-brewery-60-minute-ipa",
+              "beer_description": "Our flagship beer. A session India Pale Ale brewed with Warrior, Amarillo & 'Mystery Hop X.' A powerful East Coast I.P.A. with a lot of citrusy hop character. THE session beer for beer geeks like us!",
+              "is_in_production": 1,
+              "created_at": "Sat, 21 Aug 2010 09:26:35 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 3.895,
+              "rating_count": 205425
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 446381,
+            "beer": {
+              "bid": 8056,
+              "beer_name": "90 Minute IPA",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-8056_948fa_sm.jpeg",
+              "beer_style": "IPA - Imperial / Double",
+              "beer_abv": 9,
+              "beer_ibu": 90,
+              "beer_slug": "dogfish-head-craft-brewery-90-minute-ipa",
+              "beer_description": "Esquire Magazine calls our 90 Minute IPA \"perhaps the best IPA in America.\" An imperial IPA best savored from a snifter, 90 Minute has a great malt backbone that stands up to the extreme hopping rate.\n90 Minute IPA was the first beer we continuously hopped, allowing for a pungent, but not crushing, hop flavor.",
+              "is_in_production": 1,
+              "created_at": "Mon, 08 Nov 2010 13:02:57 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 4.105,
+              "rating_count": 204871
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 192907,
+            "beer": {
+              "bid": 4996,
+              "beer_name": "Punkin Ale",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-4996_05c91_sm.jpeg",
+              "beer_style": "Pumpkin / Yam Beer",
+              "beer_abv": 7,
+              "beer_ibu": 28,
+              "beer_slug": "dogfish-head-craft-brewery-punkin-ale",
+              "beer_description": "A full-bodied brown ale with smooth hints of pumpkin and brown sugar. We brew our Punkin Ale with pumpkin meat, brown sugar and spices. As the season cools, this is the perfect beer to warm up with.\nPunkin Ale is named after the seriously off-centered southern Delaware extravaganza Punkin Chunkin (check out some of these Discovery Channel videos of Punkin Chunkin, you gotta see it to believe it!). In fact, Punkin Ale made its debut as it claimed first prize in the 1994 Punkin Chunkin Recipe Contest. Yes, that was a full 6 months before we even opened our doors for business!",
+              "is_in_production": 1,
+              "created_at": "Sat, 21 Aug 2010 09:26:35 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 3.767,
+              "rating_count": 111587
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 126536,
+            "beer": {
+              "bid": 6400,
+              "beer_name": "Namaste",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhNamaste.jpg",
+              "beer_style": "Witbier",
+              "beer_abv": 4.8,
+              "beer_ibu": 20,
+              "beer_slug": "dogfish-head-craft-brewery-namaste",
+              "beer_description": "A Belgian-style White made with dried organic orange slices, fresh cut lemongrass and a bit of coriander. This beer is a great summer quencher.",
+              "is_in_production": 1,
+              "created_at": "Sat, 09 Oct 2010 12:40:46 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 3.581,
+              "rating_count": 87770
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 124708,
+            "beer": {
+              "bid": 4013,
+              "beer_name": "Indian Brown Ale",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhIBA.jpg",
+              "beer_style": "Brown Ale - American",
+              "beer_abv": 7.2,
+              "beer_ibu": 50,
+              "beer_slug": "dogfish-head-craft-brewery-indian-brown-ale",
+              "beer_description": "A cross between a Scotch Ale, an I.P.A., and an American Brown, this beer is well-hopped and malty at the same time. It is brewed with Aromatic barley and caramelized brown sugar.",
+              "is_in_production": 1,
+              "created_at": "Sat, 21 Aug 2010 09:26:35 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 3.771,
+              "rating_count": 79676
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 112652,
+            "beer": {
+              "bid": 301756,
+              "beer_name": "Sixty-One",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-301756_9d9e9_sm.jpeg",
+              "beer_style": "IPA - American",
+              "beer_abv": 6.5,
+              "beer_ibu": 50,
+              "beer_slug": "dogfish-head-craft-brewery-sixty-one",
+              "beer_description": "A continually-hopped IPA brewed with Syrah grape must.",
+              "is_in_production": 1,
+              "created_at": "Mon, 28 Jan 2013 11:01:16 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 3.664,
+              "rating_count": 76228
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 110162,
+            "beer": {
+              "bid": 4665,
+              "beer_name": "Aprihop",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-4665_6fd7f_sm.jpeg",
+              "beer_style": "IPA - American",
+              "beer_abv": 7,
+              "beer_ibu": 50,
+              "beer_slug": "dogfish-head-craft-brewery-aprihop",
+              "beer_description": "Brewed with Pilsner and Cystal malts massively hopped in in the continuous fashion. The flavor is complimented by the addition of Apricots. After fermentation the beer is dry hopped with irresponsible amounts of Amarillo hops. A \"fruit beer for hop heads...\" --Ale Street News",
+              "is_in_production": 1,
+              "created_at": "Sat, 21 Aug 2010 09:26:35 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 3.701,
+              "rating_count": 69704
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 108041,
+            "beer": {
+              "bid": 6105,
+              "beer_name": "Burton Baton",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-6105_2da9e_sm.jpeg",
+              "beer_style": "IPA - Imperial / Double",
+              "beer_abv": 10,
+              "beer_ibu": 70,
+              "beer_slug": "dogfish-head-craft-brewery-burton-baton",
+              "beer_description": "An oak-aged, gentle giant which has been gaining popularity over the past few years and is now available year-round. Two \"threads,\" or batches, of beer — an English-style old ale and an imperial IPA — are brewed and, after separate fermentation in stainless tanks, are transferred and blended together in large oak tanks. Burton Baton sits on the wood for about a month.\n\nWhen enjoying the Burton Baton, you'll find an awesome blend of the citrus notes from Northwestern hops melding with woody, vanilla notes from the oak.",
+              "is_in_production": 1,
+              "created_at": "Sun, 03 Oct 2010 15:57:20 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 4.089,
+              "rating_count": 68214
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 97262,
+            "beer": {
+              "bid": 3950,
+              "beer_name": "120 Minute IPA",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfh120minuteIPA.jpg",
+              "beer_style": "IPA - Imperial / Double",
+              "beer_abv": 18,
+              "beer_ibu": 120,
+              "beer_slug": "dogfish-head-craft-brewery-120-minute-ipa",
+              "beer_description": "Too extreme to be called beer? Brewed to a colossal 45-degree plato, boiled for a full 2 hours while being continuously hopped with high-alpha American hops, then dry-hopped daily in the fermenter for a month & aged for nother month on whole-leaf hops!!! Our 120 Minute I.P.A. is by far the biggest I.P.A. ever brewed! At 20% abv and 120 ibus you can see why we call this beer THE HOLY GRAIL for hopheads!\n\n-changed to be 18% for aging purposes according to Dogfish Head brewery.",
+              "is_in_production": 1,
+              "created_at": "Sat, 21 Aug 2010 09:26:35 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 4.324,
+              "rating_count": 66063
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 95506,
+            "beer": {
+              "bid": 3963,
+              "beer_name": "Festina Peche",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-3963_54433_sm.jpeg",
+              "beer_style": "Berliner Weisse",
+              "beer_abv": 4.5,
+              "beer_ibu": 8,
+              "beer_slug": "dogfish-head-craft-brewery-festina-peche",
+              "beer_description": "A refreshing neo-BerlinerWeisse fermented with honest-to-goodness peaches to (get this!) 4.5% abv! Because extreme beers don't have to be extremely boozy! Available in 4-pack and draft during the sweaty months.",
+              "is_in_production": 1,
+              "created_at": "Sat, 21 Aug 2010 09:26:35 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 3.469,
+              "rating_count": 61945
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 86790,
+            "beer": {
+              "bid": 4487,
+              "beer_name": "Palo Santo Marron",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhPaloSantoMarron.jpg",
+              "beer_style": "Brown Ale - Imperial / Double",
+              "beer_abv": 12,
+              "beer_ibu": 50,
+              "beer_slug": "dogfish-head-craft-brewery-palo-santo-marron",
+              "beer_description": "An unfiltered, unfettered, unprecedented brown ale aged in handmade wooden brewing vessels. The caramel and vanilla complexity unique to this beer comes from the exotic Paraguayan Palo Santo wood from which these tanks were crafted. Palo Santo means \"holy tree\" and its wood has been used in South American wine-making communities.",
+              "is_in_production": 1,
+              "created_at": "Sat, 21 Aug 2010 09:26:35 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 3.974,
+              "rating_count": 57670
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 81206,
+            "beer": {
+              "bid": 14172,
+              "beer_name": "Midas Touch",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-dfhMidaTouch.jpg",
+              "beer_style": "Herbed / Spiced Beer",
+              "beer_abv": 9,
+              "beer_ibu": 12,
+              "beer_slug": "dogfish-head-craft-brewery-midas-touch",
+              "beer_description": "With Barley, honey, white muscat grapes and Saffron.",
+              "is_in_production": 1,
+              "created_at": "Sat, 11 Dec 2010 10:58:59 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 3.782,
+              "rating_count": 56394
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 61204,
+            "beer": {
+              "bid": 432085,
+              "beer_name": "Piercing Pils",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-432085_35e38_sm.jpeg",
+              "beer_style": "Pilsner - Czech",
+              "beer_abv": 6,
+              "beer_ibu": 35,
+              "beer_slug": "dogfish-head-craft-brewery-piercing-pils",
+              "beer_description": "A Perry-Pils hybrid, Piercing Pils is a Czech Style Pilsner brewed with a White Pear Tea and Pear juice.  Both the juice and the tea were added in the kettle during the whirlpool (after the boil) for maximum flavor and aroma contribution.  The Pear fruit complexity pierces right through the spicy Czech Saaz hops beautifully, adding a gentle acidity to this pale lager that makes for a crisp refreshing sipper.  Amarillo hops add nuanced citrus notes that meld perfectly with the fruit. ",
+              "is_in_production": 1,
+              "created_at": "Fri, 16 Aug 2013 10:37:30 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 3.509,
+              "rating_count": 45320
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 60615,
+            "beer": {
+              "bid": 5391,
+              "beer_name": "75 Minute IPA",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-5391_a7988_sm.jpeg",
+              "beer_style": "IPA - American",
+              "beer_abv": 7.5,
+              "beer_ibu": 75,
+              "beer_slug": "dogfish-head-craft-brewery-75-minute-ipa",
+              "beer_description": "Johnny Cask has entered the building! We've retrofitted a 15 barrel tank to perfectly produce a very special cask conditioned ale (so, we have a little time to play around during winters at the Delaware coast). This beer, known as Dogfish Head 75 Minute IPA is a blend of 60 and 90 Minute IPAs with a special whole leaf cascade dry-hopping session.",
+              "is_in_production": 1,
+              "created_at": "Sat, 21 Aug 2010 09:26:35 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 4.014,
+              "rating_count": 42528
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          },
+          {
+            "has_had": null,
+            "total_count": 58362,
+            "beer": {
+              "bid": 6303,
+              "beer_name": "Miles Davis' Bitches Brew",
+              "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-6303_8fc87_sm.jpeg",
+              "beer_style": "Stout - American Imperial / Double",
+              "beer_abv": 9,
+              "beer_ibu": 38,
+              "beer_slug": "dogfish-head-craft-brewery-miles-davis-bitches-brew",
+              "beer_description": "In honor of the 40th anniversary of the original release of Bitches Brew, Miles Davis' 1970 paradigm-shifting landmark fusion breakthrough, we've created our own Bitches Brew -- a bold, dark beer that's a fusion of three threads of imperial stout and one thread of honey beer with gesho root. It's a gustatory analog to Miles' masterpiece. ",
+              "is_in_production": 1,
+              "created_at": "Thu, 07 Oct 2010 13:16:20 +0000",
+              "auth_rating": 0,
+              "wish_list": false,
+              "rating_score": 4.068,
+              "rating_count": 41402
+            },
+            "brewery": {
+              "brewery_id": 459,
+              "brewery_name": "Dogfish Head Craft Brewery",
+              "brewery_slug": "dogfish-head-craft-brewery",
+              "brewery_label": "https://untappd.akamaized.net/site/brewery_logos/brewery-459_b3e4d.jpeg",
+              "country_name": "United States",
+              "contact": {
+                "twitter": "dogfishbeer",
+                "facebook": "http://www.facebook.com/dogfishheadbeer",
+                "instagram": "dogfishbeer",
+                "url": "http://www.dogfish.com/"
+              },
+              "location": {
+                "brewery_city": "Milton",
+                "brewery_state": "DE",
+                "lat": 38.7776,
+                "lng": -75.3099
+              },
+              "brewery_active": 1
+            },
+            "friends": {
+              "items": [],
+              "count": 0
+            }
+          }
+        ],
+        "beer_count": 666
+      }
+    }
+  }
+}
