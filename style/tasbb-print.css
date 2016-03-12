@@ -55,16 +55,16 @@ dt img {
     margin-right:20px;
 }
 
-dd span:first-child {
+dd span{
     border-right: 1px solid;
     padding-right: 20px;
     margin-right: 20px;
 }
 
 dd span:last-child {
-    border-left: 1px solid;
-    padding-left: 20px;
-    margin-left: 20px;
+    border-right: none;
+    padding-left: 0px;
+    margin-left: 0px;
 }
 
 .warning{
