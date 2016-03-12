@@ -4,6 +4,9 @@ function tasbb_plugin_menu() {
 }
 add_action( 'admin_menu', 'tasbb_plugin_menu' );
 
+function tasbb_before_options(){
+  do_action('tasbb_before_options');
+}
 
 
 function tasbb_options() {
@@ -19,8 +22,7 @@ function tasbb_options() {
 									<?php
 
 											//add_settings_section callback is displayed here. For every new section we need to call settings_fields.
-											settings_fields("js_hover_settings");
-
+											settings_fields("tasbb_settings");
 											// all the add_settings_field callbacks is displayed here
 											do_settings_sections("tasbb-settings");
 
@@ -35,21 +37,25 @@ function tasbb_options() {
         <?php
     }
 
-function tasbb_display_options(){
+function tasbb_settings_register(){
     //section name, display name, callback to print description of section, page to which section is attached.
-    add_settings_section("js_hover_settings", "<code>[beer]</code> Behavior Options", "tasbb_display_header_options_content", "tasbb-settings");
+    add_settings_section("tasbb_settings", "<code>[beer]</code> Behavior Options", "tasbb_display_header_options_content", "tasbb-settings");
 
     //setting name, display name, callback to print form element, page in which field is displayed, section to which it belongs.
     //last field section is optional.
-    add_settings_field("tasbb_js_hover", "Disable Beer information on hover for the <code>[beer]</code> shortcode.", "tasbb_disable_js_hover", "tasbb-settings", "js_hover_settings");
-    add_settings_field("tasbb_js_hover_x", "Hover X offset", "tasbb_js_hover_x", "tasbb-settings", "js_hover_settings");
-    add_settings_field("tasbb_js_hover_y", "Hover Y offset", "tasbb_js_hover_y", "tasbb-settings", "js_hover_settings");
+    add_settings_field("tasbb_js_hover", "Disable Beer information on hover for the <code>[beer]</code> shortcode.", "tasbb_disable_js_hover", "tasbb-settings", "tasbb_settings");
+    add_settings_field("tasbb_js_hover_x", "Hover X offset", "tasbb_js_hover_x", "tasbb-settings", "tasbb_settings");
+    add_settings_field("tasbb_js_hover_y", "Hover Y offset", "tasbb_js_hover_y", "tasbb-settings", "tasbb_settings");
 
     //section name, form element name, callback for sanitization
-    register_setting("js_hover_settings", "tasbb_js_hover");
-    register_setting("js_hover_settings", "tasbb_js_hover_x");
-    register_setting("js_hover_settings", "tasbb_js_hover_y");
+    register_setting("tasbb_settings", "tasbb_js_hover");
+    register_setting("tasbb_settings", "tasbb_js_hover_x");
+    register_setting("tasbb_settings", "tasbb_js_hover_y");
+
+    do_action('tasbb_addon_settings_fields');
 }
+//this action is executed after loads its core, after registering all actions, finds out what page to execute and before producing the actual output(before calling any action callback)
+add_action("admin_init", "tasbb_settings_register");
 
 //------ JS SETTINGS ------//
 function tasbb_display_header_options_content(){
@@ -74,6 +80,4 @@ function tasbb_js_hover_y(){
     <?php
 }
 
-//this action is executed after loads its core, after registering all actions, finds out what page to execute and before producing the actual output(before calling any action callback)
-add_action("admin_init", "tasbb_display_options");
 ?>
