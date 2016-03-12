@@ -2,7 +2,7 @@
 /*
 Plugin Name: BrewBuddy
 Description: Manage Your Beers, Beer Pairings, and What's on Tap Easily
-Version:     1.0
+Version:     1.01
 Author:      Alex Standiford
 Author URI:  http://www.fillyourtaproom.com
 */
