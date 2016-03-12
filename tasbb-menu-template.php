@@ -125,9 +125,9 @@ if($beers->have_posts()) : while($beers->have_posts()) : $beers->the_post(); ?>
 		<?php }; ?>
 		<?php if($a['show_ibu'] == TRUE || $a['show_abv'] == TRUE || $a['show_og'] == TRUE){?>
 		<dd>
-			<span>ABV: <?php if($a['show_abv'] == TRUE){ tasbb_beer_info('tasbb_abv'); };?></span>
-			<span>IBU: <?php if($a['show_ibu'] == TRUE){ tasbb_beer_info('tasbb_ibu'); };?></span>
-			<span>OG: <?php if($a['show_og'] == TRUE){ tasbb_beer_info('tasbb_og'); };?></span>
+			<?php if(tasbb_beer_info_exists('tasbb_abv') == true){ ?>  <span>ABV: <?php if($a['show_abv'] == TRUE){ tasbb_beer_info('tasbb_abv'); };?></span><?php  }; ?>
+			<?php if(tasbb_beer_info_exists('tasbb_ibu') == true){ ?>  <span>IBU: <?php if($a['show_ibu'] == TRUE){ tasbb_beer_info('tasbb_ibu'); };?></span><?php  }; ?>
+			<?php if(tasbb_beer_info_exists('tasbb_og') == true){ ?>  <span>OG: <?php if($a['show_og'] == TRUE){ tasbb_beer_info('tasbb_og'); };?></span><?php  }; ?>
 		</dd>
 	</div>
 <?php }; ?>
