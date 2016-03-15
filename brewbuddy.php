@@ -218,4 +218,5 @@ include_once(dirname(__FILE__).'/fields.php');
 include_once(dirname(__FILE__).'/functions.php');
 include_once(dirname(__FILE__).'/tasbb-settings.php');
 include_once(dirname(__FILE__).'/widgets.php');
+include_once(dirname(__FILE__).'/tasbb-menu-framework.php');
 ?>
