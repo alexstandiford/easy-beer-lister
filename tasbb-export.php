@@ -230,4 +230,3 @@ function tasbb_export_options_content(){
 
 //this action is executed after loads its core, after registering all actions, finds out what page to execute and before producing the actual output(before calling any action callback)
 add_action("admin_init", "tasbb_export_options");
-?>

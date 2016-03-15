@@ -1,8 +1,9 @@
 <?php
 function tasbb_default_menu_scripts(){
-	echo '<link rel="stylesheet" href="'.plugin_dir_url(__FILE__).'style/tasbb-print.css">';
+	echo '<link rel="stylesheet" href="'.plugin_dir_url(__FILE__).'style/tasbb-tv.css">';
 }
 add_action('tasbb_menu_head_scripts','tasbb_default_menu_scripts');
+
 tasbb_menu_head();
 $tasbb_menu = new tasbb_menu;
 ?>

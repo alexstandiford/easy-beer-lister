@@ -62,6 +62,7 @@
 		   the_content();
          if(function_exists('tasbb_beer_info')){
           tasbb_beer_video();
+					tasbb_beer_gallery();
         }
         ?>
         </div>

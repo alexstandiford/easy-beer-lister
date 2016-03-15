@@ -160,8 +160,14 @@ add_filter( 'template_include', 'tasbb_beer_page_template');
 
 /*---REGISTERS DEFAULT MENU PAGE TEMPLATE---*/
 function tasbb_menu_page_template( $template ) {
-	if (is_singular('menus') && !file_exists(get_template_directory().'/single-menus.php')) {
-		$template = dirname(__FILE__).'/tasbb-menu-template.php';
+	global $post;
+	if (is_singular('menus') && tasbb_locate_menu_template($post->post_name) == false) {
+		$object_slug = get_post_meta(get_the_id(),'tasbb_menu_template',true);
+		$template = tasbb_get_menu_template($object_slug);
+		$template = $template->directory.'/'.$template->file_name;
+	}
+	elseif(is_singular('menus') && tasbb_locate_menu_template($post->post_name) == true){
+		$template = tasbb_locate_menu_template($post->post_name);
 	}
 	return $template;
 }
@@ -214,9 +220,12 @@ function tasbb_beer_inline_style_overrides(){
 }
 add_action('wp_head','tasbb_beer_inline_style_overrides',30);
 
+function tasbb_meta_scripts() {
+	wp_enqueue_script('media-upload.js',plugin_dir_url(__FILE__).'js/media-upload.js');
+}
+
 include_once(dirname(__FILE__).'/fields.php');
 include_once(dirname(__FILE__).'/functions.php');
 include_once(dirname(__FILE__).'/tasbb-settings.php');
 include_once(dirname(__FILE__).'/widgets.php');
 include_once(dirname(__FILE__).'/tasbb-menu-framework.php');
-?>

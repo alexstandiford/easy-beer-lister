@@ -1,5 +1,6 @@
 <?php
-
+$tasbb_menu_templates = [];
+//Class to call for menu query
 class tasbb_menu{
   public function __construct(){
     $this->filter = [
@@ -86,28 +87,77 @@ class tasbb_menu{
 	}
 };
 
+//Constructor for new menu template
+class tasbb_menu_template{
+	public function register($args){
+		$this->directory = $args['directory'];
+		$this->file_name = $args['file_name'];
+		$this->name = $args['template_name'];
+		$this->register_template();
+		$this->slug = strtolower(str_replace(" ","-",sanitize_text_field($this->name)));
+	}
+	private function register_template(){
+		global $tasbb_menu_templates;
+		$tasbb_menu_templates[] = $this;
+	}
+}
+
+function tasbb_get_menu_template($slug){
+	global $tasbb_menu_templates;
+	foreach($tasbb_menu_templates as $template){
+		if($template->slug == $slug){
+			$result = $template;
+			return $result;
+		}
+		else{
+			$result = false;
+		}
+	}
+	return $result;
+}
+
+//Constructs the default menu
+$tasbb_default_print_menu = new tasbb_menu_template;
+$tasbb_default_print_menu->register([
+	'directory' => plugin_dir_path(__FILE__),
+	'file_name' => 'tasbb-menu-template.php',
+	'template_name' => 'Default Print Template'
+]);
+
+//Constructs the default TV menu template
+$tasbb_default_tv_menu = new tasbb_menu_template;
+$tasbb_default_tv_menu->register([
+	'directory' => plugin_dir_path(__FILE__),
+	'file_name' => 'tasbb-tv-menu-template.php',
+	'template_name' => 'Default TV Template'
+]);
+
 //Setup for a menu
 function tasbb_menu_head(){
 		if(!is_user_logged_in()){
         do_action('tasbb_menu_not_logged_in');
-		  $error_message = '<h1>Please log in to view this content</h1>';
+		  	$error_message = '<h1>Please log in to view this content</h1>';
         echo $error_message;
 		  die;
 		}
-      else{
-        $scripts = [
-            plugin_dir_url(__FILE__).'style/tasbb-print.css'
-          ]?>
+      else{?>
         <!DOCTYPE HTML>
         <head><?php
-          do_action('tasbb_menu_head_scripts');
-          foreach($scripts as $script){?>
-          <link rel="stylesheet" href="<?php echo $script; ?>">
+          do_action('tasbb_menu_head_scripts');?>
           <?php }; ?>
           <style>
             <?php echo get_post_meta(get_the_ID(),'tasbb_export_menu_css',true); ?>
           </style>
         </head>
 <?php   do_action('tasbb_menu_head');
-      }
+}
+
+//Checks if menu template exists
+function tasbb_locate_menu_template($template){
+	if(file_exists(get_stylesheet_directory().'/'.'menu-'.$template.'.php')){
+		return get_stylesheet_directory().'/'.'menu-'.$template.'.php';
+	}
+	else{
+		return false;
+	}
 }

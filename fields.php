@@ -1,5 +1,4 @@
 <?php
-
 function tasbb_parse_taxonomy_checkbox($taxonomy){
 	$terms = get_terms($taxonomy,['orderby' => 'name', 'order' => 'asc', 'hide_empty' => true]);
 	$result = [];
@@ -15,7 +14,9 @@ function tasbb_parse_taxonomy_checkbox($taxonomy){
 	}
 
 //---THE BEER PAGE META BOX FIELDS---//
-function tasbb_beer_meta_box($object, $box) { ?>
+function tasbb_beer_meta_box($object, $box) {
+	add_action('admin_footer', 'tasbb_meta_scripts');?>
+	<script>var set_to_post_id = <?php echo get_option( 'media_selector_attachment_id', 0 ); ?>;</script>
   <?php wp_nonce_field( basename( __FILE__ ), 'tasbb_beer_nonce' ); ?>
   <div class="tasbb-field">
     <p class="label">
@@ -58,6 +59,14 @@ function tasbb_beer_meta_box($object, $box) { ?>
     <?php _e( "Enter the Video URL of the beer here"); ?>
     </p>
 		<input class="widefat" type="text" step="0.01" name="tasbb-video" id="tasbb-video" value="<?php echo esc_attr(get_post_meta( $object->ID, 'tasbb_video', true)); ?>" />
+  </div>
+	<div class="tasbb-field">
+    <p class="label">
+    <label for="tasbb-abv">Image Gallery</label><br>
+    <?php _e( "Select Images of this beer"); wp_enqueue_media();?>
+    </p>
+		<input class="hidden" type="text" name="tasbb-gallery" id="image_attachment_id" value="<?php echo esc_attr(get_post_meta( $object->ID, 'tasbb_gallery', true)); ?>" />
+		<input type="button" class="button" name="tasbb_gallery_button" id="upload_image_button" value="<?php _e( 'Upload/Select images' ); ?>" />
   </div>
 <?php  }
 
@@ -208,6 +217,19 @@ function tasbb_menu_meta_box($object, $box) { ?>
   </div>
 <?php  }
 
+//---THE MENU TEMPLATE META BOX FIELDS---//
+function tasbb_menu_template_meta_box($object, $box) { ?>
+  <?php wp_nonce_field( basename( __FILE__ ), 'tasbb_beer_nonce' ); ?>
+  <div class="tasbb-field tasbb-full-width">
+        <select id="tasbb_menu_template" name="tasbb_menu_template">
+					<?php global $tasbb_menu_templates;
+					foreach($tasbb_menu_templates as $template){ ?>
+					<option value="<?php echo $template->slug; ?>" <?php selected( get_post_meta( $object->ID, 'tasbb_menu_template', true), $template->slug);?>><?php echo $template->name; ?></option>
+					<?php }; ?>
+				</select>
+  </div>
+<?php  }
+
 //---THE BEER META BOX SUBMISSION AND VALIDATION---//
 function tasbb_save_beer_meta($post_id, $post) {
 	
@@ -236,6 +258,7 @@ function tasbb_save_beer_meta($post_id, $post) {
 	new tasbb_meta_item('tasbb_price','tasbb-price'),
 	new tasbb_meta_item('tasbb_untappd-url','tasbb-untappd-url'),
 	new tasbb_meta_item('tasbb_video','tasbb-video'),
+	new tasbb_meta_item('tasbb_gallery','tasbb-gallery'),
 	];
 	foreach($metas as $meta){
 	$meta->oldValue = get_post_meta( $post_id, $meta->theKey, true );
@@ -329,6 +352,47 @@ function tasbb_save_menu_meta($post_id, $post) {
 	}
 }
 
+//---THE MENU TEMPLATE META BOX SUBMISSION AND VALIDATION---//
+function tasbb_save_menu_template_meta($post_id, $post) {
+	
+  /* Verify the nonce before proceeding. */
+  if (!isset($_POST['tasbb_beer_nonce']) || !wp_verify_nonce($_POST['tasbb_beer_nonce'], basename(__FILE__)))
+    return $post_id;
+
+  /* Get the post type object. */
+  $post_type = get_post_type_object( $post->post_type );
+  
+  /* Check if the current user has permission to edit the post. */
+  if (!current_user_can($post_type->cap->edit_post, $post_id))
+    return $post_id;
+	if(!class_exists('tasbb_menu_template_meta_item')){
+  class tasbb_menu_template_meta_item{
+    function __construct($key, $value){
+      $this->theKey = $key;
+      $this->newValue = ( isset( $_POST[$value] ) ? $_POST[$value] : '' );
+    }
+  }
+	};
+	$metas = [
+	new tasbb_menu_template_meta_item('tasbb_menu_template','tasbb_menu_template'),
+	];
+
+	foreach($metas as $meta){
+	$meta->oldValue = get_post_meta( $post_id, $meta->theKey, true );
+  /* If a new meta value was added and there was no previous value, add it. */
+  if ( $meta->newValue && '' == $meta->oldValue )
+    add_post_meta( $post_id, $meta->theKey, $meta->newValue, true );
+
+  /* If the new meta value does not match the old value, update it. */
+  elseif ( $meta->newValue && $meta->newValue != $meta->oldValue )
+    update_post_meta( $post_id, $meta->theKey, $meta->newValue, $meta->oldValue );
+
+  /* If there is no new meta value but an old value exists, delete it. */
+  elseif ( '' == $meta->newValue && $meta->oldValue )
+    delete_post_meta( $post_id, $meta->theKey, $meta->oldValue );
+	}
+}
+
 function tasbb_add_post_meta_boxes() {
   add_meta_box(
     'tasbb-beer-info',                        // Unique ID
@@ -347,6 +411,16 @@ function tasbb_add_post_meta_boxes() {
     'normal',                                 // Context
     'default'                                 // Priority
   );
+  
+  add_meta_box(
+    'tasbb-menu-template',                    // Unique ID
+    esc_html__( 'Menu Template' ),            // Title
+    'tasbb_menu_template_meta_box',           // Callback function
+    'menus',                                  // Admin page (or post type)
+    'side',                                   // Context
+    'default'                                 // Priority
+  );
+
 }
 
 function tasbb_post_meta_boxes_setup() {
@@ -355,6 +429,7 @@ function tasbb_post_meta_boxes_setup() {
 	/* Save post meta on the 'save_post' hook. */
 	add_action( 'save_post', 'tasbb_save_beer_meta', 10, 2);
 	add_action( 'save_post', 'tasbb_save_menu_meta', 10, 2);
+	add_action( 'save_post', 'tasbb_save_menu_template_meta', 10, 2);
 }
 
 add_action( 'load-post.php', 'tasbb_post_meta_boxes_setup' );

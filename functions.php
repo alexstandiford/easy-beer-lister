@@ -83,6 +83,12 @@ function tasbb_beer_video(){
   echo $result;
 }
 
+/*--- CREATES GALLERY FROM BEER INFO ---*/
+function tasbb_beer_gallery(){
+	$result = do_shortcode('[gallery ids="'.tasbb_get_field('tasbb_gallery').'"]');
+	echo $result;
+}
+
 /*--- CHECK IF BEER IS ON-TAP ---*/
 function tasbb_beer_is_on_tap($post_id = null){
   if($post_id == null){

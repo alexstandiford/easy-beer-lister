@@ -78,5 +78,3 @@ function tasbb_js_hover_y(){
         <input type="number" id="tasbb_js_hover_y" name="tasbb_js_hover_y" value="<?php echo get_option('tasbb_js_hover_y');?>" />
     <?php
 }
-
-?>
