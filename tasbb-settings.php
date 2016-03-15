@@ -25,7 +25,6 @@ function tasbb_options() {
 											settings_fields("tasbb_settings");
 											// all the add_settings_field callbacks is displayed here
 											do_settings_sections("tasbb-settings");
-
 											// Add the submit button to serialize the options
 											submit_button(); 
 

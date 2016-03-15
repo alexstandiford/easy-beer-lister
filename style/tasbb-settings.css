@@ -10,7 +10,6 @@
 .tasbb-wrapper .tasbb-admin-sidebar{
     flex-grow:1;
     max-width:500px;
-    align-self:flex-end;
 }
 
 .tasbb-admin-sidebar li {
