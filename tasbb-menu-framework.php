@@ -2,7 +2,7 @@
 $tasbb_menu_templates = [];
 //Class to call for menu query
 class tasbb_menu{
-  public function __construct(){
+  public function __construct($column_default = 10){
     $this->filter = [
       'sort'             => get_post_meta(get_the_ID(),'tasbb_export_sort_order',true),
       'sortby'           => get_post_meta(get_the_ID(),'tasbb_export_sortby',true),
@@ -19,6 +19,14 @@ class tasbb_menu{
       'show_og'          => get_post_meta(get_the_ID(),'tasbb_export_show_og',true),
       'show_style'       => get_post_meta(get_the_ID(),'tasbb_export_show_style',true),
     ];
+		$this->columnDefault = $column_default;
+		$this->beerColumnOverride = get_post_meta(get_the_ID(),'tasbb_beers_per_column',true);
+		if($this->beerColumnOverride != null || $this->beerColumnOverride > 0){
+			$this->beersPerColumn = $this->beerColumnOverride;
+		}
+		else{
+			$this->beersPerColumn = $this->columnDefault;
+		}
     $this->heading = get_post_meta(get_the_ID(),'tasbb_export_menu_heading',true);
     $this->subheading = get_post_meta(get_the_ID(),'tasbb_export_menu_subheading',true);
     $this->beforeMenu = get_post_meta(get_the_ID(),'tasbb_export_menu_before_menu',true);

@@ -4,8 +4,17 @@ ul, ul li{
   padding:0;
 }
 
-.print-wrap{
-  height:25%;
+p,
+span{
+	font-size:1vw;
+}
+
+h1{
+	font-size:2vw;
+}
+
+h2{
+	font-size:1.5vw;
 }
 
 header{
@@ -41,19 +50,19 @@ aside.has-img{
   background-size:contain;
 }
 
-aside h1{
+.beer-info h1{
   margin:0;
   padding:0;
-  font-size:25px;
 }
 
-aside em{
-  font-size:20px;
+.beer-info em{
+  font-size:1vw;
 }
 
-aside p{
-  margin:10px;
-  font-size:20px;
+.beer-info p,
+.beer-info span{
+  margin:10px 0;
+	width:90%;
 }
 
 .beer-info {
@@ -62,6 +71,7 @@ aside p{
     justify-content: space-between;
     height: 90%;
 }
+
 
 img {
   float: left;
@@ -79,16 +89,4 @@ header * {
   margin: 0;
   padding: 0;
   text-align:center;
-}
-
-header h1{
-  font-size:30px;
-}
-
-header h2{
-  font-size:25px;
-}
-
-p{
-  font-size:20px;
 }

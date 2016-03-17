@@ -97,6 +97,20 @@ function tasbb_menu_meta_box($object, $box) { ?>
   </div>
   <div class="tasbb-field tasbb-full-width">
     <p class="label">
+    <label for="tasbb-abv">Override Beers Per Column</label><br>
+    <?php _e( "Specify the number of beers per column (Uses template default if blank)"); ?>
+    </p>
+		<input type="number" id="tasbb_beers_per_column" name="tasbb_beers_per_column" value="<?php echo esc_attr(get_post_meta( $object->ID, 'tasbb_beers_per_column', true)); ?>" />
+  </div>
+  <div class="tasbb-field tasbb-full-width">
+    <p class="label">
+    <label for="tasbb-abv">CSS Overrides</label><br>
+    <?php _e( "Add any custom CSS for this menu here."); ?>
+    </p>
+		<textarea class="widefat" id="tasbb_export_menu_css" name="tasbb_export_menu_css"><?php echo esc_attr(get_post_meta( $object->ID, 'tasbb_export_menu_css', true)); ?></textarea>
+  </div>
+  <div class="tasbb-field tasbb-full-width">
+    <p class="label">
     <label for="tasbb-abv">Sort By</label><br>
     <?php _e( "Specify the Beer Value you want to sort by."); ?>
     </p>
@@ -301,6 +315,7 @@ function tasbb_save_menu_meta($post_id, $post) {
 	new tasbb_menu_meta_item('tasbb_export_menu_subheading','tasbb_export_menu_subheading'),
 	new tasbb_menu_meta_item('tasbb_export_menu_before_menu','tasbb_export_menu_before_menu'),
 	new tasbb_menu_meta_item('tasbb_export_menu_after_menu','tasbb_export_menu_after_menu'),
+	new tasbb_menu_meta_item('tasbb_export_menu_css','tasbb_export_menu_css'),
 	new tasbb_menu_meta_item('tasbb_export_ontap','tasbb_export_ontap'),
 	new tasbb_menu_meta_item('tasbb_export_show_style','tasbb_export_show_style'),
 	new tasbb_menu_meta_item('tasbb_export_show_og','tasbb_export_show_og'),
@@ -311,6 +326,7 @@ function tasbb_save_menu_meta($post_id, $post) {
 	new tasbb_menu_meta_item('tasbb_export_show_description','tasbb_export_show_description'),
 	new tasbb_menu_meta_item('tasbb_export_sort_order','tasbb_export_sort_order'),
 	new tasbb_menu_meta_item('tasbb_export_sortby','tasbb_export_sortby'),
+	new tasbb_menu_meta_item('tasbb_beers_per_column','tasbb_beers_per_column'),
 	];
 
 	//--- PUSHES STYLE TAXONOMY TO ARRAY ---//

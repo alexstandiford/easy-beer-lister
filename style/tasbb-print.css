@@ -1,95 +1,102 @@
+ul, ul li{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+.beer-info span:not(:last-of-type) {
+    border-right: 1px solid black;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+
+p,
+span{
+	font-size:1.25vw;
+}
+
 h1{
-	font-size:12pt;
+	font-size:1.75vw;
 }
 
 h2{
-	font-size:10pt;
-}
-
-p{
-	font-size:8pt;
-}
-
-h1,h2{
-	margin-top:0;
-	margin-bottom:0;
-}
-
-h1,h2,p {
-    text-align: center;
-		clear:both;
-}
-
-dl{
-		-moz-column-count:2;
-		-webkit-column-count:2;
-}
-
-dt{
-    font-weight:bold;
-    margin-bottom:5px;
-	  clear:both;
-	  font-size:10px;
+	font-size:1.25vw;
 }
 
 .print-wrap{
-    page-break-inside: avoid;
+  height:10%;
+}
+
+header{
+  width:90%;
+  position:fixed;
+  left:5%;
+  top:0;
+  height:10%;
+}
+
+ul{
+  position:fixed;
+  top:10%;
+  left:2%;
+  height:85%;
+  width:96%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+}
+
+.after-menu{
+  position:fixed;
+  bottom:0;
+  width:90%;
+  left:5%;
+  text-align:center;
+}
+
+aside.has-img{
+  height:90%;
+  background-repeat:no-repeat;
+  background-size:contain;
+}
+
+.beer-info h1{
+  margin:0;
+  padding:0;
+}
+
+.beer-info em{
+  font-size:1.25vw;
+}
+
+.beer-info p,
+.beer-info span{
+  margin:0;
+	width:90%;
+}
+
+.beer-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90%;
 }
 
 
-dd{
-    margin-bottom:5px;
-		margin-left:0px;
-		font-size:8pt;
+img {
+  float: left;
+  margin-right: 20px;
+  height: 100%;
 }
 
-dt span{
-    font-weight:normal;
-    font-style:italic;
+header {
+  display: flex;
+  flex-direction: column;
 }
 
-dt img {
-    float: left;
-    width:50px;
-    height:auto;
-    margin-right:20px;
-}
-
-dd span{
-    border-right: 1px solid;
-    padding-right: 20px;
-    margin-right: 20px;
-}
-
-dd span:last-child {
-    border-right: none;
-    padding-left: 0px;
-    margin-left: 0px;
-}
-
-.warning{
-	background:#b20000;
-	padding:10px;
-	font-size:20px;
-	color:white;
-	display:block;
-	width:100%;
-	clear:both;
-}
-
-.warning a{
-	color:#aaa;
-}
-
-.warning:after{
-	content:"This message is only a warning, and will not show up when you print.";
-	font-size:15px;
-	width:100%;
-	display:block;
-}
-
-@media only print{
-	.warning{
-		display:none;
-	}
+header * {
+  height: 33%;
+  margin: 0;
+  padding: 0;
+  text-align:center;
 }

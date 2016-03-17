@@ -5,7 +5,8 @@ function tasbb_default_menu_scripts(){
 add_action('tasbb_menu_head_scripts','tasbb_default_menu_scripts');
 
 tasbb_menu_head();
-$tasbb_menu = new tasbb_menu;
+$tasbb_menu = new tasbb_menu(4);
+
 ?>
 <header>
   <h1><?php echo $tasbb_menu->heading; ?></h1>
@@ -15,8 +16,12 @@ $tasbb_menu = new tasbb_menu;
 <ul>
 <?php
 $beers = new WP_Query($tasbb_menu->args());
-if($beers->have_posts()) : while($beers->have_posts()) : $beers->the_post(); ?>
-	<li class="print-wrap" style="width:<?php echo 100 / (ceil($beers->found_posts / 4)) ?>%;">
+if($beers->have_posts()) : while($beers->have_posts()) : $beers->the_post();
+$beer_width = 100 / (ceil($beers->found_posts / $tasbb_menu->beersPerColumn));
+$beer_height = 100 / $tasbb_menu->beersPerColumn;
+
+?>
+	<li class="print-wrap" style="height: <?php echo $beer_height; ?>%; width:<?php echo $beer_width; ?>%;">
       <aside <?php if($tasbb_menu->filter['show_image'] == true){ echo 'class="has-img"'; }; ?>>
         <?php if($tasbb_menu->filter['show_image'] == true){ ?><img src="<?php echo the_post_thumbnail_url();?>"><?php };?>
         <div class="beer-info">
