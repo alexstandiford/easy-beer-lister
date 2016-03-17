@@ -1,16 +1,6 @@
-=== BrewBuddy ===
-Contributors: tstandiford
-Donate link: http://www.brewbuddy.io/recommends/donate
-Tags: beer, beers, brewery, untappd, beer menu
-Requires at least: 3.0.1
-Tested up to: 4.4.2
-Stable tag: 4.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+# BrewBuddy #
 
-Brew Buddy makes it easier for brewers, and bars to manage their beer information. Sort beers on your website, and create print-friendly menus.
-
-== Description ==
+## Description ##
 
 ## Features ##
 * Special Beer Post Type separates your beers from blog posts, and pages.
@@ -106,47 +96,32 @@ To print a menu, follow these steps:
 	2. For best results, make sure the margins are set to none. (in Chromse this is found after pressing the "more settings" button)
 	3. click Print
 
-== Installation ==
+## Installation ##
 
 1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Start adding your beers under Beers->Add New
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions ##
 
-= How do I display an image of my beer =
+### How do I display an image of my beer ###
 
 When creating your Beer, set the "featured image" option in the sidebar to the beer image you wish to use.  Most themes automatically use this option out of the box.
 
 
-= How do I display a beer on a page or post? =
+### How do I display a beer on a page or post? ###
 
 Use the `[beer name=# text=#]` shortcode inside your page editor to add a beer to any page. Replace the "#" with the name of the beer, as well as the text that you want to show in the link.
 
 
-= How do I display a list of all my beers? =
+### How do I display a list of all my beers? ###
 
 Use the `[beer_list]` shortcode inside your page editor to add a list of all your beers to any page.  See the getting started section to learn more about this shortcode.
 
-= My printed menu looks funny =
+### My printed menu looks funny ###
 
 Be sure to remove the default margins when you print your menu!
 
-= When I hover over a beer, the preview popup is way off! =
+### When I hover over a beer, the preview popup is way off! ###
 
 Since BrewBuddy is designed to work with as many themes as possible, I created a way to adjust this hover.  Go to settings->BrewBuddy settings and set some offset values until you get it right.  Use trial and error until it looks good
-
-== Screenshots ==
-
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets 
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png` 
-(or jpg, jpeg, gif).
-2. This is the second screen shot
-
-== Changelog ==
-
-= 1.0 =
-* Initial Launch.  Hooray!
-
-== Upgrade Notice ==
