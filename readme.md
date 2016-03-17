@@ -1,7 +1,5 @@
 # BrewBuddy #
 
-## Description ##
-
 ## Features ##
 * Special Beer Post Type separates your beers from blog posts, and pages.
 * Sort your beers by availaiblity, food pairings, custom tags, and beer style.
