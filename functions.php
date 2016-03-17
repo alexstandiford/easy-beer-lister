@@ -79,13 +79,17 @@ function tasbb_beer_info_url($taxonomy,$post_id = null, $single = false){
 
 /*--- SPITS OUT BEER VIDEO ---*/
 function tasbb_beer_video(){
+	do_action('tasbb_before_video');
   $result = do_shortcode('[video src="'.tasbb_get_field('tasbb_video').'"]');
+	do_action('tasbb_after_video');
   echo $result;
 }
 
 /*--- CREATES GALLERY FROM BEER INFO ---*/
 function tasbb_beer_gallery(){
+	do_action('tasbb_before_gallery');
 	$result = do_shortcode('[gallery ids="'.tasbb_get_field('tasbb_gallery').'"]');
+	do_action('tasbb_after_gallery');
 	echo $result;
 }
 
@@ -142,32 +146,42 @@ global $bbcount;
 
 ?>
 <?php
-$r .='<a id="beer-'.$bbcount.'" class="beer-url" href="'.get_permalink($post_id).'">'.$a['text'].'</a>';
+
+$on_tap_msg = apply_filters( 'tasbb_on_tap_msg', 'On Tap Now!' );
+$r .='<a id="beer-'.$bbcount.'" class="'.do_action('tasbb_add_beer_shortcode_class').' beer-url" href="'.get_permalink($post_id).'">'.$a['text'].'</a>';
 if(get_option('tasbb_js_hover') == FALSE){
   $e .='<figure id="beer-'.$bbcount.'-popup" class="beer-popup hidden">';
   $e .=  '<h2>'.$post_title.'</h2>';
-  if(tasbb_beer_is_on_tap($post_id)){
-  $e .=  '<h3>On Tap Now!</h3>';
+  if(get_option('tasbb_hide_ontap_msg') != 1 && tasbb_beer_is_on_tap($post_id)){
+  $e .=  '<h3>'.$on_tap_msg.'</h3>';
   };
-  $e .=  '<img src="'.$post_img.'">';
+	if($post_img != null){
+  	$e .=  '<img src="'.$post_img.'">';
+	};
   $e .=  '<figcaption>'.$post_excerpt.'</figcaption>';
   $e .=  '<dl>';
-  $e .=    '<div>';
-  $e .=      '<dt>O.G.</dt>';
-  $e .=      '<dd>'.tasbb_get_field('tasbb_og',$post_id).'</dd>';
-  $e .=    '</div>';
-  $e .=    '<div>';
-  $e .=      '<dt>IBUs</dt>';
-  $e .=      '<dd>'.tasbb_get_field('tasbb_ibu',$post_id).'</dd>';
-  $e .=    '</div>';
-  $e .=    '<div>';
-  $e .=      '<dt>ABV</dt>';
-  $e .=      '<dd>'.tasbb_get_field('tasbb_abv',$post_id).'%</dd>';
-  $e .=    '</div>';
+	if(get_option('tasbb_hide_og') != 1 && tasbb_get_field('tasbb_og',$post_id) != null){
+		$e .=    '<div>';
+		$e .=      '<dt>O.G.</dt>';
+		$e .=      '<dd>'.tasbb_get_field('tasbb_og',$post_id).'</dd>';
+		$e .=    '</div>';
+	};
+	if(get_option('tasbb_hide_ibu') != 1 && tasbb_get_field('tasbb_ibu',$post_id) != null){
+		$e .=    '<div>';
+		$e .=      '<dt>IBUs</dt>';
+		$e .=      '<dd>'.tasbb_get_field('tasbb_ibu',$post_id).'</dd>';
+		$e .=    '</div>';
+	};
+	if(get_option('tasbb_hide_abv') != 1 && tasbb_get_field('tasbb_abv',$post_id) != null){
+		$e .=    '<div>';
+		$e .=      '<dt>ABV</dt>';
+		$e .=      '<dd>'.tasbb_get_field('tasbb_abv',$post_id).'%</dd>';
+		$e .=    '</div>';
+	};
   $e .=  '</dl>';
 };
 if($post_availability == 'Year-Round'){
-$e .= '<aside>available year-round</aside>';
+$e .=apply_filters('tasbb_year_round_msg','<aside>available year-round</aside>');
 }
 else{
 $e .= '<aside>available during '.$post_availability.'</aside>';
@@ -334,4 +348,5 @@ function tasbb_email_sidebar(){?>
 		</div>
 							</div>
 <?php }
+
 ?>
