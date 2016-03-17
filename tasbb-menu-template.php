@@ -8,7 +8,7 @@ tasbb_menu_head();
 $tasbb_menu = new tasbb_menu;
 ?>
 <header>
-  <h1><?php echo $tasbb_menu->heading; ?></h1>
+  <h1><?php echo get_the_title(); ?></h1>
   <h2><?php echo $tasbb_menu->subheading; ?></h2>
   <p><?php echo $tasbb_menu->beforeMenu; ?></p>
 </header>
