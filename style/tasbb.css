@@ -52,11 +52,11 @@
 .beer-popup dl{
     clear:both;
     border-top:1px solid black;
+		display:flex;
+		justify-content:space-around;
 }
 
 .beer-popup dl div{
-    width:33%;
-    float:left;
     text-align:center;
 }
 
