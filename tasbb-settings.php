@@ -43,11 +43,19 @@ function tasbb_settings_register(){
     //setting name, display name, callback to print form element, page in which field is displayed, section to which it belongs.
     //last field section is optional.
     add_settings_field("tasbb_js_hover", "Disable Beer information on hover for the <code>[beer]</code> shortcode.", "tasbb_disable_js_hover", "tasbb-settings", "tasbb_settings");
+    add_settings_field("tasbb_hide_ibu", "Hide IBU from <code>[beer]</code> shortcode", "tasbb_hide_ibu", "tasbb-settings", "tasbb_settings");
+    add_settings_field("tasbb_hide_abv", "Hide ABV from <code>[beer]</code> shortcode", "tasbb_hide_abv", "tasbb-settings", "tasbb_settings");
+    add_settings_field("tasbb_hide_og", "Hide OG from <code>[beer]</code> shortcode", "tasbb_hide_og", "tasbb-settings", "tasbb_settings");
+    add_settings_field("tasbb_hide_ontap_msg", "Hide On Tap message from <code>[beer]</code> shortcode", "tasbb_hide_ontap_msg", "tasbb-settings", "tasbb_settings");
     add_settings_field("tasbb_js_hover_x", "Hover X offset", "tasbb_js_hover_x", "tasbb-settings", "tasbb_settings");
     add_settings_field("tasbb_js_hover_y", "Hover Y offset", "tasbb_js_hover_y", "tasbb-settings", "tasbb_settings");
 
     //section name, form element name, callback for sanitization
     register_setting("tasbb_settings", "tasbb_js_hover");
+    register_setting("tasbb_settings", "tasbb_hide_ibu");
+    register_setting("tasbb_settings", "tasbb_hide_abv");
+    register_setting("tasbb_settings", "tasbb_hide_og");
+    register_setting("tasbb_settings", "tasbb_hide_ontap_msg");
     register_setting("tasbb_settings", "tasbb_js_hover_x");
     register_setting("tasbb_settings", "tasbb_js_hover_y");
 
@@ -76,5 +84,34 @@ function tasbb_js_hover_y(){
     //id and name of form element should be same as the setting name.
     ?>
         <input type="number" id="tasbb_js_hover_y" name="tasbb_js_hover_y" value="<?php echo get_option('tasbb_js_hover_y');?>" />
+    <?php
+}
+
+//------ Show/Hide Beer Shortcode Details on Hover ------//
+function tasbb_hide_ibu(){
+    //id and name of form element should be same as the setting name.
+    ?>
+        <input type="checkbox" id="tasbb_hide_ibu" name="tasbb_hide_ibu" value="1" <?php echo checked(1, get_option('tasbb_hide_ibu'), false);  ?>/>
+    <?php
+}
+//------ Show/Hide Beer Shortcode Details on Hover ------//
+function tasbb_hide_abv(){
+    //id and name of form element should be same as the setting name.
+    ?>
+        <input type="checkbox" id="tasbb_hide_abv" name="tasbb_hide_abv" value="1" <?php echo checked(1, get_option('tasbb_hide_abv'), false);  ?>/>
+    <?php
+}
+//------ Show/Hide Beer Shortcode Details on Hover ------//
+function tasbb_hide_og(){
+    //id and name of form element should be same as the setting name.
+    ?>
+        <input type="checkbox" id="tasbb_hide_og" name="tasbb_hide_og" value="1" <?php echo checked(1, get_option('tasbb_hide_og'), false);  ?>/>
+    <?php
+}
+//------ Show/Hide Beer Shortcode Details on Hover ------//
+function tasbb_hide_ontap_msg(){
+    //id and name of form element should be same as the setting name.
+    ?>
+        <input type="checkbox" id="tasbb_hide_ontap_msg" name="tasbb_hide_ontap_msg" value="1" <?php echo checked(1, get_option('tasbb_hide_ontap_msg'), false);  ?>/>
     <?php
 }
