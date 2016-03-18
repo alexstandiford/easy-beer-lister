@@ -4,7 +4,7 @@ Donate link: http://www.brewbuddy.io/recommends/donate
 Tags: beer, beers, brewery, untappd, beer menu
 Requires at least: 3.0.1
 Tested up to: 4.4.2
-Stable tag: 1.01
+Stable tag: 1.02
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -146,7 +146,20 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
-= 1.0 =
+= 1.00 =
 * Initial Launch.  Hooray!
 
+= 1.01 =
+* Improved menu functionality
+* Added sidebar to options page
+* Menu template improvements
+
+= 1.02 =
+* Added a ton of hooks and actions so developers can modify the plugin without changing the core
+* Added menu template dropdown option so custom templates can be more-easily made
+* Built menu theme framework for developers
+* Added option to add image galleries to beer.  This will allow developers to use photos of the beer for menus, and the website
+* Overhauled the default print and TV menu templates, dramatically improving their functionality
+* Added an option to override the number of beers shown per-column on a menu
+* Added an option to override the CSS of a beer menu template
 == Upgrade Notice ==
