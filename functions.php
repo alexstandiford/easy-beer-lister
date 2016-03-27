@@ -39,11 +39,15 @@ function tasbb_beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false)
   }
   foreach($names as $name){
     if($name != 'On-Tap'){
-      $result .= '<'.$tag.'>';
+      $result .= do_action('tasbb_beer_info_before_tag');
+      $result .= '<'.$tag.' class="'.$taxonomy.' ';
+      $result .= do_action( 'tasbb_beer_info_class' );
+      $result .= '">';
       $result .=  '<a href="'.get_term_link($ids[$i],$taxonomy).'">';
       $result .=    $name;
       $result .=  '</a>';
       $result .= '</'.$tag.'>';
+      $result .= do_action('tasbb_beer_info_after_tag');
       $i++;
     }
   }
@@ -59,7 +63,7 @@ function tasbb_beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false)
   };
 }
 
-/*--- SPITS OUT BEER INFORMATION ---*/
+/*--- SPITS OUT BEER INFORMATION URL ---*/
 function tasbb_beer_info_url($taxonomy,$post_id = null, $single = false){
   if(taxonomy_exists($taxonomy)){
   $names = tasbb_get_beer_info($taxonomy,'name',$post_id);
