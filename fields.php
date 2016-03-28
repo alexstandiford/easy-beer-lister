@@ -343,7 +343,7 @@ function tasbb_save_menu_meta($post_id, $post) {
 			array_push($metas, new tasbb_menu_meta_item($tasbb_term->slug,$tasbb_term->slug));
 		};
 	};
-	//--- PUSHES AVAILABILITY TAXONOMY TO ARRAY ---//
+	//--- PUSHES TAG TAXONOMY TO ARRAY ---//
 	$tasbb_terms = get_terms('tags',['orderby' => 'name', 'order' => 'asc', 'hide_empty' => true]);	
 	if(class_exists('tasbb_menu_meta_item')){
 		foreach($tasbb_terms as $tasbb_term){
