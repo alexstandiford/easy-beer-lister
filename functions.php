@@ -121,6 +121,16 @@ function tasbb_beer_info_exists($taxonomy,$info = 'name', $post_id = null){
   return $r;
 }
 
+/*--- CHECK IF ANY BEER MEASUREMENTS EXIST ---*/
+function tasbb_beer_measurements_exist(){
+  if(tasbb_beer_info_exists('tasbb_abv') || tasbb_beer_info_exists('tasbb_ibu') || tasbb_beer_info_exists('tasbb_og')){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
 /*--- BEER SHORTCODE ---*/
 function tasbb_beer_shortcode($atts){
   $a = shortcode_atts( array(
