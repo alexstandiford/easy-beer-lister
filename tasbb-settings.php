@@ -30,7 +30,9 @@ function tasbb_options() {
 
 									?>          
 							</form>
-							<?php tasbb_email_sidebar();?>
+                    	<div class="tasbb-admin-sidebar">
+							<?php do_action('tasbb_settings_sidebar');?>
+                    </div>
 					</div>
         </div>
         <?php
