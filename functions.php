@@ -122,8 +122,11 @@ function tasbb_beer_info_exists($taxonomy,$info = 'name', $post_id = null){
 }
 
 /*--- CHECK IF ANY BEER MEASUREMENTS EXIST ---*/
-function tasbb_beer_measurements_exist(){
-  if(tasbb_beer_info_exists('tasbb_abv') || tasbb_beer_info_exists('tasbb_ibu') || tasbb_beer_info_exists('tasbb_og')){
+function tasbb_beer_measurements_exist($post_id = null){
+	if($post_id == null){
+		$post_id = get_the_id();
+	};
+  if(tasbb_beer_info_exists('tasbb_abv','name',$post_id) || tasbb_beer_info_exists('tasbb_ibu','name',$post_id) || tasbb_beer_info_exists('tasbb_og','name',$post_id)){
     return true;
   }
   else{
