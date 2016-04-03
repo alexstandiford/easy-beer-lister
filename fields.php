@@ -229,6 +229,13 @@ function tasbb_menu_meta_box($object, $box) { ?>
 	<label for="<?php echo $tasbb_term->slug;?>"><?php echo $tasbb_term->name; ?></label><br/>
 <?php }; ?>
   </div>
+  <div class="tasbb-field">
+    <p class="label">
+    <label for="tasbb-abv">Beers to Exclude</label><br>
+    <?php _e( "List the name, or ID of the beers that you want to remove from your menu. This is useful when you have no other way to filter the beer out. One beer per line."); ?>
+    </p>
+		<textarea class="widefat" id="tasbb_beers_to_filter" name="tasbb_beers_to_filter"><?php echo esc_attr(get_post_meta( $object->ID, 'tasbb_beers_to_filter', true)); ?></textarea>
+  </div>
 <?php  }
 
 //---THE MENU TEMPLATE META BOX FIELDS---//
@@ -327,6 +334,7 @@ function tasbb_save_menu_meta($post_id, $post) {
 	new tasbb_menu_meta_item('tasbb_export_sort_order','tasbb_export_sort_order'),
 	new tasbb_menu_meta_item('tasbb_export_sortby','tasbb_export_sortby'),
 	new tasbb_menu_meta_item('tasbb_beers_per_column','tasbb_beers_per_column'),
+	new tasbb_menu_meta_item('tasbb_beers_to_filter','tasbb_beers_to_filter'),
 	];
 
 	//--- PUSHES STYLE TAXONOMY TO ARRAY ---//
