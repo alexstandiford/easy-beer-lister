@@ -18,6 +18,7 @@ class tasbb_menu{
       'show_abv'         => get_post_meta(get_the_ID(),'tasbb_export_show_abv',true),
       'show_og'          => get_post_meta(get_the_ID(),'tasbb_export_show_og',true),
       'show_style'       => get_post_meta(get_the_ID(),'tasbb_export_show_style',true),
+      'beers_to_exclude' => get_post_meta(get_the_ID(),'tasbb_beers_to_filter',true),
     ];
 		$this->columnDefault = $column_default;
 		$this->beerColumnOverride = get_post_meta(get_the_ID(),'tasbb_beers_per_column',true);
@@ -36,12 +37,13 @@ class tasbb_menu{
 	//Imports beers into WordPress DB
 	public function args(){
        $args = [
-        'post_type' => 'beers',
-        'order'     => $this->filter['sort'],
-          'orderby' => 'meta_value_num',
-          'meta_key' => $this->filter['sortby'],
-        "tax_query" => [],
-          'posts_per_page' => -1
+        'post_type'      => 'beers',
+        'order'          => $this->filter['sort'],
+        'orderby'        => 'meta_value_num',
+        'meta_key'       => $this->filter['sortby'],
+        "tax_query"      => [],
+        'posts_per_page' => -1,
+        'post__not_in'   => ''
         ];
 
        if($this->filter['sortby'] == 'name'){
@@ -91,6 +93,21 @@ class tasbb_menu{
           'terms' => $this->filter['style']
         ]);
       };
+        //--- Beers to exclude ---//
+     if($this->filter['beers_to_exclude'] != null){
+       $excluded_beers = explode(PHP_EOL, $this->filter['beers_to_exclude']);
+       $exclude = [];
+       foreach($excluded_beers as $excluded_beer){
+         if(is_numeric($excluded_beer)){
+           array_push($exclude,$excluded_beer);
+         }
+         else{
+           $obj = get_page_by_title($excluded_beer,'OBJECT','beers');
+           array_push($exclude, $obj->ID);
+         }
+       }
+       $args['post__not_in'] = $exclude;
+     }
      return $args;
 	}
 };
