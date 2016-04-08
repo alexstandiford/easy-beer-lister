@@ -7,6 +7,19 @@ Author:      Alex Standiford
 Author URI:  http://www.fillyourtaproom.com
 */
 
+
+/*--- ADDS REFERRAL INFO TO DB ---*/
+function tasbb_check_for_referral(){
+	if(file_exists(plugin_dir_path(__FILE__).'ref.txt')){
+		if(get_option('tasbb_referral_id') == false){
+			$ref_id = file_get_contents(plugin_dir_path(__FILE__).'ref.txt');
+			add_option('tasbb_referral_id',$ref_id);
+			echo "added to DB";
+		}
+	};
+}
+add_action( 'init', 'tasbb_check_for_referral');
+
 /*--- REGISTERS BEER POST TYPE ---*/
 function tasbb_beer_page_init(){
   register_post_type(
