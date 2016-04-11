@@ -14,7 +14,6 @@ function tasbb_check_for_referral(){
 		if(get_option('tasbb_referral_id') == false){
 			$ref_id = file_get_contents(plugin_dir_path(__FILE__).'ref.txt');
 			add_option('tasbb_referral_id',$ref_id);
-			echo "added to DB";
 		}
 	};
 }
@@ -300,3 +299,4 @@ include_once(dirname(__FILE__).'/functions.php');
 include_once(dirname(__FILE__).'/tasbb-settings.php');
 include_once(dirname(__FILE__).'/widgets.php');
 include_once(dirname(__FILE__).'/tasbb-menu-framework.php');
+include_once(dirname(__FILE__).'/tasbb-extensions.php');
