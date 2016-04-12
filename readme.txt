@@ -3,7 +3,7 @@ Contributors: tstandiford
 Donate link: http://www.brewbuddy.io/recommends/donate
 Tags: beer, beers, brewery, untappd, beer menu, bar, bartender, bars, restaurant, brewer, craft beer, craft bar, beer import
 Requires at least: 3.0.1
-Tested up to: 4.5.1
+Tested up to: 4.5
 Stable tag: 1.02
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,6 +13,7 @@ Brew Buddy makes it easier for brewers, and bars to manage their beer informatio
 == Description ==
 
 A quick overview:
+https://vimeo.com/162600046
 For more information, check out [http://www.brewbuddy.io](brewbuddy.io)
 
 ## Features ##
@@ -63,7 +64,14 @@ Be sure to remove the default margins when you print your menu!
 Since BrewBuddy is designed to work with as many themes as possible, I created a way to adjust this hover.  Go to settings->BrewBuddy settings and set some offset values until you get it right.  Use trial and error until it looks good
 
 == Screenshots ==
-1.Hi
+1.Beers get their own separate UI
+2.Beer page works regardless of theme
+3.Create multiple custom menus
+4.Familiar interface makes adding beers easy
+5.Batch edit what's on tap
+6.Powerful filtering functions for print menus
+7.Shortcodes display beers in blog posts and pages
+8.Custom print menus can be created for extended functionality
 == Changelog ==
 
 = 1.00 =
