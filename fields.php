@@ -77,7 +77,7 @@ function tasbb_menu_meta_box($object, $box) { ?>
   <div class="tasbb-field tasbb-full-width">
     <p class="label">
     <label for="tasbb-abv">Menu Subheading</label><br>
-    <?php _e( "Enter the Video URL of the beer here"); ?>
+    <?php _e( "Enter the subheading of the menu here"); ?>
     </p>
 		<input class="widefat" type="text" id="tasbb_export_menu_subheading" name="tasbb_export_menu_subheading" value="<?php echo esc_attr(get_post_meta( $object->ID, 'tasbb_export_menu_subheading', true)); ?>" />
   </div>
