@@ -221,11 +221,26 @@ add_action('wp_footer','tasbb_beer_scripts_init');
 
 /*--- STYLE TAGS ---*/
 function tasbb_beer_inline_style_overrides(){
+	if(get_option('tasbb_js_hover_x') == 0){
+		$x = 0;
+	}
+	else
+	{
+		$x = get_option('tasbb_js_hover_x');
+	}
+	if(get_option('tasbb_js_hover_y') == 0){
+		$y = 0;
+	}
+	else
+	{
+		$y = get_option('tasbb_js_hover_y',10);
+	}
+
   $e .= '<!--- BeerBuddy Style Overrides --->';
   $e .= '<!--- These values can be adjusted in the BeerBuddy settings --->';
   $e .= '<style>';
   $e .=   '.beer-popup{';
-  $e .=     'transform:translate('.get_option('tasbb_js_hover_x').'px,'.get_option('tasbb_js_hover_y').'px);';
+  $e .=     'transform:translate('.$x.'px,'.$y.'px);';
   $e .=   '}';
   $e .= '</style>';
   echo $e;
