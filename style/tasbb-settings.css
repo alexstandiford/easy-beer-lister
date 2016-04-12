@@ -18,6 +18,28 @@
     font-size: 110%;
 }
 
+.tasbb-addon-product-wrapper {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tasbb-addon-product-wrapper .product {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    border-radius: 4px;
+}
+
+.tasbb-addon-product-wrapper .product img{
+	width:100%;
+}
+
+.tasbb-addon-product-wrapper .product .button-primary{
+	float:right;
+}
 @media screen and (max-width:1024px){
     .tasbb-wrapper{
         flex-wrap:wrap;

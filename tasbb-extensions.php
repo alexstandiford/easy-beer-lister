@@ -26,6 +26,7 @@ function tasbb_addons_page(){
 	if(get_option('tasbb_referral_id') != null){
 		$referral = '/?ref='.get_option('tasbb_referral_id');
 	}
+?><div class="tasbb-addon-product-wrapper"><?php
 	foreach($json->products as $product){
 		$product = $product->info; ?>
 	<div class="product">
@@ -33,13 +34,14 @@ function tasbb_addons_page(){
 		<h2><?php echo $product->title; ?></h2>
 		<p><?php echo $product->excerpt; ?></p>
 		<div class="cta-buttons">
-		<a class="button primary" href="#">Documentation</a>
-		<a class="button primary" href="http://www.brewbuddy.io/downloads/<?php echo $product->slug.$referral ?>">Learn More</a>
+			<a class="button" href="#">Documentation</a>
+			<a class="button button-primary" href="http://www.brewbuddy.io/downloads/<?php echo $product->slug.$referral ?>">Learn More</a>
 		</div>
 	</div>
 <?php }
+?></div><?php
 }
 
 function tasbb_themes_page(){
-	echo "Hi :)";
+ // Themes will go here once I have a few done :)
 }
