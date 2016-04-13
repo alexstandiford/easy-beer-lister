@@ -2,7 +2,7 @@
 /*
 Plugin Name: Easy Beer Lister
 Description: Manage Your Beers, Beer Pairings, and What's on Tap Easily
-Version:     1.02
+Version:     1.10
 Author:      Alex Standiford
 Author URI:  http://www.easybeerlister.com
 */
