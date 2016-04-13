@@ -1,6 +1,6 @@
-=== BrewBuddy ===
+=== Easy Beer Lister ===
 Contributors: tstandiford
-Donate link: http://www.brewbuddy.io/recommends/donate
+Donate link: http://www.easybeerlister.com/recommends/donate
 Tags: beer, beers, brewery, untappd, beer menu, bar, bartender, bars, restaurant, brewer, craft beer, craft bar, beer import
 Requires at least: 3.0.1
 Tested up to: 4.5
@@ -14,7 +14,7 @@ Brew Buddy makes it easier for brewers, and bars to manage their beer informatio
 
 A quick overview:
 https://vimeo.com/162600046
-For more information, check out [http://www.brewbuddy.io](brewbuddy.io)
+For more information, check out [http://www.easybeerlister.com](easybeerlister.com)
 
 ## Features ##
 * Special Beer Post Type separates your beers from blog posts, and pages.
@@ -26,7 +26,7 @@ For more information, check out [http://www.brewbuddy.io](brewbuddy.io)
 * Special Menus Post Type allows you to create auto-populating custom menus for quick printing, or display on a TV screen.
 
 ## Add-Ons ##
-BrewBuddy has many optional add-ons that can make it even faster to manage your beers on your website.  [http://www.brewbuddy.io/downloads/untappd-importer/](Import your beers directly from Untappd), and more!
+Easy Beer Lister has many optional add-ons that can make it even faster to manage your beers on your website.  [http://www.easybeerlister.com/downloads/untappd-importer/](Import your beers directly from Untappd), and more!
 
 ## Shortcodes ##
 * `[beer]` - Create a URL to a specified beer.  This link will also show a preview of the beer when you hover over it with your mouse.
@@ -37,7 +37,7 @@ BrewBuddy has many optional add-ons that can make it even faster to manage your 
 1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Start adding your beers under Beers->Add New
-4. View the [https://github.com/tstandiford/brewbuddy/wiki/Getting-Started](Getting started guide) for more.
+4. View the [https://github.com/tstandiford/easybeerlister/wiki/Getting-Started](Getting started guide) for more.
 
 == Frequently Asked Questions ==
 
@@ -61,7 +61,7 @@ Be sure to remove the default margins when you print your menu!
 
 = When I hover over a beer, the preview popup is way off! =
 
-Since BrewBuddy is designed to work with as many themes as possible, I created a way to adjust this hover.  Go to settings->BrewBuddy settings and set some offset values until you get it right.  Use trial and error until it looks good
+Since Easy Beer Lister is designed to work with as many themes as possible, I created a way to adjust this hover.  Go to settings->Easy Beer Lister settings and set some offset values until you get it right.  Use trial and error until it looks good
 
 == Screenshots ==
 1.Beers get their own separate UI

@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: BrewBuddy
+Plugin Name: Easy Beer Lister
 Description: Manage Your Beers, Beer Pairings, and What's on Tap Easily
 Version:     1.02
 Author:      Alex Standiford
-Author URI:  http://www.fillyourtaproom.com
+Author URI:  http://www.easybeerlister.com
 */
 
 
@@ -254,7 +254,7 @@ function tasbb_meta_scripts() {
 /*------ SETTINGS SIDEBAR ACTIONS ------*/
 function tasbb_settings_sidebar_cta(){?>
 		<div class="tasbb-sidebar-item">
-			<h2>BrewBuddy was proudly made by Alex Standiford</h2>
+			<h2>Easy Beer Lister was proudly made by Alex Standiford</h2>
 			<p>I am here to help breweries manage their online presence faster. I do that by providing breweries with tools, tips, and tricks that make their lives easier.</p>
 			<p>If you ever have <em>any</em> questions about WordPress, or need customizations to your website don't hesitate to send me a message.  I'll be happy to help you out in any way I can.</p>
 			<ul>
@@ -291,7 +291,7 @@ function tasbb_settings_sidebar_cta(){?>
 			<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
 		</div>
 		<div class="mc-field-group input-group hidden">
-				<ul><li><input checked type="checkbox" value="1" name="group[18977][1]" id="mce-group[18977]-18977-0"><label for="mce-group[18977]-18977-0">BrewBuddy User</label></li>
+				<ul><li><input checked type="checkbox" value="1" name="group[18977][1]" id="mce-group[18977]-18977-0"><label for="mce-group[18977]-18977-0">Easy Beer Lister User</label></li>
 		<li><input checked type="checkbox" value="2" name="group[18977][2]" id="mce-group[18977]-18977-1"><label for="mce-group[18977]-18977-1">Website Efficency Workflow</label></li>
 		</ul>
 		</div>

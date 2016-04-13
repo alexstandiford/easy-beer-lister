@@ -1,10 +1,10 @@
 <?php function tasbb_register_addons_page(){
 	add_submenu_page(
 		'edit.php?post_type=beers',
-		__( 'BrewBuddy Extensions' ),
+		__( 'Easy Beer Lister Extensions' ),
 		__( 'Extensions' ),
 		'manage_options',
-		'brewbuddy-addons',
+		'easybeerlister-addons',
 		'tasbb_addons_page'
 	);
 
@@ -13,7 +13,7 @@
 		__( 'Menu Themes' ),
 		__( 'Themes' ),
 		'manage_options',
-		'brewbuddy-themes',
+		'easybeerlister-themes',
 		'tasbb_themes_page'
 	);
 
@@ -21,7 +21,7 @@
 add_action('admin_menu','tasbb_register_addons_page');
 
 function tasbb_addons_page(){
-	$json = file_get_contents('http://brewbuddy.io/edd-api/products/');
+	$json = file_get_contents('http://easybeerlister.com/edd-api/products/');
 	$json = json_decode($json);
 	if(get_option('tasbb_referral_id') != null){
 		$referral = '/?ref='.get_option('tasbb_referral_id');
@@ -35,7 +35,7 @@ function tasbb_addons_page(){
 		<p><?php echo $product->excerpt; ?></p>
 		<div class="cta-buttons">
 			<a class="button" href="#">Documentation</a>
-			<a class="button button-primary" href="http://www.brewbuddy.io/downloads/<?php echo $product->slug.$referral ?>">Learn More</a>
+			<a class="button button-primary" href="http://www.easybeerlister.com/downloads/<?php echo $product->slug.$referral ?>">Learn More</a>
 		</div>
 	</div>
 <?php }

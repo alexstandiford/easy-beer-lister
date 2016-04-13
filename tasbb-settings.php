@@ -1,6 +1,6 @@
 <?php
 function tasbb_plugin_menu() {
-	add_options_page( 'BrewBuddy Settings', 'BrewBuddy Settings', 'manage_options', 'tasbb-settings', 'tasbb_options' );
+	add_options_page( 'Easy Beer Lister Settings', 'Easy Beer Lister Settings', 'manage_options', 'tasbb-settings', 'tasbb_options' );
 }
 add_action( 'admin_menu', 'tasbb_plugin_menu' );
 
@@ -16,7 +16,7 @@ function tasbb_options() {
 ?>
             <div class="wrap">
             <div id="icon-options-general" class="icon32"></div>
-            <h1>BrewBuddy Options</h1>
+            <h1>Easy Beer Lister Options</h1>
 						<div class="tasbb-wrapper">
 							<form method="post" action="options.php">
 									<?php

@@ -1,5 +1,5 @@
-# BrewBuddy #
-https://github.com/tstandiford/brewbuddy
+# Easy Beer Lister #
+https://github.com/tstandiford/easybeerlister
 ## Features ##
 * Special Beer Post Type separates your beers from blog posts, and pages.
 * Sort your beers by availaiblity, food pairings, custom tags, and beer style.
@@ -122,4 +122,4 @@ Be sure to remove the default margins when you print your menu!
 
 ### When I hover over a beer, the preview popup is way off! ###
 
-Since BrewBuddy is designed to work with as many themes as possible, I created a way to adjust this hover.  Go to settings->BrewBuddy settings and set some offset values until you get it right.  Use trial and error until it looks good
+Since Easy Beer Lister is designed to work with as many themes as possible, I created a way to adjust this hover.  Go to settings->Easy Beer Lister settings and set some offset values until you get it right.  Use trial and error until it looks good
