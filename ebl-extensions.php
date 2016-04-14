@@ -1,11 +1,11 @@
-<?php function tasbb_register_addons_page(){
+<?php function ebl_register_addons_page(){
 	add_submenu_page(
 		'edit.php?post_type=beers',
 		__( 'Easy Beer Lister Extensions' ),
 		__( 'Extensions' ),
 		'manage_options',
 		'easybeerlister-addons',
-		'tasbb_addons_page'
+		'ebl_addons_page'
 	);
 
 	add_submenu_page(
@@ -14,19 +14,19 @@
 		__( 'Themes' ),
 		'manage_options',
 		'easybeerlister-themes',
-		'tasbb_themes_page'
+		'ebl_themes_page'
 	);
 
 }
-add_action('admin_menu','tasbb_register_addons_page');
+add_action('admin_menu','ebl_register_addons_page');
 
-function tasbb_addons_page(){
+function ebl_addons_page(){
 	$json = file_get_contents('http://easybeerlister.com/edd-api/products/');
 	$json = json_decode($json);
-	if(get_option('tasbb_referral_id') != null){
-		$referral = '/?ref='.get_option('tasbb_referral_id');
+	if(get_option('ebl_referral_id') != null){
+		$referral = '/?ref='.get_option('ebl_referral_id');
 	}
-?><div class="tasbb-addon-product-wrapper"><?php
+?><div class="ebl-addon-product-wrapper"><?php
 	foreach($json->products as $product){
 		$product = $product->info; ?>
 	<div class="product">
@@ -42,6 +42,6 @@ function tasbb_addons_page(){
 ?></div><?php
 }
 
-function tasbb_themes_page(){
+function ebl_themes_page(){
  // Themes will go here once I have a few done :)
 }

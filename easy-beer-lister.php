@@ -9,18 +9,18 @@ Author URI:  http://www.easybeerlister.com
 
 
 /*--- ADDS REFERRAL INFO TO DB ---*/
-function tasbb_check_for_referral(){
+function ebl_check_for_referral(){
 	if(file_exists(plugin_dir_path(__FILE__).'ref.txt')){
-		if(get_option('tasbb_referral_id') == false){
+		if(get_option('ebl_referral_id') == false){
 			$ref_id = file_get_contents(plugin_dir_path(__FILE__).'ref.txt');
-			add_option('tasbb_referral_id',$ref_id);
+			add_option('ebl_referral_id',$ref_id);
 		}
 	};
 }
-add_action( 'init', 'tasbb_check_for_referral');
+add_action( 'init', 'ebl_check_for_referral');
 
 /*--- REGISTERS BEER POST TYPE ---*/
-function tasbb_beer_page_init(){
+function ebl_beer_page_init(){
   register_post_type(
     'beers',
     [
@@ -52,10 +52,10 @@ function tasbb_beer_page_init(){
     ]
   );
 }
-add_action( 'init', 'tasbb_beer_page_init' );
+add_action( 'init', 'ebl_beer_page_init' );
 
 /*--- REGISTERS MENU POST TYPE ---*/
-function tasbb_menu_page_init(){
+function ebl_menu_page_init(){
   register_post_type(
     'menus',
     [
@@ -89,9 +89,9 @@ function tasbb_menu_page_init(){
     ]
   );
 }
-add_action( 'init', 'tasbb_menu_page_init' );
+add_action( 'init', 'ebl_menu_page_init' );
 
-function tasbb_beer_taxonomy_init(){
+function ebl_beer_taxonomy_init(){
 	register_taxonomy(
 		'style',
 		'beers',
@@ -102,9 +102,9 @@ function tasbb_beer_taxonomy_init(){
 		)
 	);
 }
-add_action( 'init', 'tasbb_beer_taxonomy_init' );
+add_action( 'init', 'ebl_beer_taxonomy_init' );
 
-function tasbb_beer_pairing_taxonomy_init(){
+function ebl_beer_pairing_taxonomy_init(){
 	register_taxonomy(
 		'pairing',
 		'beers',
@@ -113,9 +113,9 @@ function tasbb_beer_pairing_taxonomy_init(){
 		)
 	);
 }
-add_action( 'init', 'tasbb_beer_pairing_taxonomy_init' );
+add_action( 'init', 'ebl_beer_pairing_taxonomy_init' );
 
-function tasbb_beer_availability_taxonomy_init(){
+function ebl_beer_availability_taxonomy_init(){
 	register_taxonomy(
 		'availability',
 		'beers',
@@ -125,10 +125,10 @@ function tasbb_beer_availability_taxonomy_init(){
 		)
 	);
 }
-add_action( 'init', 'tasbb_beer_availability_taxonomy_init' );
+add_action( 'init', 'ebl_beer_availability_taxonomy_init' );
 
 /*---REGISTERS DEFAULT AVAILABILITY TAXONOMY VALUES---*/
-function tasbb_beer_taxonomy_defaults_init(){
+function ebl_beer_taxonomy_defaults_init(){
   $terms = ['On Tap','Year Round','Spring','Summer','Fall','Winter'];
   foreach($terms as $term){
     $nice_term = strtolower($term);
@@ -146,10 +146,10 @@ function tasbb_beer_taxonomy_defaults_init(){
   };
 }
 
-add_action( 'init', 'tasbb_beer_taxonomy_defaults_init' );
+add_action( 'init', 'ebl_beer_taxonomy_defaults_init' );
 
 
-function tasbb_beer_tags_taxonomy_init(){
+function ebl_beer_tags_taxonomy_init(){
 	register_taxonomy(
 		'tags',
 		'beers',
@@ -158,82 +158,82 @@ function tasbb_beer_tags_taxonomy_init(){
 		)
 	);
 }
-add_action( 'init', 'tasbb_beer_tags_taxonomy_init' );
+add_action( 'init', 'ebl_beer_tags_taxonomy_init' );
 
 /*---REGISTERS DEFAULT BEER PAGE TEMPLATE---*/
-function tasbb_beer_page_template( $template ) {
+function ebl_beer_page_template( $template ) {
 	if (is_singular('beers') && !file_exists(get_template_directory().'/single-beers.php')) {
-		$new_template = dirname(__FILE__).'/tasbb-beer-template.php';
+		$new_template = dirname(__FILE__).'/ebl-beer-template.php';
 			return $new_template ;
 	}
 	return $template;
 }
-add_filter( 'template_include', 'tasbb_beer_page_template');
+add_filter( 'template_include', 'ebl_beer_page_template');
 
 /*---REGISTERS DEFAULT MENU PAGE TEMPLATE---*/
-function tasbb_menu_page_template( $template ) {
+function ebl_menu_page_template( $template ) {
 	global $post;
-	if (is_singular('menus') && tasbb_locate_menu_template($post->post_name) == false) {
-		$object_slug = get_post_meta(get_the_id(),'tasbb_menu_template',true);
-		$template = tasbb_get_menu_template($object_slug);
+	if (is_singular('menus') && ebl_locate_menu_template($post->post_name) == false) {
+		$object_slug = get_post_meta(get_the_id(),'ebl_menu_template',true);
+		$template = ebl_get_menu_template($object_slug);
 		$template = $template->directory.'/'.$template->file_name;
 	}
-	elseif(is_singular('menus') && tasbb_locate_menu_template($post->post_name) == true){
-		$template = tasbb_locate_menu_template($post->post_name);
+	elseif(is_singular('menus') && ebl_locate_menu_template($post->post_name) == true){
+		$template = ebl_locate_menu_template($post->post_name);
 	}
 	return $template;
 }
-add_filter( 'template_include', 'tasbb_menu_page_template');
+add_filter( 'template_include', 'ebl_menu_page_template');
 
 /*--- CUSTOM STYLES ---*/
-function tasbb_beer_styles_init(){
+function ebl_beer_styles_init(){
   $styles = [
-    'tasbb.css'
+    'ebl.css'
   ];
   foreach($styles as $style){
     wp_enqueue_style($style,plugin_dir_url(__FILE__).'style/'.$style);
   }
 }
-add_action('wp_enqueue_scripts','tasbb_beer_styles_init');
+add_action('wp_enqueue_scripts','ebl_beer_styles_init');
 
 
 /*--- CUSTOM STYLES FOR SETTINGS PAGES ---*/
-function tasbb_beer_admin_styles_init(){
+function ebl_beer_admin_styles_init(){
   $styles = [
-    'tasbb-settings.css'
+    'ebl-settings.css'
   ];
   foreach($styles as $style){
     wp_enqueue_style($style,plugin_dir_url(__FILE__).'style/'.$style);
   }
 }
-add_action('admin_enqueue_scripts','tasbb_beer_admin_styles_init');
+add_action('admin_enqueue_scripts','ebl_beer_admin_styles_init');
 
 
-function tasbb_beer_scripts_init(){
+function ebl_beer_scripts_init(){
   $scripts = [
-    'tasbb.js'
+    'ebl.js'
   ];
   foreach($scripts as $script){
     wp_enqueue_script($script,plugin_dir_url(__FILE__).'js/'.$script);
   }
 }
-add_action('wp_footer','tasbb_beer_scripts_init');
+add_action('wp_footer','ebl_beer_scripts_init');
 
 /*--- STYLE TAGS ---*/
-function tasbb_beer_inline_style_overrides(){
-	if(get_option('tasbb_js_hover_x') == 0){
+function ebl_beer_inline_style_overrides(){
+	if(get_option('ebl_js_hover_x') == 0){
 		$x = 0;
 	}
 	else
 	{
-		$x = get_option('tasbb_js_hover_x');
+		$x = get_option('ebl_js_hover_x');
 	}
-	if(get_option('tasbb_js_hover_y') == 0){
+	if(get_option('ebl_js_hover_y') == 0){
 		$y = 0;
 	}
 	else
 	{
-		$y = get_option('tasbb_js_hover_y',10);
+		$y = get_option('ebl_js_hover_y',10);
 	}
 
   $e .= '<!--- BeerBuddy Style Overrides --->';
@@ -245,15 +245,15 @@ function tasbb_beer_inline_style_overrides(){
   $e .= '</style>';
   echo $e;
 }
-add_action('wp_head','tasbb_beer_inline_style_overrides',30);
+add_action('wp_head','ebl_beer_inline_style_overrides',30);
 
-function tasbb_meta_scripts() {
+function ebl_meta_scripts() {
 	wp_enqueue_script('media-upload.js',plugin_dir_url(__FILE__).'js/media-upload.js');
 }
 
 /*------ SETTINGS SIDEBAR ACTIONS ------*/
-function tasbb_settings_sidebar_cta(){?>
-		<div class="tasbb-sidebar-item">
+function ebl_settings_sidebar_cta(){?>
+		<div class="ebl-sidebar-item">
 			<h2>Easy Beer Lister was proudly made by Alex Standiford</h2>
 			<p>I am here to help breweries manage their online presence faster. I do that by providing breweries with tools, tips, and tricks that make their lives easier.</p>
 			<p>If you ever have <em>any</em> questions about WordPress, or need customizations to your website don't hesitate to send me a message.  I'll be happy to help you out in any way I can.</p>
@@ -308,10 +308,11 @@ function tasbb_settings_sidebar_cta(){?>
 		<!--End mc_embed_signup-->
 		</div>
 <?php }
-add_action('tasbb_settings_sidebar', 'tasbb_settings_sidebar_cta');
+add_action('ebl_settings_sidebar', 'ebl_settings_sidebar_cta');
+
 include_once(dirname(__FILE__).'/fields.php');
 include_once(dirname(__FILE__).'/functions.php');
-include_once(dirname(__FILE__).'/tasbb-settings.php');
+include_once(dirname(__FILE__).'/ebl-settings.php');
 include_once(dirname(__FILE__).'/widgets.php');
-include_once(dirname(__FILE__).'/tasbb-menu-framework.php');
-include_once(dirname(__FILE__).'/tasbb-extensions.php');
+include_once(dirname(__FILE__).'/ebl-menu-framework.php');
+include_once(dirname(__FILE__).'/ebl-extensions.php');

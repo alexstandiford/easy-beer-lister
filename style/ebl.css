@@ -61,7 +61,7 @@
 }
 
 /*---BEER PAGE---*/
-.tasbb-beer-info-wrapper {
+.ebl-beer-info-wrapper {
     max-width: 80%;
     width: 600px;
     margin: auto;
@@ -69,25 +69,25 @@
     justify-content:space-around;
 }
 
-.tasbb-primary-content-wrapper h3{
+.ebl-primary-content-wrapper h3{
 	text-align:center;
 	width:100%;
 	display:block;
 }
 
-.tasbb-primary-content-wrapper .jetpack-video-wrapper,
-.tasbb-primary-content-wrapper .wp-video{
+.ebl-primary-content-wrapper .jetpack-video-wrapper,
+.ebl-primary-content-wrapper .wp-video{
     display: flex;
     justify-content: space-around;
     margin:auto;
 }
 
-.tasbb-beer-info-wrapper img{
+.ebl-beer-info-wrapper img{
   max-height:400px;
   width:auto;
 }
 
-.tasbb-primary-content .untappd-url{
+.ebl-primary-content .untappd-url{
   width:30%;
   margin:auto;
   display:block;
@@ -95,11 +95,11 @@
 }
 
 @media (orientation: portrait) and (max-device-width: 750px){
-  .tasbb-beer-info-wrapper img{
+  .ebl-beer-info-wrapper img{
     margin:auto;
     display:block;
   }
-  .tasbb-beer-info-wrapper{
+  .ebl-beer-info-wrapper{
     display:block;
   }
 }

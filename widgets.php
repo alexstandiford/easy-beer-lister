@@ -1,17 +1,17 @@
 <?php
 // On-Tap Widget
-class tasbb_on_tap extends WP_Widget {
+class ebl_on_tap extends WP_Widget {
 
 function __construct() {
 parent::__construct(
 // Base ID of your widget
-'tasbb_on_tap', 
+'ebl_on_tap', 
 
 // Widget name will appear in UI
-__('On Tap', 'tasbb_on_tap_domain'), 
+__('On Tap', 'ebl_on_tap_domain'), 
 
 // Widget description
-array( 'description' => __( 'Display a list of what beers are on-tap', 'tasbb_on_tap_domain' ), ) 
+array( 'description' => __( 'Display a list of what beers are on-tap', 'ebl_on_tap_domain' ), ) 
 );
 }
 
@@ -26,14 +26,14 @@ echo $args['before_title'] . $title . $args['after_title'];
 
 // This is where you run the code and display the output
 
-$tasbb_on_tap = new WP_Query(["post_type" => "beers","tax_query" => [["taxonomy"  => "availability","field" => "slug","terms" => "on-tap",],],]);
-do_action('tasbb_before_on_tap_widget');?>
-<ul class="tasbb-on-tap-widget">
-<?php if($tasbb_on_tap->have_posts()) : while($tasbb_on_tap->have_posts()) : $tasbb_on_tap->the_post();?>
+$ebl_on_tap = new WP_Query(["post_type" => "beers","tax_query" => [["taxonomy"  => "availability","field" => "slug","terms" => "on-tap",],],]);
+do_action('ebl_before_on_tap_widget');?>
+<ul class="ebl-on-tap-widget">
+<?php if($ebl_on_tap->have_posts()) : while($ebl_on_tap->have_posts()) : $ebl_on_tap->the_post();?>
   <li><a href="<?php echo get_post_permalink();?>"><?php the_title(); ?></a></li>
 <?php endwhile; endif;?>
 </ul>
-<?php do_action('tasbb_after_on_tap_widget');
+<?php do_action('ebl_after_on_tap_widget');
 echo $args['after_widget'];
 }
 		
@@ -43,7 +43,7 @@ if ( isset( $instance[ 'title' ] ) ) {
 $title = $instance[ 'title' ];
 }
 else {
-$title = __( "On Tap", 'tasbb_on_tap_domain' );
+$title = __( "On Tap", 'ebl_on_tap_domain' );
 }
 // Widget admin form
 ?>
@@ -61,22 +61,22 @@ $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_in
 return $instance;
 }
 }
-function tasbb_on_tap_function() {
-	register_widget( 'tasbb_on_tap' );
+function ebl_on_tap_function() {
+	register_widget( 'ebl_on_tap' );
 }
 
 // Random Beer
-class tasbb_random_beer extends WP_Widget {
+class ebl_random_beer extends WP_Widget {
 function __construct() {
 parent::__construct(
 // Base ID of your widget
-'tasbb_random_beer', 
+'ebl_random_beer', 
 
 // Widget name will appear in UI
-__('Random Beer', 'tasbb_random_beer_domain'), 
+__('Random Beer', 'ebl_random_beer_domain'), 
 
 // Widget description
-array( 'description' => __( 'Features a random beer on page load', 'tasbb_random_beer_domain' ), ) 
+array( 'description' => __( 'Features a random beer on page load', 'ebl_random_beer_domain' ), ) 
 );
 }
 // Creating widget front-end
@@ -90,16 +90,16 @@ echo $args['before_title'] . $title . $args['after_title'];
 
 // This is where you run the code and display the output
 
-$tasbb_random_beer = new WP_Query(["posts_per_page" => 1, "post_type" => "beers", 'orderby' => 'rand']);
-if($tasbb_random_beer->have_posts()) : while($tasbb_random_beer->have_posts()) : $tasbb_random_beer->the_post();?>
-<div class="tasbb-random-beer">
-	<?php do_action('tasbb_before_random_beer_shortcode'); ?>
+$ebl_random_beer = new WP_Query(["posts_per_page" => 1, "post_type" => "beers", 'orderby' => 'rand']);
+if($ebl_random_beer->have_posts()) : while($ebl_random_beer->have_posts()) : $ebl_random_beer->the_post();?>
+<div class="ebl-random-beer">
+	<?php do_action('ebl_before_random_beer_shortcode'); ?>
   <h3><a href="<?php echo get_post_permalink();?>"><?php the_title(); ?></a></h3>
   <p><?php the_excerpt();?></p>
   <?php echo wp_get_attachment_image( get_post_thumbnail_id(),'small' );?>
-  <?php if(tasbb_beer_info_exists('tasbb_untappd_url')){?>
+  <?php if(ebl_beer_info_exists('ebl_untappd_url')){?>
   <?php };
-	do_action('tasbb_after_random_beer_shortcode'); ?>
+	do_action('ebl_after_random_beer_shortcode'); ?>
 </div>
 <?php
 	endwhile; endif;
@@ -111,7 +111,7 @@ if ( isset( $instance[ 'title' ] ) ) {
 $title = $instance[ 'title' ];
 }
 else {
-$title = __( "Featured Beer", 'tasbb_random_beer_domain' );
+$title = __( "Featured Beer", 'ebl_random_beer_domain' );
 }
 // Widget admin form
 ?>
@@ -128,12 +128,12 @@ $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_in
 return $instance;
 }
 }
-function tasbb_random_beer_function() {
-	register_widget( 'tasbb_random_beer' );
+function ebl_random_beer_function() {
+	register_widget( 'ebl_random_beer' );
 }
 
 
-add_action( 'widgets_init', 'tasbb_random_beer_function' );
-add_action( 'widgets_init', 'tasbb_on_tap_function' );
+add_action( 'widgets_init', 'ebl_random_beer_function' );
+add_action( 'widgets_init', 'ebl_on_tap_function' );
 
 ?>

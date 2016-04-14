@@ -1,37 +1,37 @@
 <?php
-$tasbb_menu_templates = [];
+$ebl_menu_templates = [];
 //Class to call for menu query
-class tasbb_menu{
+class ebl_menu{
   public function __construct($column_default = 10){
     $this->filter = [
-      'sort'             => get_post_meta(get_the_ID(),'tasbb_export_sort_order',true),
-      'sortby'           => get_post_meta(get_the_ID(),'tasbb_export_sortby',true),
-      'on-tap'           => get_post_meta(get_the_ID(),'tasbb_export_ontap',true),
-      'pairings'         => get_post_meta(get_the_ID(),'tasbb_export_pairings',true),
-      'tags'             => tasbb_parse_taxonomy_checkbox('tags'),
-      'style'            => tasbb_parse_taxonomy_checkbox('style'),
-      'availability'     => tasbb_parse_taxonomy_checkbox('availability'),
-      'show_description' => get_post_meta(get_the_ID(),'tasbb_export_show_description',true),
-      'show_price'       => get_post_meta(get_the_ID(),'tasbb_export_show_price',true),
-      'show_image'       => get_post_meta(get_the_ID(),'tasbb_export_show_img',true),
-      'show_ibu'         => get_post_meta(get_the_ID(),'tasbb_export_show_ibu',true),
-      'show_abv'         => get_post_meta(get_the_ID(),'tasbb_export_show_abv',true),
-      'show_og'          => get_post_meta(get_the_ID(),'tasbb_export_show_og',true),
-      'show_style'       => get_post_meta(get_the_ID(),'tasbb_export_show_style',true),
-      'beers_to_exclude' => get_post_meta(get_the_ID(),'tasbb_beers_to_filter',true),
+      'sort'             => get_post_meta(get_the_ID(),'ebl_export_sort_order',true),
+      'sortby'           => get_post_meta(get_the_ID(),'ebl_export_sortby',true),
+      'on-tap'           => get_post_meta(get_the_ID(),'ebl_export_ontap',true),
+      'pairings'         => get_post_meta(get_the_ID(),'ebl_export_pairings',true),
+      'tags'             => ebl_parse_taxonomy_checkbox('tags'),
+      'style'            => ebl_parse_taxonomy_checkbox('style'),
+      'availability'     => ebl_parse_taxonomy_checkbox('availability'),
+      'show_description' => get_post_meta(get_the_ID(),'ebl_export_show_description',true),
+      'show_price'       => get_post_meta(get_the_ID(),'ebl_export_show_price',true),
+      'show_image'       => get_post_meta(get_the_ID(),'ebl_export_show_img',true),
+      'show_ibu'         => get_post_meta(get_the_ID(),'ebl_export_show_ibu',true),
+      'show_abv'         => get_post_meta(get_the_ID(),'ebl_export_show_abv',true),
+      'show_og'          => get_post_meta(get_the_ID(),'ebl_export_show_og',true),
+      'show_style'       => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
+      'beers_to_exclude' => get_post_meta(get_the_ID(),'ebl_beers_to_filter',true),
     ];
 		$this->columnDefault = $column_default;
-		$this->beerColumnOverride = get_post_meta(get_the_ID(),'tasbb_beers_per_column',true);
+		$this->beerColumnOverride = get_post_meta(get_the_ID(),'ebl_beers_per_column',true);
 		if($this->beerColumnOverride != null || $this->beerColumnOverride > 0){
 			$this->beersPerColumn = $this->beerColumnOverride;
 		}
 		else{
 			$this->beersPerColumn = $this->columnDefault;
 		}
-    $this->heading = get_post_meta(get_the_ID(),'tasbb_export_menu_heading',true);
-    $this->subheading = get_post_meta(get_the_ID(),'tasbb_export_menu_subheading',true);
-    $this->beforeMenu = get_post_meta(get_the_ID(),'tasbb_export_menu_before_menu',true);
-    $this->afterMenu = get_post_meta(get_the_ID(),'tasbb_export_menu_after_menu',true);
+    $this->heading = get_post_meta(get_the_ID(),'ebl_export_menu_heading',true);
+    $this->subheading = get_post_meta(get_the_ID(),'ebl_export_menu_subheading',true);
+    $this->beforeMenu = get_post_meta(get_the_ID(),'ebl_export_menu_before_menu',true);
+    $this->afterMenu = get_post_meta(get_the_ID(),'ebl_export_menu_after_menu',true);
 	}
 	
 	//Imports beers into WordPress DB
@@ -113,7 +113,7 @@ class tasbb_menu{
 };
 
 //Constructor for new menu template
-class tasbb_menu_template{
+class ebl_menu_template{
 	public function register($args){
 		$this->directory = $args['directory'];
 		$this->file_name = $args['file_name'];
@@ -122,14 +122,14 @@ class tasbb_menu_template{
 		$this->slug = strtolower(str_replace(" ","-",sanitize_text_field($this->name)));
 	}
 	private function register_template(){
-		global $tasbb_menu_templates;
-		$tasbb_menu_templates[] = $this;
+		global $ebl_menu_templates;
+		$ebl_menu_templates[] = $this;
 	}
 }
 
-function tasbb_get_menu_template($slug){
-	global $tasbb_menu_templates;
-	foreach($tasbb_menu_templates as $template){
+function ebl_get_menu_template($slug){
+	global $ebl_menu_templates;
+	foreach($ebl_menu_templates as $template){
 		if($template->slug == $slug){
 			$result = $template;
 			return $result;
@@ -142,25 +142,25 @@ function tasbb_get_menu_template($slug){
 }
 
 //Constructs the default menu
-$tasbb_default_print_menu = new tasbb_menu_template;
-$tasbb_default_print_menu->register([
+$ebl_default_print_menu = new ebl_menu_template;
+$ebl_default_print_menu->register([
 	'directory' => plugin_dir_path(__FILE__),
-	'file_name' => 'tasbb-menu-template.php',
+	'file_name' => 'ebl-menu-template.php',
 	'template_name' => 'Default Print Template'
 ]);
 
 //Constructs the default TV menu template
-$tasbb_default_tv_menu = new tasbb_menu_template;
-$tasbb_default_tv_menu->register([
+$ebl_default_tv_menu = new ebl_menu_template;
+$ebl_default_tv_menu->register([
 	'directory' => plugin_dir_path(__FILE__),
-	'file_name' => 'tasbb-tv-menu-template.php',
+	'file_name' => 'ebl-tv-menu-template.php',
 	'template_name' => 'Default TV Template'
 ]);
 
 //Setup for a menu
-function tasbb_menu_head(){
+function ebl_menu_head(){
 		if(!is_user_logged_in()){
-        do_action('tasbb_menu_not_logged_in');
+        do_action('ebl_menu_not_logged_in');
 		  	$error_message = '<h1>Please log in to view this content</h1>';
         echo $error_message;
 		  die;
@@ -168,17 +168,17 @@ function tasbb_menu_head(){
       else{?>
         <!DOCTYPE HTML>
         <head><?php
-          do_action('tasbb_menu_head_scripts');?>
+          do_action('ebl_menu_head_scripts');?>
           <?php }; ?>
           <style>
-            <?php echo get_post_meta(get_the_ID(),'tasbb_export_menu_css',true); ?>
+            <?php echo get_post_meta(get_the_ID(),'ebl_export_menu_css',true); ?>
           </style>
         </head>
-<?php   do_action('tasbb_menu_head');
+<?php   do_action('ebl_menu_head');
 }
 
 //Checks if menu template exists
-function tasbb_locate_menu_template($template){
+function ebl_locate_menu_template($template){
 	if(file_exists(get_stylesheet_directory().'/'.'menu-'.$template.'.php')){
 		return get_stylesheet_directory().'/'.'menu-'.$template.'.php';
 	}
