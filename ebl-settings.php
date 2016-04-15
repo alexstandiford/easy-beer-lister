@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 function ebl_plugin_menu() {
 	add_options_page( 'Easy Beer Lister Settings', 'Easy Beer Lister Settings', 'manage_options', 'ebl-settings', 'ebl_options' );
 }

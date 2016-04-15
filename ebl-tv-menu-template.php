@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 function ebl_default_menu_scripts(){
   echo '<link rel="stylesheet" href="'.plugin_dir_url(__FILE__).'style/ebl-tv.css">'; 
 }

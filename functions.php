@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 $bbcount = 1;
 
 /*--- GET BEER FIELD ---*/
@@ -167,7 +168,21 @@ global $bbcount;
 $on_tap_msg = apply_filters( 'ebl_on_tap_msg', 'On Tap Now!' );
 $r .='<a id="beer-'.$bbcount.'" class="'.do_action('ebl_add_beer_shortcode_class').' beer-url" href="'.get_permalink($post_id).'">'.$a['text'].'</a>';
 if(get_option('ebl_js_hover') == FALSE){
-  $e .='<figure id="beer-'.$bbcount.'-popup" class="beer-popup hidden">';
+	if(get_option('ebl_js_hover_x') == 0){
+		$x = 0;
+	}
+	else
+	{
+		$x = get_option('ebl_js_hover_x');
+	}
+	if(get_option('ebl_js_hover_y') == 0){
+		$y = 0;
+	}
+	else
+	{
+		$y = get_option('ebl_js_hover_y',10);
+	}
+  $e .='<figure id="beer-'.$bbcount.'-popup" class="beer-popup hidden" style="transform:translate('.$x.'px,'.$y.'px);">';
   $e .=  '<h2>'.$post_title.'</h2>';
   if(get_option('ebl_hide_ontap_msg') != 1 && ebl_beer_is_on_tap($post_id)){
   $e .=  '<h3>'.$on_tap_msg.'</h3>';

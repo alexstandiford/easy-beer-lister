@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 $ebl_menu_templates = [];
 //Class to call for menu query
 class ebl_menu{

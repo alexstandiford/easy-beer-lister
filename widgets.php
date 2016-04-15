@@ -1,5 +1,6 @@
 <?php
 // On-Tap Widget
+if ( ! defined( 'ABSPATH' ) ) exit;
 class ebl_on_tap extends WP_Widget {
 
 function __construct() {

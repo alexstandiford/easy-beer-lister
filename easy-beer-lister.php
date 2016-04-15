@@ -6,7 +6,7 @@ Version:     1.10
 Author:      Alex Standiford
 Author URI:  http://www.easybeerlister.com
 */
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /*--- ADDS REFERRAL INFO TO DB ---*/
 function ebl_check_for_referral(){
@@ -208,7 +208,6 @@ function ebl_beer_admin_styles_init(){
 }
 add_action('admin_enqueue_scripts','ebl_beer_admin_styles_init');
 
-
 function ebl_beer_scripts_init(){
   $scripts = [
     'ebl.js'
@@ -218,34 +217,6 @@ function ebl_beer_scripts_init(){
   }
 }
 add_action('wp_footer','ebl_beer_scripts_init');
-
-/*--- STYLE TAGS ---*/
-function ebl_beer_inline_style_overrides(){
-	if(get_option('ebl_js_hover_x') == 0){
-		$x = 0;
-	}
-	else
-	{
-		$x = get_option('ebl_js_hover_x');
-	}
-	if(get_option('ebl_js_hover_y') == 0){
-		$y = 0;
-	}
-	else
-	{
-		$y = get_option('ebl_js_hover_y',10);
-	}
-
-  $e .= '<!--- BeerBuddy Style Overrides --->';
-  $e .= '<!--- These values can be adjusted in the BeerBuddy settings --->';
-  $e .= '<style>';
-  $e .=   '.beer-popup{';
-  $e .=     'transform:translate('.$x.'px,'.$y.'px);';
-  $e .=   '}';
-  $e .= '</style>';
-  echo $e;
-}
-add_action('wp_head','ebl_beer_inline_style_overrides',30);
 
 function ebl_meta_scripts() {
 	wp_enqueue_script('media-upload.js',plugin_dir_url(__FILE__).'js/media-upload.js');

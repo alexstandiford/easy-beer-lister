@@ -1,4 +1,7 @@
-<?php function ebl_register_addons_page(){
+<?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+function ebl_register_addons_page(){
 	add_submenu_page(
 		'edit.php?post_type=beers',
 		__( 'Easy Beer Lister Extensions' ),

@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 function ebl_parse_taxonomy_checkbox($taxonomy){
 	$terms = get_terms($taxonomy,['orderby' => 'name', 'order' => 'asc', 'hide_empty' => true]);
 	$result = [];
