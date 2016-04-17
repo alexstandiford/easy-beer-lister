@@ -1,3 +1,22 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=Glegoo);
+
+html {
+    background: #222;
+    color: #ddd;
+    font-family:Glegoo;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  color:#dbab0f;
+  font-family:oswald;
+}
+
 ul, ul li{
   list-style-type:none;
   margin:0;
@@ -10,11 +29,11 @@ span{
 }
 
 h1{
-	font-size:2vw;
+	font-size:1.5vw;
 }
 
 h2{
-	font-size:1.5vw;
+	font-size:1vw;
 }
 
 header{
@@ -62,7 +81,9 @@ aside.has-img{
 .beer-info p,
 .beer-info span{
   margin:10px 0;
-	width:90%;
+  width:90%;
+  color:white;
+  font-family:glegoo;
 }
 
 .beer-info {
@@ -72,6 +93,10 @@ aside.has-img{
     height: 90%;
 }
 
+.beer-info div {
+    display: flex;
+    width: 50%;
+}
 
 img {
   float: left;

@@ -148,7 +148,6 @@ function ebl_beer_taxonomy_defaults_init(){
 
 add_action( 'init', 'ebl_beer_taxonomy_defaults_init' );
 
-
 function ebl_beer_tags_taxonomy_init(){
 	register_taxonomy(
 		'tags',
@@ -195,7 +194,6 @@ function ebl_beer_styles_init(){
   }
 }
 add_action('wp_enqueue_scripts','ebl_beer_styles_init');
-
 
 /*--- CUSTOM STYLES FOR SETTINGS PAGES ---*/
 function ebl_beer_admin_styles_init(){

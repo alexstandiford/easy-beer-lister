@@ -22,18 +22,18 @@ $beer_width = 100 / (ceil($beers->found_posts / $ebl_menu->beersPerColumn));
 $beer_height = 100 / $ebl_menu->beersPerColumn;
 
 ?>
-	<li class="print-wrap" style="height: <?php echo $beer_height; ?>%; width:<?php echo $beer_width; ?>%;">
+	<li class="print-wrap" style="height: <?php echo $beer_height; ?>%; width:calc(<?php echo $beer_width; ?>% - 50px);">
       <aside <?php if($ebl_menu->filter['show_image'] == true){ echo 'class="has-img"'; }; ?>>
         <?php if($ebl_menu->filter['show_image'] == true){ ?><img src="<?php echo the_post_thumbnail_url();?>"><?php };?>
         <div class="beer-info">
-          <h1><?php echo get_the_title(); ?></h1>
+          <h1><?php echo get_the_title(); ?>
           <?php
           //--- PRICE ---//
           if($ebl_menu->filter['show_price'] == TRUE && ebl_beer_info_exists('ebl_price')){?>
           <span class="price"> - 
              $<?php ebl_beer_info('ebl_price');?>
           </span>
-          <?php }; ?>
+          <?php }; ?></h1>
           <?php if($ebl_menu->filter['show_style'] == TRUE){?>
           <em><?php ebl_beer_info('style',null,null,true); ?></em>
           <?php }; ?>
