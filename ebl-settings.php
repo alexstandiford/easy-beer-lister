@@ -14,30 +14,41 @@ function ebl_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
-?>
-            <div class="wrap">
-            <div id="icon-options-general" class="icon32"></div>
-            <h1>Easy Beer Lister Options</h1>
-						<div class="ebl-wrapper">
-							<form method="post" action="options.php">
-									<?php
-
-											//add_settings_section callback is displayed here. For every new section we need to call settings_fields.
-											settings_fields("ebl_settings");
-											// all the add_settings_field callbacks is displayed here
-											do_settings_sections("ebl-settings");
-											// Add the submit button to serialize the options
-											submit_button(); 
-
-									?>          
-							</form>
-                    	<div class="ebl-admin-sidebar">
-							<?php do_action('ebl_settings_sidebar');?>
-                    </div>
-					</div>
-        </div>
-        <?php
-    }
+function ebl_options_tabs(){
+  if(isset($_GET['tab'])){
+       $active_tab = $_GET['tab'];
+  }?>
+  <h2 class="nav-tab-wrapper">
+      <a href="?page=ebl-settings&tab=ebl_options" class="nav-tab <?php echo $active_tab == 'ebl_options' || $active_tab == null ? 'nav-tab-active' : ''; ?>">Options</a>
+      <?php do_action('ebl_add_options_tab',$active_tab); ?>
+  </h2>
+<?php return $active_tab;
+ }?>
+<div class="wrap">
+  <?php $active_tab = ebl_options_tabs(); ?>
+  <div id="icon-options-general" class="icon32"></div>
+  <h1>Easy Beer Lister Options</h1>
+    <div class="ebl-wrapper">
+      <form method="post" action="options.php">
+      <?php
+      if( $active_tab == 'ebl_options' || $active_tab == null ) {
+        settings_fields("ebl_settings");
+        do_settings_sections("ebl-settings");
+      }
+      else{
+        do_action('ebl_add_settings_register',$active_tab);
+      }
+      // Add the submit button to serialize the options
+      submit_button(); 
+      ?>          
+      </form>
+    <div class="ebl-admin-sidebar">
+      <?php do_action('ebl_settings_sidebar');?>
+    </div>
+  </div>
+</div>
+<?php
+}
 
 function ebl_settings_register(){
     //section name, display name, callback to print description of section, page to which section is attached.
@@ -62,7 +73,7 @@ function ebl_settings_register(){
     register_setting("ebl_settings", "ebl_js_hover_x");
     register_setting("ebl_settings", "ebl_js_hover_y");
 
-    do_action('ebl_addon_settings_fields');
+//    do_action('ebl_addon_settings_fields');
 }
 //this action is executed after loads its core, after registering all actions, finds out what page to execute and before producing the actual output(before calling any action callback)
 add_action("admin_init", "ebl_settings_register");
