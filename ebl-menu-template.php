@@ -10,6 +10,7 @@ $ebl_menu = new ebl_menu;
 ?>
 <header>
   <h1><?php echo get_the_title(); ?></h1>
+  <img src="<?php echo $ebl_menu->thumbnail; ?>">
   <h2><?php echo $ebl_menu->subheading; ?></h2>
   <p><?php echo $ebl_menu->beforeMenu; ?></p>
 </header>
