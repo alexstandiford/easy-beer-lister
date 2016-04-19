@@ -33,6 +33,12 @@ class ebl_menu{
     $this->subheading = get_post_meta(get_the_ID(),'ebl_export_menu_subheading',true);
     $this->beforeMenu = get_post_meta(get_the_ID(),'ebl_export_menu_before_menu',true);
     $this->afterMenu = get_post_meta(get_the_ID(),'ebl_export_menu_after_menu',true);
+    if(get_the_post_thumbnail_url() != null){
+      $this->thumbnail = get_the_post_thumbnail_url();
+    }
+    else{
+      $this->thumbnail = get_option('ebl_default_menu_image');
+    }
 	}
 	
 	//Imports beers into WordPress DB
