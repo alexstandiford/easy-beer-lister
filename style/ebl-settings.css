@@ -40,6 +40,12 @@
 .ebl-addon-product-wrapper .product .button-primary{
 	float:right;
 }
+
+.ebl_default_menu_image {
+    max-width: 300px;
+    max-height: 150px;
+    margin-right: 20px;
+}
 @media screen and (max-width:1024px){
     .ebl-wrapper{
         flex-wrap:wrap;
