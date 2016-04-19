@@ -19,7 +19,8 @@ function ebl_options_tabs(){
        $active_tab = $_GET['tab'];
   }?>
   <h2 class="nav-tab-wrapper">
-      <a href="?page=ebl-settings&tab=ebl_options" class="nav-tab <?php echo $active_tab == 'ebl_options' || $active_tab == null ? 'nav-tab-active' : ''; ?>">Options</a>
+      <a href="?page=ebl-settings&tab=ebl_options" class="nav-tab <?php echo $active_tab == 'ebl_options' || $active_tab == null ? 'nav-tab-active' : ''; ?>">Shortcode Options</a>
+      <a href="?page=ebl-settings&tab=ebl_menu_options" class="nav-tab <?php echo $active_tab == 'ebl_menu_options' ? 'nav-tab-active' : '';?>">Beer Menu Options</a>
       <?php do_action('ebl_add_options_tab',$active_tab); ?>
   </h2>
 <?php return $active_tab;
@@ -34,6 +35,10 @@ function ebl_options_tabs(){
       if( $active_tab == 'ebl_options' || $active_tab == null ) {
         settings_fields("ebl_settings");
         do_settings_sections("ebl-settings");
+      }
+      elseif($active_tab == 'ebl_menu_options'){
+        settings_fields('ebl_menu_options');
+        do_settings_sections('ebl-menu-options');
       }
       else{
         do_action('ebl_add_settings_register',$active_tab);
@@ -50,6 +55,13 @@ function ebl_options_tabs(){
 <?php
 }
 
+function ebl_menu_settings_register(){
+  add_settings_section("ebl_menu_options","Beer Menu Options","ebl_menu_settings_header","ebl-menu-options");
+  add_settings_field("ebl_default_menu_image","Default image for menus (usually your logo)","ebl_default_menu_image","ebl-menu-options","ebl_menu_options");
+  register_setting("ebl_menu_options", "ebl_default_menu_image");
+}
+
+add_action("admin_init","ebl_menu_settings_register");
 function ebl_settings_register(){
     //section name, display name, callback to print description of section, page to which section is attached.
     add_settings_section("ebl_settings", "<code>[beer]</code> Behavior Options", "ebl_display_header_options_content", "ebl-settings");
@@ -73,10 +85,24 @@ function ebl_settings_register(){
     register_setting("ebl_settings", "ebl_js_hover_x");
     register_setting("ebl_settings", "ebl_js_hover_y");
 
-//    do_action('ebl_addon_settings_fields');
+    do_action('ebl_addon_settings_fields');
 }
 //this action is executed after loads its core, after registering all actions, finds out what page to execute and before producing the actual output(before calling any action callback)
 add_action("admin_init", "ebl_settings_register");
+
+function ebl_default_menu_image(){
+  wp_enqueue_script('settings-media-uploader.js', plugin_dir_url(__FILE__).'js/settings-media-uploader.js');
+  wp_enqueue_media();
+  ?>
+  <img class="ebl_default_menu_image" src="<?php echo get_option('ebl_default_menu_image');?>">
+  <input class="hidden" type="text" name="ebl_default_menu_image" id="image_attachment_id" value="<?php echo get_option('ebl_default_menu_image'); ?>" />
+  <input type="button" class="button" name="ebl_default_menu_image" id="ebl_default_menu_image" value="<?php _e( 'Upload/Select images' ); ?>" />
+  <?php
+}
+
+function ebl_menu_settings_header(){
+echo "Update the menu setting defaults";
+}
 
 //------ JS SETTINGS ------//
 function ebl_display_header_options_content(){
