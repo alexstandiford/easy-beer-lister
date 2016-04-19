@@ -69,7 +69,7 @@ function ebl_menu_page_init(){
       'exclude_from_search'=> true,
       'show_in_nav_menus'  => false,
       'menu_position'      => 6,
-      'supports'           => array('revisions', 'title','template'),
+      'supports'           => array('revisions', 'title','template','thumbnail'),
       'menu_icon'          => plugin_dir_url( __FILE__ ).'/media/menu-icon.png',
       //---BEGIN LABELS---//
       'labels'             =>[
@@ -183,6 +183,19 @@ function ebl_menu_page_template( $template ) {
 	return $template;
 }
 add_filter( 'template_include', 'ebl_menu_page_template');
+
+/*---ADDS CLARIFICATION UNDER MENU PAGE TEMPLATE FEATURED IMAGE METABOX---*/
+function add_featured_image_instruction( $content ) {
+  $post_type = get_current_screen();
+  $post_type = $post_type->post_type;
+  if($post_type == "menus"){
+    return $content .= '<p>If no featured image is set, the <a href="http://localhost/sandbox/wp-admin/options-general.php?page=ebl-settings&tab=ebl_menu_options">default image</a> will be used.</p>';
+  }
+  else{
+    return $content;
+  }
+}
+add_filter( 'admin_post_thumbnail_html', 'add_featured_image_instruction');
 
 /*--- CUSTOM STYLES ---*/
 function ebl_beer_styles_init(){
