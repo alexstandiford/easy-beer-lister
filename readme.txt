@@ -16,7 +16,8 @@ A quick overview:
 https://vimeo.com/162600046
 For more information, check out [http://www.easybeerlister.com](easybeerlister.com)
 
-## Features ##
+__Features__
+
 * Special Beer Post Type separates your beers from blog posts, and pages.
 * Sort your beers by availaiblity, food pairings, custom tags, and beer style.
 * Special fields for ABV, OG, IBU, untappd URL, video, and image gallery.
@@ -25,10 +26,12 @@ For more information, check out [http://www.easybeerlister.com](easybeerlister.c
 * Bulk-edit sorting methods, such as availability, food pairings, and what's on tap.
 * Special Menus Post Type allows you to create auto-populating custom menus for quick printing, or display on a TV screen.
 
-## Add-Ons ##
+__Add-Ons__
+
 Easy Beer Lister has many optional add-ons that can make it even faster to manage your beers on your website.  [http://www.easybeerlister.com/downloads/untappd-importer/](Import your beers directly from Untappd), and more!
 
-## Shortcodes ##
+__Shortcodes__
+
 * `[beer]` - Create a URL to a specified beer.  This link will also show a preview of the beer when you hover over it with your mouse.
 * `[beer_list]` - Create a list of beers based on specified parameters such as style, or pairings.
 
@@ -64,14 +67,16 @@ Be sure to remove the default margins when you print your menu!
 Since Easy Beer Lister is designed to work with as many themes as possible, I created a way to adjust this hover.  Go to settings->Easy Beer Lister settings and set some offset values until you get it right.  Use trial and error until it looks good
 
 == Screenshots ==
-1.Beers get their own separate UI
-2.Beer page works regardless of theme
-3.Create multiple custom menus
-4.Familiar interface makes adding beers easy
-5.Batch edit what's on tap
-6.Powerful filtering functions for print menus
-7.Shortcodes display beers in blog posts and pages
-8.Custom print menus can be created for extended functionality
+
+1. Beers get their own separate UI
+2. Beer page works regardless of theme
+3. Create multiple custom menus
+4. Familiar interface makes adding beers easy
+5. Batch edit what's on tap
+6. Powerful filtering functions for print menus
+7. Shortcodes display beers in blog posts and pages
+8. Custom print menus can be created for extended functionality
+
 == Changelog ==
 
 = 1.00 =
