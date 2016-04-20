@@ -20,6 +20,7 @@ class ebl_menu{
       'show_og'          => get_post_meta(get_the_ID(),'ebl_export_show_og',true),
       'show_style'       => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
       'beers_to_exclude' => get_post_meta(get_the_ID(),'ebl_beers_to_filter',true),
+      'is_menu_public'   => get_post_meta(get_the_ID(),'ebl_menu_public',true) == 'ebl_public' ? true : false,
     ];
 		$this->columnDefault = $column_default;
 		$this->beerColumnOverride = get_post_meta(get_the_ID(),'ebl_beers_per_column',true);
@@ -165,8 +166,8 @@ $ebl_default_tv_menu->register([
 ]);
 
 //Setup for a menu
-function ebl_menu_head(){
-		if(!is_user_logged_in()){
+function ebl_menu_head($menu_object){
+		if(!is_user_logged_in() && $menu_object->filter['is_menu_public'] != true){
         do_action('ebl_menu_not_logged_in');
 		  	$error_message = '<h1>Please log in to view this content</h1>';
         echo $error_message;
