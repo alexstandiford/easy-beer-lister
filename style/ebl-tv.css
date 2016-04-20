@@ -86,6 +86,12 @@ aside.has-img{
   font-family:glegoo;
 }
 
+.beer-info p{
+    font-size: .75vw;
+    margin: 0;
+    line-height:1vw;
+}
+
 .beer-info {
     display: flex;
     flex-direction: column;
