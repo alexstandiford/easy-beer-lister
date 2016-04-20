@@ -96,43 +96,12 @@ function ebl_menu_meta_box($object, $box) { ?>
     </p>
 		<textarea class="widefat" id="ebl_export_menu_after_menu" name="ebl_export_menu_after_menu"><?php echo esc_attr(get_post_meta( $object->ID, 'ebl_export_menu_after_menu', true)); ?></textarea>
   </div>
-  <div class="ebl-field ebl-full-width">
-    <p class="label">
-    <label for="ebl-abv">Override Beers Per Column</label><br>
-    <?php _e( "Specify the number of beers per column (Uses template default if blank)"); ?>
-    </p>
-		<input type="number" id="ebl_beers_per_column" name="ebl_beers_per_column" value="<?php echo esc_attr(get_post_meta( $object->ID, 'ebl_beers_per_column', true)); ?>" />
-  </div>
-  <div class="ebl-field ebl-full-width">
-    <p class="label">
-    <label for="ebl-abv">CSS Overrides</label><br>
-    <?php _e( "Add any custom CSS for this menu here."); ?>
-    </p>
-		<textarea class="widefat" id="ebl_export_menu_css" name="ebl_export_menu_css"><?php echo esc_attr(get_post_meta( $object->ID, 'ebl_export_menu_css', true)); ?></textarea>
-  </div>
-  <div class="ebl-field ebl-full-width">
-    <p class="label">
-    <label for="ebl-abv">Sort By</label><br>
-    <?php _e( "Specify the Beer Value you want to sort by."); ?>
-    </p>
-        <select id="ebl_export_sortby" name="ebl_export_sortby">
-					<option value="ebl_abv" <?php selected( get_post_meta( $object->ID,'ebl_export_sortby',true), 'ebl_abv');?>>ABV</option>
-					<option value="ebl_ibu" <?php selected( get_post_meta( $object->ID,'ebl_export_sortby',true), 'ebl_ibu');?>>IBU</option>
-					<option value="ebl_og" <?php selected( get_post_meta( $object->ID,'ebl_export_sortby',true), 'ebl_og');?>>OG</option>
-					<option value="ebl_price" <?php selected( get_post_meta( $object->ID,'ebl_export_sortby',true), 'ebl_price');?>>Price</option>
-					<option value="name" <?php selected( get_post_meta( $object->ID,'ebl_export_sortby',true), 'name');?>>Name</option>
-				</select>
-  </div>
-  <div class="ebl-field ebl-full-width">
-    <p class="label">
-    <label for="ebl-abv">Sort Order</label><br>
-    <?php _e( "Specify the order of the menu.  Ascending (A-Z), or Descending (Z-A)"); ?>
-    </p>
-        <select id="ebl_export_sort_order" name="ebl_export_sort_order">
-					<option value="asc" <?php selected( get_post_meta( $object->ID, 'ebl_export_sort_order', true), 'asc');?>>Ascending</option>
-					<option value="desc" <?php selected( get_post_meta( $object->ID, 'ebl_export_sort_order', true), 'desc');?>>Descending</option>
-				</select>
-  </div>
+
+<?php  }
+
+//---THE MENU FILTER META BOX FIELDS---//
+function ebl_menu_filters_meta_box($object, $box) { ?>
+  <?php wp_nonce_field( basename( __FILE__ ), 'ebl_beer_nonce' ); ?>
 
   <div class="ebl-field">
     <p class="label">
@@ -140,55 +109,6 @@ function ebl_menu_meta_box($object, $box) { ?>
     <?php _e( "Only show beers that are marked as on-tap in the beers menu"); ?>
     </p>
     <input type="checkbox" id="ebl_export_ontap" name="ebl_export_ontap" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_ontap', true));  ?>/>
-  </div>
-  <div class="ebl-field">
-    <p class="label">
-    <label for="ebl-abv">Show Beer Image</label><br>
-    <?php _e( "Show image of beer in beer menu"); ?>
-    </p>
-    <input type="checkbox" id="ebl_export_show_img" name="ebl_export_show_img" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_img', true));  ?>/>
-  </div>
-  <div class="ebl-field">
-    <p class="label">
-    <label for="ebl-abv">Show Beer Description</label><br>
-    <?php _e( "Show the description (also known as the excerpt) of beer in beer menu"); ?>
-    </p>
-    <input type="checkbox" id="ebl_export_show_description" name="ebl_export_show_description" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_description', true));  ?>/>
-  </div>
-  <div class="ebl-field">
-    <p class="label">
-    <label for="ebl-abv">Show Beer Style</label><br>
-    <?php _e( "Show the style of beer in beer menu"); ?>
-    </p>
-    <input type="checkbox" id="ebl_export_show_style" name="ebl_export_show_style" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_style', true));  ?>/>
-  </div>
-  <div class="ebl-field">
-    <p class="label">
-    <label for="ebl-abv">Show Beer OG</label><br>
-    <?php _e( "Show the Original Gravity (OG) of beer in beer menu"); ?>
-    </p>
-    <input type="checkbox" id="ebl_export_show_og" name="ebl_export_show_og" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_og', true));  ?>/>
-  </div>
-  <div class="ebl-field">
-    <p class="label">
-    <label for="ebl-abv">Show Beer IBU</label><br>
-    <?php _e( "Show the International Bittering Units (IBU) of beer in beer menu"); ?>
-    </p>
-    <input type="checkbox" id="ebl_export_show_ibu" name="ebl_export_show_ibu" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_ibu', true));  ?>/>
-  </div>
-  <div class="ebl-field">
-    <p class="label">
-    <label for="ebl-abv">Show Beer ABV</label><br>
-    <?php _e( "Show the Alcohol by Volume (ABV) of beer in beer menu"); ?>
-    </p>
-    <input type="checkbox" id="ebl_export_show_abv" name="ebl_export_show_abv" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_abv', true));  ?>/>
-  </div>
-  <div class="ebl-field">
-    <p class="label">
-    <label for="ebl-abv">Show Beer Price</label><br>
-    <?php _e( "Show the price of beer in beer menu"); ?>
-    </p>
-    <input type="checkbox" id="ebl_export_show_price" name="ebl_export_show_price" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_price', true));  ?>/>
   </div>
   <div class="ebl-field">
     <p class="label">
@@ -239,6 +159,98 @@ function ebl_menu_meta_box($object, $box) { ?>
   </div>
 <?php  }
 
+//---THE MENU SETTINGS META BOX FIELDS---//
+function ebl_menu_settings_meta_box($object, $box){?>
+  <div class="ebl-field ebl-full-width">
+    <p class="label">
+    <label for="ebl-abv">Override Beers Per Column</label><br>
+    <?php _e( "Specify the number of beers per column (Uses template default if blank)"); ?>
+    </p>
+		<input type="number" id="ebl_beers_per_column" name="ebl_beers_per_column" value="<?php echo esc_attr(get_post_meta( $object->ID, 'ebl_beers_per_column', true)); ?>" />
+  </div>
+  <div class="ebl-field ebl-full-width">
+    <p class="label">
+    <label for="ebl-abv">CSS Overrides</label><br>
+    <?php _e( "Add any custom CSS for this menu here."); ?>
+    </p>
+		<textarea class="widefat" id="ebl_export_menu_css" name="ebl_export_menu_css"><?php echo esc_attr(get_post_meta( $object->ID, 'ebl_export_menu_css', true)); ?></textarea>
+  </div>
+  <div class="ebl-field ebl-full-width">
+    <p class="label">
+    <label for="ebl-abv">Sort By</label><br>
+    <?php _e( "Specify the Beer Value you want to sort by."); ?>
+    </p>
+        <select id="ebl_export_sortby" name="ebl_export_sortby">
+					<option value="ebl_abv" <?php selected( get_post_meta( $object->ID,'ebl_export_sortby',true), 'ebl_abv');?>>ABV</option>
+					<option value="ebl_ibu" <?php selected( get_post_meta( $object->ID,'ebl_export_sortby',true), 'ebl_ibu');?>>IBU</option>
+					<option value="ebl_og" <?php selected( get_post_meta( $object->ID,'ebl_export_sortby',true), 'ebl_og');?>>OG</option>
+					<option value="ebl_price" <?php selected( get_post_meta( $object->ID,'ebl_export_sortby',true), 'ebl_price');?>>Price</option>
+					<option value="name" <?php selected( get_post_meta( $object->ID,'ebl_export_sortby',true), 'name');?>>Name</option>
+				</select>
+  </div>
+  <div class="ebl-field ebl-full-width">
+    <p class="label">
+    <label for="ebl-abv">Sort Order</label><br>
+    <?php _e( "Specify the order of the menu.  Ascending (A-Z), or Descending (Z-A)"); ?>
+    </p>
+        <select id="ebl_export_sort_order" name="ebl_export_sort_order">
+					<option value="asc" <?php selected( get_post_meta( $object->ID, 'ebl_export_sort_order', true), 'asc');?>>Ascending</option>
+					<option value="desc" <?php selected( get_post_meta( $object->ID, 'ebl_export_sort_order', true), 'desc');?>>Descending</option>
+				</select>
+  </div>
+
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Show Beer Image</label><br>
+    <?php _e( "Show image of beer in beer menu"); ?>
+    </p>
+    <input type="checkbox" id="ebl_export_show_img" name="ebl_export_show_img" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_img', true));  ?>/>
+  </div>
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Show Beer Description</label><br>
+    <?php _e( "Show the description (also known as the excerpt) of beer in beer menu"); ?>
+    </p>
+    <input type="checkbox" id="ebl_export_show_description" name="ebl_export_show_description" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_description', true));  ?>/>
+  </div>
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Show Beer Style</label><br>
+    <?php _e( "Show the style of beer in beer menu"); ?>
+    </p>
+    <input type="checkbox" id="ebl_export_show_style" name="ebl_export_show_style" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_style', true));  ?>/>
+  </div>
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Show Beer OG</label><br>
+    <?php _e( "Show the Original Gravity (OG) of beer in beer menu"); ?>
+    </p>
+    <input type="checkbox" id="ebl_export_show_og" name="ebl_export_show_og" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_og', true));  ?>/>
+  </div>
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Show Beer IBU</label><br>
+    <?php _e( "Show the International Bittering Units (IBU) of beer in beer menu"); ?>
+    </p>
+    <input type="checkbox" id="ebl_export_show_ibu" name="ebl_export_show_ibu" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_ibu', true));  ?>/>
+  </div>
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Show Beer ABV</label><br>
+    <?php _e( "Show the Alcohol by Volume (ABV) of beer in beer menu"); ?>
+    </p>
+    <input type="checkbox" id="ebl_export_show_abv" name="ebl_export_show_abv" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_abv', true));  ?>/>
+  </div>
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Show Beer Price</label><br>
+    <?php _e( "Show the price of beer in beer menu"); ?>
+    </p>
+    <input type="checkbox" id="ebl_export_show_price" name="ebl_export_show_price" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_price', true));  ?>/>
+  </div>
+<?php
+}
+
 //---THE MENU TEMPLATE META BOX FIELDS---//
 function ebl_menu_template_meta_box($object, $box) { ?>
   <?php wp_nonce_field( basename( __FILE__ ), 'ebl_beer_nonce' ); ?>
@@ -249,6 +261,19 @@ function ebl_menu_template_meta_box($object, $box) { ?>
 					<option value="<?php echo $template->slug; ?>" <?php selected( get_post_meta( $object->ID, 'ebl_menu_template', true), $template->slug);?>><?php echo $template->name; ?></option>
 					<?php }; ?>
 				</select>
+  </div>
+<?php  }
+
+//---THE MENU VISIBILITY META BOX FIELDS---//
+function ebl_menu_visibility_meta_box($object, $box) { ?>
+  <?php wp_nonce_field( basename( __FILE__ ), 'ebl_beer_nonce' ); ?>
+  <div class="ebl-field ebl-full-width">
+    <p>Leave this set to "private" if you don't want the general public to see the menu.</p>
+    <p>Warning: Know your local law - it is usually not a good idea to show pricing of alcohol to the general public.</p>
+    <select id="ebl_menu_public" name="ebl_menu_public">
+     <option value="ebl_private" <?php selected( get_post_meta( $object->ID, 'ebl_menu_public', true), "ebl_private");?>>Private</option>
+     <option value="ebl_public" <?php selected( get_post_meta( $object->ID, 'ebl_menu_public', true), "ebl_public");?>>Public</option>
+    </select>
   </div>
 <?php  }
 
@@ -336,6 +361,7 @@ function ebl_save_menu_meta($post_id, $post) {
 	new ebl_menu_meta_item('ebl_export_sortby','ebl_export_sortby'),
 	new ebl_menu_meta_item('ebl_beers_per_column','ebl_beers_per_column'),
 	new ebl_menu_meta_item('ebl_beers_to_filter','ebl_beers_to_filter'),
+	new ebl_menu_meta_item('ebl_menu_public','ebl_menu_public'),
 	];
 
 	//--- PUSHES STYLE TAXONOMY TO ARRAY ---//
@@ -420,27 +446,54 @@ function ebl_save_menu_template_meta($post_id, $post) {
 
 function ebl_add_post_meta_boxes() {
   add_meta_box(
-    'ebl-beer-info',                        // Unique ID
+    'ebl-beer-info',                          // Unique ID
     esc_html__( 'Beer Info' ),                // Title
-    'ebl_beer_meta_box',                    // Callback function
+    'ebl_beer_meta_box',                      // Callback function
     'beers',                                  // Admin page (or post type)
     'normal',                                 // Context
     'default'                                 // Priority
   );
   
   add_meta_box(
-    'ebl-menu-info',                        // Unique ID
+    'ebl-menu-info',                          // Unique ID
     esc_html__( 'Menu Info' ),                // Title
-    'ebl_menu_meta_box',                    // Callback function
+    'ebl_menu_meta_box',                      // Callback function
+    'menus',                                  // Admin page (or post type)
+    'normal',                                 // Context
+    'default'                                 // Priority
+  );
+    
+  add_meta_box(
+    'ebl-menu-filters',                       // Unique ID
+    esc_html__( 'Beer Filter Options' ),      // Title
+    'ebl_menu_filters_meta_box',              // Callback function
+    'menus',                                  // Admin page (or post type)
+    'normal',                                 // Context
+    'default'                                 // Priority
+  );
+     
+  add_meta_box(
+    'ebl-menu-settings',                      // Unique ID
+    esc_html__( 'Beer Menu Settings' ),       // Title
+    'ebl_menu_settings_meta_box',             // Callback function
     'menus',                                  // Admin page (or post type)
     'normal',                                 // Context
     'default'                                 // Priority
   );
   
   add_meta_box(
-    'ebl-menu-template',                    // Unique ID
+    'ebl-menu-template',                      // Unique ID
     esc_html__( 'Menu Template' ),            // Title
-    'ebl_menu_template_meta_box',           // Callback function
+    'ebl_menu_template_meta_box',             // Callback function
+    'menus',                                  // Admin page (or post type)
+    'side',                                   // Context
+    'default'                                 // Priority
+  );
+  
+  add_meta_box(
+    'ebl-menu-visibility',                    // Unique ID
+    esc_html__( 'Menu Visibility' ),          // Title
+    'ebl_menu_visibility_meta_box',           // Callback function
     'menus',                                  // Admin page (or post type)
     'side',                                   // Context
     'default'                                 // Priority
