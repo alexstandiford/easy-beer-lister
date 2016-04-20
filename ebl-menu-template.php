@@ -5,8 +5,8 @@ function ebl_default_menu_scripts(){
 }
 add_action('ebl_menu_head_scripts','ebl_default_menu_scripts');
 
-ebl_menu_head();
 $ebl_menu = new ebl_menu;
+ebl_menu_head($ebl_menu);
 ?>
 <header>
   <h1><?php echo get_the_title(); ?></h1>
