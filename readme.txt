@@ -4,7 +4,7 @@ Donate link: http://www.easybeerlister.com/recommends/donate
 Tags: beer, beers, brewery, untappd, beer menu, bar, bartender, bars, restaurant, brewer, craft beer, craft bar, beer import
 Requires at least: 3.0.1
 Tested up to: 4.5
-Stable tag: 1.10
+Stable tag: 1.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,12 @@ Since Easy Beer Lister is designed to work with as many themes as possible, I cr
 * Added extensions page
 * General code clean-up
 
+= 1.12 =
+* Significant improvements to interface
+* Added featured image for menus
+* Added default image option in settings page for menus
+* Added option to make a menu public
+
 == Upgrade Notice ==
 
 = 1.01 =
@@ -107,3 +113,6 @@ Huge functionality upgrade. You must upgrade in-order to be supported by new the
 
 = 1.10 =
 This update improves menu filtering functionality.
+
+= 1.12 =
+Menu publicity setting is only available from this version on.
