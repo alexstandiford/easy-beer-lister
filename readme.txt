@@ -66,6 +66,15 @@ Be sure to remove the default margins when you print your menu!
 
 Since Easy Beer Lister is designed to work with as many themes as possible, I created a way to adjust this hover.  Go to settings->Easy Beer Lister settings and set some offset values until you get it right.  Use trial and error until it looks good
 
+= When I click on a specific beer, I get a "not found" page =
+
+You probably need to flush your permalinks.  Follow these steps:
+
+1. Go to settings>>>permalinks
+2. If your permalink structure is set to Custom Structure, copy the custom structure field to your clipboard
+3. Select a different permalink structure and click save
+4. paste your permalink structure back into the custom structure field and click save
+
 == Screenshots ==
 
 1. Beers get their own separate UI
