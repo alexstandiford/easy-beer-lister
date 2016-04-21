@@ -19,7 +19,8 @@ function ebl_options_tabs(){
        $active_tab = $_GET['tab'];
   }?>
   <h2 class="nav-tab-wrapper">
-      <a href="?page=ebl-settings&tab=ebl_options" class="nav-tab <?php echo $active_tab == 'ebl_options' || $active_tab == null ? 'nav-tab-active' : ''; ?>">Shortcode Options</a>
+      <a href="?page=ebl-settings&tab=ebl_options" class="nav-tab <?php echo $active_tab == 'ebl_options' || $active_tab == null ? 'nav-tab-active' : ''; ?>">Beer Page Options</a>
+      <a href="?page=ebl-settings&tab=ebl_shortcode_options" class="nav-tab <?php echo $active_tab == 'ebl_shortcode_options' ? 'nav-tab-active' : ''; ?>">Shortcode Options</a>
       <a href="?page=ebl-settings&tab=ebl_menu_options" class="nav-tab <?php echo $active_tab == 'ebl_menu_options' ? 'nav-tab-active' : '';?>">Beer Menu Options</a>
       <?php do_action('ebl_add_options_tab',$active_tab); ?>
   </h2>
@@ -32,7 +33,11 @@ function ebl_options_tabs(){
     <div class="ebl-wrapper">
       <form method="post" action="options.php">
       <?php
-      if( $active_tab == 'ebl_options' || $active_tab == null ) {
+      if($active_tab == 'ebl_options' || $active_tab == null){
+        settings_fields("ebl_beer_page_options");
+        do_settings_sections("ebl-beer-page-options");
+      }
+      elseif( $active_tab == 'ebl_shortcode_options') {
         settings_fields("ebl_settings");
         do_settings_sections("ebl-settings");
       }
