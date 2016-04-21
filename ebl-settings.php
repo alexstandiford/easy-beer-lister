@@ -65,8 +65,55 @@ function ebl_menu_settings_register(){
   add_settings_field("ebl_default_menu_image","Default image for menus (usually your logo)","ebl_default_menu_image","ebl-menu-options","ebl_menu_options");
   register_setting("ebl_menu_options", "ebl_default_menu_image");
 }
-
 add_action("admin_init","ebl_menu_settings_register");
+
+function ebl_beer_page_settings_register(){
+  add_settings_section("ebl_beer_page_options","Default Beer Page Options","ebl_beer_page_settings_header","ebl-beer-page-options");
+  add_settings_field("ebl_beer_page_wrapper_class","Beer heading wrapper class","ebl_beer_page_wrapper_class","ebl-beer-page-options","ebl_beer_page_options");
+  add_settings_field("ebl_beer_page_heading_wrapper_class","Beer heading wrapper class","ebl_beer_page_heading_wrapper_class","ebl-beer-page-options","ebl_beer_page_options");
+  add_settings_field("ebl_beer_page_content_wrapper","Beer content wrapper class","ebl_beer_page_content_wrapper","ebl-beer-page-options","ebl_beer_page_options");
+  add_settings_field("ebl_beer_page_sidebar_wrapper","Beer sidebar wrapper class","ebl_beer_page_sidebar_wrapper","ebl-beer-page-options","ebl_beer_page_options");
+  add_settings_field("ebl_beer_page_sidebar","Sidebar to use on beer page","ebl_beer_page_sidebar","ebl-beer-page-options","ebl_beer_page_options");
+  
+  register_setting("ebl_beer_page_options","ebl_beer_page_wrapper_class");
+  register_setting("ebl_beer_page_options","ebl_beer_page_heading_wrapper_class");
+  register_setting("ebl_beer_page_options","ebl_beer_page_content_wrapper");
+  register_setting("ebl_beer_page_options","ebl_beer_page_sidebar_wrapper");
+  register_setting("ebl_beer_page_options","ebl_beer_page_sidebar");
+}
+add_action("admin_init","ebl_beer_page_settings_register");
+
+function ebl_beer_page_heading_wrapper_class(){?>
+  <label for="ebl_beer_page_heading_wrapper_class">Leave blank to use default class</label><br>
+  <input type="text" id="ebl_beer_page_heading_wrapper_class" name="ebl_beer_page_heading_wrapper_class" value="<?php echo get_option('ebl_beer_page_heading_wrapper_class'); ?>">
+<?php }
+
+function ebl_beer_page_wrapper_class(){?>
+  <label for="ebl_beer_page_heading_wrapper_class">Leave blank to use default class</label><br>
+  <input type="text" id="ebl_beer_page_wrapper_class" name="ebl_beer_page_wrapper_class" value="<?php echo get_option('ebl_beer_page_wrapper_class'); ?>">
+<?php }
+
+function ebl_beer_page_content_wrapper(){?>
+  <label for="ebl_beer_page_content_wrapper">Leave blank to use default class</label><br>
+  <input type="text" id="ebl_beer_page_content_wrapper" name="ebl_beer_page_content_wrapper" value="<?php echo get_option('ebl_beer_page_content_wrapper'); ?>">
+<?php }
+
+function ebl_beer_page_sidebar_wrapper(){?>
+  <label for="ebl_beer_page_sidebar_wrapper">Leave blank to use default class</label><br>
+  <input type="text" id="ebl_beer_page_sidebar_wrapper" name="ebl_beer_page_sidebar_wrapper" value="<?php echo get_option('ebl_beer_page_sidebar_wrapper'); ?>">
+<?php }
+
+function ebl_beer_page_sidebar(){?>
+  <label for="ebl_beer_page_sidebar">Specify the sidebar to use in your template if you don't want to use the default</label><br>
+  <select id="ebl_beer_page_sidebar" name="ebl_beer_page_sidebar">
+     <option value="ebl-no-widget">No Widget</option>
+     <option value="default">Use Default Widget</option>
+  <?php foreach($GLOBALS['wp_registered_sidebars'] as $registered_sidebar){?>
+     <option value="<?php echo $registered_sidebar['id']; ?>" <?php selected(get_option('ebl_beer_page_sidebar'), $registered_sidebar['id']);?>><?php echo $registered_sidebar['name']; ?></option>
+ <?php }?>
+  </select>
+<?php }
+
 function ebl_settings_register(){
     //section name, display name, callback to print description of section, page to which section is attached.
     add_settings_section("ebl_settings", "<code>[beer]</code> Behavior Options", "ebl_display_header_options_content", "ebl-settings");
@@ -92,8 +139,11 @@ function ebl_settings_register(){
 
     do_action('ebl_addon_settings_fields');
 }
-//this action is executed after loads its core, after registering all actions, finds out what page to execute and before producing the actual output(before calling any action callback)
 add_action("admin_init", "ebl_settings_register");
+
+function ebl_beer_page_settings_header(){
+  echo "Adjust the settings for default beer page template";
+}
 
 function ebl_default_menu_image(){
   wp_enqueue_script('settings-media-uploader.js', plugin_dir_url(__FILE__).'js/settings-media-uploader.js');
