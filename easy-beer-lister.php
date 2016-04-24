@@ -2,7 +2,7 @@
 /*
 Plugin Name: Easy Beer Lister
 Description: Manage Your Beers, Beer Pairings, and What's on Tap Easily
-Version:     1.12
+Version:     1.2
 Author:      Alex Standiford
 Author URI:  http://www.easybeerlister.com
 */
@@ -291,6 +291,11 @@ function ebl_settings_sidebar_cta(){?>
 		</div>
 <?php }
 add_action('ebl_settings_sidebar', 'ebl_settings_sidebar_cta');
+
+/*------ STORES PATH OF PLUGIN FOR ADDONS ------*/
+function ebl_plugin_path(){
+  return plugin_dir_path(__FILE__);
+}
 
 include_once(dirname(__FILE__).'/fields.php');
 include_once(dirname(__FILE__).'/functions.php');
