@@ -133,3 +133,6 @@ Menu publicity setting is only available from this version on.
 
 = 1.20 =
 Added a ton of filters and hooks to the default beer page.
+
+= 1.30 =
+Compatibility update for theme addons.  Update immediately.
