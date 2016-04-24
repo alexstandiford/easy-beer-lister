@@ -4,7 +4,7 @@ Donate link: http://www.easybeerlister.com/recommends/donate
 Tags: beer, beers, brewery, untappd, beer menu, bar, bartender, bars, restaurant, brewer, craft beer, craft bar, beer import
 Requires at least: 3.0.1
 Tested up to: 4.5
-Stable tag: 1.12
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -130,3 +130,6 @@ This update improves menu filtering functionality.
 
 = 1.12 =
 Menu publicity setting is only available from this version on.
+
+= 1.20 =
+Added a ton of filters and hooks to the default beer page.
