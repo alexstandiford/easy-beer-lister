@@ -29,7 +29,7 @@ function ebl_get_beer_info($taxonomy,$info = 'name',$post_id = null){
 }
 
 /*--- SPITS OUT BEER INFORMATION ---*/
-function ebl_beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false){
+function ebl_beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false, $link = true){
   if(taxonomy_exists($taxonomy)){
   $names = ebl_get_beer_info($taxonomy,'name',$post_id);
   $ids = ebl_get_beer_info($taxonomy,'term_id',$post_id);
@@ -44,9 +44,9 @@ function ebl_beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false){
       $result .= '<'.$tag.' class="'.$taxonomy.' ';
       $result .= do_action( 'ebl_beer_info_class' );
       $result .= '">';
-      $result .=  '<a href="'.get_term_link($ids[$i],$taxonomy).'">';
+      $result .=  $link == true ? '<a href="'.get_term_link($ids[$i],$taxonomy).'">' : '';
       $result .=    $name;
-      $result .=  '</a>';
+      $result .=  $link == true ? '</a>' : '';
       $result .= '</'.$tag.'>';
       $result .= do_action('ebl_beer_info_after_tag');
       $i++;
