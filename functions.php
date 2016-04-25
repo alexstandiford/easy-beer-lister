@@ -184,6 +184,30 @@ if(get_option('ebl_js_hover') == FALSE){
 	}
   $e .='<figure id="beer-'.$bbcount.'-popup" class="beer-popup hidden" style="transform:translate('.$x.'px,'.$y.'px);">';
   $e .=  '<h2>'.$post_title.'</h2>';
+  //---Brewer Info---//
+   if(get_option('hide_brewer_name') == false || get_option('hide_brewer_city') == false || get_option('hide_brewer_state') == false){
+     $e .='<p><em>';
+    if(ebl_get_field('ebl_brewer_name',$post_id) != null  &&  get_option('ebl_hide_brewer_name') ==  null){
+      $e .= ebl_get_field('ebl_brewer_name',$post_id);
+    }
+
+    if(ebl_get_field('ebl_brewer_city',$post_id) != null  &&  ebl_get_field('ebl_brewer_name',$post_id) != null && get_option('ebl_hide_brewer_city') ==  null && get_option('ebl_hide_brewer_name') ==  null){
+      $e .= ' - ';
+    }
+
+    if(ebl_get_field('ebl_brewer_city',$post_id) != null  &&  get_option('ebl_hide_brewer_city') == null){
+      $e .= ebl_get_field('ebl_brewer_city',$post_id);
+    }
+
+    if(ebl_get_field('ebl_brewer_state',$post_id) != null &&  ebl_get_field('ebl_brewer_city',$post_id) != null && get_option('ebl_hide_brewer_city') ==  null && get_option('ebl_hide_brewer_state') ==  null){
+      $e .= ', ';
+    }
+
+    if(ebl_get_field('ebl_brewer_state',$post_id) != null &&  get_option('ebl_hide_brewer_state') == null){
+      $e .= ebl_get_field('ebl_brewer_state',$post_id);
+    }
+     $e .='</em></p>';
+   }
   if(get_option('ebl_hide_ontap_msg') != 1 && ebl_beer_is_on_tap($post_id)){
   $e .=  '<h3>'.$on_tap_msg.'</h3>';
   };
