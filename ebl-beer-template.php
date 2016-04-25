@@ -16,6 +16,12 @@ do_action('ebl_before_beer_wrapper');
             <div class="<?php echo apply_filters('ebl_beer_heading_class', 'content-heading'); ?>">
               <?php do_action('ebl_before_beer_title'); ?>
                 <h2><?php the_title();?></h2>
+
+                <?php if(function_exists('ebl_beer_info')){
+                      if(ebl_beer_info_exists('ebl_brewer_name')){  ?>
+                  <p><?php ebl_beer_info('ebl_brewer_name'); ?> - <?php ebl_beer_info('ebl_brewer_city'); ?>, <?php ebl_beer_info('ebl_brewer_state'); ?> </p>
+                <?php };};?>
+
                 <?php if(function_exists('ebl_beer_info')){ebl_beer_info('style','h2',null,true);};?>
                 <?php if(function_exists('ebl_beer_is_on_tap')){
                 if(ebl_beer_is_on_tap()){ ?>

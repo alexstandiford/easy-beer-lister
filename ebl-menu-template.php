@@ -32,8 +32,12 @@ $beer_height = 100 / $ebl_menu->beersPerColumn;
           <span class="price"> - 
              $<?php ebl_beer_info('ebl_price');?>
           </span></h1>
-          <?php }; ?>
-          <?php if($ebl_menu->filter['show_style'] == TRUE){?>
+          <?php };
+          //--- BREWERY INFO ---//
+          if($ebl_menu->filter['show_brewer_name'] == true || $ebl_menu->filter['show_brewer_city'] == true || $ebl_menu->filter['show_brewer_state'] == true){?>
+          <h2><?php $ebl_menu->brewery_info(); ?></h2>
+          <?php };
+          if($ebl_menu->filter['show_style'] == TRUE){?>
           <em><?php ebl_beer_info('style',null,null,true); ?></em>
           <?php }; ?>
           <?php
