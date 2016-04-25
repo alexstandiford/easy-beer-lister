@@ -61,7 +61,7 @@ function ebl_beer_meta_box($object, $box) {
     </p>
 		<input class="widefat" type="text" step="0.01" name="ebl-video" id="ebl-video" value="<?php echo esc_attr(get_post_meta( $object->ID, 'ebl_video', true)); ?>" />
   </div>
-	<div class="ebl-field">
+  <div class="ebl-field">
     <p class="label">
     <label for="ebl-abv">Image Gallery</label><br>
     <?php _e( "Select Images of this beer"); wp_enqueue_media();?>
@@ -70,6 +70,32 @@ function ebl_beer_meta_box($object, $box) {
 		<input type="button" class="button" name="ebl_gallery_button" id="upload_image_button" value="<?php _e( 'Upload/Select images' ); ?>" />
   </div>
 <?php  }
+
+//---THE BEER PAGE BREWER INFO META BOX FIELDS---//
+function ebl_beer_brewer_info_meta_box($object, $box){?>
+ <em>Not required, but useful for craft bars who serve beer from different locations</em>
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Brewery Name</label><br>
+    <?php _e( "Name of the Brewery this beer comes from."); ?>
+    </p>
+		<input class="widefat" type="text" name="ebl-brewer-name" id="ebl-brewer-name" value="<?php echo esc_attr(get_post_meta( $object->ID, 'ebl_brewer_name', true)); ?>" />
+  </div>
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Brewery City</label><br>
+    <?php _e( "City of the Brewery this beer comes from."); ?>
+    </p>
+		<input class="widefat" type="text" name="ebl-brewer-city" id="ebl-brewer-city" value="<?php echo esc_attr(get_post_meta( $object->ID, 'ebl_brewer_city', true)); ?>" />
+  </div>
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Brewery State</label><br>
+    <?php _e( "State of the Brewery this beer comes from."); ?>
+    </p>
+		<input class="widefat" type="text" name="ebl-brewer-state" id="ebl-brewer-state" value="<?php echo esc_attr(get_post_meta( $object->ID, 'ebl_brewer_state', true)); ?>" />
+  </div>
+<?php }
 
 //---THE MENU PAGE META BOX FIELDS---//
 function ebl_menu_meta_box($object, $box) { ?>
@@ -234,6 +260,31 @@ function ebl_menu_settings_meta_box($object, $box){?>
     </p>
     <input type="checkbox" id="ebl_export_show_ibu" name="ebl_export_show_ibu" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_ibu', true));  ?>/>
   </div>
+
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Show Brewer Name</label><br>
+    <?php _e( "Show the name of the brewery that each beer came from."); ?>
+    </p>
+    <input type="checkbox" id="ebl_export_show_brewer_name" name="ebl_export_show_brewer_name" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_brewer_name', true));  ?>/>
+  </div>
+
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Show Brewer City</label><br>
+    <?php _e( "Show the city that each beer came from."); ?>
+    </p>
+    <input type="checkbox" id="ebl_export_show_brewer_city" name="ebl_export_show_brewer_city" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_brewer_city', true));  ?>/>
+  </div>
+
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Show Brewer State</label><br>
+    <?php _e( "Show the state that each beer came from."); ?>
+    </p>
+    <input type="checkbox" id="ebl_export_show_brewer_state" name="ebl_export_show_brewer_state" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_brewer_state', true));  ?>/>
+  </div>
+
   <div class="ebl-field">
     <p class="label">
     <label for="ebl-abv">Show Beer ABV</label><br>
@@ -241,6 +292,7 @@ function ebl_menu_settings_meta_box($object, $box){?>
     </p>
     <input type="checkbox" id="ebl_export_show_abv" name="ebl_export_show_abv" value="1" <?php echo checked(1, get_post_meta( $object->ID, 'ebl_export_show_abv', true));  ?>/>
   </div>
+
   <div class="ebl-field">
     <p class="label">
     <label for="ebl-abv">Show Beer Price</label><br>
@@ -306,6 +358,9 @@ function ebl_save_beer_meta($post_id, $post) {
 	new ebl_meta_item('ebl_untappd-url','ebl-untappd-url'),
 	new ebl_meta_item('ebl_video','ebl-video'),
 	new ebl_meta_item('ebl_gallery','ebl-gallery'),
+	new ebl_meta_item('ebl_brewer_name','ebl-brewer-name'),
+	new ebl_meta_item('ebl_brewer_city','ebl-brewer-city'),
+	new ebl_meta_item('ebl_brewer_state','ebl-brewer-state'),
 	];
 	foreach($metas as $meta){
 	$meta->oldValue = get_post_meta( $post_id, $meta->theKey, true );
@@ -362,6 +417,9 @@ function ebl_save_menu_meta($post_id, $post) {
 	new ebl_menu_meta_item('ebl_beers_per_column','ebl_beers_per_column'),
 	new ebl_menu_meta_item('ebl_beers_to_filter','ebl_beers_to_filter'),
 	new ebl_menu_meta_item('ebl_menu_public','ebl_menu_public'),
+	new ebl_menu_meta_item('ebl_export_show_brewer_name','ebl_export_show_brewer_name'),
+	new ebl_menu_meta_item('ebl_export_show_brewer_city','ebl_export_show_brewer_city'),
+	new ebl_menu_meta_item('ebl_export_show_brewer_state','ebl_export_show_brewer_state'),
 	];
 
 	//--- PUSHES STYLE TAXONOMY TO ARRAY ---//
@@ -454,6 +512,15 @@ function ebl_add_post_meta_boxes() {
     'default'                                 // Priority
   );
   
+    add_meta_box(
+    'ebl-beer-brewer-info',                   // Unique ID
+    esc_html__( 'Brewery Info' ),             // Title
+    'ebl_beer_brewer_info_meta_box',          // Callback function
+    'beers',                                  // Admin page (or post type)
+    'normal',                                 // Context
+    'default'                                 // Priority
+  );
+
   add_meta_box(
     'ebl-menu-info',                          // Unique ID
     esc_html__( 'Menu Info' ),                // Title
