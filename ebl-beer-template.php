@@ -18,8 +18,18 @@ do_action('ebl_before_beer_wrapper');
                 <h2><?php the_title();?></h2>
 
                 <?php if(function_exists('ebl_beer_info')){
-                      if(ebl_beer_info_exists('ebl_brewer_name')){  ?>
-                  <p><?php ebl_beer_info('ebl_brewer_name'); ?> - <?php ebl_beer_info('ebl_brewer_city'); ?>, <?php ebl_beer_info('ebl_brewer_state'); ?> </p>
+                      if(ebl_beer_info_exists('ebl_brewer_name') ||ebl_beer_info_exists('ebl_brewer_city') ||ebl_beer_info_exists('ebl_brewer_state')){  ?>
+                  <p>
+                    <?php ebl_beer_info('ebl_brewer_name');
+                    if(ebl_beer_info_exists('ebl_brewer_name') && ebl_beer_info_exists('ebl_brewer_city')){
+                        echo ' - ';
+                      };
+                    ebl_beer_info('ebl_brewer_city');
+                    if(ebl_beer_info_exists('ebl_brewer_city') && ebl_beer_info_exists('ebl_brewer_state')){
+                      echo ', ';
+                    };
+                    ebl_beer_info('ebl_brewer_state'); ?>
+                  </p>
                 <?php };};?>
 
                 <?php if(function_exists('ebl_beer_info')){ebl_beer_info('style','h2',null,true);};?>
