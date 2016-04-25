@@ -5,22 +5,25 @@ $ebl_menu_templates = [];
 class ebl_menu{
   public function __construct($column_default = 10){
     $this->filter = [
-      'sort'             => get_post_meta(get_the_ID(),'ebl_export_sort_order',true),
-      'sortby'           => get_post_meta(get_the_ID(),'ebl_export_sortby',true),
-      'on-tap'           => get_post_meta(get_the_ID(),'ebl_export_ontap',true),
-      'pairings'         => get_post_meta(get_the_ID(),'ebl_export_pairings',true),
-      'tags'             => ebl_parse_taxonomy_checkbox('tags'),
-      'style'            => ebl_parse_taxonomy_checkbox('style'),
-      'availability'     => ebl_parse_taxonomy_checkbox('availability'),
-      'show_description' => get_post_meta(get_the_ID(),'ebl_export_show_description',true),
-      'show_price'       => get_post_meta(get_the_ID(),'ebl_export_show_price',true),
-      'show_image'       => get_post_meta(get_the_ID(),'ebl_export_show_img',true),
-      'show_ibu'         => get_post_meta(get_the_ID(),'ebl_export_show_ibu',true),
-      'show_abv'         => get_post_meta(get_the_ID(),'ebl_export_show_abv',true),
-      'show_og'          => get_post_meta(get_the_ID(),'ebl_export_show_og',true),
-      'show_style'       => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
-      'beers_to_exclude' => get_post_meta(get_the_ID(),'ebl_beers_to_filter',true),
-      'is_menu_public'   => get_post_meta(get_the_ID(),'ebl_menu_public',true) == 'ebl_public' ? true : false,
+      'sort'                 => get_post_meta(get_the_ID(),'ebl_export_sort_order',true),
+      'sortby'               => get_post_meta(get_the_ID(),'ebl_export_sortby',true),
+      'on-tap'               => get_post_meta(get_the_ID(),'ebl_export_ontap',true),
+      'pairings'             => get_post_meta(get_the_ID(),'ebl_export_pairings',true),
+      'tags'                 => ebl_parse_taxonomy_checkbox('tags'),
+      'style'                => ebl_parse_taxonomy_checkbox('style'),
+      'availability'         => ebl_parse_taxonomy_checkbox('availability'),
+      'show_description'     => get_post_meta(get_the_ID(),'ebl_export_show_description',true),
+      'show_price'           => get_post_meta(get_the_ID(),'ebl_export_show_price',true),
+      'show_image'           => get_post_meta(get_the_ID(),'ebl_export_show_img',true),
+      'show_ibu'             => get_post_meta(get_the_ID(),'ebl_export_show_ibu',true),
+      'show_abv'             => get_post_meta(get_the_ID(),'ebl_export_show_abv',true),
+      'show_og'              => get_post_meta(get_the_ID(),'ebl_export_show_og',true),
+      'show_style'           => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
+      'show_brewer_name'     => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
+      'show_brewer_city'     => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
+      'show_brewer_state'    => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
+      'beers_to_exclude'     => get_post_meta(get_the_ID(),'ebl_beers_to_filter',true),
+      'is_menu_public'       => get_post_meta(get_the_ID(),'ebl_menu_public',true) == 'ebl_public' ? true : false,
     ];
 		$this->columnDefault = $column_default;
 		$this->beerColumnOverride = get_post_meta(get_the_ID(),'ebl_beers_per_column',true);
@@ -41,7 +44,19 @@ class ebl_menu{
       $this->thumbnail = get_option('ebl_default_menu_image');
     }
 	}
-	
+	//Batch Imports Brewery Info
+   public function brewery_info(){
+    ebl_beer_info_exists('ebl_brewer_name')  &&  $this->filter['show_brewer_name'] ==  true ? ebl_beer_info('ebl_brewer_name') : '';
+    if(ebl_beer_info_exists('ebl_brewer_city')  &&  ebl_beer_info_exists('ebl_brewer_name') && $this->filter['show_brewer_name'] ==  true && $this->filter['show_brewer_city'] == true){
+      echo ' - ';
+    }
+    ebl_beer_info_exists('ebl_brewer_city')  &&  $this->filter['show_brewer_city'] ==  true ? ebl_beer_info('ebl_brewer_city') : '';
+    if(ebl_beer_info_exists('ebl_brewer_state') &&  ebl_beer_info_exists('ebl_brewer_city') && $this->filter['show_brewer_city'] ==  true && $this->filter['show_brewer_state'] == true){
+      echo ', ';
+    }
+    ebl_beer_info_exists('ebl_brewer_state') &&  $this->filter['show_brewer_state'] == true ? ebl_beer_info('ebl_brewer_state') : '';
+   }
+
 	//Imports beers into WordPress DB
 	public function args(){
        $args = [
