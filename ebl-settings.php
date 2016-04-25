@@ -124,6 +124,9 @@ function ebl_settings_register(){
     add_settings_field("ebl_hide_ibu", "Hide IBU from <code>[beer]</code> shortcode", "ebl_hide_ibu", "ebl-settings", "ebl_settings");
     add_settings_field("ebl_hide_abv", "Hide ABV from <code>[beer]</code> shortcode", "ebl_hide_abv", "ebl-settings", "ebl_settings");
     add_settings_field("ebl_hide_og", "Hide OG from <code>[beer]</code> shortcode", "ebl_hide_og", "ebl-settings", "ebl_settings");
+    add_settings_field("ebl_hide_brewer_name", "Hide brewer name from <code>[beer]</code> shortcode", "ebl_hide_brewer_name", "ebl-settings", "ebl_settings");
+    add_settings_field("ebl_hide_brewer_city", "Hide brewer city from <code>[beer]</code> shortcode", "ebl_hide_brewer_city", "ebl-settings", "ebl_settings");
+    add_settings_field("ebl_hide_brewer_state", "Hide brewer state from <code>[beer]</code> shortcode", "ebl_hide_brewer_state", "ebl-settings", "ebl_settings");
     add_settings_field("ebl_hide_ontap_msg", "Hide On Tap message from <code>[beer]</code> shortcode", "ebl_hide_ontap_msg", "ebl-settings", "ebl_settings");
     add_settings_field("ebl_js_hover_x", "Hover X offset", "ebl_js_hover_x", "ebl-settings", "ebl_settings");
     add_settings_field("ebl_js_hover_y", "Hover Y offset", "ebl_js_hover_y", "ebl-settings", "ebl_settings");
@@ -133,6 +136,9 @@ function ebl_settings_register(){
     register_setting("ebl_settings", "ebl_hide_ibu");
     register_setting("ebl_settings", "ebl_hide_abv");
     register_setting("ebl_settings", "ebl_hide_og");
+    register_setting("ebl_settings", "ebl_hide_brewer_name");
+    register_setting("ebl_settings", "ebl_hide_brewer_city");
+    register_setting("ebl_settings", "ebl_hide_brewer_state");
     register_setting("ebl_settings", "ebl_hide_ontap_msg");
     register_setting("ebl_settings", "ebl_js_hover_x");
     register_setting("ebl_settings", "ebl_js_hover_y");
@@ -203,6 +209,28 @@ function ebl_hide_og(){
         <input type="checkbox" id="ebl_hide_og" name="ebl_hide_og" value="1" <?php echo checked(1, get_option('ebl_hide_og'), false);  ?>/>
     <?php
 }
+//------ Show/Hide Beer Shortcode Details on Hover ------//
+function ebl_hide_brewer_name(){
+    //id and name of form element should be same as the setting name.
+    ?>
+        <input type="checkbox" id="ebl_hide_brewer_name" name="ebl_hide_brewer_name" value="1" <?php echo checked(1, get_option('ebl_hide_brewer_name'), false);  ?>/>
+    <?php
+}
+//------ Show/Hide Beer Shortcode Details on Hover ------//
+function ebl_hide_brewer_city(){
+    //id and name of form element should be same as the setting name.
+    ?>
+        <input type="checkbox" id="ebl_hide_brewer_city" name="ebl_hide_brewer_city" value="1" <?php echo checked(1, get_option('ebl_hide_brewer_city'), false);  ?>/>
+    <?php
+}
+//------ Show/Hide Beer Shortcode Details on Hover ------//
+function ebl_hide_brewer_state(){
+    //id and name of form element should be same as the setting name.
+    ?>
+        <input type="checkbox" id="ebl_hide_brewer_state" name="ebl_hide_brewer_state" value="1" <?php echo checked(1, get_option('ebl_hide_brewer_state'), false);  ?>/>
+    <?php
+}
+
 //------ Show/Hide Beer Shortcode Details on Hover ------//
 function ebl_hide_ontap_msg(){
     //id and name of form element should be same as the setting name.
