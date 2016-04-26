@@ -117,6 +117,10 @@ You probably need to flush your permalinks.  Follow these steps:
 * Added default image option in settings page for menus
 * Added option to make a menu public
 
+= 1.20 =
+* Added a ton of hooks to the beer page template
+* Added new fields
+
 == Upgrade Notice ==
 
 = 1.01 =
@@ -132,7 +136,4 @@ This update improves menu filtering functionality.
 Menu publicity setting is only available from this version on.
 
 = 1.20 =
-Added a ton of filters and hooks to the default beer page.
-
-= 1.30 =
 Compatibility update for theme addons.  Update immediately.
