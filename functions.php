@@ -106,6 +106,18 @@ function ebl_get_beer_data($data = null,$post_id = null){
   return $result;
 }
 
+/*--- SPITS OUT BEER DATA TAGS FOR JAVASCRIPT MAGIC ---*/
+function ebl_beer_data($data = null,$post_id = null){
+  $data = ebl_get_beer_data($data, $post_id);
+  foreach($data as $tag => $item){
+    $result .= ' data-';
+    $result .= $tag;
+    $result .= "=";
+    $result .= json_encode($item);
+  }
+  return $result;
+}
+
 /*--- SPITS OUT BEER VIDEO ---*/
 function ebl_beer_video(){
 	do_action('ebl_before_video');
