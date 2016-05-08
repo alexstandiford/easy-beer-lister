@@ -82,6 +82,30 @@ function ebl_beer_info_url($taxonomy,$post_id = null, $single = false){
 }
 }
 
+/*--- SPITS OUT ALL BEER DATA ---*/
+function ebl_get_beer_data($data = null,$post_id = null){
+  if(!is_array($data)){
+    if($data == null){
+      $data = [
+        'styles',
+        'pairing',
+        'availability',
+        'ebl_abv',
+        'ebl_ibu',
+        'ebl_og',
+        'ebl_price',
+      ];
+    }
+    else{
+      $data = [$data];
+    }
+  }
+  foreach($data as $taxonomy){
+    $result[$taxonomy] = ebl_get_beer_info($taxonomy);
+  }
+  return $result;
+}
+
 /*--- SPITS OUT BEER VIDEO ---*/
 function ebl_beer_video(){
 	do_action('ebl_before_video');
