@@ -23,6 +23,7 @@ class ebl_menu{
       'show_brewer_city'     => get_post_meta(get_the_ID(),'ebl_export_show_brewer_city',true),
       'show_brewer_state'    => get_post_meta(get_the_ID(),'ebl_export_show_brewer_state',true),
       'beers_to_exclude'     => get_post_meta(get_the_ID(),'ebl_beers_to_filter',true),
+      'beers_to_include'     => get_post_meta(get_the_ID(),'ebl_beers_to_include',true),
       'is_menu_public'       => get_post_meta(get_the_ID(),'ebl_menu_public',true) == 'ebl_public' ? true : false,
     ];
 		$this->columnDefault = $column_default;
