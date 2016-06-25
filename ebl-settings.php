@@ -158,6 +158,7 @@ function ebl_default_menu_image(){
   <img class="ebl_default_menu_image" src="<?php echo get_option('ebl_default_menu_image');?>">
   <input class="hidden" type="text" name="ebl_default_menu_image" id="image_attachment_id" value="<?php echo get_option('ebl_default_menu_image'); ?>" />
   <input type="button" class="button" name="ebl_default_menu_image" id="ebl_default_menu_image" value="<?php _e( 'Upload/Select images' ); ?>" />
+  <input type="button" class="button" name="ebl_remove_default_menu_image" id="ebl_remove_default_menu_image" value="<?php _e( 'Remove image' ); ?>" />
   <?php
 }
 
