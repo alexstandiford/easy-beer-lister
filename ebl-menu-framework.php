@@ -19,9 +19,9 @@ class ebl_menu{
       'show_abv'             => get_post_meta(get_the_ID(),'ebl_export_show_abv',true),
       'show_og'              => get_post_meta(get_the_ID(),'ebl_export_show_og',true),
       'show_style'           => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
-      'show_brewer_name'     => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
-      'show_brewer_city'     => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
-      'show_brewer_state'    => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
+      'show_brewer_name'     => get_post_meta(get_the_ID(),'ebl_export_show_brewer_name',true),
+      'show_brewer_city'     => get_post_meta(get_the_ID(),'ebl_export_show_brewer_city',true),
+      'show_brewer_state'    => get_post_meta(get_the_ID(),'ebl_export_show_brewer_state',true),
       'beers_to_exclude'     => get_post_meta(get_the_ID(),'ebl_beers_to_filter',true),
       'is_menu_public'       => get_post_meta(get_the_ID(),'ebl_menu_public',true) == 'ebl_public' ? true : false,
     ];
@@ -50,6 +50,10 @@ class ebl_menu{
     if(ebl_beer_info_exists('ebl_brewer_city')  &&  ebl_beer_info_exists('ebl_brewer_name') && $this->filter['show_brewer_name'] ==  true && $this->filter['show_brewer_city'] == true){
       echo ' - ';
     }
+    if(ebl_beer_info_exists('ebl_brewer_city') && ebl_beer_info_exists('ebl_brewer_state')  &&  ebl_beer_info_exists('ebl_brewer_name') && $this->filter['show_brewer_name'] ==  true && $this->filter['show_brewer_state'] == true && $this->filter['show_brewer_city'] == false){
+      echo ' - ';
+    }
+
     ebl_beer_info_exists('ebl_brewer_city')  &&  $this->filter['show_brewer_city'] ==  true ? ebl_beer_info('ebl_brewer_city') : '';
     if(ebl_beer_info_exists('ebl_brewer_state') &&  ebl_beer_info_exists('ebl_brewer_city') && $this->filter['show_brewer_city'] ==  true && $this->filter['show_brewer_state'] == true){
       echo ', ';
