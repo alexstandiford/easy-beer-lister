@@ -10,12 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 /*--- ADDS REFERRAL INFO TO DB ---*/
 function ebl_check_for_referral(){
-	if(file_exists(plugin_dir_path(__FILE__).'ref.txt')){
-		if(get_option('ebl_referral_id') == false){
-			$ref_id = file_get_contents(plugin_dir_path(__FILE__).'ref.txt');
-			add_option('ebl_referral_id',$ref_id);
-		}
-	};
+  if(file_exists(plugin_dir_path(__FILE__).'ref.txt')){
+    if(get_option('ebl_referral_id') == false){
+       $ref_id = file_get_contents(plugin_dir_path(__FILE__).'ref.txt');
+       add_option('ebl_referral_id',$ref_id);
+    }
+  };
+}
+
 }
 add_action( 'init', 'ebl_check_for_referral');
 
