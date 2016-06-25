@@ -87,6 +87,20 @@ class ebl_menu{
      return $items;
    }
 
+   public function get_beers(){
+     if($this->has_filters() == true){
+       $filtered_beers = new WP_Query($this->args());
+       $added_beers    = new WP_Query($this->include_args());
+       $result         = new WP_Query();
+       $result->posts = array_merge($filtered_beers->posts,$added_beers->posts);
+       $result->post_count = $filtered_beers->post_count + $added_beers->post_count;
+       $result->found_posts = $filtered_beers->found_posts + $added_beers->found_posts;
+     }
+     else{
+       $result = new WP_Query($this->include_args());
+     }
+     return $result;
+   }
   
 	//Imports beers into WordPress DB
 	public function args(){
