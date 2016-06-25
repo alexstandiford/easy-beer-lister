@@ -30,6 +30,7 @@ class ebl_on_tap extends WP_Widget {
     </ul>
     <?php do_action('ebl_after_on_tap_widget');
     echo $args['after_widget'];
+    wp_reset_query();
   }
 
   // Widget Backend 
@@ -94,6 +95,7 @@ class ebl_random_beer extends WP_Widget{
     <?php
        endwhile; endif;
     echo $args['after_widget'];
+    wp_reset_query();
   }	
   // Widget Backend 
   public function form($instance){
