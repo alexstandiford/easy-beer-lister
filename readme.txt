@@ -8,7 +8,7 @@ Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Brew Buddy makes it easier for brewers, and bars to manage their beer information. Sort beers on your website, and create print-friendly menus.
+Easy Beer Lister makes it easier for brewers, and bars to manage their beer information. Sort beers on your website, and create print-friendly menus.
 
 == Description ==
 
