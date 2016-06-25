@@ -183,6 +183,13 @@ function ebl_menu_filters_meta_box($object, $box) { ?>
     </p>
 		<textarea class="widefat" id="ebl_beers_to_filter" name="ebl_beers_to_filter"><?php echo esc_attr(get_post_meta( $object->ID, 'ebl_beers_to_filter', true)); ?></textarea>
   </div>
+  <div class="ebl-field">
+    <p class="label">
+    <label for="ebl-abv">Beers to Include</label><br>
+    <?php _e( "List the name, or ID of the beers that you want to add from your menu. This is useful when you want to add a specific beer that doesn't fit any grouping otherwise. One beer per line."); ?>
+    </p>
+		<textarea class="widefat" id="ebl_beers_to_include" name="ebl_beers_to_include"><?php echo esc_attr(get_post_meta( $object->ID, 'ebl_beers_to_include', true)); ?></textarea>
+  </div>
 <?php  }
 
 //---THE MENU SETTINGS META BOX FIELDS---//
@@ -416,6 +423,7 @@ function ebl_save_menu_meta($post_id, $post) {
 	new ebl_menu_meta_item('ebl_export_sortby','ebl_export_sortby'),
 	new ebl_menu_meta_item('ebl_beers_per_column','ebl_beers_per_column'),
 	new ebl_menu_meta_item('ebl_beers_to_filter','ebl_beers_to_filter'),
+	new ebl_menu_meta_item('ebl_beers_to_include','ebl_beers_to_include'),
 	new ebl_menu_meta_item('ebl_menu_public','ebl_menu_public'),
 	new ebl_menu_meta_item('ebl_export_show_brewer_name','ebl_export_show_brewer_name'),
 	new ebl_menu_meta_item('ebl_export_show_brewer_city','ebl_export_show_brewer_city'),
