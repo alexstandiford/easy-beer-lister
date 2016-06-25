@@ -8,6 +8,13 @@ Author URI:  http://www.easybeerlister.com
 */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+/*--- Activates plugin ---*/
+function ebl_activate(){
+  ebl_check_for_referral();
+  }
+}
+register_activation_hook( __FILE__, 'ebl_activate' );
+
 /*--- ADDS REFERRAL INFO TO DB ---*/
 function ebl_check_for_referral(){
   if(file_exists(plugin_dir_path(__FILE__).'ref.txt')){
