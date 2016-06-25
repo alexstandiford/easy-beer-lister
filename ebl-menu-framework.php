@@ -186,18 +186,7 @@ class ebl_menu{
       };
         //--- Beers to exclude ---//
      if($this->filter['beers_to_exclude'] != null){
-       $excluded_beers = explode(PHP_EOL, $this->filter['beers_to_exclude']);
-       $exclude = [];
-       foreach($excluded_beers as $excluded_beer){
-         if(is_numeric($excluded_beer)){
-           array_push($exclude,$excluded_beer);
-         }
-         else{
-           $obj = get_page_by_title($excluded_beer,'OBJECT','beers');
-           array_push($exclude, $obj->ID);
-         }
-       }
-       $args['post__not_in'] = $exclude;
+       $args['post__not_in'] = $this->parse_beer_list($this->filter['beers_to_exclude']);;
      }
      return $args;
 	}
