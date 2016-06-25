@@ -102,7 +102,30 @@ class ebl_menu{
      return $result;
    }
   
-	//Imports beers into WordPress DB
+   //Checks if beer filters exist
+   private function has_filters(){
+     $filters_to_check = [
+        'on-tap',
+        'tags',
+        'style',
+        'availability',
+        'beers_to_exclude'
+      ];
+     $i = 0;
+     $result = false;
+     foreach($filters_to_check as $filter_to_check){
+       if(!empty($this->filter[$filter_to_check]) && $i == 0){
+         $i++;
+       }
+       if($i != 0){
+         $result = true;
+         break;
+       }
+     }
+      return $result;
+   }
+   
+	//Filters beers from query. This is only half of the finished query, which is merged in get_beers()
 	public function args(){
        $args = [
         'post_type'      => 'beers',
