@@ -16,7 +16,7 @@ ebl_menu_head($ebl_menu);
 </header>
 <ul>
 <?php
-$beers = new WP_Query($ebl_menu->args());
+$beers = $ebl_menu->get_beers();
 if($beers->have_posts()) : while($beers->have_posts()) : $beers->the_post();
 $beer_width = 100 / (ceil($beers->found_posts / $ebl_menu->beersPerColumn));
 $beer_height = 100 / $ebl_menu->beersPerColumn;
