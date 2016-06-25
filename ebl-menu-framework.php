@@ -190,6 +190,22 @@ class ebl_menu{
      }
      return $args;
 	}
+  
+   //Adds specified beers to query. This is only half of the finished query, which is merged in get_beers()
+   public function include_args(){
+      $args = [
+        'post_type'  => 'beers',
+        'post_count' => -1,
+        'order'      => $this->filter['sort'],
+        'orderby'    => 'meta_value_num',
+        'meta_key'   => $this->filter['sortby'],
+      ];
+      //--- Beers to include ---//
+      if($this->filter['beers_to_include'] != null){
+      $args['post__in'] = $this->parse_beer_list($this->filter['beers_to_include']);;
+    }
+    return $args;
+  }
 };
 
 //Constructor for new menu template
