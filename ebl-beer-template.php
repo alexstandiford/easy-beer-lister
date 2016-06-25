@@ -45,12 +45,10 @@ do_action('ebl_before_beer_wrapper');
     <div id="primary" class="<?php echo apply_filters('ebl_beer_content_wrapper', $content_wrapper); ?>">
       <?php do_action('ebl_before_beer_content'); ?>
         <div class="<?php echo apply_filters('ebl_beer_content', 'ebl-primary-content'); ?>">
-         <?php if(has_excerpt()){?>
           <?php do_action('ebl_before_beer_excerpt'); ?>
-          <blockquote>
-          <?php the_excerpt();?>
-          </blockquote>
-         <?php } ?>
+        <blockquote>
+        <?php the_excerpt();?>
+        </blockquote>
           <?php do_action('ebl_before_beer_info'); ?>
         <?php if(function_exists('ebl_beer_info')){?>
           <?php if(ebl_beer_info_exists('ebl_untappd_url')){?>
