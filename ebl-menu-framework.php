@@ -63,7 +63,13 @@ class ebl_menu{
     }
     ebl_beer_info_exists('ebl_brewer_state') &&  $this->filter['show_brewer_state'] == true ? ebl_beer_info('ebl_brewer_state') : '';
    }
-
+  
+   public function thumbnail(){
+     if($this->thumbnail != false){?>
+       <img src="<?php echo $this->thumbnail; ?>">
+     <?php }
+   }
+  
 	//Imports beers into WordPress DB
 	public function args(){
        $args = [
