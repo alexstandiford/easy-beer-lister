@@ -27,8 +27,13 @@ function ebl_check_for_referral(){
   };
 }
 
+function ebl_flush(){
+  if(get_option('ebl_flush_flag')){
+    flush_rewrite_rules();
+    delete_option('ebl_flush_flag');
+  }
 }
-add_action( 'init', 'ebl_check_for_referral');
+add_action('init','ebl_flush');
 
 /*--- REGISTERS BEER POST TYPE ---*/
 function ebl_beer_page_init(){
