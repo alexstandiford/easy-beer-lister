@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /*--- Activates plugin ---*/
 function ebl_activate(){
   ebl_check_for_referral();
+  if(!get_option('ebl_flush_flag')){
+    add_option('ebl_flush_flag'); //Flags ebl_flush to run on init
   }
 }
 register_activation_hook( __FILE__, 'ebl_activate' );
