@@ -8,32 +8,16 @@ Author URI:  http://www.easybeerlister.com
 */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-/*--- Activates plugin ---*/
-function ebl_activate(){
-  ebl_check_for_referral();
-  if(!get_option('ebl_flush_flag')){
-    add_option('ebl_flush_flag'); //Flags ebl_flush to run on init
-  }
-}
-register_activation_hook( __FILE__, 'ebl_activate' );
-
 /*--- ADDS REFERRAL INFO TO DB ---*/
 function ebl_check_for_referral(){
-  if(file_exists(plugin_dir_path(__FILE__).'ref.txt')){
-    if(get_option('ebl_referral_id') == false){
-       $ref_id = file_get_contents(plugin_dir_path(__FILE__).'ref.txt');
-       add_option('ebl_referral_id',$ref_id);
-    }
-  };
+	if(file_exists(plugin_dir_path(__FILE__).'ref.txt')){
+		if(get_option('ebl_referral_id') == false){
+			$ref_id = file_get_contents(plugin_dir_path(__FILE__).'ref.txt');
+			add_option('ebl_referral_id',$ref_id);
+		}
+	};
 }
-
-function ebl_flush(){
-  if(get_option('ebl_flush_flag')){
-    flush_rewrite_rules();
-    delete_option('ebl_flush_flag');
-  }
-}
-add_action('init','ebl_flush');
+add_action( 'init', 'ebl_check_for_referral');
 
 /*--- REGISTERS BEER POST TYPE ---*/
 function ebl_beer_page_init(){
