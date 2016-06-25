@@ -65,11 +65,28 @@ class ebl_menu{
     ebl_beer_info_exists('ebl_brewer_state') &&  $this->filter['show_brewer_state'] == true ? ebl_beer_info('ebl_brewer_state') : '';
    }
   
+  //Inserts the featured image with logic
    public function thumbnail(){
      if($this->thumbnail != false){?>
        <img src="<?php echo $this->thumbnail; ?>">
      <?php }
    }
+   
+   private function parse_beer_list($list){
+     $list_items = explode(PHP_EOL, $list);
+     $items = [];
+     foreach($list_items as $list_item){
+       if(is_numeric($list_item)){
+         array_push($exclude,$list_item);
+       }
+       else{
+         $obj = get_page_by_title($list_item,'OBJECT','beers');
+         array_push($items, $obj->ID);
+       }
+     }
+     return $items;
+   }
+
   
 	//Imports beers into WordPress DB
 	public function args(){
