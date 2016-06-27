@@ -14,7 +14,7 @@ ebl_menu_head($ebl_menu);
   <h2><?php echo $ebl_menu->subheading; ?></h2>
   <p><?php echo $ebl_menu->beforeMenu; ?></p>
 </header>
-<ul>
+<ul <?php post_class(); ?>>
 <?php
 $beers = $ebl_menu->get_beers();
 $i = 1;
