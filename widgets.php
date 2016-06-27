@@ -23,11 +23,11 @@ class ebl_on_tap extends WP_Widget {
     // This is where you run the code and display the output
     $ebl_on_tap = new WP_Query(["post_type" => "beers","tax_query" => [["taxonomy"  => "availability","field" => "slug","terms" => "on-tap",],],]);
     do_action('ebl_before_on_tap_widget');?>
-    <ul class="ebl-on-tap-widget">
-    <?php if($ebl_on_tap->have_posts()) : while($ebl_on_tap->have_posts()) : $ebl_on_tap->the_post();?>
-      <li><a href="<?php echo get_post_permalink();?>"><?php the_title(); ?></a></li>
-    <?php endwhile; endif;?>
-    </ul>
+    <?php echo apply_filters('ebl_on_tap_widget_before','<ul class="ebl-on-tap-widget">'); ?> 
+    <?php if($ebl_on_tap->have_posts()) : while($ebl_on_tap->have_posts()) : $ebl_on_tap->the_post();
+      echo apply_filters('ebl_on_tap_widget_loop','<li><a href="'.get_post_permalink().'">'.get_the_title().'</a></li>');
+    endwhile; endif;?>
+    <?php echo apply_filters('ebl_on_tap_widget_after','</ul>'); ?>
     <?php do_action('ebl_after_on_tap_widget');
     echo $args['after_widget'];
     wp_reset_query();
@@ -82,16 +82,14 @@ class ebl_random_beer extends WP_Widget{
 
     // This is where you run the code and display the output
     $ebl_random_beer = new WP_Query(["posts_per_page" => 1, "post_type" => "beers", 'orderby' => 'rand']);
-    if($ebl_random_beer->have_posts()) : while($ebl_random_beer->have_posts()) : $ebl_random_beer->the_post();?>
-    <div class="ebl-random-beer">
-       <?php do_action('ebl_before_random_beer_shortcode'); ?>
-      <h3><a href="<?php echo get_post_permalink();?>"><?php the_title(); ?></a></h3>
-      <p><?php the_excerpt();?></p>
-      <?php echo wp_get_attachment_image( get_post_thumbnail_id(),'small' );?>
-      <?php if(ebl_beer_info_exists('ebl_untappd_url')){?>
-      <?php };
-       do_action('ebl_after_random_beer_shortcode'); ?>
-    </div>
+    if($ebl_random_beer->have_posts()) : while($ebl_random_beer->have_posts()) : $ebl_random_beer->the_post();
+    do_action('ebl_before_random_beer_shortcode');
+    echo apply_filters('ebl_random_beer_shortcode_content','<div class="ebl-random-beer">
+      <h3><a href="'.get_post_permalink().'">'.get_the_title().'</a></h3>
+      <p>'.get_the_excerpt().'</p>
+      '.wp_get_attachment_image( get_post_thumbnail_id(),'small' ).'
+    </div>');
+    do_action('ebl_after_random_beer_shortcode'); ?>
     <?php
        endwhile; endif;
     echo $args['after_widget'];
