@@ -19,10 +19,11 @@ class ebl_menu{
       'show_abv'             => get_post_meta(get_the_ID(),'ebl_export_show_abv',true),
       'show_og'              => get_post_meta(get_the_ID(),'ebl_export_show_og',true),
       'show_style'           => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
-      'show_brewer_name'     => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
-      'show_brewer_city'     => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
-      'show_brewer_state'    => get_post_meta(get_the_ID(),'ebl_export_show_style',true),
+      'show_brewer_name'     => get_post_meta(get_the_ID(),'ebl_export_show_brewer_name',true),
+      'show_brewer_city'     => get_post_meta(get_the_ID(),'ebl_export_show_brewer_city',true),
+      'show_brewer_state'    => get_post_meta(get_the_ID(),'ebl_export_show_brewer_state',true),
       'beers_to_exclude'     => get_post_meta(get_the_ID(),'ebl_beers_to_filter',true),
+      'beers_to_include'     => get_post_meta(get_the_ID(),'ebl_beers_to_include',true),
       'is_menu_public'       => get_post_meta(get_the_ID(),'ebl_menu_public',true) == 'ebl_public' ? true : false,
     ];
 		$this->columnDefault = $column_default;
@@ -40,8 +41,11 @@ class ebl_menu{
     if(get_the_post_thumbnail_url() != null){
       $this->thumbnail = get_the_post_thumbnail_url();
     }
-    else{
+    elseif(get_option('ebl_default_menu_image') != null || get_option('ebl_default_menu_image') != ''){
       $this->thumbnail = get_option('ebl_default_menu_image');
+    }
+    else{
+      $this->thumbnail = false;
     }
 	}
 	//Batch Imports Brewery Info
@@ -50,14 +54,78 @@ class ebl_menu{
     if(ebl_beer_info_exists('ebl_brewer_city')  &&  ebl_beer_info_exists('ebl_brewer_name') && $this->filter['show_brewer_name'] ==  true && $this->filter['show_brewer_city'] == true){
       echo ' - ';
     }
+    if(ebl_beer_info_exists('ebl_brewer_city') && ebl_beer_info_exists('ebl_brewer_state')  &&  ebl_beer_info_exists('ebl_brewer_name') && $this->filter['show_brewer_name'] ==  true && $this->filter['show_brewer_state'] == true && $this->filter['show_brewer_city'] == false){
+      echo ' - ';
+    }
+
     ebl_beer_info_exists('ebl_brewer_city')  &&  $this->filter['show_brewer_city'] ==  true ? ebl_beer_info('ebl_brewer_city') : '';
     if(ebl_beer_info_exists('ebl_brewer_state') &&  ebl_beer_info_exists('ebl_brewer_city') && $this->filter['show_brewer_city'] ==  true && $this->filter['show_brewer_state'] == true){
       echo ', ';
     }
     ebl_beer_info_exists('ebl_brewer_state') &&  $this->filter['show_brewer_state'] == true ? ebl_beer_info('ebl_brewer_state') : '';
    }
+  
+  //Inserts the featured image with logic
+   public function thumbnail(){
+     if($this->thumbnail != false){?>
+       <img src="<?php echo $this->thumbnail; ?>">
+     <?php }
+   }
+   
+   private function parse_beer_list($list){
+     $list_items = explode(PHP_EOL, $list);
+     $items = [];
+     foreach($list_items as $list_item){
+       if(is_numeric($list_item)){
+         array_push($exclude,$list_item);
+       }
+       else{
+         $obj = get_page_by_title($list_item,'OBJECT','beers');
+         array_push($items, $obj->ID);
+       }
+     }
+     return $items;
+   }
 
-	//Imports beers into WordPress DB
+   public function get_beers(){
+     if($this->has_filters() == true){
+       $filtered_beers = new WP_Query($this->args());
+       $added_beers    = new WP_Query($this->include_args());
+       $result         = new WP_Query();
+       $result->posts = array_merge($filtered_beers->posts,$added_beers->posts);
+       $result->post_count = $filtered_beers->post_count + $added_beers->post_count;
+       $result->found_posts = $filtered_beers->found_posts + $added_beers->found_posts;
+     }
+     else{
+       $result = new WP_Query($this->include_args());
+     }
+     return $result;
+   }
+  
+   //Checks if beer filters exist
+   private function has_filters(){
+     $filters_to_check = [
+        'on-tap',
+        'tags',
+        'style',
+        'availability',
+        'beers_to_exclude'
+      ];
+     $i = 0;
+     $result = false;
+     foreach($filters_to_check as $filter_to_check){
+       if(!empty($this->filter[$filter_to_check]) && $i == 0){
+         $i++;
+       }
+       if($i != 0){
+         $result = true;
+         break;
+       }
+     }
+      return $result;
+   }
+   
+	//Filters beers from query. This is only half of the finished query, which is merged in get_beers()
 	public function args(){
        $args = [
         'post_type'      => 'beers',
@@ -118,21 +186,26 @@ class ebl_menu{
       };
         //--- Beers to exclude ---//
      if($this->filter['beers_to_exclude'] != null){
-       $excluded_beers = explode(PHP_EOL, $this->filter['beers_to_exclude']);
-       $exclude = [];
-       foreach($excluded_beers as $excluded_beer){
-         if(is_numeric($excluded_beer)){
-           array_push($exclude,$excluded_beer);
-         }
-         else{
-           $obj = get_page_by_title($excluded_beer,'OBJECT','beers');
-           array_push($exclude, $obj->ID);
-         }
-       }
-       $args['post__not_in'] = $exclude;
+       $args['post__not_in'] = $this->parse_beer_list($this->filter['beers_to_exclude']);;
      }
      return $args;
 	}
+  
+   //Adds specified beers to query. This is only half of the finished query, which is merged in get_beers()
+   public function include_args(){
+      $args = [
+        'post_type'  => 'beers',
+        'post_count' => -1,
+        'order'      => $this->filter['sort'],
+        'orderby'    => 'meta_value_num',
+        'meta_key'   => $this->filter['sortby'],
+      ];
+      //--- Beers to include ---//
+      if($this->filter['beers_to_include'] != null){
+      $args['post__in'] = $this->parse_beer_list($this->filter['beers_to_include']);;
+    }
+    return $args;
+  }
 };
 
 //Constructor for new menu template

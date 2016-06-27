@@ -46,4 +46,8 @@
 			jQuery( 'a.add_media' ).on( 'click', function() {
 				wp.media.model.settings.post.id = wp_media_post_id;
 			});
+         jQuery('#ebl_remove_default_menu_image').on('click',function(){
+           jQuery('#image_attachment_id').val('');
+           jQuery('.ebl_default_menu_image').attr("src",'');
+         })
 		});

@@ -10,13 +10,13 @@ ebl_menu_head($ebl_menu);
 ?>
 <header>
   <h1><?php echo get_the_title(); ?></h1>
-  <img src="<?php echo $ebl_menu->thumbnail; ?>">
+  <?php $ebl_menu->thumbnail(); ?>
   <h2><?php echo $ebl_menu->subheading; ?></h2>
   <p><?php echo $ebl_menu->beforeMenu; ?></p>
 </header>
-<ul>
+<ul <?php post_class(); ?>>
 <?php
-$beers = new WP_Query($ebl_menu->args());
+$beers = $ebl_menu->get_beers();
 $i = 1;
 if($beers->have_posts()) : while($beers->have_posts()) : $beers->the_post();
 $beer_width = 100 / (ceil($beers->found_posts / $ebl_menu->beersPerColumn));

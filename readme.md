@@ -36,7 +36,7 @@ To add a beer, follow these steps:
 5. Click "Publish"
 
 ### View Your Beers ###
-Brew Buddy automatically builds the relevant pages for you, based on what information you add to your beers.  To view these pages, follow these steps:
+Easy Beer Lister automatically builds the relevant pages for you, based on what information you add to your beers.  To view these pages, follow these steps:
 
 #### View All Beers ####
 To view all beers, you usually need to visit `YOURSITE.COM/beers/`.  If that doesn't work, follow these steps to figure out your beers URL:
@@ -60,7 +60,7 @@ To view all beers, you usually need to visit `YOURSITE.COM/beers/`.  If that doe
 
 ### Batch-edit Beers ###
 
-One of the most powerful features of Brew Buddy is the ability to batch-edit your beer information.  To do this, follow these steps:
+One of the most powerful features of Easy Beer Lister is the ability to batch-edit your beer information.  To do this, follow these steps:
 
 1. Visit your WordPress Dashboard
 2. On the left-hand column, hover over "Beers"

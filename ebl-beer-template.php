@@ -37,7 +37,7 @@ do_action('ebl_before_beer_wrapper');
                 if(ebl_beer_is_on_tap()){ ?>
                 <h4 class="on-tap"><a href="<?php ebl_beer_info_url('availability',null,true) ?>"><?php echo apply_filters('ebl_beer_ontap_msg','On Tap Now!'); ?></a></h4>
                 <?php };};?>
-                <hr>
+                <hr class="ebl-beer-hr">
                 <p class="<?php echo apply_filters('ebl_beer_availability_class', 'availability'); ?>"><?php echo apply_filters('ebl_beer_availability_title','Availability:'); ?><?php if(function_exists('ebl_beer_info')){ebl_beer_info('availability','span');};?></p>
             </div>
         </div>
@@ -45,10 +45,12 @@ do_action('ebl_before_beer_wrapper');
     <div id="primary" class="<?php echo apply_filters('ebl_beer_content_wrapper', $content_wrapper); ?>">
       <?php do_action('ebl_before_beer_content'); ?>
         <div class="<?php echo apply_filters('ebl_beer_content', 'ebl-primary-content'); ?>">
+         <?php if(has_excerpt()){?>
           <?php do_action('ebl_before_beer_excerpt'); ?>
-        <blockquote>
-        <?php the_excerpt();?>
-        </blockquote>
+          <blockquote class="ebl-beer-excerpt">
+          <?php the_excerpt();?>
+          </blockquote>
+         <?php } ?>
           <?php do_action('ebl_before_beer_info'); ?>
         <?php if(function_exists('ebl_beer_info')){?>
           <?php if(ebl_beer_info_exists('ebl_untappd_url')){?>
@@ -60,28 +62,28 @@ do_action('ebl_before_beer_wrapper');
 				 <?php the_post_thumbnail();?>
          <dl class="ebl-beer-info">
            <?php if(ebl_beer_info_exists('ebl_abv')){?>
-           <div>
+           <div class="ebl-beer-abv">
            <dt><?php echo apply_filters('ebl_beer_abv_title','ABV:'); ?></dt>
              <dd><?php ebl_beer_info('ebl_abv'); ?></dd>
            </div>
            <?php };
             do_action('ebl_after_beer_abv');
             if(ebl_beer_info_exists('ebl_ibu')){?>
-           <div>
+           <div class="ebl-beer-ibu">
            <dt><?php echo apply_filters('ebl_beer_ibu_title','IBU:'); ?></dt>
              <dd><?php ebl_beer_info('ebl_ibu'); ?></dd>
            </div>
            <?php };
             do_action('ebl_after_beer_ibu');
             if(ebl_beer_info_exists('ebl_og')){?>
-           <div>
+           <div class="ebl-beer-og">
            <dt><?php echo apply_filters('ebl_beer_og_title','Original Gravity:'); ?></dt>
              <dd><?php ebl_beer_info('ebl_og'); ?></dd>
            </div>
            <?php };
             do_action('ebl_after_beer_og');
             if(ebl_beer_info_exists('pairing')){?>
-           <div>
+           <div class="ebl-beer-pairings">
              
            <dt><?php echo apply_filters('ebl_beer_pairing_title','Pairs With:'); ?></dt>
          <?php ebl_beer_info('pairing','dd'); ?>
@@ -91,8 +93,10 @@ do_action('ebl_before_beer_wrapper');
 					</div>
 					<span class="ebl-row"></span>
           <?php };
-         };
-		   the_content();
+         }; ?>
+         <div class="ebl-beer-content">
+		     <?php the_content();?>
+         </div><?php
          if(function_exists('ebl_beer_info')){
           ebl_beer_video();
 					ebl_beer_gallery();
