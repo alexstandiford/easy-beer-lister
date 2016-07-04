@@ -23,6 +23,7 @@ function ebl_options_tabs(){
       <a href="?page=ebl-settings&tab=ebl_shortcode_options" class="nav-tab <?php echo $active_tab == 'ebl_shortcode_options' ? 'nav-tab-active' : ''; ?>">Shortcode Options</a>
       <a href="?page=ebl-settings&tab=ebl_menu_options" class="nav-tab <?php echo $active_tab == 'ebl_menu_options' ? 'nav-tab-active' : '';?>">Beer Menu Options</a>
       <?php do_action('ebl_add_options_tab',$active_tab); ?>
+      <a href="?page=ebl-settings&tab=ebl_addon_licenses" class="nav-tab <?php echo $active_tab == 'ebl_addon_licenses' ? 'nav-tab-active' : '';?>">Addon Licenses</a>
   </h2>
 <?php return $active_tab;
  }?>
@@ -45,6 +46,10 @@ function ebl_options_tabs(){
         settings_fields('ebl_menu_options');
         do_settings_sections('ebl-menu-options');
       }
+      elseif($active_tab == 'ebl_addon_licenses'){
+        settings_fields('ebl_addon_licenses');
+        do_settings_sections('ebl-addon-licenses');
+      }
       else{
         do_action('ebl_add_settings_register',$active_tab);
       }
@@ -66,6 +71,12 @@ function ebl_menu_settings_register(){
   register_setting("ebl_menu_options", "ebl_default_menu_image");
 }
 add_action("admin_init","ebl_menu_settings_register");
+
+function ebl_addon_licenses_register(){
+  add_settings_section("ebl_addon_licenses","Addon Licenses","ebl_addon_licenses_header","ebl-addon-licenses");
+  do_action('ebl_addon_license_register');
+}
+add_action("admin_init","ebl_addon_licenses_register");
 
 function ebl_beer_page_settings_register(){
   add_settings_section("ebl_beer_page_options","Default Beer Page Options","ebl_beer_page_settings_header","ebl-beer-page-options");
@@ -149,6 +160,10 @@ add_action("admin_init", "ebl_settings_register");
 
 function ebl_beer_page_settings_header(){
   echo "Adjust the settings for default beer page template";
+}
+
+function ebl_addon_licenses_header(){
+  echo "All of your licenses can be managed from here. View your license keys <a href='http://www.easybeerlister.com/checkout/purchase-history/' target='blank'>here</a>";
 }
 
 function ebl_default_menu_image(){
