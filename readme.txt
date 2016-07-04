@@ -4,7 +4,7 @@ Donate link: http://www.easybeerlister.com/recommends/donate
 Tags: beer, beers, brewery, untappd, beer menu, bar, bartender, bars, restaurant, brewer, craft beer, craft bar, beer import
 Requires at least: 3.0.1
 Tested up to: 4.5.3
-Stable tag: 1.21
+Stable tag: 1.22
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,6 +121,19 @@ You probably need to flush your permalinks.  Follow these steps:
 * Added a ton of hooks to the beer page template
 * Added new fields
 
+= 1.21 =
+Big Update! Added several features and improvements to the menu system, and also added some hooks and filters to make it easier for developers to customize their install
+* Added filters and classes to make customizing the plugin easier.
+* Added new functionality that allows brewers to add individual beers to their menu
+* Fixed a bug that prevented the default logo from displaying
+* Fixed a bug that caused the default logo to occasionally stretch
+* Fixed a bug that occasionally prevented brewery information from displaying properly
+* Added logic that hides the excerpt if it doesn't exist
+* Fixed a bug that occasionally caused 404 errors when the plugin is re-activated
+
+= 1.22 =
+* Added a framework that displays API keys in the settings page.
+
 == Upgrade Notice ==
 
 = 1.01 =
@@ -138,12 +151,5 @@ Menu publicity setting is only available from this version on.
 = 1.20 =
 Compatibility update for theme addons.  Update immediately.
 
-= 1.21 =
-Big Update! Added several features and improvements to the menu system, and also added some hooks and filters to make it easier for developers to customize their install
-* Added filters and classes to make customizing the plugin easier.
-* Added new functionality that allows brewers to add individual beers to their menu
-* Fixed a bug that prevented the default logo from displaying
-* Fixed a bug that caused the default logo to occasionally stretch
-* Fixed a bug that occasionally prevented brewery information from displaying properly
-* Added logic that hides the excerpt if it doesn't exist
-* Fixed a bug that occasionally caused 404 errors when the plugin is re-activated
+= 1.22 =
+Compatibility update for plugin addons. Update ASAP.
