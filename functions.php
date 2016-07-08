@@ -404,10 +404,15 @@ function ebl_beer_info_shortcode($atts){
     'name' => null,
     'info'  => null,
   ), $atts );
+  
+  //Get the ID from beer name
   if($a['name'] != null){
     $a['name'] = ebl_get_beer_id($a['name']);
   }
-  $result = ebl_get_beer_info($a['info'],'name',$a['name']);
+  //Convert non ebl_ codes to ebl_codes
+  if(!taxonomy_exists($a['info']) && substr($a['info'],0,4) != 'ebl_'){
+    $a['info'] = 'ebl_'.$a['info'];
+  }
   return $result;
 }
 add_shortcode( 'beer_info', 'ebl_beer_info_shortcode' );
