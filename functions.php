@@ -23,9 +23,25 @@ function ebl_get_beer_info($taxonomy,$info = 'name',$post_id = null){
       }
     }
   else{
-    $beer_info = ebl_get_field($taxonomy);
+    $beer_info = ebl_get_field($taxonomy,$post_id);
   }
   return $beer_info;
+}
+
+/*--- RETURNS BEER ID FROM BEER NAME ---*/
+function ebl_get_beer_id($name){
+  $name = str_replace('-',' ',$a['name']);
+  $name = strtolower($a['name']);
+  $args=array(
+    'name' => $name,
+    'post_type' => 'beers',
+    'post_status' => 'publish',
+    'showposts' => 1,
+  );
+  $my_posts = new WP_Query($args);
+  $post_id = $my_posts->posts[0]->ID;
+  wp_reset_postdata();
+  return $post_id;
 }
 
 /*--- SPITS OUT BEER INFORMATION ---*/
@@ -382,4 +398,39 @@ function ebl_beer_list_shortcode($atts){
 }
 add_shortcode( 'beer_list', 'ebl_beer_list_shortcode' );
 
+/*--- BEER INFO SHORTCODE ---*/
+function ebl_beer_info_shortcode($atts){
+  $a = shortcode_atts( array(
+    'name' => null,
+    'info'  => null,
+  ), $atts );
+  
+  //Get the ID from beer name
+  if($a['name'] != null){
+    $a['name'] = ebl_get_beer_id($a['name']);
+  }
+  //Convert non ebl_ codes to ebl_codes
+  if(!taxonomy_exists($a['info']) && substr($a['info'],0,4) != 'ebl_'){
+    $a['info'] = 'ebl_'.$a['info'];
+  }
+  $items = ebl_get_beer_info($a['info'],'name',$a['name']);
+  if(is_array($items)){
+    $i = 0;
+    foreach($items as $item){
+      $i++;
+      $result .= $item;
+      if($i != count($items) && count($items) > 2){
+        $result .= ',';
+      }
+      if($i == count($items) - 1){
+        $result .= " and ";
+      }
+    }
+  }
+  else{
+    $result = $items;
+  }
+  return $result;
+}
+add_shortcode( 'beer_info', 'ebl_beer_info_shortcode' );
 ?>
