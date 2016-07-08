@@ -28,6 +28,22 @@ function ebl_get_beer_info($taxonomy,$info = 'name',$post_id = null){
   return $beer_info;
 }
 
+/*--- RETURNS BEER ID FROM BEER NAME ---*/
+function ebl_get_beer_id($name){
+  $name = str_replace('-',' ',$a['name']);
+  $name = strtolower($a['name']);
+  $args=array(
+    'name' => $name,
+    'post_type' => 'beers',
+    'post_status' => 'publish',
+    'showposts' => 1,
+  );
+  $my_posts = new WP_Query($args);
+  $post_id = $my_posts->posts[0]->ID;
+  wp_reset_postdata();
+  return $post_id;
+}
+
 /*--- SPITS OUT BEER INFORMATION ---*/
 function ebl_beer_info($taxonomy,$tag = 'li',$post_id = null, $single = false, $link = true){
   if(taxonomy_exists($taxonomy)){
