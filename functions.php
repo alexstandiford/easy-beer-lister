@@ -413,6 +413,23 @@ function ebl_beer_info_shortcode($atts){
   if(!taxonomy_exists($a['info']) && substr($a['info'],0,4) != 'ebl_'){
     $a['info'] = 'ebl_'.$a['info'];
   }
+  $items = ebl_get_beer_info($a['info'],'name',$a['name']);
+  if(is_array($items)){
+    $i = 0;
+    foreach($items as $item){
+      $i++;
+      $result .= $item;
+      if($i != count($items) && count($items) > 2){
+        $result .= ',';
+      }
+      if($i == count($items) - 1){
+        $result .= " and ";
+      }
+    }
+  }
+  else{
+    $result = $items;
+  }
   return $result;
 }
 add_shortcode( 'beer_info', 'ebl_beer_info_shortcode' );
