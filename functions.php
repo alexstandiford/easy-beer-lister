@@ -398,4 +398,17 @@ function ebl_beer_list_shortcode($atts){
 }
 add_shortcode( 'beer_list', 'ebl_beer_list_shortcode' );
 
+/*--- BEER INFO SHORTCODE ---*/
+function ebl_beer_info_shortcode($atts){
+  $a = shortcode_atts( array(
+    'name' => null,
+    'info'  => null,
+  ), $atts );
+  if($a['name'] != null){
+    $a['name'] = ebl_get_beer_id($a['name']);
+  }
+  $result = ebl_get_beer_info($a['info'],'name',$a['name']);
+  return $result;
+}
+add_shortcode( 'beer_info', 'ebl_beer_info_shortcode' );
 ?>
