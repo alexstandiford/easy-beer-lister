@@ -4,7 +4,7 @@ Donate link: http://www.easybeerlister.com/recommends/donate
 Tags: beer, beers, brewery, untappd, beer menu, bar, bartender, bars, restaurant, brewer, craft beer, craft bar, beer import
 Requires at least: 3.0.1
 Tested up to: 4.5.3
-Stable tag: 1.22
+Stable tag: 1.23
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -133,6 +133,9 @@ Big Update! Added several features and improvements to the menu system, and also
 
 = 1.22 =
 * Added a framework that displays API keys in the settings page.
+
+= 1.23 =
+* Added the `[beer_info]` shortcode. You can now add specific beer information (such as ABV, IBU) directly into posts. Refer to [the wiki](https://github.com/tstandiford/easybeerlister/wiki/Shortcode-Reference---%5Bbeer_info%5D) for more information.
 
 == Upgrade Notice ==
 
