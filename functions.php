@@ -23,7 +23,7 @@ function ebl_get_beer_info($taxonomy,$info = 'name',$post_id = null){
       }
     }
   else{
-    $beer_info = ebl_get_field($taxonomy);
+    $beer_info = ebl_get_field($taxonomy,$post_id);
   }
   return $beer_info;
 }
