@@ -10,6 +10,8 @@ License: GPL2
 
 namespace ebl;
 
+use ebl\core\cpt;
+
 if(!defined('ABSPATH')) exit;
 
 class ebl{
@@ -19,7 +21,7 @@ class ebl{
    * @var array
    */
   private $core_includes = [
-    //'file.php'
+    'cpt.php',
   ];
 
   private $app_includes = [
@@ -52,7 +54,6 @@ class ebl{
       self::$instance->_includeCoreFiles();
       self::$instance->_includeAppFiles();
       add_action('rest_api_init', array(self::$instance, '_registerRestEndpoints'));
-      self::$instance->_addActions();
     }
 
     return self::$instance;
@@ -104,7 +105,6 @@ class ebl{
 }
 
 
-
 /**
  * Fires up the plugin, and wraps the startup with a few actions.
  * This allows addons to fire up just before, or just after Easy Beer Lister
@@ -114,6 +114,8 @@ function rock_and_roll(){
   do_action('ebl_before_init');
   ebl::getInstance();
   do_action('ebl_after_init');
+  cpt::register();
+  do_action('ebl_after_cpt_registration');
 }
 
 add_action('init', __NAMESPACE__.'\\rock_and_roll');
