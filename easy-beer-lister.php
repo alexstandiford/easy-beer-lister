@@ -10,6 +10,8 @@ License: GPL2
 
 namespace ebl;
 
+use ebl\core\cpt;
+
 if(!defined('ABSPATH')) exit;
 
 class ebl{
@@ -112,6 +114,8 @@ function rock_and_roll(){
   do_action('ebl_before_init');
   ebl::getInstance();
   do_action('ebl_after_init');
+  cpt::register();
+  do_action('ebl_after_cpt_registration');
 }
 
 add_action('init', __NAMESPACE__.'\\rock_and_roll');
