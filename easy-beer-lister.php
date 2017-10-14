@@ -19,7 +19,7 @@ class ebl{
    * @var array
    */
   private $core_includes = [
-    //'file.php'
+    'cpt.php',
   ];
 
   private $app_includes = [
@@ -52,7 +52,6 @@ class ebl{
       self::$instance->_includeCoreFiles();
       self::$instance->_includeAppFiles();
       add_action('rest_api_init', array(self::$instance, '_registerRestEndpoints'));
-      self::$instance->_addActions();
     }
 
     return self::$instance;
@@ -102,7 +101,6 @@ class ebl{
     }
   }
 }
-
 
 
 /**
