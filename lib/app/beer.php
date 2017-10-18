@@ -204,61 +204,28 @@ class beer extends ebl{
   /**
    * Get the SRM value (color) of the current beer
    * Can be returned as a hex value, or as the SRM number (1-40)
-   * @return string|int
+   * @return string|int|array
    */
-  public function getSRM($as_hex = true){
+  public function getSRM($format = 'value'){
     do_action(EBL_PREFIX.'_before_process_srm_value');
-    $srm = apply_filters(EBL_PREFIX.'_get_srm_value', (int)$this->getMetaValue('untappd_url'));
+    $srm = apply_filters(EBL_PREFIX.'_get_srm_value', (int)$this->getMetaValue('srm_value'));
 
-    if($as_hex){
-      //List of all SRM values, from 1 to 40.
-      $srm_values = [
-        '#f6cc76',
-        '#E8A02C',
-        '#D88104',
-        '#CA6604',
-        '#B85203',
-        '#AA4205',
-        '#9C3403',
-        '#902902',
-        '#842002',
-        '#791802',
-        '#701202',
-        '#680B02',
-        '#5F0001',
-        '#570001',
-        '#510001',
-        '#4A0001',
-        '#460004',
-        '#410004',
-        '#3C0004',
-        '#380001',
-        '#350001',
-        '#300001',
-        '#2D0001',
-        '#2A0001',
-        '#270004',
-        '#250001',
-        '#220001',
-        '#200000',
-        '#1F0000',
-        '#1C0000',
-        '#1A0000',
-        '#190004',
-        '#170000',
-        '#160400',
-        '#140004',
-        '#140004',
-        '#130000',
-        '#110000',
-        '#100000',
-        '#100000',
-      ];
-      $srm = apply_filters(EBL_PREFIX.'_get_srm_hex_value', (string)$srm_values[$srm - 1]);
+    if($format == 'hex'){
+      $srm = apply_filters(EBL_PREFIX.'_get_srm_hex_value', (string)ebl::SRM_VALUES[$srm - 1]);
+    }
+    elseif($format == 'rgb'){
+      $srm = list($r, $g, $b) = sscanf(ebl::SRM_VALUES[$srm - 1], "#%02x%02x%02x");
+      $srm = apply_filters(EBL_PREFIX.'_get_srm_rgb_value', $srm);
     }
     do_action(EBL_PREFIX.'_before_get_srm_value');
 
     return $srm;
+  }
+
+  public function getGlassShape(){
+    do_action(EBL_PREFIX.'_before_glass_shape');
+
+    return apply_filters(EBL_PREFIX.'_glass_shape', (string)$this->getMetaValue('glass_shape'));
   }
 
   /**
