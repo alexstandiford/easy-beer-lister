@@ -194,6 +194,26 @@ class beer extends ebl{
   }
 
   /**
+   * Get the Bottom Label of the current beer
+   * @return string
+   */
+  public function getBottomLabel(){
+    do_action(EBL_PREFIX.'_before_get_bottom_label');
+
+    return apply_filters(EBL_PREFIX.'_get_bottom_label', (int)$this->getMetaValue('label'));
+  }
+
+  /**
+   * Get the Top Label of the current beer
+   * @return string
+   */
+  public function getTopLabel(){
+    do_action(EBL_PREFIX.'_before_get_top_label');
+
+    return apply_filters(EBL_PREFIX.'_get_top_label', (int)$this->getMetaValue('top_label'));
+  }
+
+  /**
    * Checks to see if the current beer is on-tap
    * @return bool
    */
