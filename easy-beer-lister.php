@@ -173,3 +173,33 @@ function setup_meta_boxes(){
 
 add_action('load-post.php', __NAMESPACE__.'\\setup_meta_boxes');
 add_action('load-post-new.php', __NAMESPACE__.'\\setup_meta_boxes');
+
+/**
+ * Overrides the messaging that shows up when a beer is updated/saved
+ * @param $msg
+ *
+ * @return mixed
+ */
+function override_default_beer_messages_in_editor_on_save($msg){
+  global $post;
+  $link = " <a href='".get_permalink($post->ID)."'>View Beer</a>";
+  $msg['beers'] = array(
+    0 => '',
+    1 => "Beer updated.".$link,
+    2 => 'Custom field updated.',
+    3 => 'Custom field deleted.',
+
+    4  => "Beer updated.".$link,
+    5  => "Beer restored to revision".$link,
+    6  => "All right! Your beer has been published. Cheers!".$link,
+    7  => "Beer saved.".$link,
+    8  => "Beer submitted.".$link,
+    9  => "Beer scheduled.".$link,
+    10 => "Beer draft updated.".$link,
+  );
+
+  return $msg;
+}
+
+add_filter('post_updated_messages', __NAMESPACE__.'\\override_default_beer_messages_in_editor_on_save', 10, 1);
+
