@@ -11,6 +11,7 @@ License: GPL2
 namespace ebl;
 
 use ebl\core\cpt;
+use ebl\admin\metaBox;
 
 if(!defined('ABSPATH')) exit;
 
@@ -131,4 +132,14 @@ function permalink_flush(){
 /**
  * Flushes permalinks on plugin activation
  */
-register_activation_hook(__FILE__, 'flush_rewrite_rules');
+register_activation_hook(__FILE__, 'flush_rewrite_rules');/**
+ * Set Up our Admin Meta Boxes
+ */
+function setup_meta_boxes(){
+  $beer_meta = new metaBox('Beer Info', 'beers');
+  add_action('add_meta_boxes', [$beer_meta, 'addMetaBox']);
+  add_action('save_post', [$beer_meta, 'saveMetaData'], 10, 2);
+}
+
+add_action('load-post.php', __NAMESPACE__.'\\setup_meta_boxes');
+add_action('load-post-new.php', __NAMESPACE__.'\\setup_meta_boxes');
