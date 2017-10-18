@@ -22,12 +22,23 @@ class eblInit{
    * @var array
    */
   private $core_includes = [
-    'cpt.php',
     'ebl.php',
+    'cpt.php',
   ];
 
   private $app_includes = [
     'beer.php',
+    'beerList.php',
+    'glass.php',
+  ];
+
+  /**
+   * These includes only fire up on the admin page
+   * @var array
+   */
+  private $admin_includes = [
+    'metaBox.php',
+    'metaBoxField.php',
   ];
 
   /**
@@ -55,6 +66,7 @@ class eblInit{
       self::$instance->_defineConstants();
       self::$instance->_includeCoreFiles();
       self::$instance->_includeAppFiles();
+      if(is_admin()) self::$instance->_includeAdminFiles();
       add_action('rest_api_init', array(self::$instance, '_registerRestEndpoints'));
     }
 
@@ -102,6 +114,16 @@ class eblInit{
   private function _includeAppFiles(){
     foreach($this->app_includes as $include){
       require_once(EBL_PATH.'lib/app/'.$include);
+    }
+  }
+
+  /**
+   * Grabs the files to include, and requires them
+   * @return void
+   */
+  private function _includeAdminFiles(){
+    foreach($this->admin_includes as $include){
+      require_once(EBL_PATH.'lib/admin/'.$include);
     }
   }
 }
