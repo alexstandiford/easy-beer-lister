@@ -36,7 +36,7 @@ class beer extends ebl{
       return $this->throwError('beer01', 'The input post specified is not a post. Are you sure you entered the correct ID, or post object?');
     }
     //Confirms the post is a Beers CPT
-    if(get_post_type($this->post !== 'beers')){
+    if(get_post_type($this->post) !== 'beers'){
       return $this->throwError('beer02', 'The input post specified is not a beer, it is a '.get_post_type($this->post).'. The Beer object is designed to only work with the Beers Custom Post Type.');
     }
 
@@ -53,16 +53,17 @@ class beer extends ebl{
   public function getMetaValue($value){
     if($this->hasErrors()) return false; //Bail early if the object has any errors
 
-    $value = EBL_PREFIX.$value;
     if(isset($this->$value)) return $this->$value; //Bail early if we've already loaded the values in
     //TODO: Create Beer Meta Database Entry
     //TODO: Create function that cleans up old database to use new database entry method
-    $meta = get_post_meta($this->post->ID, EBL_PREFIX.'_beer_meta');
-    foreach($meta as $key => $value){
-      $this->$key = $value;
+    $meta = get_post_meta($this->post->ID, EBL_PREFIX.'_beer_info', true);
+    foreach($meta as $key => $meta_value){
+      $key = $this->removePrefix($key);
+      $this->$key = $meta_value;
     }
 
     do_action(EBL_PREFIX.'_before_get_meta_value');
+    if(!isset($this->$value)) $this->$value = false;
 
     return apply_filters(EBL_PREFIX.'_get_meta_value', $this->$value);
   }
