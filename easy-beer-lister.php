@@ -203,3 +203,20 @@ function override_default_beer_messages_in_editor_on_save($msg){
 
 add_filter('post_updated_messages', __NAMESPACE__.'\\override_default_beer_messages_in_editor_on_save', 10, 1);
 
+
+/**
+ * Adds extra image sizes to upload editor. This is useful for the beers edit page.
+ * @param $sizes
+ *
+ * @return array
+ */
+function add_image_sizes_to_upload_editor($sizes){
+  $sizes = array_merge($sizes, array(
+    EBL_PREFIX.'_bottom_label' => __('Bottom Beer Label'),
+    EBL_PREFIX.'_top_label' => __('Top Beer Label'),
+  ));
+
+  return $sizes;
+}
+
+add_filter('image_size_names_choose', __NAMESPACE__.'\\add_image_sizes_to_upload_editor');
