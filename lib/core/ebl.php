@@ -11,18 +11,20 @@ namespace ebl\core;
 
 if(!defined('ABSPATH')) exit;
 
-class ebl{
+abstract class ebl{
+
 
   public function __construct(){
     $this->errors = [];
+    $this->checkForErrors();
   }
 
   /**
    * Adds an error to the array of errors, and triggers a PHP warning
    *
-   * @param string|int $code Error code
-   * @param string $message Error message
-   * @param mixed $data Optional. Error data
+   * @param string|int $code    Error code
+   * @param string     $message Error message
+   * @param mixed      $data    Optional. Error data
    *
    * @return \WP_Error
    */
@@ -40,6 +42,7 @@ class ebl{
     }
 
     $this->errors[] = $error;
+
     return $error;
   }
 
@@ -48,11 +51,29 @@ class ebl{
    * @return bool
    */
   public function hasErrors(){
-    return empty($this->errors);
+    return !empty($this->errors);
+  }
+
+  /**
+   * Checks to see if a specified file exists. Throws an error if not
+   *
+   * @param $file
+   *
+   * @return bool
+   */
+  public function fileExists($file){
+    if(!file_exists($file)){
+      $this->throwError('missing_file', 'The file at '.$file.'. does not exist.');
+
+      return false;
+    }
+
+    return true;
   }
 
   /**
    * Gets an option using wp_option. Applies the EBL prefix automatically
+   *
    * @param      $option
    * @param bool $default
    *
@@ -62,5 +83,11 @@ class ebl{
     $option = EBL_PREFIX.$option;
     return get_option($option,$default);
   }
+
+  /**
+   * Required on every object to check for errors
+   * @return mixed
+   */
+  abstract protected function checkForErrors();
 
 }
