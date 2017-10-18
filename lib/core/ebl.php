@@ -82,7 +82,10 @@ abstract class ebl{
    */
   public function getOption($option, $default = false){
     $option = EBL_PREFIX.$option;
-    return get_option($option,$default);
+
+    return get_option($option, $default);
+  }
+
   public function getGlassShapes(){
     $glass_shapes = [
       'tulip', 'snifter', 'hefeweizen', 'mug', 'shaker', 'bottle',
