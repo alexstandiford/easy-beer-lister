@@ -142,6 +142,10 @@ function rock_and_roll(){
   do_action('ebl_after_init');
   cpt::register();
   do_action('ebl_after_cpt_registration');
+
+  //Image Sizes
+  add_image_size(EBL_PREFIX.'_bottom_label', 324, 550, true);
+  add_image_size(EBL_PREFIX.'_top_label', 132, 88, true);
 }
 
 add_action('init', __NAMESPACE__.'\\rock_and_roll');
@@ -156,7 +160,9 @@ function permalink_flush(){
 /**
  * Flushes permalinks on plugin activation
  */
-register_activation_hook(__FILE__, 'flush_rewrite_rules');/**
+register_activation_hook(__FILE__, 'flush_rewrite_rules');
+
+/**
  * Set Up our Admin Meta Boxes
  */
 function setup_meta_boxes(){
