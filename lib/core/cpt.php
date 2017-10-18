@@ -27,22 +27,20 @@ class cpt{
         'name'          => 'Beers',
         'singular_name' => 'Beer',
         'menu_icon'     => EBL_ASSETS_URL.'icons/beer-icon.png',
-        'supports'      => ['title', 'editor'],
+        'supports'      => ['title', 'editor', 'thumbnail'],
         'taxonomies'    => [
-          'style'        => [
+          'style'   => [
             'hierarchical' => true,
-            'label'        => __('Beer Styles'),
-            'rewrite'      => ['slug' => 'style'],
+            'meta_box_cb' => 'metaBoxAsSelect',
+            'rewrite'     => ['slug' => 'style'],
+            'labels'       => [
+              'label'       => __(' Style'),
+            ],
           ],
-          'pairing'      => [
-            'singular_name' => __('Pairing'),
+          'pairing' => [
+            'label'         => __('Pairings'),
           ],
-          'availability' => [
-            'label'         => __('Availability'),
-            'name'          => __('Availability'),
-            'singular_name' => __('Availability'),
-          ],
-          'tags'         => [
+          'tags'    => [
             'name'          => __('tags'),
             'singular_name' => __('tag'),
             'label'         => __('Tags'),
@@ -76,6 +74,7 @@ class cpt{
   public function getNames($post_type, $args){
     $name = isset($args['singular_name']) ? $args['singular_name'] : false;
     $name = $name == false ? $post_type : $name;
+    if(!isset($args['name'])) $args['name'] = '';
     $plural_name = isset($args['singular_name']) ? $args['name'] : $name.'s';
 
     return ['singular' => $name, 'plural' => $plural_name];
@@ -92,6 +91,7 @@ class cpt{
       $taxonomies_to_push = [];
       foreach($merged_args['taxonomies'] as $taxonomy_name => $args){
         $names = $this->getNames($taxonomy_name, $args);
+        if(isset($args['meta_box_cb'])) $args['meta_box_cb'] = [$this, $args['meta_box_cb']];
         $default_args = $this->getDefaultArgs($names, 'taxonomy');
         register_taxonomy(strtolower($taxonomy_name), $post_type, $this->getArgsWithDefaults($default_args, $args));
         $taxonomies_to_push[] = $taxonomy_name;
@@ -114,8 +114,8 @@ class cpt{
   private function getArgsWithDefaults($default_args, $args){
     unset($args['name']);
     unset($args['singular_name']);
-    $merged_args = is_array($args) ? array_merge($default_args, $args) : $default_args;
-    if(is_array($args['labels'])) $merged_args = array_merge($default_args['labels'], $args['labels']);
+    $merged_args = is_array($args) ? array_merge_recursive($default_args, $args) : $default_args;
+    if(!isset($args['labels'])) $args['labels'] = null;
 
     return $merged_args;
   }
@@ -172,5 +172,19 @@ class cpt{
     }
 
     return $args;
+  }
+
+  /**
+   * Converts a taxonomy metabox to a select box. Useful for situations where only one type of meta should be select-able
+   *
+   * @param $post
+   * @param $box
+   */
+  public function metaBoxAsSelect($post, $box){
+    $taxonomy = $box['args']['taxonomy'];
+    $name = 'tax_input['.$taxonomy.']';
+    $term_obj = wp_get_object_terms($post->ID, $taxonomy);
+    wp_dropdown_categories(array('taxonomy' => $taxonomy, 'name' => "{$name}[]", 'selected' => $term_obj[0]->term_id, 'orderby' => 'name', 'hierarchical' => 0, 'show_option_none' => '&mdash;'));
+    echo "<p>Didn't find the style you're looking for? <a href='".admin_url().'edit-tags.php?taxonomy=style&post_type=beers'."'>add it here</a></p>";
   }
 }
