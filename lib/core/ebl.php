@@ -13,6 +13,7 @@ if(!defined('ABSPATH')) exit;
 
 abstract class ebl{
 
+  const SRM_VALUES = ['#FCEABC', '#F9DB99', '#F6CC76', '#F1BB57', '#ECAC3C', '#E79C23', '#DF8D05', '#D87F06', '#CE7304', '#CA6704', '#C05C04', '#B75103', '#AF4A03', '#A84003', '#A03903', '#983203', '#902B05', '#892502', '#851F02', '#7B1B02', '#761605', '#6F1102', '#6A0D02', '#630904', '#5E0001', '#590001', '#540001', '#500001', '#4C0001', '#470001', '#450001', '#410004', '#3D0001', '#390001', '#360004', '#330001', '#300001', '#2E0401', '#2C0004', '#200004'];
 
   public function __construct(){
     $this->errors = [];
@@ -82,6 +83,27 @@ abstract class ebl{
   public function getOption($option, $default = false){
     $option = EBL_PREFIX.$option;
     return get_option($option,$default);
+  public function getGlassShapes(){
+    $glass_shapes = [
+      'tulip', 'snifter', 'hefeweizen', 'mug', 'shaker', 'bottle',
+    ];
+
+    return apply_filters('ebl_glass_shapes', $glass_shapes);
+  }
+
+  /**
+   * Gets rid of the ebl prefix on a key
+   *
+   * @param $value
+   *
+   * @return bool|string
+   */
+  public function removePrefix($value){
+    if(strpos($value, EBL_PREFIX.'_') !== false){
+      $value = (substr($value, strlen(EBL_PREFIX.'_')));
+    }
+
+    return $value;
   }
 
   /**
