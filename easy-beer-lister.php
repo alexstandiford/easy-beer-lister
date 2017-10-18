@@ -83,9 +83,11 @@ class eblInit{
     define('EBL_ASSETS_URL', EBL_URL.'assets/');
     define('EBL_ASSETS_PATH', EBL_PATH.'assets/');
     define('EBL_TEMPLATE_DIRECTORY', EBL_PATH.'templates/');
-    define('EBL_TEXT_DOMAIN', 'eblInit');
-    define('EBL_PREFIX', 'eblInit');
-    define('EBL_REST_NAMESPACE', 'eblInit/v2');
+    define('EBL_TEXT_DOMAIN', 'ebl');
+    define('EBL_PREFIX', 'ebl');
+    define('EBL_REST_NAMESPACE', 'ebl/v2');
+    define('EBL_VERSION', '2.0');
+    define('EBL_DB_VERSION', '2.0');
   }
 
   /**
