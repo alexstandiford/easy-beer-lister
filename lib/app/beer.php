@@ -267,7 +267,7 @@ class beer extends ebl{
   public function getPairing(){
     do_action(EBL_PREFIX.'_before_pairing');
 
-    return apply_filters(EBL_PREFIX.'_pairing', $this->getTerms('pairing', true));
+    return apply_filters(EBL_PREFIX.'_pairing', $this->getTerms('pairing'));
   }
 
   /**
@@ -277,7 +277,7 @@ class beer extends ebl{
   public function getAvailability(){
     do_action(EBL_PREFIX.'_before_availability');
 
-    return apply_filters(EBL_PREFIX.'_availability', $this->getTerms('availability', true));
+    return apply_filters(EBL_PREFIX.'_availability', $this->getTerms('availability'));
   }
 
   /**
