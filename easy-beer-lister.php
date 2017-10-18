@@ -11,6 +11,7 @@ License: GPL2
 namespace ebl;
 
 use ebl\core\cpt;
+use ebl\admin\metaBox;
 
 if(!defined('ABSPATH')) exit;
 
@@ -21,12 +22,23 @@ class eblInit{
    * @var array
    */
   private $core_includes = [
-    'cpt.php',
     'ebl.php',
+    'cpt.php',
   ];
 
   private $app_includes = [
     'beer.php',
+    'beerList.php',
+    'glass.php',
+  ];
+
+  /**
+   * These includes only fire up on the admin page
+   * @var array
+   */
+  private $admin_includes = [
+    'metaBox.php',
+    'metaBoxField.php',
   ];
 
   /**
@@ -54,6 +66,7 @@ class eblInit{
       self::$instance->_defineConstants();
       self::$instance->_includeCoreFiles();
       self::$instance->_includeAppFiles();
+      if(is_admin()) self::$instance->_includeAdminFiles();
       add_action('rest_api_init', array(self::$instance, '_registerRestEndpoints'));
     }
 
@@ -70,9 +83,11 @@ class eblInit{
     define('EBL_ASSETS_URL', EBL_URL.'assets/');
     define('EBL_ASSETS_PATH', EBL_PATH.'assets/');
     define('EBL_TEMPLATE_DIRECTORY', EBL_PATH.'templates/');
-    define('EBL_TEXT_DOMAIN', 'eblInit');
-    define('EBL_PREFIX', 'eblInit');
-    define('EBL_REST_NAMESPACE', 'eblInit/v2');
+    define('EBL_TEXT_DOMAIN', 'ebl');
+    define('EBL_PREFIX', 'ebl');
+    define('EBL_REST_NAMESPACE', 'ebl/v2');
+    define('EBL_VERSION', '2.0');
+    define('EBL_DB_VERSION', '2.0');
   }
 
   /**
@@ -103,6 +118,16 @@ class eblInit{
       require_once(EBL_PATH.'lib/app/'.$include);
     }
   }
+
+  /**
+   * Grabs the files to include, and requires them
+   * @return void
+   */
+  private function _includeAdminFiles(){
+    foreach($this->admin_includes as $include){
+      require_once(EBL_PATH.'lib/admin/'.$include);
+    }
+  }
 }
 
 
@@ -117,6 +142,10 @@ function rock_and_roll(){
   do_action('ebl_after_init');
   cpt::register();
   do_action('ebl_after_cpt_registration');
+
+  //Image Sizes
+  add_image_size(EBL_PREFIX.'_bottom_label', 324, 550, true);
+  add_image_size(EBL_PREFIX.'_top_label', 132, 88, true);
 }
 
 add_action('init', __NAMESPACE__.'\\rock_and_roll');
@@ -132,3 +161,62 @@ function permalink_flush(){
  * Flushes permalinks on plugin activation
  */
 register_activation_hook(__FILE__, 'flush_rewrite_rules');
+
+/**
+ * Set Up our Admin Meta Boxes
+ */
+function setup_meta_boxes(){
+  $beer_meta = new metaBox('Beer Info', 'beers');
+  add_action('add_meta_boxes', [$beer_meta, 'addMetaBox']);
+  add_action('save_post', [$beer_meta, 'saveMetaData'], 10, 2);
+}
+
+add_action('load-post.php', __NAMESPACE__.'\\setup_meta_boxes');
+add_action('load-post-new.php', __NAMESPACE__.'\\setup_meta_boxes');
+
+/**
+ * Overrides the messaging that shows up when a beer is updated/saved
+ * @param $msg
+ *
+ * @return mixed
+ */
+function override_default_beer_messages_in_editor_on_save($msg){
+  global $post;
+  $link = " <a href='".get_permalink($post->ID)."'>View Beer</a>";
+  $msg['beers'] = array(
+    0 => '',
+    1 => "Beer updated.".$link,
+    2 => 'Custom field updated.',
+    3 => 'Custom field deleted.',
+
+    4  => "Beer updated.".$link,
+    5  => "Beer restored to revision".$link,
+    6  => "All right! Your beer has been published. Cheers!".$link,
+    7  => "Beer saved.".$link,
+    8  => "Beer submitted.".$link,
+    9  => "Beer scheduled.".$link,
+    10 => "Beer draft updated.".$link,
+  );
+
+  return $msg;
+}
+
+add_filter('post_updated_messages', __NAMESPACE__.'\\override_default_beer_messages_in_editor_on_save', 10, 1);
+
+
+/**
+ * Adds extra image sizes to upload editor. This is useful for the beers edit page.
+ * @param $sizes
+ *
+ * @return array
+ */
+function add_image_sizes_to_upload_editor($sizes){
+  $sizes = array_merge($sizes, array(
+    EBL_PREFIX.'_bottom_label' => __('Bottom Beer Label'),
+    EBL_PREFIX.'_top_label' => __('Top Beer Label'),
+  ));
+
+  return $sizes;
+}
+
+add_filter('image_size_names_choose', __NAMESPACE__.'\\add_image_sizes_to_upload_editor');
