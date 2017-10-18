@@ -90,10 +90,12 @@ class beer extends ebl{
       return false;
     }
 
+    $terms = $single == true ? apply_filters(EBL_PREFIX.'_get_single_term', $terms[0]) : apply_filters(EBL_PREFIX.'_get_terms', $terms);
+    $this->$taxonomy = $terms;
 
     do_action(EBL_PREFIX.'_before_get_terms');
 
-    return $single == true ? apply_filters(EBL_PREFIX.'_get_single_term', $terms) : apply_filters(EBL_PREFIX.'_get_terms');
+    return $terms;
   }
 
   /**
