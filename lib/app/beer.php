@@ -18,16 +18,15 @@ class beer extends ebl{
   public $post;
 
 
-  public function __construct($post){
-    parent::__construct();
+  public function __construct($post = null){
     $this->post = get_post($post);
-    $this->checkPost();
+    parent::__construct();
   }
 
   /**
    * Checks the post for any errors
    */
-  private function checkPost(){
+  function checkForErrors(){
     //If the post returned an error, capture that
     if(is_wp_error($this->post)){
       return $this->throwError($this->post);
