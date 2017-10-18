@@ -1,0 +1,39 @@
+svg.svg-glass {
+  color: #bc6733;
+  width: 100%; }
+
+svg.svg-glass circle {
+  transform: scale(1) translate(0px, 0%);
+  transform-origin: 50% 50%; }
+  svg.svg-glass circle:nth-of-type(1) {
+    animation: fizz 6872ms ease-in infinite; }
+  svg.svg-glass circle:nth-of-type(2) {
+    animation: fizz 4085ms ease-in infinite; }
+  svg.svg-glass circle:nth-of-type(3) {
+    animation: fizz 6112ms ease-in infinite; }
+  svg.svg-glass circle:nth-of-type(4) {
+    animation: fizz 4901ms ease-in infinite; }
+  svg.svg-glass circle:nth-of-type(5) {
+    animation: fizz 6584ms ease-in infinite; }
+  svg.svg-glass circle:nth-of-type(6) {
+    animation: fizz 3812ms ease-in infinite; }
+  svg.svg-glass circle:nth-of-type(7) {
+    animation: fizz 5198ms ease-in infinite; }
+  svg.svg-glass circle:nth-of-type(8) {
+    animation: fizz 2754ms ease-in infinite; }
+  svg.svg-glass circle:nth-of-type(9) {
+    animation: fizz 5844ms ease-in infinite; }
+  svg.svg-glass circle:nth-of-type(10) {
+    animation: fizz 2485ms ease-in infinite; }
+
+@keyframes fizz {
+  0% {
+    transform: scale(1) translate(0px, 0%);
+    opacity: 0; }
+  2% {
+    opacity: 0.25; }
+  100% {
+    transform: scale(0.5) translate(0px, -1000%);
+    opacity: 0; } }
+
+/*# sourceMappingURL=beer-glass.css.map */

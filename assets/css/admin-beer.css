@@ -1,0 +1,56 @@
+.ebl-field {
+  clear: both; }
+
+.ebl-srm-wrapper {
+  width: 100%;
+  clear: both; }
+  .ebl-srm-wrapper .ebl-srm-value {
+    width: 10%;
+    padding: 20px 0;
+    text-align: center;
+    display: block;
+    float: left;
+    color: #eee;
+    font-size: 18px;
+    box-sizing: border-box; }
+    .ebl-srm-wrapper .ebl-srm-value:hover {
+      opacity: 0.8;
+      cursor: pointer; }
+    .ebl-srm-wrapper .ebl-srm-value.mod--selected {
+      border: 3px solid white;
+      padding: 17px 0;
+      color: white; }
+
+.mod--hidden {
+  display: none; }
+
+.ebl-glass-shape-wrapper {
+  display: flex; }
+  .ebl-glass-shape-wrapper .glass-shape {
+    width: 100%;
+    max-width: 100px;
+    padding: 20px;
+    position: relative; }
+    .ebl-glass-shape-wrapper .glass-shape:hover {
+      opacity: 0.8;
+      cursor: pointer; }
+    .ebl-glass-shape-wrapper .glass-shape.mod--selected {
+      border: 3px solid #aaa;
+      padding: 17px;
+      background: #eee; }
+    .ebl-glass-shape-wrapper .glass-shape .ebl-glass {
+      height: 150px;
+      margin: auto;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+    .ebl-glass-shape-wrapper .glass-shape span {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      text-align: center; }
+
+/*# sourceMappingURL=admin-beer.css.map */

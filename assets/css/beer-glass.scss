@@ -1,0 +1,28 @@
+svg.svg-glass{
+  color:#bc6733;
+  width:100%;
+}
+
+svg.svg-glass circle{
+  transform:scale(1) translate(0px, 0%);
+  transform-origin:50% 50%;
+  @for $i from 1 through 10{
+    &:nth-of-type(#{$i}){
+      animation:fizz random(5000)+2000+ms ease-in infinite;
+    }
+  }
+}
+
+@keyframes fizz{
+  0%{
+    transform:scale(1) translate(0px, 0%);
+    opacity:0;
+  }
+  2%{
+    opacity:0.25;
+  }
+  100%{
+    transform:scale(.5) translate(0px, -1000%);
+    opacity:0;
+  }
+}
