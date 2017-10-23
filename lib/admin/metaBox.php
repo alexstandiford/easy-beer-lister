@@ -37,14 +37,15 @@ class metaBox extends ebl{
        ],
       ],
       ['name'           => 'On Tap',
+       'meta_key'       => 'on_tap',
        'description'    => 'Is this beer currently on-tap?',
        'type'           => 'select',
-       'select_options' => ['No', 'Yes']],
+       'select_options' => [0 => 'No', 1 => 'Yes']],
       ['name'           => 'Availability Start Date',
        'description'    => 'Enter the first month this delicious brew is available. This is reflected on the availability calendar.',
        'type'           => 'select',
        'select_options' => [
-         'Year-Round', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',
+         0 => 'Year-Round', 1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December',
        ],
       ],
       ['name'           => 'Availability End Date',
@@ -52,7 +53,7 @@ class metaBox extends ebl{
        'type'           => 'select',
        'class'          => 'ebl-field mod--hidden',
        'select_options' => [
-         'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',
+         1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December',
        ],
       ],
       ['name'        => 'SRM Value',
@@ -77,6 +78,7 @@ class metaBox extends ebl{
        'description' => 'Enter the Untappd URL here.',
       ],
       ['name'        => 'Video URL',
+       'meta_key'    => 'video',
        'description' => 'Enter the Video URL here.',
       ],
       ['name'           => 'Label',
@@ -89,7 +91,7 @@ class metaBox extends ebl{
        'type'           => 'imageupload',
        'preview_target' => 'top-label-target',
       ],
-      ['name'        => 'Image Gallery',
+      ['name'        => 'Gallery',
        'description' => 'Select Images of this beer',
        'type'        => 'gallery',
       ],
@@ -106,10 +108,11 @@ class metaBox extends ebl{
   public $meta;
   public $inLoop = false;
   public $jsArgs = [];
-  public $postID;
+  public static $postID;
   const EBL_METABOX_TEMPLATE_DIR = 'admin/metabox/';
 
   public function __construct($meta_box_name, $post_type, $context = 'normal', $priority = 'default'){
+    self::$postID = $_GET['post'];
     $this->fields = $this->fields[$post_type];
     $this->id = sanitize_title(EBL_PREFIX.'-'.$meta_box_name);
     $this->metaKey = str_replace('-', '_', $this->id);
@@ -151,9 +154,7 @@ class metaBox extends ebl{
    * Loads the metabox fields template
    * @return null|\WP_Error
    */
-  public function loadTemplate($object){
-    $this->postID = $object->ID;
-    if(!$this->meta) $this->meta = get_post_meta($this->postID, $this->metaKey, true);
+  public function loadTemplate(){
     $template_name = apply_filters('ebl_metabox_'.$this->id.'_template_location', EBL_TEMPLATE_DIRECTORY.self::EBL_METABOX_TEMPLATE_DIR.$this->id.'.php');
     if(!file_exists($template_name)) return $this->throwError('eblmeta03', 'The template located at '.$template_name.' Could not be found.');
     wp_nonce_field(basename(__FILE__), 'ebl_beer_nonce');
@@ -224,14 +225,14 @@ class metaBox extends ebl{
    */
   public function saveMetaData($post_id){
     if(!isset($_POST['ebl_beer_nonce']) || !wp_verify_nonce($_POST['ebl_beer_nonce'], EBL_PATH)) return $post_id;
-    $meta_values = [];
     if($this->haveFields()){
       while($this->haveFields()){
         $this->theField();
-        $meta_values[str_replace('-', '_', $this->field->metaValue)] = $_POST[$this->field->metaValue];
+        if($_POST[$this->field->id] != get_post_meta($post_id, $this->field->metaKey, true)){
+          update_post_meta($post_id, $this->field->metaKey, $_POST[$this->field->id]);
+        }
       }
     }
-    update_post_meta($post_id, $this->metaKey, $meta_values);
 
     return $post_id;
   }

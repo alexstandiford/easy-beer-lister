@@ -17,6 +17,7 @@ class metaBoxField extends ebl{
   public $args = [];
   public $inputArgs = [];
   public $metaValue;
+  public $metaKey;
   public $id;
   public $description;
   public $class;
@@ -53,9 +54,9 @@ class metaBoxField extends ebl{
       $this->name = __($this->args['name']);
       $this->id = $this->args['id'];
       $this->inputArgs = $this->args['input_args'];
-      $this->metaValue = $this->args['meta_value'];
+      $this->metaKey = isset($this->args['meta_key']) ? EBL_PREFIX.'_'.$this->args['meta_key'] : EBL_PREFIX.'_'.str_replace('-','_',sanitize_title($this->args['name']));
+      $this->metaValue = get_post_meta(metaBox::$postID,$this->metaKey,true);
       $this->type = isset($this->args['type']) ? $this->args['type'] : $this->type;
-
       if($this->type == 'gallery' || $this->type == 'imageupload'){
         $this->previewTarget = $this->args['preview_target'];
       }
