@@ -1,6 +1,29 @@
-svg.svg-glass{
-  color:#bc6733;
-  width:100%;
+.ebl-beer-glass-component{
+
+}
+
+.beer-glass-group{
+  position:relative;
+  height:350px;
+  margin:auto;
+}
+
+.ebl-glass{
+  height:80%;
+  bottom:5%;
+  position:absolute;
+  left:40%;
+  transform:translateX(-50%);
+}
+
+.ebl-glass-mug{
+  left:48%;
+}
+
+.ebl-glass-bottle{
+  height:100%;
+  bottom:0;
+  transform:none;
 }
 
 svg.svg-glass circle{
