@@ -1,0 +1,20 @@
+.ebl-beer-single{
+
+  .ebl-beer-glass-component{
+    float:right;
+    width:40%;
+  }
+
+  .ebl-beer-stats span{
+    margin-right:20px;
+  }
+
+  .ebl-beer-pairings-component ul{
+    list-style-type:none;
+  }
+
+  .ebl-beer-pairings-component ul li{
+    display:inline;
+    margin:10px;
+  }
+}

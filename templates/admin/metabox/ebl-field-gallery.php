@@ -8,10 +8,10 @@
 
 if(!defined('ABSPATH')) exit;
 if(!$this instanceof \ebl\admin\metaBox) return; //Bail early if we aren't in a meta box object
-$images = explode(',', $this->getMetaValue());
+$images = explode(',', $this->field->metaValue);
 
 ?>
-<input class="hidden" <?= $this->field->inputArgs(); ?> name="<?= $this->field->id; ?>" id="<?= $this->field->inputTarget; ?>" value="<?= $this->metaValue; ?>"/>
+<input class="hidden" <?= $this->field->inputArgs(); ?> name="<?= $this->field->id; ?>" id="<?= $this->field->inputTarget; ?>" value="<?= $this->field->metaValue; ?>"/>
 
 <div id="<?= $this->field->previewTarget; ?>">
   <?php foreach($images as $image): ?>
