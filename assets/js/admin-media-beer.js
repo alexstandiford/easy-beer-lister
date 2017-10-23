@@ -157,7 +157,7 @@ jQuery(document).ready(function($){
    */
   var availabilityStartDate = $('#ebl-availability-start-date');
   availabilityStartDate.on('change',function(){
-    if($('option:selected',this).val() === 'year-round'){
+    if($('option:selected',this).val() === "0"){
       $('#ebl-availability-end-date-wrapper').addClass('mod--hidden');
     }
     else{

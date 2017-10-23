@@ -20,8 +20,6 @@ class glass extends ebl{
   public $srmRGB;
   public $srm = 8;
 
-  private $svgIncluded = false;
-
   public function __construct($beer = null, $shape = null){
     if(isset($shape)){
       $this->glassShape = $shape;
@@ -33,7 +31,7 @@ class glass extends ebl{
     parent::__construct();
     if(!$this->hasErrors()){
       if(isset($beer)){
-        $this->srm = $this->beer->getSRM();
+        $this->srm = $this->beer->getSRM() == 0 ? $this->srm : $this->beer->getSRM();
         $this->srmHex = $this->beer->getSRM('hex');
         $this->srmRGB = $this->beer->getSRM('rgb');
       }
@@ -101,10 +99,13 @@ class glass extends ebl{
     return $viewbox;
   }
 
+  /**
+   * Gets the beer glass SVG content
+   */
   private function getBeerGlassSVG(){
     $file = EBL_ASSETS_PATH.'svg/glasses.php';
     ob_start();
-    include_once($file);
+    include($file);
     echo ob_get_clean();
   }
 
@@ -120,11 +121,19 @@ class glass extends ebl{
     return $this->glassShape;
   }
 
+  /**
+   * Gets the label of the beer
+   *
+   * @param string $position
+   *
+   * @return false|string
+   */
   public function getLabel($position = 'bottom'){
-    if(!isset ($this->beer)) $this->throwError('glass03','Get Label requires the beer object. Be sure to include a $beer post or ID when using the glass class');
+    if(!isset ($this->beer)) $this->throwError('glass03', 'Get Label requires the beer object. Be sure to include a $beer post or ID when using the glass class');
     $label = $position == 'bottom' ? $this->beer->getBottomLabel() : $this->beer->getTopLabel();
     $size = $position == 'bottom' ? EBL_PREFIX.'_bottom_label' : EBL_PREFIX.'_top_label';
-    return wp_get_attachment_image_url($label,$size);
+
+    return wp_get_attachment_image_url($label, $size);
   }
 
 }

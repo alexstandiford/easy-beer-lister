@@ -41,7 +41,7 @@ class cpt{
             'label'         => __('Pairings'),
           ],
           'tags'    => [
-            'name'          => __('tags'),
+            'name'          => __('Tags'),
             'singular_name' => __('tag'),
             'label'         => __('Tags'),
           ],
