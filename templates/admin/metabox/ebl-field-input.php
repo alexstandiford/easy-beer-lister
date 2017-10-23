@@ -8,7 +8,6 @@
 
 if(!defined('ABSPATH')) exit;
 if(!$this instanceof \ebl\admin\metaBox) return; //Bail early if we aren't in a meta box object
-
 ?>
 
-<input <?= $this->field->inputArgs() ?> name="<?= $this->field->id ?>" id="<?= $this->field->id; ?>" value="<?= $this->metaValue; ?>"/>
+<input <?= $this->field->inputArgs() ?> name="<?= $this->field->id ?>" id="<?= $this->field->id; ?>" value="<?= $this->field->metaValue; ?>"/>

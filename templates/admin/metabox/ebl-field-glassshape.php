@@ -12,12 +12,12 @@ $field_id = $this->field;
 $field_id = $field_id::$fieldID;
 
 ?>
-<input class="hidden" <?= $this->field->inputArgs(); ?> name="<?= $this->field->id; ?>" id="<?= $this->field->inputTarget; ?>" value=" <?= $this->metaValue; ?>"/>
+<input class="hidden" <?= $this->field->inputArgs(); ?> name="<?= $this->field->id; ?>" id="<?= $this->field->inputTarget; ?>" value=" <?= $this->field->metaValue; ?>"/>
 <div class="ebl-glass-shape-wrapper" data-wrapper-id="<?= $field_id; ?>">
   <?php
   foreach($this->getGlassShapes() as $glass_shape):
     $glass = new glass((int)$this->postID, $glass_shape);
-    $class = $this->getMetaValue() == $glass_shape ? 'glass-shape mod--selected' : 'glass-shape'; ?>
+    $class = $this->field->metaValue == $glass_shape ? 'glass-shape mod--selected' : 'glass-shape'; ?>
 
     <div class="<?= $class; ?>" data-glass-shape="<?= $glass_shape ?>">
       <?= $glass->glass(); ?>
