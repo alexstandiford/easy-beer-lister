@@ -62,16 +62,30 @@ class glass extends ebl{
   public function glass(){
     $this->getBeerGlassSVG();
     if($this->srm && $this->getGlassShape()){
-      ob_start();
-      $file = EBL_ASSETS_PATH.'svg/glass.php';
-      if($this->fileExists($file)) include($file);
-      $svg = ob_get_clean();
+      $svg = $this->getGlass();
     }
     else{
       $svg = false;
     }
 
     return $svg;
+  }
+
+  /**
+   * Gets the glass, or bottle shape, based on the input glass shape
+   * @return string
+   */
+  private function getGlass(){
+    ob_start();
+    if($this->getGlassShape() != 'bottle'){
+      $file = EBL_ASSETS_PATH.'svg/glass.php';
+    }
+    else{
+      $file = EBL_ASSETS_PATH.'svg/bottle.php';
+    }
+    if($this->fileExists($file)) include($file);
+
+    return ob_get_clean();
   }
 
   public function getViewbox(){
