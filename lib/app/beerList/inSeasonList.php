@@ -1,0 +1,57 @@
+<?php
+/**
+ * Quick way to get a list of the beers that are in-season
+ * @author: Alex Standiford
+ * @date  : 10/21/17
+ */
+
+namespace ebl\app\beerList;
+
+use ebl\app\beerList;
+
+if(!defined('ABSPATH')) exit;
+
+class inSeasonList extends beerList{
+
+  public function __construct($args = []){
+    $current_month = (int)date('n');
+    $defaults = [
+      'meta_query'     => [
+        'relation' => 'OR',
+        [
+          'key'   => EBL_PREFIX.'_availability_start_date',
+          'value' => 0,
+        ],
+        [
+          'key'     => EBL_PREFIX.'_availability_start_date',
+          'compare' => 'NOT EXISTS',
+        ],
+        ['relation' => 'AND',
+          [
+            'key'     => EBL_PREFIX.'_availability_start_date',
+            'value'   => $current_month,
+            'type'    => 'numeric',
+            'compare' => '<=',
+          ],
+          [
+            'key'     => EBL_PREFIX.'_availability_end_date',
+            'value'   => $current_month,
+            'type'    => 'numeric',
+            'compare' => '>=',
+          ],
+        ],
+      ],
+      'posts_per_page' => -1,
+    ];
+    $this->month = $current_month;
+
+    $args = wp_parse_args($args, $defaults);
+    parent::__construct($args);
+  }
+
+  public static function getDataFromAPI(\WP_REST_Request $req, $self = null){
+    $self = new self();
+
+    return parent::getDataFromAPI($req, $self);
+  }
+}

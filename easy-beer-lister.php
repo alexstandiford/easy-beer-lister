@@ -10,8 +10,10 @@ License: GPL2
 
 namespace ebl;
 
+use ebl\app\templateLoader;
 use ebl\core\cpt;
 use ebl\admin\metaBox;
+use ebl\core\integrateAssets;
 
 if(!defined('ABSPATH')) exit;
 
@@ -27,9 +29,15 @@ class eblInit{
   ];
 
   private $app_includes = [
+    'templateLoader.php',
     'beer.php',
     'beerList.php',
+    'beerList/tapList.php',
+    'beerList/inSeasonList.php',
+    'beerList/outOfSeasonList.php',
+    'beerList/yearRoundList.php',
     'glass.php',
+    'functions.php',
   ];
 
   /**
@@ -46,11 +54,48 @@ class eblInit{
    * @var array: Class name or function to register widget from
    */
   private $endpoints = [
-    /*    'favorites/update'      => [
-          'methods'  => 'POST',
-          'callback' => 'ochc\carousel\video\favorites\favorite::apiUpdate',
-        ],*/
+    'template/get'            => [
+      'route_nicename' => 'getTemplate',
+      'methods'        => ['GET', 'POST'],
+      'callback'       => 'ebl\app\templateLoader::loadTemplateFromAPI',
+    ],
+
+    //Beer List Endpoints
+    'beer-list'               => [
+      'route_nicename' => 'beerList',
+      'methods'        => ['GET', 'POST'],
+      'callback'       => 'ebl\app\beerList::getDataFromAPI',
+    ],
+    'beer-list/on-tap'        => [
+      'route_nicename' => 'tapList',
+      'methods'        => ['GET', 'POST'],
+      'callback'       => 'ebl\app\beerList\tapList::getDataFromAPI',
+    ],
+    'beer-list/in-season'     => [
+      'route_nicename' => 'inSeason',
+      'methods'        => ['GET', 'POST'],
+      'callback'       => 'ebl\app\beerList\inSeasonList::getDataFromAPI',
+    ],
+    'beer-list/out-of-season' => [
+      'route_nicename' => 'outOfSeason',
+      'methods'        => ['GET', 'POST'],
+      'callback'       => 'ebl\app\beerList\outOfSeasonList::getDataFromAPI',
+    ],
+    'beer-list/year-round'    => [
+      'route_nicename' => 'yearRound',
+      'methods'        => ['GET', 'POST'],
+      'callback'       => 'ebl\app\beerList\yearRoundList::getDataFromAPI',
+    ],
+
+    //Single Beer Endpoints
+    'beer'                    => [
+      'route_nicename' => 'beer',
+      'methods'        => ['GET', 'POST'],
+      'callback'       => 'ebl\app\beer::getDataFromAPI',
+    ],
   ];
+
+  private static $eblCoreData = [];
 
 
   private function __construct(){
@@ -67,7 +112,8 @@ class eblInit{
       self::$instance->_includeCoreFiles();
       self::$instance->_includeAppFiles();
       if(is_admin()) self::$instance->_includeAdminFiles();
-      add_action('rest_api_init', array(self::$instance, '_registerRestEndpoints'));
+      add_action('wp_enqueue_scripts', [self::$instance, '_includeCoreScripts']);
+      add_action('rest_api_init', [self::$instance, '_registerRestEndpoints']);
     }
 
     return self::$instance;
@@ -91,10 +137,23 @@ class eblInit{
   }
 
   /**
+   * Loads in the core scripts and styles
+   */
+  public function _includeCoreScripts(){
+    foreach($this->endpoints as $route_name => $route_args){
+      self::$eblCoreData[$route_args['route_nicename']] = trailingslashit(get_rest_url()).trailingslashit(EBL_REST_NAMESPACE).$route_name;
+    }
+    wp_register_script('ebl', EBL_ASSETS_URL.'js/ebl.js', ['jquery']);
+    wp_localize_script('ebl', 'eblArgs', self::$eblCoreData);
+    wp_enqueue_script('ebl');
+  }
+
+  /**
    * Registers Rest API Endpoints
    */
   public function _registerRestEndpoints(){
     foreach($this->endpoints as $route_name => $route_args){
+      unset($route_args['route_nicename']);
       register_rest_route(EBL_REST_NAMESPACE, '/'.$route_name, $route_args);
     }
   }
@@ -142,6 +201,8 @@ function rock_and_roll(){
   do_action('ebl_after_init');
   cpt::register();
   do_action('ebl_after_cpt_registration');
+  wp_enqueue_script('ebl', EBL_ASSETS_URL.'js/ebl.js', ['jquery'], EBL_VERSION);
+  do_action('ebl_after_enqueue_scripts');
 
   //Image Sizes
   add_image_size(EBL_PREFIX.'_bottom_label', 324, 550, true);
@@ -176,6 +237,7 @@ add_action('load-post-new.php', __NAMESPACE__.'\\setup_meta_boxes');
 
 /**
  * Overrides the messaging that shows up when a beer is updated/saved
+ *
  * @param $msg
  *
  * @return mixed
@@ -206,6 +268,7 @@ add_filter('post_updated_messages', __NAMESPACE__.'\\override_default_beer_messa
 
 /**
  * Adds extra image sizes to upload editor. This is useful for the beers edit page.
+ *
  * @param $sizes
  *
  * @return array
@@ -213,10 +276,35 @@ add_filter('post_updated_messages', __NAMESPACE__.'\\override_default_beer_messa
 function add_image_sizes_to_upload_editor($sizes){
   $sizes = array_merge($sizes, array(
     EBL_PREFIX.'_bottom_label' => __('Bottom Beer Label'),
-    EBL_PREFIX.'_top_label' => __('Top Beer Label'),
+    EBL_PREFIX.'_top_label'    => __('Top Beer Label'),
   ));
 
   return $sizes;
 }
 
 add_filter('image_size_names_choose', __NAMESPACE__.'\\add_image_sizes_to_upload_editor');
+
+
+function load_custom_single_beer_page_template($template){
+  global $wp_query;
+  if(is_singular('beers')){
+    new \ebl\app\beerList($wp_query);
+    $template = new templateLoader('wrapper', 'single');
+
+    $template->loadTemplate();
+
+    return false;
+  }
+  elseif(is_post_type_archive('beers') || is_tax(['style', 'pairing', 'tags'])){
+    new \ebl\app\beerList($wp_query);
+    $template = new templateLoader('wrapper', 'archive');
+
+    $template->loadTemplate();
+
+    return false;
+  }
+
+  return $template;
+}
+
+add_filter('template_include', __NAMESPACE__.'\\load_custom_single_beer_page_template');
