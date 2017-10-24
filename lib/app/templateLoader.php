@@ -20,8 +20,8 @@ if(!defined('ABSPATH')) exit;
 
 class templateLoader extends ebl{
 
-  const SUPPORTED_LOCATIONS = ['single', 'wrapper', 'archive', 'component'];
-  const SUPPORTED_TYPES = ['heading', 'filter', 'header', 'beer', 'single', 'archive', 'beers', 'beer-info-basic', 'beer-glass', 'beer-pairings', 'beer-availability', 'beer-video', 'beer-stats', 'related-beers'];
+  const SUPPORTED_LOCATIONS = ['shortcode','widget', 'single', 'wrapper', 'archive', 'component'];
+  const SUPPORTED_TYPES = ['widget', 'random-beer', 'on-tap', 'heading', 'filter', 'header', 'beer', 'single', 'archive', 'beers', 'beer-info-basic', 'beer-glass', 'beer-pairings', 'beer-availability', 'beer-video', 'beer-stats', 'related-beers'];
   const THEME_DIRECTORY = 'easy-beer-lister/';
   private $defaults = ['load_as_buffer' => false, 'post_id' => false];
   public $type;
@@ -33,7 +33,7 @@ class templateLoader extends ebl{
   public static $buffer;
 
   public function __construct($location = 'wrapper', $type = 'beers', $args = []){
-    $args = wp_parse_args($args,$this->defaults);
+    $args = wp_parse_args($args, $this->defaults);
     $this->location = (string)$location;
     $this->type = (string)$type;
     self::$buffer = $args['load_as_buffer'] ? self::$buffer = '' : self::$buffer = false;

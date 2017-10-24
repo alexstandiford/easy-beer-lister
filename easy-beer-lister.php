@@ -38,6 +38,7 @@ class eblInit{
     'beerList/yearRoundList.php',
     'glass.php',
     'functions.php',
+    'widgets/randomBeer.php',
   ];
 
   /**
@@ -203,6 +204,9 @@ function rock_and_roll(){
   do_action('ebl_after_cpt_registration');
   wp_enqueue_script('ebl', EBL_ASSETS_URL.'js/ebl.js', ['jquery'], EBL_VERSION);
   do_action('ebl_after_enqueue_scripts');
+  register_widget('\ebl\app\widget\randomBeer');
+  add_shortcode('beer','\ebl\app\shortcode\beerShortcode::get');
+
 
   //Image Sizes
   add_image_size(EBL_PREFIX.'_bottom_label', 324, 550, true);
