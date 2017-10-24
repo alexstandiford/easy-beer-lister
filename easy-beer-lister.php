@@ -209,7 +209,7 @@ function rock_and_roll(){
   add_image_size(EBL_PREFIX.'_top_label', 132, 88, true);
 }
 
-add_action('init', __NAMESPACE__.'\\rock_and_roll');
+add_action('widgets_init', __NAMESPACE__.'\\rock_and_roll');
 
 /**
  * Flushes permalinks on plugin activation
