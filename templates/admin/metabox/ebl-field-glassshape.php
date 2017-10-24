@@ -16,7 +16,7 @@ $field_id = $field_id::$fieldID;
 <div class="ebl-glass-shape-wrapper" data-wrapper-id="<?= $field_id; ?>">
   <?php
   foreach($this->getGlassShapes() as $glass_shape):
-    $glass = new glass((int)$this->postID, $glass_shape);
+    $glass = new glass((int)$this::$postID, $glass_shape);
     $class = $this->field->metaValue == $glass_shape ? 'glass-shape mod--selected' : 'glass-shape'; ?>
 
     <div class="<?= $class; ?>" data-glass-shape="<?= $glass_shape ?>">

@@ -40,6 +40,7 @@ class eblInit{
     'functions.php',
     'widgets/randomBeer.php',
     'widgets/onTapWidget.php',
+    'shortcode/beerShortcode.php',
   ];
 
   /**
@@ -207,6 +208,7 @@ function rock_and_roll(){
   do_action('ebl_after_enqueue_scripts');
   register_widget('\ebl\app\widget\randomBeer');
   register_widget('\ebl\app\widget\onTapWidget');
+  do_action('ebl_after_register_widgets');
   add_shortcode('beer','\ebl\app\shortcode\beerShortcode::get');
 
 

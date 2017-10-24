@@ -17,6 +17,21 @@
   display: inline;
   margin: 10px; }
 
+.ebl-beer-shortcode {
+  position: fixed;
+  top: 50px;
+  left: 500px;
+  width: 400px;
+  height: auto;
+  background: white;
+  padding: 10px;
+  z-index: -1;
+  opacity: 0; }
+  .ebl-beer-shortcode.mod--visible {
+    opacity: 1;
+    z-index: 9001;
+    /*ITS OVER 9000!*/ }
+
 .ebl-archive-wrapper {
   max-width: 1200px;
   margin: auto;
@@ -54,25 +69,25 @@ svg.svg-glass circle {
   transform: scale(1) translate(0px, 0%);
   transform-origin: 50% 50%; }
   svg.svg-glass circle:nth-of-type(1) {
-    animation: fizz 4778ms ease-in infinite; }
+    animation: fizz 5622ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(2) {
-    animation: fizz 4126ms ease-in infinite; }
+    animation: fizz 2202ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(3) {
-    animation: fizz 3127ms ease-in infinite; }
+    animation: fizz 5748ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(4) {
-    animation: fizz 6782ms ease-in infinite; }
+    animation: fizz 4816ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(5) {
-    animation: fizz 3642ms ease-in infinite; }
+    animation: fizz 6289ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(6) {
-    animation: fizz 2166ms ease-in infinite; }
+    animation: fizz 4476ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(7) {
-    animation: fizz 5607ms ease-in infinite; }
+    animation: fizz 6686ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(8) {
-    animation: fizz 4171ms ease-in infinite; }
+    animation: fizz 6380ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(9) {
-    animation: fizz 3582ms ease-in infinite; }
+    animation: fizz 4155ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(10) {
-    animation: fizz 4006ms ease-in infinite; }
+    animation: fizz 4174ms ease-in infinite; }
 
 @keyframes fizz {
   0% {
