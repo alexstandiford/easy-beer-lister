@@ -39,6 +39,7 @@ class eblInit{
     'glass.php',
     'functions.php',
     'widgets/randomBeer.php',
+    'widgets/onTapWidget.php',
   ];
 
   /**
@@ -205,6 +206,7 @@ function rock_and_roll(){
   wp_enqueue_script('ebl', EBL_ASSETS_URL.'js/ebl.js', ['jquery'], EBL_VERSION);
   do_action('ebl_after_enqueue_scripts');
   register_widget('\ebl\app\widget\randomBeer');
+  register_widget('\ebl\app\widget\onTapWidget');
   add_shortcode('beer','\ebl\app\shortcode\beerShortcode::get');
 
 
