@@ -12,10 +12,10 @@ if(!$this instanceof \ebl\app\templateLoader) return; //Bail early if we're not 
 $beer = ebl_get_beer($this->postID);
 ?>
 <div <?= $this->wrapperClasses(); ?> <?= $this->wrapperArgs(); ?>>
-  <?php if($this->parent['location'] == 'archive'): ?>
+  <?php if($this->parent['location'] == 'archive' || $this->parent['type'] == 'widget'): ?>
   <a href="<?= get_post_permalink($beer->post->ID); ?>"> <?php endif; ?>
     <h2><?= get_the_title(); ?></h2>
-    <?php if($this->parent['location'] == 'archive'): ?></a> <?php endif; ?>
+    <?php if($this->parent['location'] == 'archive' || $this->parent['type'] == 'widget'): ?></a> <?php endif; ?>
   <?php if($this->parent['location'] == 'archive'): ?>
     <a href="<?= get_term_link($beer->getStyle('slug'), 'style'); ?>">
       <h3><?= $beer->getStyle(); ?></h3>
@@ -23,7 +23,7 @@ $beer = ebl_get_beer($this->postID);
   <?php else: ?>
     <h3><?= $beer->getStyle(); ?></h3>
   <?php endif; ?>
-  <?php if(is_singular('beers')): ?>
+  <?php if($this->parent['location'] == 'single'): ?>
     <?php the_content($beer->post->ID); ?>
   <?php else: ?>
     <p><?= get_the_excerpt($beer->post->ID); ?></p>
