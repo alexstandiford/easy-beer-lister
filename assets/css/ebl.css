@@ -9,13 +9,26 @@
 .ebl-beer-single .ebl-beer-glass-component {
   float: right;
   width: 40%; }
-.ebl-beer-single .ebl-beer-stats span {
-  margin-right: 20px; }
 .ebl-beer-single .ebl-beer-pairings-component ul {
   list-style-type: none; }
 .ebl-beer-single .ebl-beer-pairings-component ul li {
   display: inline;
   margin: 10px; }
+
+.ebl-beer-shortcode {
+  position: fixed;
+  top: 50px;
+  left: 500px;
+  width: 400px;
+  height: auto;
+  background: white;
+  padding: 10px;
+  z-index: -1;
+  opacity: 0; }
+  .ebl-beer-shortcode.mod--visible {
+    opacity: 1;
+    z-index: 9001;
+    /*ITS OVER 9000!*/ }
 
 .ebl-archive-wrapper {
   max-width: 1200px;
@@ -54,25 +67,25 @@ svg.svg-glass circle {
   transform: scale(1) translate(0px, 0%);
   transform-origin: 50% 50%; }
   svg.svg-glass circle:nth-of-type(1) {
-    animation: fizz 4778ms ease-in infinite; }
+    animation: fizz 2772ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(2) {
-    animation: fizz 4126ms ease-in infinite; }
+    animation: fizz 3303ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(3) {
-    animation: fizz 3127ms ease-in infinite; }
+    animation: fizz 4541ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(4) {
-    animation: fizz 6782ms ease-in infinite; }
+    animation: fizz 3821ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(5) {
-    animation: fizz 3642ms ease-in infinite; }
+    animation: fizz 6551ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(6) {
-    animation: fizz 2166ms ease-in infinite; }
+    animation: fizz 3563ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(7) {
-    animation: fizz 5607ms ease-in infinite; }
+    animation: fizz 6997ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(8) {
-    animation: fizz 4171ms ease-in infinite; }
+    animation: fizz 2578ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(9) {
-    animation: fizz 3582ms ease-in infinite; }
+    animation: fizz 3758ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(10) {
-    animation: fizz 4006ms ease-in infinite; }
+    animation: fizz 4026ms ease-in infinite; }
 
 @keyframes fizz {
   0% {
@@ -130,5 +143,10 @@ svg.svg-glass circle {
       left: 0;
       width: 100%;
       height: 100%; }
+
+.ebl-beer-stats-component .ebl-stat:not(:first-of-type):not(:last-of-type) {
+  margin-right: 20px; }
+.ebl-beer-stats-component .ebl-stat-title:not(:first-of-type):not(:last-of-type) {
+  margin-left: 20px; }
 
 /*# sourceMappingURL=ebl.css.map */

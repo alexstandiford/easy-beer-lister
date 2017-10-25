@@ -5,6 +5,9 @@
 //SINGLE
 @import 'single/beer.scss';
 
+//SHORTCODES
+@import 'shortcode/beer.scss';
+
 //WRAPPERS
 @import 'wrapper/archive.scss';
 @import 'wrapper/single.scss';
@@ -14,3 +17,4 @@
 @import 'component/filter.scss';
 @import 'component/beer-info-basic.scss';
 @import 'component/beer-video.scss';
+@import 'component/beer-stats.scss';

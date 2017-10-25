@@ -62,4 +62,14 @@ jQuery(document).ready(function($){
     }
   });
 
+  /**
+   * When a shortcode item is hovered-over, display the preview of the current beer
+   */
+  $('.ebl-shortcode').on('hover',function(e){
+    var eblShortcodeHoverTarget = $('.ebl-shortcode-modal-'+$(this).data('modal-id'));
+    eblShortcodeHoverTarget.toggleClass('mod--visible');
+    eblShortcodeHoverTarget.css('left',e.clientX-50);
+    eblShortcodeHoverTarget.css('top',e.clientY+50);
+  });
+
 });
