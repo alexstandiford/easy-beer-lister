@@ -9,8 +9,6 @@
 .ebl-beer-single .ebl-beer-glass-component {
   float: right;
   width: 40%; }
-.ebl-beer-single .ebl-beer-stats span {
-  margin-right: 20px; }
 .ebl-beer-single .ebl-beer-pairings-component ul {
   list-style-type: none; }
 .ebl-beer-single .ebl-beer-pairings-component ul li {
@@ -69,25 +67,25 @@ svg.svg-glass circle {
   transform: scale(1) translate(0px, 0%);
   transform-origin: 50% 50%; }
   svg.svg-glass circle:nth-of-type(1) {
-    animation: fizz 5622ms ease-in infinite; }
+    animation: fizz 2772ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(2) {
-    animation: fizz 2202ms ease-in infinite; }
+    animation: fizz 3303ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(3) {
-    animation: fizz 5748ms ease-in infinite; }
+    animation: fizz 4541ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(4) {
-    animation: fizz 4816ms ease-in infinite; }
+    animation: fizz 3821ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(5) {
-    animation: fizz 6289ms ease-in infinite; }
+    animation: fizz 6551ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(6) {
-    animation: fizz 4476ms ease-in infinite; }
+    animation: fizz 3563ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(7) {
-    animation: fizz 6686ms ease-in infinite; }
+    animation: fizz 6997ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(8) {
-    animation: fizz 6380ms ease-in infinite; }
+    animation: fizz 2578ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(9) {
-    animation: fizz 4155ms ease-in infinite; }
+    animation: fizz 3758ms ease-in infinite; }
   svg.svg-glass circle:nth-of-type(10) {
-    animation: fizz 4174ms ease-in infinite; }
+    animation: fizz 4026ms ease-in infinite; }
 
 @keyframes fizz {
   0% {
@@ -145,5 +143,10 @@ svg.svg-glass circle {
       left: 0;
       width: 100%;
       height: 100%; }
+
+.ebl-beer-stats-component .ebl-stat:not(:first-of-type):not(:last-of-type) {
+  margin-right: 20px; }
+.ebl-beer-stats-component .ebl-stat-title:not(:first-of-type):not(:last-of-type) {
+  margin-left: 20px; }
 
 /*# sourceMappingURL=ebl.css.map */

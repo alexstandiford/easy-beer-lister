@@ -196,7 +196,7 @@ class beer extends ebl{
   public function getABV(){
     do_action(EBL_PREFIX.'_before_get_abv', $this);
 
-    return apply_filters(EBL_PREFIX.'_get_abv', (float)$this->getMetaValue('abv'), $this);
+    return apply_filters(EBL_PREFIX.'_get_abv', (float)$this->getMetaValue('abv').'%', $this);
   }
 
   /**
@@ -226,7 +226,7 @@ class beer extends ebl{
   public function getPrice(){
     do_action(EBL_PREFIX.'_before_get_price', $this);
 
-    return apply_filters(EBL_PREFIX.'_get_price', (float)$this->getOption('show_price') == true ? (float)$this->getMetaValue('price') : null, $this);
+    return apply_filters(EBL_PREFIX.'_get_price', (float)$this->getMetaValue('price').$this->getOption('currency_symbol'), $this);
   }
 
   /**
