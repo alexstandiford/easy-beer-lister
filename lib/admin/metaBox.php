@@ -7,11 +7,9 @@
 
 namespace ebl\admin;
 
-use ebl\core\ebl;
-
 if(!defined('ABSPATH')) exit;
 
-class metaBox extends ebl{
+class metaBox extends fieldLoop{
 
   public $fields = [
     'beers' => [
@@ -37,7 +35,6 @@ class metaBox extends ebl{
        ],
       ],
       ['name'           => 'On Tap',
-       'meta_key'       => 'on_tap',
        'description'    => 'Is this beer currently on-tap?',
        'type'           => 'select',
        'select_options' => [0 => 'No', 1 => 'Yes']],
@@ -63,9 +60,14 @@ class metaBox extends ebl{
          'type' => 'text',
        ],
       ],
-      ['name'        => 'Glass Shape',
-       'description' => 'select which glass shape you prefer this beer to be displayed with',
-       'type'        => 'glassshape',
+      ['name'              => 'Glass Layout',
+       'description'       => 'select which glass layout you prefer this beer to be displayed with. Note that beer bottles will <strong>not</strong> display unless you add a top and bottom beer label.',
+       'type'              => 'glasslayout',
+       'fallback_value'    => ['shape' => 'shaker', 'layout' => 'bottle'],
+       'sanitize_callback' => 'sanitizeGlassLayout',
+       'input_args'        => [
+         'type' => 'text',
+       ],
       ],
       ['name'        => 'Price',
        'description' => 'Enter the price of the beer here. Do not include your currency symbol. This will only display if you have the price configured to display in the options.',
@@ -78,7 +80,7 @@ class metaBox extends ebl{
        'description' => 'Enter the Untappd URL here.',
       ],
       ['name'        => 'Video URL',
-       'meta_key'    => 'video',
+       'key'         => 'video',
        'description' => 'Enter the Video URL here.',
       ],
       ['name'           => 'Label',
@@ -97,8 +99,6 @@ class metaBox extends ebl{
       ],
     ],
   ];
-  public $field;
-  public $id;
   public $title;
   public $postType;
   public $priority;
@@ -106,22 +106,14 @@ class metaBox extends ebl{
   public $metaKey;
   public $metaValue;
   public $meta;
-  public $inLoop = false;
-  public $jsArgs = [];
-  public static $postID;
-  const EBL_METABOX_TEMPLATE_DIR = 'admin/metabox/';
 
   public function __construct($meta_box_name, $post_type, $context = 'normal', $priority = 'default'){
     self::$postID = $_GET['post'];
-    $this->fields = $this->fields[$post_type];
-    $this->id = sanitize_title(EBL_PREFIX.'-'.$meta_box_name);
-    $this->metaKey = str_replace('-', '_', $this->id);
     $this->title = esc_html__($meta_box_name);
     $this->postType = $post_type;
     $this->context = $context;
     $this->priority = $priority;
-    $this->field = new metaBoxField($this->fields[0]);
-    parent::__construct();
+    parent::__construct(apply_filters(EBL_PREFIX.'_beer_meta_fields', $this->fields[$post_type], $this->fields[$post_type]), $meta_box_name);
   }
 
   /**
@@ -132,6 +124,7 @@ class metaBox extends ebl{
     if(!is_array($this->fields)){
       return $this->throwError('eblmeta01', 'An invalid Post Type was specified in the post meta object.');
     }
+    parent::checkForErrors();
 
     return null;
   }
@@ -151,72 +144,6 @@ class metaBox extends ebl{
   }
 
   /**
-   * Loads the metabox fields template
-   * @return null|\WP_Error
-   */
-  public function loadTemplate(){
-    $template_name = apply_filters('ebl_metabox_'.$this->id.'_template_location', EBL_TEMPLATE_DIRECTORY.self::EBL_METABOX_TEMPLATE_DIR.$this->id.'.php');
-    if(!file_exists($template_name)) return $this->throwError('eblmeta03', 'The template located at '.$template_name.' Could not be found.');
-    wp_nonce_field(basename(__FILE__), 'ebl_beer_nonce');
-    if($this->fileExists($template_name)) include($template_name);
-
-    return null;
-  }
-
-  /**
-   * Check to see if there are any meta fields to display
-   * @return bool
-   */
-  public function haveFields(){
-
-    //If we haven't done the loop yet, set it up and return true.
-    if($this->inLoop == false){
-
-      return true;
-    }
-
-    //If we have fields left, return true
-    if(count($this->fields) > 1){
-      return true;
-    };
-
-    //Otherwise, enqueue scripts and return false
-    $this->enqueue();
-
-    return false;
-  }
-
-  /**
-   * Creates the next meta box field object, and shifts the array
-   */
-  public function theField(){
-    if($this->inLoop == false){
-      wp_nonce_field(EBL_PATH, EBL_PREFIX.'_beer_nonce');
-      $this->inLoop = true;
-    }
-    else{
-      $this->field = new metaBoxField($this->fields[1]);
-      if(!empty($this->field->jsArgs)) $this->jsArgs[$this->field->fieldID()] = $this->field->jsArgs; //Capture the js args to pass to the script afterward
-      array_shift($this->fields);
-    }
-  }
-
-  /**
-   * Get a single field input, based on the type
-   * Template files are located in plugin_dir/templates/admin/metabox
-   * @return string|\WP_Error
-   */
-  public function input(){
-    if($this->inLoop == false) return $this->throwError('eblmeta04', 'metaBox->input() cannot be used outside of the loop');
-    $input_template_dir = EBL_TEMPLATE_DIRECTORY.self::EBL_METABOX_TEMPLATE_DIR;
-    $this->metaValue = $this->getMetaValue() ? esc_attr($this->getMetaValue()) : '';
-    $file = apply_filters('ebl_field_'.$this->field->type.'_template_location', $input_template_dir.'ebl-field-'.$this->field->type.'.php');
-    if($this->fileExists($file)) include($file);
-
-    return $this->field->type;
-  }
-
-  /**
    * Updates the Post Metadata
    *
    * @param $post_id
@@ -229,33 +156,14 @@ class metaBox extends ebl{
       while($this->haveFields()){
         $this->theField();
         if($_POST[$this->field->id] != get_post_meta($post_id, $this->field->metaKey, true)){
-          update_post_meta($post_id, $this->field->metaKey, $_POST[$this->field->id]);
+          if(sanitizeCheck::sanitize($this->field,$_POST[$this->field->id],$post_id)){
+            update_post_meta($post_id, $this->field->metaKey, $_POST[$this->field->id]);
+          }
         }
       }
     }
 
     return $post_id;
-  }
-
-  private function enqueue(){
-    if(!$this->inLoop) return $this->throwError('meta05', 'The private method enqueue() can only run inside the loop.');
-    wp_enqueue_media();
-    wp_dequeue_script('admin-media-beer');
-    wp_register_script('admin-media-beer', EBL_ASSETS_URL.'js/admin-media-beer.js', ['jquery'], EBL_VERSION);
-    wp_localize_script('admin-media-beer', 'eblAdmin', $this->jsArgs);
-    wp_enqueue_script('admin-media-beer');
-
-    return false;
-  }
-
-  /**
-   * Gets the current meta value
-   * @return mixed
-   */
-  public function getMetaValue(){
-    if(!$this->inLoop) $this->throwError('meta06', 'The method getMetaValue only works inside the loop');
-
-    return isset($this->meta[str_replace('-', '_', $this->field->metaValue)]) ? $this->meta[str_replace('-', '_', $this->field->metaValue)] : '';
   }
 
 }
