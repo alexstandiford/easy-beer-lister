@@ -5,9 +5,7 @@
  * @date  : 10/17/17
  */
 
-use ebl\app\beer;
 use \ebl\app\glass;
-use ebl\app\templateLoader;
 
 if(!defined('ABSPATH')) exit;
 if(!$this->field instanceof \ebl\admin\field) return; //Bail early if we aren't in a meta box object

@@ -314,7 +314,7 @@ class beer extends ebl{
   public function getBottomLabel(){
     do_action($this->prefix('before_get_bottom_label'), $this);
 
-    return apply_filters($this->prefix('get_bottom_label'), (int)$this->getMetaValue('label'), $this);
+    return apply_filters($this->prefix('get_bottom_label'), (int)$this->getMetaValue('label','default_bottom_beer_label'), $this);
   }
 
   /**
@@ -324,7 +324,7 @@ class beer extends ebl{
   public function getTopLabel(){
     do_action($this->prefix('before_get_top_label'), $this);
 
-    return apply_filters($this->prefix('get_top_label'), (int)$this->getMetaValue('top_label'), $this);
+    return apply_filters($this->prefix('get_top_label'), (int)$this->getMetaValue('top_label','default_top_beer_label'), $this);
   }
 
   /**
