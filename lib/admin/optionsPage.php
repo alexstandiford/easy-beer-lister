@@ -24,11 +24,6 @@ class optionsPage extends fieldLoop{
         'default' => [
           'fields' => [
             [
-              'name'        => 'Default Beer Glass Layout',
-              'description' => 'When no beer glass/bottle layout is specified on an individual beer, this will be used instead.',
-              'type'        => 'glasslayout',
-            ],
-            [
               'name' => 'Default Top Beer Label',
               'description' => 'When no top label is specified, this label will be used.',
               'type' => 'imageupload',
