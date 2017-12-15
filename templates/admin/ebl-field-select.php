@@ -7,7 +7,7 @@
 
 
 if(!defined('ABSPATH')) exit;
-if(!$this instanceof \ebl\admin\metaBox) return; //Bail early if we aren't in a meta box object
+if(!$this->field instanceof \ebl\admin\field) return; //Bail early if we aren't in a meta box object
 ?>
 <select <?= $this->field->inputArgs() ?> name="<?= $this->field->id ?>" id="<?= $this->field->id; ?>">
   <?php foreach($this->field->selectOptions as $select_key => $select_option): ?>

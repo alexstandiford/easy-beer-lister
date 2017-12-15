@@ -8,16 +8,18 @@
 
 namespace ebl\admin;
 
+use ebl\app\beer;
 use ebl\core\ebl;
 
 if(!defined('ABSPATH')) exit;
 
-class metaBoxField extends ebl{
+class field extends ebl{
 
   public $args = [];
   public $inputArgs = [];
   public $metaValue;
   public $metaKey;
+  public $sanitizeCallback;
   public $id;
   public $description;
   public $class;
@@ -26,16 +28,19 @@ class metaBoxField extends ebl{
   public $inputTarget;
   public $jsArgs = [];
   public static $fieldID = 0;
+  public $fallbackValue = false;
   public $selectOptions = [];
   public $type = 'input';
-  const EBL_SUPPORTED_META_FIELDS = [
+  const EBL_SUPPORTED_FIELDS = [
     'input',
+    'checkbox',
     'gallery',
     'srmpicker',
     'select',
-    'glassshape',
+    'glasslayout',
     'imageupload',
   ];
+  const EBL_FIELD_TEMPLATE_DIR = EBL_TEMPLATE_DIRECTORY.'admin/';
 
   public function __construct($args = []){
     if(isset($args['name'])) $this->args = $args;
@@ -44,7 +49,7 @@ class metaBoxField extends ebl{
       self::$fieldID++;
 
       //Generate field data
-      $html_friendly_name = EBL_PREFIX.'-'.sanitize_title($args['name']);
+      $html_friendly_name = $this->prefix(sanitize_title($args['name']), '-');
 
       $default_args = ['preview_target' => 'image-previews-'.self::$fieldID, 'input_target' => 'upload-image-input-'.self::$fieldID, 'input_args' => [], 'description' => '', 'id' => $html_friendly_name, 'meta_value' => $html_friendly_name, 'class' => 'ebl-field'];
       $this->args = wp_parse_args($args, $default_args);
@@ -53,15 +58,18 @@ class metaBoxField extends ebl{
       $this->class = $this->args['class'];
       $this->name = __($this->args['name']);
       $this->id = $this->args['id'];
+      $this->sanitizeCallback = isset($this->args['sanitize_callback']) ? $this->args['sanitize_callback'] ? $this->args['sanitize_callback'] : false : false;
       $this->inputArgs = $this->args['input_args'];
-      $this->metaKey = isset($this->args['meta_key']) ? EBL_PREFIX.'_'.$this->args['meta_key'] : EBL_PREFIX.'_'.str_replace('-','_',sanitize_title($this->args['name']));
-      $this->metaValue = get_post_meta(metaBox::$postID,$this->metaKey,true);
+      $this->fallbackValue = isset($this->args['fallback_value']) ? $this->args['fallback_value'] : false;
+      $this->metaKey = isset($this->args['key']) ? $this->prefix($this->args['key']) : $this->prefix(str_replace('-', '_', sanitize_title_with_dashes($this->args['name'])));
+      $this->metaValue = isset(metaBox::$postID) ? $this->getPostMeta(metaBox::$postID, $this->metaKey, $this->metaKey, $this->fallbackValue, true) : $this->getOption($this->metaKey);
+      if(is_array($this->metaValue)) $this->metaValue = implode(',', $this->metaValue);
       $this->type = isset($this->args['type']) ? $this->args['type'] : $this->type;
       if($this->type == 'gallery' || $this->type == 'imageupload'){
         $this->previewTarget = $this->args['preview_target'];
       }
 
-      if($this->type == 'gallery' || $this->type == 'srmpicker' || $this->type == 'glassshape' || $this->type == 'imageupload'){
+      if($this->type == 'gallery' || $this->type == 'srmpicker' || $this->type == 'glasslayout' || $this->type == 'imageupload'){
         $this->inputTarget = $this->args['input_target'];
       }
 
@@ -81,13 +89,13 @@ class metaBoxField extends ebl{
   private function gatherJSArgs(){
     if($this->hasErrors()) return; //Bail early if there are errors
     if($this->type === 'gallery' || $this->type === 'imageupload'){
-      $this->jsArgs = ['fieldType' => $this->id,'previewTarget' => $this->previewTarget, 'inputTarget' => $this->inputTarget, 'setToPostID' => get_option('media_selector_attachment_id')];
+      $this->jsArgs = ['fieldType' => $this->id, 'previewTarget' => $this->previewTarget, 'inputTarget' => $this->inputTarget, 'setToPostID' => get_option('media_selector_attachment_id')];
     }
-    elseif($this->type === 'srmpicker'){
+    elseif($this->type === 'srmpicker' || $this->type === 'glasslayout'){
       wp_enqueue_style('admin-beer-style', EBL_ASSETS_URL.'css/admin-beer.css');
       $this->jsArgs = ['inputTarget' => $this->inputTarget];
     }
-    elseif($this->type === 'glassshape'){
+    elseif($this->type === 'glasslayout'){
       wp_enqueue_style('beer-glass', EBL_ASSETS_URL.'css/beer-glass.css');
       $this->jsArgs = ['inputTarget' => $this->inputTarget];
     }
@@ -108,7 +116,7 @@ class metaBoxField extends ebl{
   function checkForErrors(){
     if(!isset($this->args['name'])) return $this->throwError('metaField01', 'This meta field is missing a name value in the arguments. Please pass a "name" in the args array. (Example: ["name" => "name of meta field"])');
     if(isset($this->args['type'])){
-      if(!in_array($this->args['type'], self::EBL_SUPPORTED_META_FIELDS)){
+      if(!in_array($this->args['type'], self::EBL_SUPPORTED_FIELDS)){
         return $this->throwError('metaField02', 'This meta field is calling an input type of '.$this->args['type'].'. Currently, Easy Beer Lister only supports "input", "gallery", and "srmpicker" types.');
       }
     }
