@@ -14,8 +14,7 @@ $beer = ebl_get_beer($this->postID);
 <div <?= $this->wrapperClasses() ?> <?= $this->wrapperArgs(); ?>>
   <div class="beer-glass-group">
     <?php if($this->parent['location'] == 'archive'): ?><a href="<?= get_post_permalink($beer->post->ID); ?>"> <?php endif; ?>
-      <?= $beer->getGlass(); ?>
-      <?= $beer->getBottle(); ?>
+      <?php $beer->getGlassLayout(); ?>
     <?php if($this->parent['location'] == 'archive'): ?></a> <?php endif; ?>
   </div>
 </div>

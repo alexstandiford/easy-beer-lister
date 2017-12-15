@@ -18,13 +18,14 @@ class beer extends ebl{
 
   public $post;
   public $glass;
+  public $layout;
 
 
   public function __construct($post = null){
     $this->post = get_post($post);
     parent::__construct();
     if(!$this->hasErrors()){
-      $GLOBALS[EBL_PREFIX.'_beer'] = $this;
+      $GLOBALS[$this->prefix('beer')] = $this;
     }
   }
 
@@ -55,16 +56,13 @@ class beer extends ebl{
    *
    * @return mixed
    */
-  public function getMetaValue($value){
+  public function getMetaValue($value, $default_option = false, $default_value = false){
     if($this->hasErrors()) return false; //Bail early if the object has any errors
 
     if(isset($this->$value)) return $this->$value; //Bail early if we've already loaded the values in
-    $this->$value = get_post_meta($this->post->ID, EBL_PREFIX.'_'.$value, true);
+    $this->$value = $this->getPostMeta($this->post->ID, $value, $default_option, $default_value, true);
 
-    do_action(EBL_PREFIX.'_before_get_meta_value', $this, $value);
-    if(!isset($this->$value)) $this->$value = false;
-
-    return apply_filters(EBL_PREFIX.'_get_meta_value', $this->$value, $this, $value);
+    return apply_filters($this->prefix('get_meta_value'), $this->$value, $this, $value);
   }
 
   /**
@@ -117,11 +115,11 @@ class beer extends ebl{
       }
     }
 
-    $terms = apply_filters(EBL_PREFIX.'_get_terms', $terms, $taxonomy, $single);
+    $terms = apply_filters($this->prefix('get_terms'), $terms, $taxonomy, $single);
     $this->$taxonomy = $terms;
 
-    do_action(EBL_PREFIX.'_before_get_terms', $this, $taxonomy, $single);
-    if($single == true) $terms = apply_filters(EBL_PREFIX.'_get_single_term', $terms[0]);
+    do_action($this->prefix('before_get_terms'), $this, $taxonomy, $single);
+    if($single == true) $terms = apply_filters($this->prefix('get_single_term'), $terms[0]);
 
     return $terms;
   }
@@ -190,13 +188,38 @@ class beer extends ebl{
   }
 
   /**
+   * Gets both the glass and the bottle, based on the layout provided
+   *
+   * @param bool $echo - Set to false to prevent this function from echoing the results
+   *
+   * @return array
+   */
+  public function getGlassLayout($echo = true){
+    $layouts = [];
+    do_action($this->prefix('before_get_glass_layout'), $this, $layouts);
+    foreach($this->getGlassLayoutValue() as $layout){
+      if($layout === 'bottle'){
+        if($echo) echo $this->getBottle();
+        $layouts[] = $this->getBottle();
+      }
+      else{
+        if($echo) echo $this->getGlass();
+        $layouts[] = $this->getGlass();
+      }
+    }
+    do_action($this->prefix('after_get_glass_layout'), $this, $layouts);
+
+    return $layouts;
+  }
+
+  /**
    * Gets the ABV of the current beer
    * @return float
    */
   public function getABV(){
-    do_action(EBL_PREFIX.'_before_get_abv', $this);
+    do_action($this->prefix('before_get_abv'), $this);
 
-    return apply_filters(EBL_PREFIX.'_get_abv', (float)$this->getMetaValue('abv').'%', $this);
+    return apply_filters($this->prefix('get_abv'), (float)$this->getMetaValue('abv').'%', $this);
   }
 
   /**
@@ -204,9 +227,9 @@ class beer extends ebl{
    * @return float
    */
   public function getIBU(){
-    do_action(EBL_PREFIX.'_before_get_ibu', $this);
+    do_action($this->prefix('before_get_ibu'), $this);
 
-    return apply_filters(EBL_PREFIX.'_get_ibu', (float)$this->getMetaValue('ibu'), $this);
+    return apply_filters($this->prefix('get_ibu'), (float)$this->getMetaValue('ibu'), $this);
   }
 
   /**
@@ -214,9 +237,9 @@ class beer extends ebl{
    * @return float
    */
   public function getOG(){
-    do_action(EBL_PREFIX.'_before_get_og', $this);
+    do_action($this->prefix('before_get_og'), $this);
 
-    return apply_filters(EBL_PREFIX.'_get_og', (float)$this->getMetaValue('og'), $this);
+    return apply_filters($this->prefix('get_og'), (float)$this->getMetaValue('og'), $this);
   }
 
   /**
@@ -224,9 +247,9 @@ class beer extends ebl{
    * @return float
    */
   public function getPrice(){
-    do_action(EBL_PREFIX.'_before_get_price', $this);
+    do_action($this->prefix('before_get_price'), $this);
 
-    return apply_filters(EBL_PREFIX.'_get_price', (float)$this->getMetaValue('price').$this->getOption('currency_symbol'), $this);
+    return apply_filters($this->prefix('get_price'), (float)$this->getMetaValue('price').$this->getOption('currency_symbol'), $this);
   }
 
   /**
@@ -234,9 +257,9 @@ class beer extends ebl{
    * @return string
    */
   public function getVideoUrl(){
-    do_action(EBL_PREFIX.'_before_get_video_url', $this);
+    do_action($this->prefix('before_get_video_url'), $this);
 
-    return apply_filters(EBL_PREFIX.'_get_video_url', (string)$this->getMetaValue('video'), $this);
+    return apply_filters($this->prefix('get_video_url'), (string)$this->getMetaValue('video'), $this);
   }
 
   /**
@@ -244,9 +267,9 @@ class beer extends ebl{
    * @return string
    */
   public function getVideo(){
-    do_action(EBL_PREFIX.'_before_get_video', $this);
+    do_action($this->prefix('before_get_video'), $this);
 
-    return apply_filters(EBL_PREFIX.'_get_video', '<div class="ebl-beer-video-wrapper">'.wp_oembed_get($this->getVideoUrl()).'</div>', $this);
+    return apply_filters($this->prefix('get_video'), '<div class="ebl-beer-video-wrapper">'.wp_oembed_get($this->getVideoUrl()).'</div>', $this);
   }
 
   /**
@@ -254,12 +277,12 @@ class beer extends ebl{
    * @return array|string
    */
   public function getGalleryItems($as_string = false){
-    do_action(EBL_PREFIX.'_before_process_gallery_items', $this, $as_string);
-    $gallery = apply_filters(EBL_PREFIX.'_get_gallery_items_array', $this->getMetaValue('gallery'), $this, $as_string);
+    do_action($this->prefix('before_process_gallery_items'), $this, $as_string);
+    $gallery = apply_filters($this->prefix('get_gallery_items_array'), $this->getMetaValue('gallery'), $this, $as_string);
     if($as_string){
-      $gallery = apply_filters(EBL_PREFIX.'_get_gallery_items_string', implode(',', $gallery), $this, $as_string);
+      $gallery = apply_filters($this->prefix('get_gallery_items_string'), implode(',', $gallery), $this, $as_string);
     }
-    do_action(EBL_PREFIX.'_before_get_gallery_items', $this, $as_string);
+    do_action($this->prefix('before_get_gallery_items'), $this, $as_string);
 
     return $gallery;
   }
@@ -269,9 +292,9 @@ class beer extends ebl{
    * @return string
    */
   public function getGallery(){
-    do_action(EBL_PREFIX.'_before_get_gallery', $this);
+    do_action($this->prefix('before_get_gallery'), $this);
 
-    return apply_filters(EBL_PREFIX.'_get_gallery', do_shortcode("[gallery ids=\"{$this->getGalleryItems(true)}\"]"), $this);
+    return apply_filters($this->prefix('get_gallery'), do_shortcode("[gallery ids=\"{$this->getGalleryItems(true)}\"]"), $this);
   }
 
   /**
@@ -279,9 +302,9 @@ class beer extends ebl{
    * @return string
    */
   public function getUntappdURL(){
-    do_action(EBL_PREFIX.'_before_get_untappd_url', $this);
+    do_action($this->prefix('before_get_untappd_url'), $this);
 
-    return apply_filters(EBL_PREFIX.'_get_untappd_url', (string)$this->getMetaValue('untappd_url'), $this);
+    return apply_filters($this->prefix('get_untappd_url'), (string)$this->getMetaValue('untappd_url'), $this);
   }
 
   /**
@@ -289,9 +312,9 @@ class beer extends ebl{
    * @return string
    */
   public function getBottomLabel(){
-    do_action(EBL_PREFIX.'_before_get_bottom_label', $this);
+    do_action($this->prefix('before_get_bottom_label'), $this);
 
-    return apply_filters(EBL_PREFIX.'_get_bottom_label', (int)$this->getMetaValue('label'), $this);
+    return apply_filters($this->prefix('get_bottom_label'), (int)$this->getMetaValue('label'), $this);
   }
 
   /**
@@ -299,9 +322,9 @@ class beer extends ebl{
    * @return string
    */
   public function getTopLabel(){
-    do_action(EBL_PREFIX.'_before_get_top_label', $this);
+    do_action($this->prefix('before_get_top_label'), $this);
 
-    return apply_filters(EBL_PREFIX.'_get_top_label', (int)$this->getMetaValue('top_label'), $this);
+    return apply_filters($this->prefix('get_top_label'), (int)$this->getMetaValue('top_label'), $this);
   }
 
   /**
@@ -309,7 +332,7 @@ class beer extends ebl{
    * @return string
    */
   public function getAvailabilityEndDate($format = 'F'){
-    do_action(EBL_PREFIX.'_before_get_availability_end_date', $this);
+    do_action($this->prefix('before_get_availability_end_date'), $this);
     if($this->getAvailabilityStartDate(null) == 0) return false;
     if($format){
       $date = DateTime::createFromFormat('m', $this->getMetaValue('availability_end_date'));
@@ -319,7 +342,7 @@ class beer extends ebl{
       $date = $this->getMetaValue('availability_end_date');
     }
 
-    return apply_filters(EBL_PREFIX.'_get_top_availability_end_date', $date, $date, $format, $this);
+    return apply_filters($this->prefix('get_top_availability_end_date'), $date, $date, $format, $this);
   }
 
   /**
@@ -327,11 +350,11 @@ class beer extends ebl{
    * @return string
    */
   public function getAvailabilityStartDate($format = 'F'){
-    do_action(EBL_PREFIX.'_before_get_availability_start_date', $this);
+    do_action($this->prefix('before_get_availability_start_date'), $this);
     $start_date = $this->getMetaValue('availability_start_date');
     //If the availability is 0, it is a year-round beverage.
     if(!$start_date){
-      $date = apply_filters(EBL_PREFIX.'_get_top_availability_start_date_year_round', 'Year-Round', $format, $this);
+      $date = apply_filters($this->prefix('get_top_availability_start_date_year_round'), 'Year-Round', $format, $this);
     }
     else{
       if($format){
@@ -343,7 +366,7 @@ class beer extends ebl{
       }
     }
 
-    return apply_filters(EBL_PREFIX.'_get_top_availability_start_date', $date, $date, $format, $this);
+    return apply_filters($this->prefix('get_top_availability_start_date'), $date, $date, $format, $this);
   }
 
   /**
@@ -351,9 +374,9 @@ class beer extends ebl{
    * @return bool
    */
   public function isOnTap(){
-    do_action(EBL_PREFIX.'_before_on_tap', $this);
+    do_action($this->prefix('before_on_tap'), $this);
 
-    return apply_filters(EBL_PREFIX.'_on_tap', (bool)$this->getMetaValue('on_tap'), $this);
+    return apply_filters($this->prefix('on_tap'), (bool)$this->getMetaValue('on_tap'), $this);
   }
 
   /**
@@ -362,25 +385,49 @@ class beer extends ebl{
    * @return string|int|array
    */
   public function getSRM($format = 'value'){
-    do_action(EBL_PREFIX.'_before_process_srm_value', $this, $format);
-    $srm = apply_filters(EBL_PREFIX.'_get_srm_value', (int)$this->getMetaValue('srm_value'), $this, $format);
-    $srm_array_number = (int)$srm == 0 ? 10 : $srm - 1;
-    if($format == 'hex'){
-      $srm = apply_filters(EBL_PREFIX.'_get_srm_hex_value', (string)ebl::SRM_VALUES[$srm_array_number], $this, $format);
-    }
-    elseif($format == 'rgb'){
-      $srm = list($r, $g, $b) = sscanf(ebl::SRM_VALUES[$srm_array_number], "#%02x%02x%02x");
-      $srm = apply_filters(EBL_PREFIX.'_get_srm_rgb_value', $srm, $this, $format);
-    }
-    do_action(EBL_PREFIX.'_before_get_srm_value', $this, $format);
+    do_action($this->prefix('before_get_srm'), $this, $format);
+    $srm = apply_filters($this->prefix('get_srm_value'), (int)$this->getMetaValue('srm_value'), $this, $format);
+    $srm = $this->getSrmValue($format, $srm);
+    do_action($this->prefix('before_get_srm'), $this, $format);
 
     return $srm;
   }
 
+  /**
+   * Get the glass shape of the current beer
+   * @return mixed
+   */
   public function getGlassShape(){
-    do_action(EBL_PREFIX.'_before_glass_shape', $this);
+    do_action($this->prefix('before_get_glass_shape'), $this);
+    $glass_data = $this->getGlassData();
 
-    return apply_filters(EBL_PREFIX.'_glass_shape', (string)$this->getMetaValue('glass_shape'), $this);
+    return $glass_data['shape'];
+  }
+
+  /**
+   * Gets the layout of the glass.
+   * @return array - Array of glass shapes to display in the layout.
+   */
+  public function getGlassLayoutValue(){
+    do_action($this->prefix('before_get_glass_layout_value'), $this);
+    $glass_data = $this->getGlassData();
+
+    return $glass_data['layout'];
+  }
+
+  /**
+   * Parses the glass layout data from the database string
+   * @return array
+   */
+  public function getGlassData(){
+    if(isset($this->glass_layout)) return $this->glass_layout;
+    do_action($this->prefix('before_get_glass_data'), $this);
+    $default_layout = $this->getDefaultGlassData();
+    $layout_array = explode(',', $this->getMetaValue('glass_layout', 'default_layout', $default_layout));
+    $layout_array = ['shape' => $layout_array[0], 'layout' => explode('-', $layout_array[1])];
+    $this->glass_layout = apply_filters($this->prefix('glass_data'), $layout_array, $this);
+
+    return $layout_array;
   }
 
   /**
@@ -388,7 +435,7 @@ class beer extends ebl{
    * @return object
    */
   public function getStyle($format = 'string'){
-    do_action(EBL_PREFIX.'_before_style', $this);
+    do_action($this->prefix('before_style'), $this);
     $style = $this->getTerms('style', true);
     if($format == 'string' && $style instanceof \WP_Term){
       $style = $style->name;
@@ -397,7 +444,7 @@ class beer extends ebl{
       $style = $style->slug;
     }
 
-    return apply_filters(EBL_PREFIX.'_style', $style, $this);
+    return apply_filters($this->prefix('style'), $style, $this);
   }
 
   /**
@@ -405,9 +452,9 @@ class beer extends ebl{
    * @return object
    */
   public function getPairings($args = []){
-    do_action(EBL_PREFIX.'_before_pairings', $this);
+    do_action($this->prefix('before_pairings'), $this);
 
-    return apply_filters(EBL_PREFIX.'_pairings', $this->getTerms('pairing', false, $args), $this);
+    return apply_filters($this->prefix('pairings'), $this->getTerms('pairing', false, $args), $this);
   }
 
   /**
@@ -415,9 +462,9 @@ class beer extends ebl{
    * @return array
    */
   public function getTags($args = []){
-    do_action(EBL_PREFIX.'_before_tags', $this);
+    do_action($this->prefix('before_tags'), $this);
 
-    return apply_filters(EBL_PREFIX.'_tags', $this->getTerms('tags', false, $args), $this);
+    return apply_filters($this->prefix('tags'), $this->getTerms('tags', false, $args), $this);
   }
 
   /**
