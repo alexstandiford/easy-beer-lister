@@ -3,8 +3,13 @@ jQuery(document).ready(function($){
   var fileFrame;
   var wpMediaPostID = wp.media.model.settings.post.id; // Store the old id
   var fieldID;
-  var glassLayout = [$('.ebl-glass-shape-wrapper .glass-shape.mod--selected').data('glass-shape'),$('.ebl-glass-layout-wrapper .glass-shape.mod--selected').data('glass-layout')];
-  console.log(glassLayout);
+
+  //Set glass shape for input
+  var glassShape = $('.ebl-glass-shape-wrapper .glass-shape.mod--selected').data('glass-shape');
+  if(!glassShape) glassShape = 'shaker';
+  var glassLayout = $('.ebl-glass-layout-wrapper .glass-shape.mod--selected').data('glass-layout');
+  if(!glassLayout) glassLayout = 'glass';
+  glassLayout = [glassShape,glassLayout];
   var currentGlassShape;
 
   /**
