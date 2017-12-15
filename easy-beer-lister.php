@@ -13,7 +13,6 @@ namespace ebl;
 use ebl\app\templateLoader;
 use ebl\core\cpt;
 use ebl\admin\metaBox;
-use ebl\core\integrateAssets;
 
 if(!defined('ABSPATH')) exit;
 
@@ -49,8 +48,12 @@ class eblInit{
    * @var array
    */
   private $admin_includes = [
+    'fieldLoop.php',
     'metaBox.php',
-    'metaBoxField.php',
+    'sanitizeCheck.php',
+    'field.php',
+    'optionsPage.php',
+    'optionsTab.php',
   ];
 
   /**
@@ -201,21 +204,30 @@ class eblInit{
 function rock_and_roll(){
 
   do_action('ebl_before_init');
+
+  //Fires up the plugin
   eblInit::getInstance();
   do_action('ebl_after_init');
+
+  //Registers custom post types
   cpt::register();
   do_action('ebl_after_cpt_registration');
+
+  //Encueues core script
   wp_enqueue_script('ebl', EBL_ASSETS_URL.'js/ebl.js', ['jquery'], EBL_VERSION);
   do_action('ebl_after_enqueue_scripts');
+
+  //Registers widgets
   register_widget('\ebl\app\widget\randomBeer');
   register_widget('\ebl\app\widget\onTapWidget');
   do_action('ebl_after_register_widgets');
-  add_shortcode('beer','\ebl\app\shortcode\beerShortcode::get');
-  add_shortcode('beer_list','\ebl\app\shortcode\beerListShortcode::get');
+
+  //Registers shortcodes
+  add_shortcode('beer', '\ebl\app\shortcode\beerShortcode::get');
+  add_shortcode('beer_list', '\ebl\app\shortcode\beerListShortcode::get');
   do_action('ebl_after_register_shortcodes');
 
-
-  //Image Sizes
+  //Registers Beer Label Image Sizes
   add_image_size(EBL_PREFIX.'_bottom_label', 324, 550, true);
   add_image_size(EBL_PREFIX.'_top_label', 132, 88, true);
 }
@@ -245,6 +257,8 @@ function setup_meta_boxes(){
 
 add_action('load-post.php', __NAMESPACE__.'\\setup_meta_boxes');
 add_action('load-post-new.php', __NAMESPACE__.'\\setup_meta_boxes');
+
+add_action('admin_menu', ['ebl\admin\optionsPage','loadAll'],1);
 
 /**
  * Overrides the messaging that shows up when a beer is updated/saved
