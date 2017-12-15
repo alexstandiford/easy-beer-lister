@@ -14,7 +14,7 @@ $field_id = $field_id::$fieldID;
 ?>
 <input class="hidden" <?= $this->field->inputArgs(); ?> name="<?= $this->field->id; ?>" id="<?= $this->field->inputTarget; ?>" value=" <?= $this->field->metaValue; ?>"/>
 <div class="ebl-srm-wrapper" data-wrapper-id="<?= $field_id; ?>">
-  <?php foreach($this::SRM_VALUES as $key => $srm_value): $key++; ?>
+  <?php foreach($this::$srm_values as $key => $srm_value): $key++; ?>
     <?php $class = $this->field->metaValue == $key ? 'ebl-srm-value mod--selected' : 'ebl-srm-value'; ?>
     <div class="<?= $class; ?>" data-srm-hex="<?= $srm_value ?>" data-srm-value="<?= $key; ?>" style="background-color:<?= $srm_value; ?>"><?= $key; ?></div>
   <?php endforeach; ?>

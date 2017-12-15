@@ -13,7 +13,7 @@ if(!defined('ABSPATH')) exit;
 
 abstract class ebl{
 
-  const SRM_VALUES = ['#FCEABC', '#F9DB99', '#F6CC76', '#F1BB57', '#ECAC3C', '#E79C23', '#DF8D05', '#D87F06', '#CE7304', '#CA6704', '#C05C04', '#B75103', '#AF4A03', '#A84003', '#A03903', '#983203', '#902B05', '#892502', '#851F02', '#7B1B02', '#761605', '#6F1102', '#6A0D02', '#630904', '#5E0001', '#590001', '#540001', '#500001', '#4C0001', '#470001', '#450001', '#410004', '#3D0001', '#390001', '#360004', '#330001', '#300001', '#2E0401', '#2C0004', '#200004'];
+  public static $srm_values;
 
   public $isApi = false;
 
@@ -21,6 +21,7 @@ abstract class ebl{
     $this->errors = [];
     $this->checkForErrors();
     $this->enqueue();
+    if(!$this::$srm_values) $this::$srm_values = apply_filters($this->prefix('srm_values'),['#FCEABC', '#F9DB99', '#F6CC76', '#F1BB57', '#ECAC3C', '#E79C23', '#DF8D05', '#D87F06', '#CE7304', '#CA6704', '#C05C04', '#B75103', '#AF4A03', '#A84003', '#A03903', '#983203', '#902B05', '#892502', '#851F02', '#7B1B02', '#761605', '#6F1102', '#6A0D02', '#630904', '#5E0001', '#590001', '#540001', '#500001', '#4C0001', '#470001', '#450001', '#410004', '#3D0001', '#390001', '#360004', '#330001', '#300001', '#2E0401', '#2C0004', '#200004']);
     do_action($this->prefix('after_ebl'), $this);
   }
 
@@ -130,11 +131,14 @@ abstract class ebl{
   public function getSrmValue($format, $srm = 0){
     do_action($this->prefix('before_get_srm_value'), $this, $format);
     $srm_array_number = (int)$srm == 0 ? 10 : $srm - 1;
+    while(!isset(ebl::$srm_values[$srm_array_number]) && $srm_array_number > 1){
+      $srm_array_number --;
+    }
     if($format == 'hex'){
-      $srm = apply_filters($this->prefix('get_srm_hex_value'), (string)ebl::SRM_VALUES[$srm_array_number], $this, $format);
+      $srm = apply_filters($this->prefix('get_srm_hex_value'), (string)ebl::$srm_values[$srm_array_number], $this, $format);
     }
     elseif($format == 'rgb'){
-      $srm = list($r, $g, $b) = sscanf(ebl::SRM_VALUES[$srm_array_number], "#%02x%02x%02x");
+      $srm = list($r, $g, $b) = sscanf(ebl::$srm_values[$srm_array_number], "#%02x%02x%02x");
       $srm = apply_filters($this->prefix('get_srm_rgb_value'), $srm, $this, $format);
     }
     do_action($this->prefix('before_get_srm_value'), $this, $format);

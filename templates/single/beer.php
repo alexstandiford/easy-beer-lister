@@ -10,6 +10,7 @@
 if(!defined('ABSPATH')) exit;
 if(!$this instanceof \ebl\app\templateLoader) return; //Bail early if we're not in a template loader object
 $beer = ebl_get_beer();
+
 ?>
 <div <?= $this->wrapperClasses(); ?> <?= $this->wrapperArgs(); ?>>
   <div class="ebl-info-wrapper">
