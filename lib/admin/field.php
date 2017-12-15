@@ -95,10 +95,10 @@ class field extends ebl{
       wp_enqueue_style('admin-beer-style', EBL_ASSETS_URL.'css/admin-beer.css');
       $this->jsArgs = ['inputTarget' => $this->inputTarget];
     }
-    elseif($this->type === 'glasslayout'){
+    if($this->type === 'glasslayout'){
       wp_enqueue_style('beer-glass', EBL_ASSETS_URL.'css/beer-glass.css');
-      $this->jsArgs = ['inputTarget' => $this->inputTarget];
     }
+
   }
 
   /**

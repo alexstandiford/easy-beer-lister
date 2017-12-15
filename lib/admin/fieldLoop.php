@@ -31,6 +31,9 @@ class fieldLoop extends ebl{
     $this->name = $name;
     $this->id = sanitize_title($this->prefix($this->name));
     $this->metaKey = str_replace('-', '_', $this->id);
+    $this->field = new field($this->fields[0]);
+    if(!empty($this->field->jsArgs)) $this->jsArgs[$this->field->fieldID()] = $this->field->jsArgs; //Capture the js args to pass to the script afterward
+
     parent::__construct();
   }
 
