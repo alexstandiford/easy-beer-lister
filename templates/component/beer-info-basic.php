@@ -12,10 +12,10 @@ if(!$this instanceof \ebl\app\templateLoader) return; //Bail early if we're not 
 $beer = ebl_get_beer($this->postID);
 ?>
 <div <?= $this->wrapperClasses(); ?> <?= $this->wrapperArgs(); ?>>
-  <?php if($this->parent['location'] == 'archive' || $this->parent['type'] == 'widget'): ?>
+  <?php if(($this->parent['location'] == 'archive' || $this->parent['type'] == 'widget') && $this->getOption('disable_individual_beer_pages') != 'on'): ?>
   <a href="<?= get_post_permalink($beer->post->ID); ?>"> <?php endif; ?>
     <h2><?= get_the_title(); ?></h2>
-    <?php if($this->parent['location'] == 'archive' || $this->parent['type'] == 'widget'): ?></a> <?php endif; ?>
+    <?php if(($this->parent['location'] == 'archive' || $this->parent['type'] == 'widget') && $this->getOption('disable_individual_beer_pages') != 'on'): ?></a> <?php endif; ?>
   <?php if($this->parent['location'] == 'archive'): ?>
     <a href="<?= get_term_link($beer->getStyle('slug'), 'style'); ?>">
       <h3><?= $beer->getStyle(); ?></h3>

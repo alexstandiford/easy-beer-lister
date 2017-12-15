@@ -13,6 +13,7 @@ namespace ebl;
 use ebl\app\templateLoader;
 use ebl\core\cpt;
 use ebl\admin\metaBox;
+use ebl\core\option;
 
 if(!defined('ABSPATH')) exit;
 
@@ -25,6 +26,7 @@ class eblInit{
   private $core_includes = [
     'ebl.php',
     'cpt.php',
+    'option.php',
   ];
 
   private $app_includes = [
@@ -258,7 +260,7 @@ function setup_meta_boxes(){
 add_action('load-post.php', __NAMESPACE__.'\\setup_meta_boxes');
 add_action('load-post-new.php', __NAMESPACE__.'\\setup_meta_boxes');
 
-add_action('admin_menu', ['ebl\admin\optionsPage','loadAll'],1);
+add_action('admin_menu', ['ebl\admin\optionsPage', 'loadAll'], 1);
 
 /**
  * Overrides the messaging that shows up when a beer is updated/saved
@@ -313,7 +315,12 @@ add_filter('image_size_names_choose', __NAMESPACE__.'\\add_image_sizes_to_upload
 function load_custom_single_beer_page_template($template){
   global $wp_query;
   if(is_singular('beers')){
+    if(option::get('disable_individual_beer_pages') == 'on'){
+      wp_redirect(apply_filters('ebl_single_beer_pages_redirect','/beers'));
+      exit;
+    }
     new \ebl\app\beerList($wp_query);
+
     $template = new templateLoader('wrapper', 'single');
 
     $template->loadTemplate();
