@@ -18,22 +18,33 @@ class glass extends ebl{
   public $beer;
   public $glassShape;
   public $srmRGB;
-  public $srm = 8;
+  public $srmHex;
+  public $srm;
+  public $srmValue = 8;
 
   public function __construct($beer = null, $shape = null){
     if(isset($shape)){
       $this->glassShape = $shape;
     }
     if(isset($beer)){
-      if(is_int($beer)) $beer = new beer($beer);
-      $this->beer = $beer;
+      if(is_int($beer)){
+        $this->beer = new beer($beer);
+      }
+      else{
+        $this->beer = $beer;
+      }
     }
     parent::__construct();
     if(!$this->hasErrors()){
       if(isset($beer)){
-        $this->srm = $this->beer->getSRM() == 0 ? $this->srm : $this->beer->getSRM();
+        $this->srm = $this->beer->getSRM() == 0 ? $this->srmValue : $this->beer->getSRM();
         $this->srmHex = $this->beer->getSRM('hex');
         $this->srmRGB = $this->beer->getSRM('rgb');
+      }
+      else{
+        $this->srm = $this->getSrmValue('value', $this->srmValue);
+        $this->srmHex = $this->getSrmValue('hex', $this->srmValue);
+        $this->srmRGB = $this->getSrmValue('rgb', $this->srmValue);
       }
     }
   }
@@ -54,10 +65,8 @@ class glass extends ebl{
 
   /**
    * Grabs the beer glass SVG and adds it inside the loop
-   *
-   * @param array $srm_classes
-   *
    * @return bool|string
+   * @internal param array $srm_classes
    */
   public function glass(){
     $this->getBeerGlassSVG();
@@ -129,9 +138,9 @@ class glass extends ebl{
    */
   public function getGlassShape(){
     if(!$this->glassShape){
+      if(!$this->beer instanceof beer) return $this->throwError('glass03','getGlassShape requires that a glass shape or post id is specified when the class is instantiated');
       $this->glassShape = $this->beer->getGlassShape();
     }
-
     return $this->glassShape;
   }
 
@@ -143,9 +152,13 @@ class glass extends ebl{
    * @return false|string
    */
   public function getLabel($position = 'bottom'){
-    if(!isset ($this->beer)) $this->throwError('glass03', 'Get Label requires the beer object. Be sure to include a $beer post or ID when using the glass class');
-    $label = $position == 'bottom' ? $this->beer->getBottomLabel() : $this->beer->getTopLabel();
-    $size = $position == 'bottom' ? EBL_PREFIX.'_bottom_label' : EBL_PREFIX.'_top_label';
+    if(isset ($this->beer)){
+      $label = $position == 'bottom' ? $this->beer->getBottomLabel() : $this->beer->getTopLabel();
+    }
+    else{
+      $label = $position == 'bottom' ? $this->getOption('default_bottom_beer_label') : $this->getOption('default_top_beer_label');
+    }
+    $size = $position == 'bottom' ? $this->prefix('bottom_label') : $this->prefix('top_label');
 
     return wp_get_attachment_image_url($label, $size);
   }

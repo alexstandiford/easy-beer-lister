@@ -7,7 +7,7 @@
 
 
 if(!defined('ABSPATH')) exit;
-if(!$this instanceof \ebl\admin\metaBox) return; //Bail early if we aren't in a meta box object
+if(!$this->field instanceof \ebl\admin\field) return; //Bail early if we aren't in a meta box object
 $images = explode(',', $this->field->metaValue);
 
 ?>

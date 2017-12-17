@@ -4,6 +4,14 @@ jQuery(document).ready(function($){
   var wpMediaPostID = wp.media.model.settings.post.id; // Store the old id
   var fieldID;
 
+  //Set glass shape for input
+  var glassShape = $('.ebl-glass-shape-wrapper .glass-shape.mod--selected').data('glass-shape');
+  if(!glassShape) glassShape = 'shaker';
+  var glassLayout = $('.ebl-glass-layout-wrapper .glass-shape.mod--selected').data('glass-layout');
+  if(!glassLayout) glassLayout = 'glass';
+  glassLayout = [glassShape,glassLayout];
+  var currentGlassShape;
+
   /**
    * gallery handler
    */
@@ -125,12 +133,6 @@ jQuery(document).ready(function($){
     wp.media.model.settings.post.id = wpMediaPostID;
   });
 
-  // Restore the main ID when the add media button is pressed
-  $('a.add_media').on('click',function(){
-    wp.media.model.settings.post.id = wpMediaPostID;
-  });
-
-
   /**
    * Handles the SRM value interface
    */
@@ -145,10 +147,26 @@ jQuery(document).ready(function($){
     });
   });
 
-  $('.glass-shape').on('click',function(){
-    var fieldID = $(this).parent().data('wrapper-id');
-    $('.glass-shape.mod--selected').removeClass('mod--selected');
-    $('#' + eblAdmin[fieldID].inputTarget).attr('value',$(this).data('glass-shape'));
+  /**
+   * Handles the Glass shape and layout interface
+   */
+  $('.ebl-glass-shape-wrapper .glass-shape').on('click',function(){
+    var fieldID = $(this).parent().parent().data('wrapper-id');
+    $('.ebl-glass-shape-wrapper .glass-shape.mod--selected').removeClass('mod--selected');
+    glassLayout[0] = $(this).data('glass-shape');
+    $('#' + eblAdmin[fieldID].inputTarget).attr('value',glassLayout);
+    $(this).addClass('mod--selected');
+    currentGlassShape = $(this).html();
+    $('.ebl-glass-layout-wrapper .glass-shape svg').each(function(){
+      if(!$(this).hasClass('ebl-glass-bottle')) $(this).html(currentGlassShape);
+    });
+  });
+
+  $('.ebl-glass-layout-wrapper .glass-shape').on('click',function(){
+    var fieldID = $(this).parent().parent().data('wrapper-id');
+    $('.ebl-glass-layout-wrapper .glass-shape.mod--selected').removeClass('mod--selected');
+    glassLayout[1] = $(this).data('glass-layout');
+    $('#' + eblAdmin[fieldID].inputTarget).attr('value',glassLayout);
     $(this).addClass('mod--selected');
   });
 

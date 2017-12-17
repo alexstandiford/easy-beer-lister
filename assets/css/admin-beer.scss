@@ -33,12 +33,24 @@
   display:none;
 }
 
-.ebl-glass-shape-wrapper{
+.ebl-glass-item-wrapper{
   display:flex;
-  .glass-shape{
+  flex-wrap:wrap;
+  width:calc(50% - 40px);
+  padding:0 20px;
+  float:left;
+  position:relative;
+  justify-content:center;
+
+  & > strong{
+    text-align:center;
     width:100%;
-    max-width:100px;
-    padding:20px;
+    display:block;
+  }
+  .glass-shape{
+    flex-grow:1;
+    width:calc(33.33% - 20px);
+    padding:20px 10px;
     position:relative;
     &:hover{
       opacity:0.8;
@@ -46,13 +58,13 @@
     }
     &.mod--selected{
       border:3px solid #aaa;
-      padding:17px;
+      padding:7px;
       background:#eee;
     }
     .ebl-glass{
-      height:150px;
-      margin:auto;
+      height:75px;
       position:relative;
+      margin:auto;
       top:50%;
       left:50%;
       transform:translate(-50%, -50%);
@@ -64,6 +76,24 @@
       transform:translateX(-50%);
       width:100%;
       text-align:center;
+    }
+    &.glass-shape-glass-bottle{
+      .ebl-glass-bottle{
+        left:10%;
+      }
+      .ebl-glass:not(.ebl-glass-bottle){
+        height:60%;
+        top:40%;
+        left:45%;
+      }
+    }
+  }
+  &.ebl-glass-layout-wrapper{
+    .glass-shape{
+      max-height:200px;
+      .ebl-glass{
+        height:150px;
+      }
     }
   }
 }

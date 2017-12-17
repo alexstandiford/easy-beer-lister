@@ -115,7 +115,6 @@ class beerListShortcode extends ebl{
   public static function get($atts){
     $shortcode = new self($atts);
     $shortcode->getObject();
-    var_dump($shortcode->query['tax_query']);
     $template = new templateLoader('shortcode', 'beers');
     $template->shortcode = $shortcode;
     ob_start();

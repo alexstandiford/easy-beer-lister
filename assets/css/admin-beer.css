@@ -24,33 +24,53 @@
 .mod--hidden {
   display: none; }
 
-.ebl-glass-shape-wrapper {
-  display: flex; }
-  .ebl-glass-shape-wrapper .glass-shape {
+.ebl-glass-item-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(50% - 40px);
+  padding: 0 20px;
+  float: left;
+  position: relative;
+  justify-content: center; }
+  .ebl-glass-item-wrapper > strong {
+    text-align: center;
     width: 100%;
-    max-width: 100px;
-    padding: 20px;
+    display: block; }
+  .ebl-glass-item-wrapper .glass-shape {
+    flex-grow: 1;
+    width: calc(33.33% - 20px);
+    padding: 20px 10px;
     position: relative; }
-    .ebl-glass-shape-wrapper .glass-shape:hover {
+    .ebl-glass-item-wrapper .glass-shape:hover {
       opacity: 0.8;
       cursor: pointer; }
-    .ebl-glass-shape-wrapper .glass-shape.mod--selected {
+    .ebl-glass-item-wrapper .glass-shape.mod--selected {
       border: 3px solid #aaa;
-      padding: 17px;
+      padding: 7px;
       background: #eee; }
-    .ebl-glass-shape-wrapper .glass-shape .ebl-glass {
-      height: 150px;
-      margin: auto;
+    .ebl-glass-item-wrapper .glass-shape .ebl-glass {
+      height: 75px;
       position: relative;
+      margin: auto;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%); }
-    .ebl-glass-shape-wrapper .glass-shape span {
+    .ebl-glass-item-wrapper .glass-shape span {
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
       text-align: center; }
+    .ebl-glass-item-wrapper .glass-shape.glass-shape-glass-bottle .ebl-glass-bottle {
+      left: 10%; }
+    .ebl-glass-item-wrapper .glass-shape.glass-shape-glass-bottle .ebl-glass:not(.ebl-glass-bottle) {
+      height: 60%;
+      top: 40%;
+      left: 45%; }
+  .ebl-glass-item-wrapper.ebl-glass-layout-wrapper .glass-shape {
+    max-height: 200px; }
+    .ebl-glass-item-wrapper.ebl-glass-layout-wrapper .glass-shape .ebl-glass {
+      height: 150px; }
 
 /*# sourceMappingURL=admin-beer.css.map */
