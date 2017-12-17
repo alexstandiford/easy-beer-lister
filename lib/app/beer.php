@@ -424,7 +424,9 @@ class beer extends ebl{
     do_action($this->prefix('before_get_glass_data'), $this);
     $default_layout = $this->getDefaultGlassData();
     $layout_array = explode(',', $this->getMetaValue('glass_layout'));
-    $layout_array = ['shape' => $layout_array[0], 'layout' => explode('-', $layout_array[1])];
+    $shape = isset($layout_array[0]) ? $layout_array[0] : false;
+    $layout = isset($layout_array[1]) ? $layout_array[1] : false;
+    $layout_array = ['shape' => $shape, 'layout' => explode('-', $layout)];
     $this->glass_layout = apply_filters($this->prefix('glass_data'), $layout_array, $this);
 
     return $layout_array;
