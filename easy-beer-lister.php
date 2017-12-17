@@ -38,6 +38,7 @@ class eblInit{
     'beerList/outOfSeasonList.php',
     'beerList/yearRoundList.php',
     'glass.php',
+    'glassLayout.php',
     'functions.php',
     'widgets/randomBeer.php',
     'widgets/onTapWidget.php',
