@@ -146,17 +146,6 @@ abstract class ebl{
     return $srm;
   }
 
-  /**
-   * Gets the default glass layout when there isn't one to set.
-   * @return string
-   */
-  public function getDefaultGlassData(){
-    $glass_layout = $this->getOption('default_glass_layout');
-    if(!$glass_layout) $glass_layout = apply_filters($this->prefix('set_default_glass_layout_value'), 'shaker,bottle', $this);
-
-    return $glass_layout;
-  }
-
 
   /**
    * Gets an option using get_option. Applies & sanitizes the EBL prefix automatically

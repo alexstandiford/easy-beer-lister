@@ -18,7 +18,7 @@ class beer extends ebl{
 
   public $post;
   public $glass;
-  public $layout;
+  public $glassLayout;
 
 
   public function __construct($post = null){
@@ -84,7 +84,7 @@ class beer extends ebl{
     $this->getAvailabilityStartDate();
     $this->isOnTap();
     $this->getSRM();
-    $this->getGlassShape();
+    $this->getGlassLayout();
     $this->getStyle();
     $this->getPairings();
     $this->getTags();
@@ -156,36 +156,6 @@ class beer extends ebl{
     return true;
   }
 
-  /**
-   * Gets the beer glass
-   * @return bool|string
-   */
-  public function getGlass(){
-    if($this->getGlassShape() == 'bottle') return $this->getBottle();
-    if($this->glass instanceof glass) return $this->glass->glass();
-    if(in_array($this->getGlassShape(), $this->getGlassShapes())){
-      $this->glass = new glass($this, $this->getGlassShape());
-
-      return $this->glass->glass();
-    }
-
-    return false;
-  }
-
-  /**
-   * Gets the beer bottle for the current beer, if it has a label to place
-   * @return bool|string
-   */
-  public function getBottle(){
-    if(isset($this->bottle) && $this->bottle instanceof glass) return $this->bottle->glass();
-    if($this->getBottomLabel() && $this->getTopLabel()){
-      $this->bottle = new glass($this, 'bottle');
-
-      return $this->bottle->glass();
-    }
-
-    return false;
-  }
 
   /**
    * Gets both the glass and the bottle, based on the layout provided
@@ -195,21 +165,13 @@ class beer extends ebl{
    * @return array
    */
   public function getGlassLayout($echo = true){
-    $layouts = [];
-    do_action($this->prefix('before_get_glass_layout'), $this, $layouts);
-    foreach($this->getGlassLayoutValue() as $layout){
-      if($layout === 'bottle'){
-        if($echo) echo $this->getBottle();
-        $layouts[] = $this->getBottle();
-      }
-      else{
-        if($echo) echo $this->getGlass();
-        $layouts[] = $this->getGlass();
-      }
+    do_action($this->prefix('before_get_glass_layout'), $this);
+    if(!$this->glassLayout){
+      $this->glassLayout = new glassLayout($this, apply_filters($this->prefix('beer_glass_layout'), [], $this));
     }
-    do_action($this->prefix('after_get_glass_layout'), $this, $layouts);
+    do_action($this->prefix('after_get_glass_layout'), $this);
 
-    return $layouts;
+    return $this->glassLayout->getGlassLayout($echo);
   }
 
   /**
@@ -314,7 +276,7 @@ class beer extends ebl{
   public function getBottomLabel(){
     do_action($this->prefix('before_get_bottom_label'), $this);
 
-    return apply_filters($this->prefix('get_bottom_label'), (int)$this->getMetaValue('label','default_bottom_beer_label'), $this);
+    return apply_filters($this->prefix('get_bottom_label'), (int)$this->getMetaValue('label', 'default_bottom_beer_label'), $this);
   }
 
   /**
@@ -324,7 +286,7 @@ class beer extends ebl{
   public function getTopLabel(){
     do_action($this->prefix('before_get_top_label'), $this);
 
-    return apply_filters($this->prefix('get_top_label'), (int)$this->getMetaValue('top_label','default_top_beer_label'), $this);
+    return apply_filters($this->prefix('get_top_label'), (int)$this->getMetaValue('top_label', 'default_top_beer_label'), $this);
   }
 
   /**
@@ -391,45 +353,6 @@ class beer extends ebl{
     do_action($this->prefix('before_get_srm'), $this, $format);
 
     return $srm;
-  }
-
-  /**
-   * Get the glass shape of the current beer
-   * @return mixed
-   */
-  public function getGlassShape(){
-    do_action($this->prefix('before_get_glass_shape'), $this);
-    $glass_data = $this->getGlassData();
-
-    return $glass_data['shape'];
-  }
-
-  /**
-   * Gets the layout of the glass.
-   * @return array - Array of glass shapes to display in the layout.
-   */
-  public function getGlassLayoutValue(){
-    do_action($this->prefix('before_get_glass_layout_value'), $this);
-    $glass_data = $this->getGlassData();
-
-    return $glass_data['layout'];
-  }
-
-  /**
-   * Parses the glass layout data from the database string
-   * @return array
-   */
-  public function getGlassData(){
-    if(isset($this->glass_layout)) return $this->glass_layout;
-    do_action($this->prefix('before_get_glass_data'), $this);
-    $default_layout = $this->getDefaultGlassData();
-    $layout_array = explode(',', $this->getMetaValue('glass_layout'));
-    $shape = isset($layout_array[0]) ? $layout_array[0] : false;
-    $layout = isset($layout_array[1]) ? $layout_array[1] : false;
-    $layout_array = ['shape' => $shape, 'layout' => explode('-', $layout)];
-    $this->glass_layout = apply_filters($this->prefix('glass_data'), $layout_array, $this);
-
-    return $layout_array;
   }
 
   /**
