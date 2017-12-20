@@ -1,6 +1,7 @@
 <?php
 /**
- * Gets, or creates a glass layout
+ * Gets, or creates a glass layout.
+ * A glass layout is essentially a collection of glasses. This is used to make a glass with a bottle, for example.
  * @author: Alex Standiford
  * @date  : 12/17/17
  */
@@ -16,24 +17,27 @@ if(!defined('ABSPATH')) exit;
 class glassLayout extends ebl{
 
   public $beer;
-  public $layoutFormat;
   public $glass;
-  public $layout = [];
-  public $defaults = [];
+  public $layouts = [];
+  public $layoutFormats = [];
+  public $layoutArgs = [];
+  public $defaultLayout = ['srm' => null, 'shape' => null];
 
-  public function __construct($beer = null, array $layout = []){
+  public function __construct($beer = null, array $layout_args = []){
     if(is_int($beer)){
       $this->beer = new beer($beer);
     }
     elseif($beer instanceof beer){
       $this->beer = $beer;
     }
-    if(isset($layout[0]) && $layout[0] instanceof glass){
-      $this->layout = $layout;
+
+    if($this->beer instanceof beer){
+      $this->defaultLayout = wp_parse_args(['bottom_label_image_id' => $this->beer->getBottomLabel(), 'top_label_image_id' => $this->beer->getTopLabel(),'srm' => $this->beer->getSRM('value'), 'shape' => $this->getGlassShape()],$this->defaultLayout);
+      if(empty($layout_args)){
+        $this->layoutArgs = $this->getGlassLayoutValue();
+      }
     }
-    else{
-      $this->layoutFormat = $layout;
-    }
+    if(empty($this->layoutArgs)) $this->layoutArgs = $layout_args;
     parent::__construct();
   }
 
@@ -43,40 +47,29 @@ class glassLayout extends ebl{
    */
   public function getGlassLayout($echo = true){
     if($this->hasErrors()) return false;
-    if(empty($this->layout)){
-      foreach($this->getGlassLayoutValue() as $shape){
-        if($shape == 'glass'){
-          $current_glass = new glass($this->beer, $this->getGlassShape());
-        }
-        else{
-          $current_glass = new glass($this->beer, $shape);
-        }
-        $this->layout[] = $current_glass;
-        if($echo) echo $current_glass->glass();
-      }
-    }
-    elseif($echo == true){
-      foreach($this->layout as $layout){
-        echo $layout->glass();
-      }
+    foreach($this->layoutArgs as $layout_args){
+      $args = wp_parse_args($layout_args,$this->defaultLayout);
+      $current_glass = new glass($args);
+      $this->layouts[] = $current_glass;
+      if($echo) echo $current_glass->glass();
     }
 
-    return $this->layout;
+    return $this->layouts;
   }
 
   /**
    * Gets the glass layout format. Creates one from the database if it isn't already set.
    * @return array|bool
    */
-  public function getGlassLayoutFormat(){
+  public function getGlassLayoutFormats(){
     if($this->hasErrors()) return false;
-    if(empty($this->layoutFormat)){
+    if(empty($this->layoutFormats)){
       do_action($this->prefix('before_get_glass_data'), $this);
       $layout_array = $this->parseLayoutString();
-      $this->layoutFormat = apply_filters($this->prefix('glass_data'), $layout_array, $this);
+      $this->layoutFormats = apply_filters($this->prefix('glass_data'), $layout_array, $this);
     }
 
-    return $this->layoutFormat;
+    return $this->layoutFormats;
   }
 
   /**
@@ -85,26 +78,19 @@ class glassLayout extends ebl{
    */
   public function parseLayoutString(){
     if($this->hasErrors()) return false;
-    $default_layout = $this->getDefaultGlassLayout();
-    $layout_array = explode(',', $this->beer->getMetaValue('glass_layout'));
-    $shape = isset($layout_array[0]) ? $layout_array[0] : $default_layout[0];
-    $layout = isset($layout_array[1]) ? $layout_array[1] : $default_layout[1];
-    $layout_array = ['shape' => $shape, 'layout' => explode('-', $layout)];
+    $layout_array = explode(',', $this->beer->getMetaValue('glass_layout',false,'shaker,glass-bottle'));
+    $shape = isset($layout_array[0]) ? $layout_array[0] : null;
+    $layout = isset($layout_array[1]) ? explode('-', $layout_array[1]) : null;
+    $layout_array = ['shape' => $shape, 'layout' => []];
+    if(is_array($layout)){
+      foreach($layout as $layout_item){
+        if($layout_item == 'glass') $layout_item = $shape;
+        $layout_array['layout'][] = ['shape' => $layout_item];
+      }
+    }
 
     return $layout_array;
   }
-
-
-  /**
-   * Gets the default glass layout when there isn't one to set.
-   * @return string
-   */
-  public function getDefaultGlassLayout(){
-    $glass_layout = apply_filters($this->prefix('set_default_glass_layout_value'), ['shaker', 'glass'], $this);
-
-    return $glass_layout;
-  }
-
 
   /**
    * Get the glass shape of the layout
@@ -113,9 +99,8 @@ class glassLayout extends ebl{
   public function getGlassShape(){
     if($this->hasErrors()) return false;
     do_action($this->prefix('before_get_glass_shape'), $this);
-    $glass_data = $this->getGlassLayoutFormat();
+    $glass_data = $this->getGlassLayoutFormats();
     $glass_shape = $glass_data['shape'];
-    if(!in_array($glass_shape, $this->getGlassShapes())) return $this->throwError('glassLayout01', 'The specified glass shape '.$glass_shape.' is nnot one of the supported glass shapes. Supported shapes are '.implode(',', $this->getGlassShapes()).'.');
 
     return $glass_shape;
   }
@@ -127,7 +112,7 @@ class glassLayout extends ebl{
   public function getGlassLayoutValue(){
     if($this->hasErrors()) return false;
     do_action($this->prefix('before_get_glass_layout_value'), $this);
-    $glass_data = $this->getGlassLayoutFormat();
+    $glass_data = $this->getGlassLayoutFormats();
 
     return $glass_data['layout'];
   }
