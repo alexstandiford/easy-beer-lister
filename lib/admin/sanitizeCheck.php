@@ -51,7 +51,7 @@ class sanitizeCheck extends ebl{
   private function checkGlassLayout(){
     $sanitized = true;
     $this->value = explode(',',$this->value);
-    $layout = $this->value[1];
+    $layout = explode('-',$this->value[1]);
     $shape = $this->value[0];
 
     if(!in_array($shape,$this->getGlassShapes())){
