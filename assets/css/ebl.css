@@ -63,29 +63,19 @@
   bottom: 0;
   transform: none; }
 
-svg.svg-glass circle {
+.svg-glass.mod--animated circle {
   transform: scale(1) translate(0px, 0%);
   transform-origin: 50% 50%; }
-  svg.svg-glass circle:nth-of-type(1) {
-    animation: fizz 2772ms ease-in infinite; }
-  svg.svg-glass circle:nth-of-type(2) {
-    animation: fizz 3303ms ease-in infinite; }
-  svg.svg-glass circle:nth-of-type(3) {
-    animation: fizz 4541ms ease-in infinite; }
-  svg.svg-glass circle:nth-of-type(4) {
-    animation: fizz 3821ms ease-in infinite; }
-  svg.svg-glass circle:nth-of-type(5) {
-    animation: fizz 6551ms ease-in infinite; }
-  svg.svg-glass circle:nth-of-type(6) {
-    animation: fizz 3563ms ease-in infinite; }
-  svg.svg-glass circle:nth-of-type(7) {
-    animation: fizz 6997ms ease-in infinite; }
-  svg.svg-glass circle:nth-of-type(8) {
-    animation: fizz 2578ms ease-in infinite; }
-  svg.svg-glass circle:nth-of-type(9) {
-    animation: fizz 3758ms ease-in infinite; }
-  svg.svg-glass circle:nth-of-type(10) {
-    animation: fizz 4026ms ease-in infinite; }
+  .svg-glass.mod--animated circle:nth-of-type(1) {
+    animation: fizz 3288ms ease-in infinite; }
+  .svg-glass.mod--animated circle:nth-of-type(2) {
+    animation: fizz 3622ms ease-in infinite; }
+  .svg-glass.mod--animated circle:nth-of-type(3) {
+    animation: fizz 3395ms ease-in infinite; }
+  .svg-glass.mod--animated circle:nth-of-type(4) {
+    animation: fizz 2674ms ease-in infinite; }
+  .svg-glass.mod--animated circle:nth-of-type(5) {
+    animation: fizz 4780ms ease-in infinite; }
 
 @keyframes fizz {
   0% {
@@ -96,6 +86,17 @@ svg.svg-glass circle {
   100% {
     transform: scale(0.5) translate(0px, -1000%);
     opacity: 0; } }
+@media screen and (max-width: 1025px) {
+  .svg-glass.mod--animated circle:nth-of-type(1) {
+    animation: none; }
+  .svg-glass.mod--animated circle:nth-of-type(2) {
+    animation: none; }
+  .svg-glass.mod--animated circle:nth-of-type(3) {
+    animation: none; }
+  .svg-glass.mod--animated circle:nth-of-type(4) {
+    animation: none; }
+  .svg-glass.mod--animated circle:nth-of-type(5) {
+    animation: none; } }
 .ebl-filter-component {
   width: 100%;
   text-align: center; }
