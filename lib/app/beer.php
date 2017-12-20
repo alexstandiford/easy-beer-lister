@@ -341,19 +341,6 @@ class beer extends ebl{
     return apply_filters($this->prefix('on_tap'), (bool)$this->getMetaValue('on_tap'), $this);
   }
 
-  /**
-   * Get the SRM value (color) of the current beer
-   * Can be returned as a hex value, or as the SRM number (1-40)
-   * @return string|int|array
-   */
-  public function getSRM($format = 'value'){
-    do_action($this->prefix('before_get_srm'), $this, $format);
-    $srm = apply_filters($this->prefix('get_srm_value'), (int)$this->getMetaValue('srm_value'), $this, $format);
-    $srm = $this->getSrmValue($format, $srm);
-    do_action($this->prefix('before_get_srm'), $this, $format);
-
-    return $srm;
-  }
 
   /**
    * Gets the Style object
@@ -370,6 +357,23 @@ class beer extends ebl{
     }
 
     return apply_filters($this->prefix('style'), $style, $this);
+  }
+
+  /**
+   * Get the SRM value (color) of the current beer
+   * Can be returned as a hex value, or as the SRM number (1-40)
+   *
+   * @param string $format
+   *
+   * @return array|int|string
+   */
+  public function getSRM($format = 'value'){
+    do_action($this->prefix('before_get_srm'), $this, $format);
+    $srm = apply_filters($this->prefix('get_srm_value'), (int)$this->getMetaValue('srm_value',false, apply_filters($this->prefix('default_srm'),10,$this)), $this, $format);
+    $srm = $this->getSrmValue($format, $srm);
+    do_action($this->prefix('before_get_srm'), $this, $format);
+
+    return $srm;
   }
 
   /**
