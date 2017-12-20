@@ -2,6 +2,7 @@ jQuery(document).ready(function($){
 
   var eblWrapper = $('#js--filter-target');
   var eblResetContent = null;
+  disableBubbles();
 
   /**
    * Helper function for the beers filter bar
@@ -21,8 +22,18 @@ jQuery(document).ready(function($){
     eblTemplate.get(function(res){
       $(eblWrapper).html(res.template);
       $(eblWrapper).removeClass("js--is-loading");
-
+      disableBubbles();
     });
+  }
+
+  /**
+   * Disables the bubble animation when there are too many items on the screen
+   */
+  function disableBubbles(){
+    var animated = $('.ebl-glass-shape');
+    if(animated.length > 10){
+      $('svg.mod--animated').removeClass('mod--animated');
+    }
   }
 
   /**

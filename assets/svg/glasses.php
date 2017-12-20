@@ -1,4 +1,4 @@
-<svg class="svg-glass" style="display:inline;position:fixed;opacity:0;z-index:-1;"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1000px"
+<svg class="svg-glass mod--animated" style="display:inline;position:fixed;opacity:0;z-index:-1;"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1000px"
      height="1000px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
   <g>
     <clipPath id="bottom-label">

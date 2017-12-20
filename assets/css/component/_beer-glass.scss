@@ -26,10 +26,10 @@
   transform:none;
 }
 
-svg.svg-glass circle{
+.svg-glass.mod--animated circle{
   transform:scale(1) translate(0px, 0%);
   transform-origin:50% 50%;
-  @for $i from 1 through 10{
+  @for $i from 1 through 5{
     &:nth-of-type(#{$i}){
       animation:fizz random(5000)+2000+ms ease-in infinite;
     }
@@ -47,5 +47,15 @@ svg.svg-glass circle{
   100%{
     transform:scale(.5) translate(0px, -1000%);
     opacity:0;
+  }
+}
+
+@media screen and(max-width: 1025px){
+  .svg-glass.mod--animated circle{
+    @for $i from 1 through 5{
+      &:nth-of-type(#{$i}){
+        animation:none;
+      }
+    }
   }
 }

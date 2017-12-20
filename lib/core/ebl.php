@@ -146,17 +146,6 @@ abstract class ebl{
     return $srm;
   }
 
-  /**
-   * Gets the default glass layout when there isn't one to set.
-   * @return string
-   */
-  public function getDefaultGlassData(){
-    $glass_layout = $this->getOption('default_glass_layout');
-    if(!$glass_layout) $glass_layout = apply_filters($this->prefix('set_default_glass_layout_value'), 'shaker,bottle', $this);
-
-    return $glass_layout;
-  }
-
 
   /**
    * Gets an option using get_option. Applies & sanitizes the EBL prefix automatically
@@ -204,7 +193,12 @@ abstract class ebl{
 
     $post_meta = get_post_meta($post_id, $key, $single);
     do_action($this->prefix('before_get_meta_value'), $this, $post_id, $key, $single);
-    if(!isset($post_meta) || $post_meta === '') $post_meta = $this->getOption($default_option, $default_value);
+    if($default_option){
+      if(!isset($post_meta) || $post_meta === '') $post_meta = $this->getOption($default_option, $default_value);
+    }
+    else{
+      if(!isset($post_meta) || $post_meta === '') $post_meta = $default_value;
+    }
 
     return $post_meta;
   }
@@ -227,11 +221,12 @@ abstract class ebl{
    */
   public function getGlassLayouts(){
     $glass_layouts = [
-      'glass', 'glass-bottle', 'bottle',
+      ['glass'], ['glass','bottle'], ['bottle'],
     ];
 
     return apply_filters($this->prefix('glass_layouts'), $glass_layouts);
   }
+
 
   /**
    * Adds the EBL_PREFIX to the value, if it isn't already prefixed

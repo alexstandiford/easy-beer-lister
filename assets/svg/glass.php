@@ -10,6 +10,6 @@ if(!defined('ABSPATH')) exit;
 if(!$this instanceof \ebl\app\glass) return; //Bail early if we aren't in a beer glass object
 
 ?>
-<svg class="ebl-glass ebl-glass-<?= $this->glassShape ?>" data-srm-value="<?= $this->srm; ?>" style="color:<?= $this->srmHex ?>;" viewBox="<?= $this->getViewbox(); ?>">
+<svg class="ebl-glass ebl-glass-shape ebl-glass-<?= $this->glassShape ?>" data-srm-value="<?= $this->srm; ?>" style="color:<?= $this->srmHex ?>;" viewBox="<?= $this->getViewbox(); ?>">
   <use xlink:href="#<?= $this->glassShape; ?>"></use>
 </svg>

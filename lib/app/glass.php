@@ -20,32 +20,18 @@ class glass extends ebl{
   public $srmRGB;
   public $srmHex;
   public $srm;
+  public $args;
   public $srmValue = 8;
 
-  public function __construct($beer = null, $shape = null){
-    if(isset($shape)){
-      $this->glassShape = $shape;
-    }
-    if(isset($beer)){
-      if(is_int($beer)){
-        $this->beer = new beer($beer);
-      }
-      else{
-        $this->beer = $beer;
-      }
-    }
+  public function __construct($args = []){
+    $defaults = apply_filters($this->prefix('default_glass_args'), ['srm' => 10, 'shape' => 'shaker'],$this,$args);
+    $this->args = wp_parse_args($args, $defaults);
     parent::__construct();
     if(!$this->hasErrors()){
-      if(isset($beer)){
-        $this->srm = $this->beer->getSRM() == 0 ? $this->srmValue : $this->beer->getSRM();
-        $this->srmHex = $this->beer->getSRM('hex');
-        $this->srmRGB = $this->beer->getSRM('rgb');
-      }
-      else{
-        $this->srm = $this->getSrmValue('value', $this->srmValue);
-        $this->srmHex = $this->getSrmValue('hex', $this->srmValue);
-        $this->srmRGB = $this->getSrmValue('rgb', $this->srmValue);
-      }
+      $this->glassShape = $this->args['shape'];
+      $this->srm = $this->getSrmValue('value', $this->args['srm']);
+      $this->srmHex = $this->getSrmValue('hex', $this->srm);
+      $this->srmRGB = $this->getSrmValue('rgb', $this->srm);
     }
   }
 
@@ -53,12 +39,9 @@ class glass extends ebl{
    * Check for Errors
    */
   function checkForErrors(){
-    if(!in_array($this->getGlassShape(), $this->getGlassShapes())){
+    if(!in_array($this->args['shape'], $this->getGlassShapes())){
       $glass_shapes = implode(',', $this->getGlassShapes());
-      $this->throwError('glass01', 'The glass shape '.$this->getGlassShape().' is not a valid glass shape. Valid Shapes are: '.$glass_shapes);
-    }
-    if(isset($this->beer)){
-      if(!$this->beer instanceof \ebl\app\beer) $this->throwError('glass02', 'The specified beer is not a valid beer object. Please pass a valid beer object, or a beer object ID');
+      $this->throwError('glass01', 'The glass shape '.$this->glassShape.' is not a valid glass shape. Valid Shapes are: '.$glass_shapes);
     }
 
   }
@@ -70,7 +53,7 @@ class glass extends ebl{
    */
   public function glass(){
     $this->getBeerGlassSVG();
-    if($this->srm && $this->getGlassShape()){
+    if($this->srm && $this->glassShape){
       $svg = $this->getGlass();
     }
     else{
@@ -86,7 +69,7 @@ class glass extends ebl{
    */
   private function getGlass(){
     ob_start();
-    if($this->getGlassShape() != 'bottle'){
+    if($this->glassShape != 'bottle'){
       $file = EBL_ASSETS_PATH.'svg/glass.php';
     }
     else{
@@ -127,21 +110,7 @@ class glass extends ebl{
    */
   private function getBeerGlassSVG(){
     $file = EBL_ASSETS_PATH.'svg/glasses.php';
-    ob_start();
-    include($file);
-    echo ob_get_clean();
-  }
-
-  /**
-   * Gets the glass shape
-   * @return string
-   */
-  public function getGlassShape(){
-    if(!$this->glassShape){
-      if(!$this->beer instanceof beer) return $this->throwError('glass03','getGlassShape requires that a glass shape or post id is specified when the class is instantiated');
-      $this->glassShape = $this->beer->getGlassShape();
-    }
-    return $this->glassShape;
+    include_once($file);
   }
 
   /**
@@ -152,8 +121,8 @@ class glass extends ebl{
    * @return false|string
    */
   public function getLabel($position = 'bottom'){
-    if(isset ($this->beer)){
-      $label = $position == 'bottom' ? $this->beer->getBottomLabel() : $this->beer->getTopLabel();
+    if(isset ($this->args[$position.'_label_image_id'])){
+      $label = $this->args[$position.'_label_image_id'];
     }
     else{
       $label = $position == 'bottom' ? $this->getOption('default_bottom_beer_label') : $this->getOption('default_top_beer_label');
