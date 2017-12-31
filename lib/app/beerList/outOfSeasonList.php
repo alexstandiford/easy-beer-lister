@@ -19,20 +19,20 @@ class outOfSeasonList extends beerList{
       'meta_query'     => [
         'relation' => 'AND',
         [
-          'key'   => EBL_PREFIX.'_availability_start_date',
-          'value' => 0,
-          'compare' => '!='
+          'key'     => $this->prefix('availability_start_date'),
+          'value'   => 0,
+          'compare' => '!=',
         ],
         [
           'relation' => 'OR',
           [
-            'key'     => EBL_PREFIX.'_availability_start_date',
+            'key'     => $this->prefix('availability_start_date'),
             'value'   => $current_month,
             'type'    => 'numeric',
             'compare' => '>=',
           ],
           [
-            'key'     => EBL_PREFIX.'_availability_end_date',
+            'key'     => $this->prefix('availability_end_date'),
             'value'   => $current_month,
             'type'    => 'numeric',
             'compare' => '<=',

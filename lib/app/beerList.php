@@ -17,7 +17,7 @@ if(!defined('ABSPATH')) exit;
 
 class beerList extends ebl{
 
-  private $defaults = ['fields' => 'ids','posts_per_page' => -1];
+  private $defaults = ['fields' => 'ids', 'posts_per_page' => -1];
   public $args;
   public $query;
   public $beer;
@@ -26,6 +26,7 @@ class beerList extends ebl{
   public $hasRanSimilar = false;
 
   public function __construct($args = []){
+    $this->defaults['include_unavailable'] = $this->getOption('default_behavior_for_unavailable_beers', 0) == 1 ? false : true;
     $this->args = $args;
     $this->theArgs = 4;
     parent::__construct();
@@ -37,6 +38,8 @@ class beerList extends ebl{
       else{
         if(isset($this->args['post_type']) && $this->args['post_type'] !== 'beers') $this->throwError('beerlist02', 'The post type was set to '.$this->args['post_type'].' instead of "beers". This was automatically overwritten, but you should remove this specification to prevent potential issues in the future.');
         $this->args['post_type'] = 'beers'; //Force the post type to be beers for this object
+
+        $this->constructMetaQuery(); //Construct the meta query based on custom options
         $this->args = wp_parse_args($this->args, $this->defaults);
         $this->query = new \WP_Query($this->args);
       }
@@ -75,6 +78,29 @@ class beerList extends ebl{
     }
 
     return false;
+  }
+
+  /**
+   * Constructs the meta query, and sets based on some of the custom args that can be passed into this object
+   */
+  private function constructMetaQuery(){
+    if(!isset($this->args['include_unavailable'])) $this->args['include_unavailable'] = $this->getOption('default_behavior_for_unavailable_beers', 0) == 1 ? false : true;
+    if(!$this->args['include_unavailable'] && $this->args['meta_query']['relation'] != 'OR'){
+      if(!isset($this->args['meta_query'])) $this->args['meta_query'] = [];
+      $this->args['meta_query'][] = [
+        'relation' => 'OR',
+        [
+          'key'     => $this->prefix('availability_start_date'),
+          'value'   => -1,
+          'compare' => 'NOT IN',
+        ],
+        [
+          'key'     => $this->prefix('availability_start_date'),
+          'compare' => 'NOT EXISTS',
+        ],
+      ];
+      unset($this->args['include_unavailable']);
+    }
   }
 
   /**

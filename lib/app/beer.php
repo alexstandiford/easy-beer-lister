@@ -313,13 +313,16 @@ class beer extends ebl{
    */
   public function getAvailabilityStartDate($format = 'F'){
     do_action($this->prefix('before_get_availability_start_date'), $this);
-    $start_date = $this->getMetaValue('availability_start_date');
+    $start_date = (int)$this->getMetaValue('availability_start_date');
     //If the availability is 0, it is a year-round beverage.
-    if(!$start_date){
-      $date = apply_filters($this->prefix('get_top_availability_start_date_year_round'), 'Year-Round', $format, $this);
+    if($start_date === 0){
+      $date = apply_filters($this->prefix('get_availability_start_date_year_round'), 'Year-Round', $format, $this);
+    }
+    elseif($start_date === -1){
+      $date = apply_filters($this->prefix('get_availability_start_date_unavailable'),'Unavailable',$format, $this);
     }
     else{
-      if($format){
+      if($format > 0){
         $date = DateTime::createFromFormat('m', $start_date);
         $date = $date->format($format);
       }

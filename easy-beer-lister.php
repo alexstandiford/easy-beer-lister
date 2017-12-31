@@ -341,3 +341,30 @@ function load_custom_single_beer_page_template($template){
 }
 
 add_filter('template_include', __NAMESPACE__.'\\load_custom_single_beer_page_template');
+
+/**
+ * Modifies the beer query on archive pages.
+ * This allows us to support some of the default args for our custom post type
+ * in situations where a default WP_Query is used
+ *
+ * @param $query \WP_Query current WP Query object
+ */
+function modify_beer_query_on_beer_archives($query){
+  if(is_single()) return;
+  if(isset($query->query['post_type']) && $query->query['post_type'] === 'beers' && get_option('ebl_default_behavior_for_unavailable_beers',0) == 1 && $query->is_main_query()){
+    $query->set('meta_query',[[
+      'relation' => 'OR',
+      [
+        'key' => 'ebl_availability_start_date',
+        'value' => -1,
+        'compare' => 'NOT IN'],
+      [
+        'key' => 'ebl_availability_start_date',
+        'compare' => 'NOT EXISTS'
+      ],
+      ]]);
+    $query->set('posts_per_page',-1);
+  }
+}
+
+add_action('pre_get_posts',__NAMESPACE__.'\\modify_beer_query_on_beer_archives');
