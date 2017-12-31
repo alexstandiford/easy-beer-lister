@@ -16,8 +16,9 @@ class tapList extends beerList{
   public function __construct($args = []){
     $defaults = [
       'meta_query'     => [
+        'relation' => 'AND',
         [
-          'key'   => EBL_PREFIX.'_on_tap',
+          'key'   => $this->prefix('on_tap'),
           'value' => 1,
         ],
       ],
@@ -28,8 +29,9 @@ class tapList extends beerList{
     parent::__construct($args);
   }
 
-  public static function getDataFromAPI(\WP_REST_Request $req,$self = null){
-      $self = new self();
-      return parent::getDataFromAPI($req,$self);
+  public static function getDataFromAPI(\WP_REST_Request $req, $self = null){
+    $self = new self();
+
+    return parent::getDataFromAPI($req, $self);
   }
 }
