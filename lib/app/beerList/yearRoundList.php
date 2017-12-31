@@ -14,17 +14,21 @@ if(!defined('ABSPATH')) exit;
 class yearRoundList extends beerList{
 
   public function __construct($args = []){
+
     $current_month = (int)date('n');
     $defaults = [
       'meta_query'     => [
-        'relation' => 'OR',
+        'relation' => 'AND',
         [
-          'key'   => EBL_PREFIX.'_availability_start_date',
-          'value' => 0,
-        ],
-        [
-          'key'     => EBL_PREFIX.'_availability_start_date',
-          'compare' => 'NOT EXISTS',
+          'relation' => 'OR',
+          [
+            'key'   => $this->prefix('availability_start_date'),
+            'value' => 0,
+          ],
+          [
+            'key'     => $this->prefix('availability_start_date'),
+            'compare' => 'NOT EXISTS',
+          ],
         ],
       ],
       'posts_per_page' => -1,
