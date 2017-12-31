@@ -42,7 +42,7 @@ class metaBox extends fieldLoop{
        'description'    => 'Enter the first month this delicious brew is available. This is reflected on the availability calendar.',
        'type'           => 'select',
        'select_options' => [
-         0 => 'Year-Round', 1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December',
+         0 => 'Year-Round', -1 => 'Unavailable', 1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December',
        ],
       ],
       ['name'           => 'Availability End Date',
@@ -156,7 +156,7 @@ class metaBox extends fieldLoop{
       while($this->haveFields()){
         $this->theField();
         if($_POST[$this->field->id] != get_post_meta($post_id, $this->field->metaKey, true)){
-          if(sanitizeCheck::sanitize($this->field,$_POST[$this->field->id],$post_id)){
+          if(sanitizeCheck::sanitize($this->field, $_POST[$this->field->id], $post_id)){
             update_post_meta($post_id, $this->field->metaKey, $_POST[$this->field->id]);
           }
         }
