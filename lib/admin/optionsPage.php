@@ -24,15 +24,15 @@ class optionsPage extends fieldLoop{
         'default' => [
           'fields' => [
             [
-              'name' => 'Default Top Beer Label',
-              'description' => 'When no top label is specified, this label will be used.',
-              'type' => 'imageupload',
+              'name'           => 'Default Top Beer Label',
+              'description'    => 'When no top label is specified, this label will be used.',
+              'type'           => 'imageupload',
               'preview_target' => 'top-label-target',
             ],
             [
-              'name' => 'Default Bottom Beer Label',
-              'description' => 'When no bottom label is specified, this label will be used.',
-              'type' => 'imageupload',
+              'name'           => 'Default Bottom Beer Label',
+              'description'    => 'When no bottom label is specified, this label will be used.',
+              'type'           => 'imageupload',
               'preview_target' => 'bottom-label-target',
             ],
             [
@@ -43,6 +43,15 @@ class optionsPage extends fieldLoop{
               'name'        => 'Disable Individual Beer Pages?',
               'description' => 'Check this box if you wish to disable single beer pages on your site. Any existing link to a single beer page will automatically redirect to the beer listing page, instead.',
               'type'        => 'checkbox',
+            ],
+            [
+              'name'           => 'Default behavior for unavailable beers',
+              'description'    => 'Select how you would prefer beers set to "Unavailable" to be displayed',
+              'type'           => 'select',
+              'select_options' => [
+                0 => 'By default, show unavailable beers on beer listings',
+                1 => 'By default, hide unavailable beers from beer listings',
+              ],
             ],
           ],
         ],
