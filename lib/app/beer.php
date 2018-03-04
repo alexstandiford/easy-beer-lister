@@ -160,14 +160,15 @@ class beer extends ebl{
   /**
    * Gets both the glass and the bottle, based on the layout provided
    *
-   * @param bool $echo - Set to false to prevent this function from echoing the results
+   * @param bool  $echo - Set to false to prevent this function from echoing the results
+   * @param array $layout - Layout Arguments
    *
    * @return array
    */
-  public function getGlassLayout($echo = true){
+  public function getGlassLayout($echo = true,$layout = []){
     do_action($this->prefix('before_get_glass_layout'), $this);
     if(!$this->glassLayout){
-      $this->glassLayout = new glassLayout($this, apply_filters($this->prefix('beer_glass_layout'), [], $this));
+      $this->glassLayout = new glassLayout($this, apply_filters($this->prefix('beer_glass_layout'), $layout,$layout, $this));
     }
     do_action($this->prefix('after_get_glass_layout'), $this);
 
