@@ -21,7 +21,8 @@ class glassLayout extends ebl{
   public $layouts = [];
   public $layoutFormats = [];
   public $layoutArgs = [];
-  public $defaultLayout = ['srm' => null, 'shape' => null];
+  public $layout = '';
+  public $defaultLayout = ['srm' => null, 'shape' => null, 'layout' => null];
 
   public function __construct($beer = null, array $layout_args = []){
     if(is_int($beer)){
@@ -31,8 +32,11 @@ class glassLayout extends ebl{
       $this->beer = $beer;
     }
 
+    if(isset($layout_args['layout'])) $this->layout = $layout_args['layout'];
+    unset($layout_args['layout']);
+
     if($this->beer instanceof beer){
-      $this->defaultLayout = wp_parse_args(['bottom_label_image_id' => $this->beer->getBottomLabel(), 'top_label_image_id' => $this->beer->getTopLabel(),'srm' => $this->beer->getSRM('value'), 'shape' => $this->getGlassShape()],$this->defaultLayout);
+      $this->defaultLayout = wp_parse_args(['bottom_label_image_id' => $this->beer->getBottomLabel(), 'top_label_image_id' => $this->beer->getTopLabel(), 'srm' => $this->beer->getSRM('value'), 'shape' => $this->getGlassShape()], $this->defaultLayout);
       if(empty($layout_args)){
         $this->layoutArgs = $this->getGlassLayoutValue();
       }
@@ -48,7 +52,7 @@ class glassLayout extends ebl{
   public function getGlassLayout($echo = true){
     if($this->hasErrors()) return false;
     foreach($this->layoutArgs as $layout_args){
-      $args = wp_parse_args($layout_args,$this->defaultLayout);
+      $args = wp_parse_args($layout_args, $this->defaultLayout);
       $current_glass = new glass($args);
       $this->layouts[] = $current_glass;
       if($echo) echo $current_glass->glass();
@@ -78,7 +82,8 @@ class glassLayout extends ebl{
    */
   public function parseLayoutString(){
     if($this->hasErrors()) return false;
-    $layout_array = explode(',', $this->beer->getMetaValue('glass_layout',false,'shaker,glass-bottle'));
+    $layout_array = explode(',', $this->beer->getMetaValue('glass_layout', false, 'shaker,glass-bottle'));
+    if($this->layout != '') $layout_array[1] = $this->layout;
     $shape = isset($layout_array[0]) ? $layout_array[0] : null;
     $layout = isset($layout_array[1]) ? explode('-', $layout_array[1]) : null;
     $layout_array = ['shape' => $shape, 'layout' => []];
