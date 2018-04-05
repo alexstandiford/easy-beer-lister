@@ -6,6 +6,7 @@
  */
 
 
+
 use ebl\app\beer;
 use ebl\app\beerList;
 
@@ -15,7 +16,7 @@ if(!defined('ABSPATH')) exit;
  * I've always wanted to make a function called this.
  * Gets the current beer object
  */
-function get_beer($id = null){
+function ebl_get_beer($id = null){
   if($id) return new beer($id);
   global $ebl_beer;
 
@@ -26,7 +27,7 @@ function get_beer($id = null){
  * Loads the current query into the file.
  * @return beerList
  */
-function get_beer_list(){
+function ebl_get_beer_list(){
   global $ebl_beer_list;
 
 

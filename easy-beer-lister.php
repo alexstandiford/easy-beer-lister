@@ -64,41 +64,34 @@ class eblInit{
    */
   private $endpoints = [
     'template/get'            => [
-      'route_nicename' => 'getTemplate',
       'methods'        => ['GET', 'POST'],
       'callback'       => 'ebl\app\templateLoader::loadTemplateFromAPI',
     ],
 
     //Beer List Endpoints
     'beer-list'               => [
-      'route_nicename' => 'beerList',
       'methods'        => ['GET', 'POST'],
       'callback'       => 'ebl\app\beerList::getDataFromAPI',
     ],
     'beer-list/on-tap'        => [
-      'route_nicename' => 'tapList',
       'methods'        => ['GET', 'POST'],
       'callback'       => 'ebl\app\beerList\tapList::getDataFromAPI',
     ],
     'beer-list/in-season'     => [
-      'route_nicename' => 'inSeason',
       'methods'        => ['GET', 'POST'],
       'callback'       => 'ebl\app\beerList\inSeasonList::getDataFromAPI',
     ],
     'beer-list/out-of-season' => [
-      'route_nicename' => 'outOfSeason',
       'methods'        => ['GET', 'POST'],
       'callback'       => 'ebl\app\beerList\outOfSeasonList::getDataFromAPI',
     ],
     'beer-list/year-round'    => [
-      'route_nicename' => 'yearRound',
       'methods'        => ['GET', 'POST'],
       'callback'       => 'ebl\app\beerList\yearRoundList::getDataFromAPI',
     ],
 
     //Single Beer Endpoints
     'beer'                    => [
-      'route_nicename' => 'beer',
       'methods'        => ['GET', 'POST'],
       'callback'       => 'ebl\app\beer::getDataFromAPI',
     ],

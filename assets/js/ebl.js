@@ -5,8 +5,15 @@
  * item.get(function(res){ // do things here })/
  * @type {{endpoints: *, getEndpoint: ebl.getEndpoint, TemplateLoader: ebl.TemplateLoader, Glass: ebl.Glass, BeerList: ebl.BeerList, Beer: ebl.Beer, TapList: ebl.TapList}}
  */
-var ebl = {
-  endpoints: eblArgs,
+const ebl = {
+  endpoints: {
+    "getTemplate": "template/get",
+    "beerList":    "beer-list",
+    "tapList":     "beer-list/on-tap",
+    "inSeason":    "beer-list/in-season",
+    "outOfSeason": "beer-list/out-of-season",
+    "yearRound":   "beer-list/year-round",
+  },
 
   /**
    * Gets the specified Easy Beer Lister REST API Endpoint.
@@ -17,7 +24,7 @@ var ebl = {
    */
   getEndpoint: function(endpoint,callback,data){
     jQuery.ajax({
-      url:     ebl.endpoints[endpoint],
+      url:     window.location.protocol + '//' + window.location.hostname + '/wp-json/ebl/v2/' + ebl.endpoints[endpoint],
       type:    "POST",
       data:    data,
       success: callback,

@@ -80,7 +80,6 @@ abstract class ebl{
    */
   private function enqueue(){
     if(!wp_style_is('ebl-style', 'enqueued')){
-      wp_enqueue_style('ebl-style', EBL_ASSETS_URL.'css/ebl.css', [], EBL_VERSION);
       wp_enqueue_script('ebl-script', EBL_ASSETS_URL.'js/ebl-script.js', ['jquery', 'ebl'], EBL_VERSION);
     }
   }
