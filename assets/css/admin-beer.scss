@@ -1,0 +1,99 @@
+.ebl-field{
+  clear:both;
+}
+
+.ebl-srm-wrapper{
+  width:100%;
+  clear:both;
+
+  .ebl-srm-value{
+    width:10%;
+    padding:20px 0;
+    text-align:center;
+    display:block;
+    float:left;
+    color:#eee;
+    font-size:18px;
+    box-sizing:border-box;
+
+    &:hover{
+      opacity:0.8;
+      cursor:pointer;
+    }
+
+    &.mod--selected{
+      border:3px solid white;
+      padding:17px 0;
+      color:white;
+    }
+  }
+}
+
+.mod--hidden{
+  display:none;
+}
+
+.ebl-glass-item-wrapper{
+  display:flex;
+  flex-wrap:wrap;
+  width:calc(50% - 40px);
+  padding:0 20px;
+  float:left;
+  position:relative;
+  justify-content:center;
+
+  & > strong{
+    text-align:center;
+    width:100%;
+    display:block;
+  }
+  .glass-shape{
+    flex-grow:1;
+    width:calc(33.33% - 20px);
+    padding:20px 10px;
+    position:relative;
+    &:hover{
+      opacity:0.8;
+      cursor:pointer;
+    }
+    &.mod--selected{
+      border:3px solid #aaa;
+      padding:7px;
+      background:#eee;
+    }
+    .ebl-glass{
+      height:75px;
+      position:relative;
+      margin:auto;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+    }
+    span{
+      position:absolute;
+      bottom:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:100%;
+      text-align:center;
+    }
+    &.glass-shape-glass-bottle{
+      .ebl-glass-bottle{
+        left:10%;
+      }
+      .ebl-glass:not(.ebl-glass-bottle){
+        height:60%;
+        top:40%;
+        left:45%;
+      }
+    }
+  }
+  &.ebl-glass-layout-wrapper{
+    .glass-shape{
+      max-height:200px;
+      .ebl-glass{
+        height:150px;
+      }
+    }
+  }
+}

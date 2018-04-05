@@ -1,0 +1,16 @@
+.ebl-beer-shortcode{
+  position:fixed;
+  top:50px;
+  left:500px;
+  width:400px;
+  height:auto;
+  background:white;
+  padding:10px;
+  z-index:-1;
+  opacity:0;
+
+  &.mod--visible{
+    opacity:1;
+    z-index:9001; /*ITS OVER 9000!*/
+  }
+}

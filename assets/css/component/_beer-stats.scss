@@ -1,0 +1,8 @@
+.ebl-beer-stats-component{
+  .ebl-stat:not(:first-of-type):not(:last-of-type){
+    margin-right:20px;
+  }
+  .ebl-stat-title:not(:first-of-type):not(:last-of-type){
+    margin-left:20px;
+  }
+}

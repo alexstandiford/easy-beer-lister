@@ -1,0 +1,61 @@
+.ebl-beer-glass-component{
+
+}
+
+.beer-glass-group{
+  position:relative;
+  height:350px;
+  margin:auto;
+}
+
+.ebl-glass{
+  height:80%;
+  bottom:5%;
+  position:absolute;
+  left:40%;
+  transform:translateX(-50%);
+}
+
+.ebl-glass-mug{
+  left:48%;
+}
+
+.ebl-glass-bottle{
+  height:100%;
+  bottom:0;
+  transform:none;
+}
+
+.svg-glass.mod--animated circle{
+  transform:scale(1) translate(0px, 0%);
+  transform-origin:50% 50%;
+  @for $i from 1 through 5{
+    &:nth-of-type(#{$i}){
+      animation:fizz random(5000)+2000+ms ease-in infinite;
+    }
+  }
+}
+
+@keyframes fizz{
+  0%{
+    transform:scale(1) translate(0px, 0%);
+    opacity:0;
+  }
+  2%{
+    opacity:0.25;
+  }
+  100%{
+    transform:scale(.5) translate(0px, -1000%);
+    opacity:0;
+  }
+}
+
+@media screen and(max-width: 1025px){
+  .svg-glass.mod--animated circle{
+    @for $i from 1 through 5{
+      &:nth-of-type(#{$i}){
+        animation:none;
+      }
+    }
+  }
+}
