@@ -1,19 +1,20 @@
-.ebl-beer-glass-component{
-
-}
 
 .beer-glass-group{
   position:relative;
   height:350px;
   margin:auto;
+  *{
+    transition:none;
+  }
 }
 
 .ebl-glass{
   height:80%;
   bottom:5%;
   position:absolute;
-  left:40%;
+  left:47%;
   transform:translateX(-50%);
+  transition:none;
 }
 
 .ebl-glass-mug{

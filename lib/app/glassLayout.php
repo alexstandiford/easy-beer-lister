@@ -24,6 +24,12 @@ class glassLayout extends ebl{
   public $layout = '';
   public $defaultLayout = ['srm' => null, 'shape' => null, 'layout' => null];
 
+  /**
+   * glassLayout constructor.
+   *
+   * @param null  $beer - The beer to use in the glass layout. if left null, you must specify the layout in $layout_args
+   * @param array $layout_args Array of an associative of items to display in this layout. Overrides the srm, shape, and layout of the beer values. If $beer is null, all 3 values must be specified
+   */
   public function __construct($beer = null, array $layout_args = []){
     if(is_int($beer)){
       $this->beer = new beer($beer);
@@ -34,7 +40,6 @@ class glassLayout extends ebl{
 
     if(isset($layout_args['layout'])) $this->layout = $layout_args['layout'];
     unset($layout_args['layout']);
-
     if($this->beer instanceof beer){
       $this->defaultLayout = wp_parse_args(['bottom_label_image_id' => $this->beer->getBottomLabel(), 'top_label_image_id' => $this->beer->getTopLabel(), 'srm' => $this->beer->getSRM('value'), 'shape' => $this->getGlassShape()], $this->defaultLayout);
       if(empty($layout_args)){
@@ -127,7 +132,7 @@ class glassLayout extends ebl{
    * @return mixed
    */
   protected function checkForErrors(){
-    if(!$this->beer && empty($this->layout)) return $this->throwError('glassLayout02', 'Glass layout cannot run without specifying either a beer, or a layout to display');
+    if(!$this->beer && empty($this->layoutArgs)) return $this->throwError('glassLayout02', 'Glass layout cannot run without specifying either a beer, or a layout to display');
 
     return null;
   }

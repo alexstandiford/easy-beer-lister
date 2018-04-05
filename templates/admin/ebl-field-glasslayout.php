@@ -22,7 +22,8 @@ $meta_value = explode(',', $this->field->metaValue);
     <?php
     foreach($this->getGlassShapes() as $glass_shape):
       if($glass_shape === 'bottle') continue;
-      $glass = new glassLayout($post_id, [['shape' => $glass_shape]]);
+      $glass_layout_args = isset($post_id) ? [['shape' => $glass_shape]] : [['shape' => $glass_shape, 'srm' => 9, 'layout' => 'glass']];
+      $glass = new glassLayout($post_id, $glass_layout_args);
       $class = $meta_value[0] == $glass_shape ? 'glass-shape mod--selected' : 'glass-shape'; ?>
 
       <div class="<?= $class; ?>" data-glass-shape="<?= $glass_shape ?>">
@@ -34,23 +35,33 @@ $meta_value = explode(',', $this->field->metaValue);
   <div class="ebl-glass-layout-wrapper ebl-glass-item-wrapper">
     <strong>Glass Layout</strong>
     <?php
-
     foreach($this->getGlassLayouts() as $glass_layout):
       $glass_layout_args = [];
-      $glass_layout = (array)$glass_layout;
-      foreach($glass_layout as $shape){
-        if($shape === 'glass') $shape = $meta_value[0];
-        $glass_layout_args[]['shape'] = $shape;
+      $i = 0;
+      foreach($glass_layout as $layout){
+        if($layout == 'glass'){
+          $glass_layout_args[$i]['shape'] = $meta_value[0] ? $meta_value[0] : 'shaker';
+        }
+        else{
+          $glass_layout_args[$i]['shape'] = 'bottle';
+        }
+
+        if(!isset($post_id)){
+          $glass_layout_args[$i]['layout'] = implode('-',$glass_layout);
+          $glass_layout_args[$i]['srm'] = 9;
+        }
+        $i++;
       }
       $glass = new glassLayout($post_id, $glass_layout_args);
       $class = 'glass-layout';
-      $glass_layout_string = implode('-',(array)$glass_layout);
+      $glass_layout_string = implode('-', (array)$glass_layout);
       if($glass_layout_string == $this->getSelectedLayout()) $class .= ' mod--selected';
       ?>
 
       <div class="<?= 'glass-shape glass-shape-'.$glass_layout_string.' '.$class; ?>" data-glass-layout="<?= $glass_layout_string ?>">
         <?php $glass->getGlassLayout(); ?>
-        <span><?= implode(', ', $glass_layout); ?></span>
+        <!--        <span>--><? //= $shape;
+        ?><!--</span>-->
       </div>
     <?php endforeach; ?>
   </div>

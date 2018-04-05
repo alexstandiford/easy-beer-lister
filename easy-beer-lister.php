@@ -313,6 +313,12 @@ function add_image_sizes_to_upload_editor($sizes){
 add_filter('image_size_names_choose', __NAMESPACE__.'\\add_image_sizes_to_upload_editor');
 
 
+/**
+ * Redirects visitors to the beer archive when individual pages are disabled
+ * @param $template
+ *
+ * @return bool|templateLoader
+ */
 function load_custom_single_beer_page_template($template){
   global $wp_query;
   if(is_singular('beers')){

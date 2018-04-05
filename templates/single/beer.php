@@ -20,6 +20,7 @@ $beer = ebl_get_beer();
     <?php $this->getPartial('component', 'beer-availability'); ?>
   </div>
   <?php $this->getPartial('component', 'beer-glass'); ?>
+  <?php $this->getPartial('component', 'beer-gallery'); ?>
   <?php $this->getPartial('component', 'beer-video'); ?>
 
 </div>

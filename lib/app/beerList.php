@@ -56,11 +56,17 @@ class beerList extends ebl{
    * Equivalent to WP_Query::have_posts()
    */
   public function haveBeers(){
+    $result = false;
     if(!$this->hasErrors()){
-      return $this->query->have_posts();
+      if($this->query->have_posts()){
+        $result = true;
+      }
+      else{
+        wp_reset_query();
+      }
     }
 
-    return false;
+    return $result;
   }
 
   /**
@@ -125,7 +131,7 @@ class beerList extends ebl{
     if($this->hasRanSimilar) return $this->similar;
     if($this->beerToCompare instanceof beer){
       $slug = $this->beerToCompare->getStyle('object');
-      $slug = $slug->slug;
+      $slug = isset($slug->slug) ? $slug->slug : '';
       $default_args = [
         'tax_query'      => [
           'relation' => 'OR',
@@ -146,7 +152,7 @@ class beerList extends ebl{
         'posts_per_page' => 4,
       ];
 
-      $args = wp_parse_args($default_args, $args);
+      $args = wp_parse_args($args,$default_args);
       $this->hasRanSimilar = true;
       $this->similar = new self($args);
     }

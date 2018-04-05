@@ -184,7 +184,8 @@ class cpt{
     $taxonomy = $box['args']['taxonomy'];
     $name = 'tax_input['.$taxonomy.']';
     $term_obj = wp_get_object_terms($post->ID, $taxonomy);
-    wp_dropdown_categories(array('taxonomy' => $taxonomy, 'name' => "{$name}[]", 'selected' => $term_obj[0]->term_id, 'orderby' => 'name', 'hierarchical' => 0, 'show_option_none' => '&mdash;'));
+    $selected = isset($term_obj[0]) ? $term_obj[0]->term_id : -1;
+    wp_dropdown_categories(['hide_empty' => 0, 'taxonomy' => $taxonomy, 'name' => "{$name}[]", 'selected' => $selected, 'orderby' => 'name', 'hierarchical' => 0, 'show_option_none' => '&mdash;']);
     echo "<p>Didn't find the style you're looking for? <a href='".admin_url().'edit-tags.php?taxonomy=style&post_type=beers'."'>add it here</a></p>";
   }
 }

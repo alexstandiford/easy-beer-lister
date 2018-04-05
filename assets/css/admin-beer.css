@@ -63,7 +63,7 @@
       width: 100%;
       text-align: center; }
     .ebl-glass-item-wrapper .glass-shape.glass-shape-glass-bottle .ebl-glass-bottle {
-      left: 10%; }
+      left: 45px; }
     .ebl-glass-item-wrapper .glass-shape.glass-shape-glass-bottle .ebl-glass:not(.ebl-glass-bottle) {
       height: 60%;
       top: 40%;

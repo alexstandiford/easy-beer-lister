@@ -1,7 +1,14 @@
 .ebl-beer-archive {
   flex-basis: 33.33%;
-  padding: 20px; }
+  padding: 20px;
+  box-sizing: border-box; }
 
+@media (orientation: portrait) and (max-device-width: 775px) {
+  .ebl-beer-archive {
+    flex-basis: 50%; } }
+@media (orientation: portrait) and (max-device-width: 600px), (orientation: landscape) and (max-device-width: 750px) {
+  .ebl-beer-archive {
+    flex-basis: calc(100% - 40px); } }
 .ebl-heading-archive {
   max-width: 1200px;
   margin: auto; }
@@ -47,13 +54,16 @@
   position: relative;
   height: 350px;
   margin: auto; }
+  .beer-glass-group * {
+    transition: none; }
 
 .ebl-glass {
   height: 80%;
   bottom: 5%;
   position: absolute;
-  left: 40%;
-  transform: translateX(-50%); }
+  left: 47%;
+  transform: translateX(-50%);
+  transition: none; }
 
 .ebl-glass-mug {
   left: 48%; }
@@ -67,15 +77,15 @@
   transform: scale(1) translate(0px, 0%);
   transform-origin: 50% 50%; }
   .svg-glass.mod--animated circle:nth-of-type(1) {
-    animation: fizz 3288ms ease-in infinite; }
+    animation: fizz 2755ms ease-in infinite; }
   .svg-glass.mod--animated circle:nth-of-type(2) {
-    animation: fizz 3622ms ease-in infinite; }
+    animation: fizz 6947ms ease-in infinite; }
   .svg-glass.mod--animated circle:nth-of-type(3) {
-    animation: fizz 3395ms ease-in infinite; }
+    animation: fizz 6495ms ease-in infinite; }
   .svg-glass.mod--animated circle:nth-of-type(4) {
-    animation: fizz 2674ms ease-in infinite; }
+    animation: fizz 6439ms ease-in infinite; }
   .svg-glass.mod--animated circle:nth-of-type(5) {
-    animation: fizz 4780ms ease-in infinite; }
+    animation: fizz 3148ms ease-in infinite; }
 
 @keyframes fizz {
   0% {
@@ -104,6 +114,8 @@
     margin: auto;
     display: flex;
     justify-content: center; }
+  .ebl-filter-component button {
+    margin-bottom: 10px; }
 
 #js--filter-target {
   position: relative; }
@@ -149,5 +161,11 @@
   margin-right: 20px; }
 .ebl-beer-stats-component .ebl-stat-title:not(:first-of-type):not(:last-of-type) {
   margin-left: 20px; }
+
+.ebl-beer-gallery-component {
+  display: inline-flex;
+  margin-top: 50px; }
+  .ebl-beer-gallery-component img {
+    margin: 10px; }
 
 /*# sourceMappingURL=ebl.css.map */
