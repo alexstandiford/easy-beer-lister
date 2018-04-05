@@ -21,7 +21,7 @@ if(!defined('ABSPATH')) exit;
 class templateLoader extends ebl{
 
   const SUPPORTED_LOCATIONS = ['shortcode','widget', 'single', 'wrapper', 'archive', 'component'];
-  const SUPPORTED_TYPES = ['widget', 'random-beer', 'on-tap', 'heading', 'filter', 'header', 'beer', 'single', 'archive', 'beers', 'beer-info-basic', 'beer-glass', 'beer-pairings', 'beer-availability', 'beer-video', 'beer-stats', 'related-beers'];
+  const SUPPORTED_TYPES = ['widget', 'random-beer', 'on-tap', 'heading', 'filter', 'header', 'beer', 'single', 'archive', 'beers', 'beer-info-basic', 'beer-glass', 'beer-pairings', 'beer-availability','beer-gallery', 'beer-video', 'beer-stats', 'related-beers'];
   const THEME_DIRECTORY = 'easy-beer-lister/';
   private $defaults = ['load_as_buffer' => false, 'post_id' => false];
   public $type;

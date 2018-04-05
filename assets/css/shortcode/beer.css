@@ -6,6 +6,11 @@
   height: auto;
   background: white;
   padding: 10px;
-  opacity: .9; }
+  z-index: -1;
+  opacity: 0; }
+  .ebl-beer-shortcode.mod--visible {
+    opacity: 1;
+    z-index: 9001;
+    /*ITS OVER 9000!*/ }
 
 /*# sourceMappingURL=beer.css.map */

@@ -1,4 +1,17 @@
 .ebl-beer-archive{
   flex-basis:33.33%;
   padding:20px;
+  box-sizing:border-box;
+}
+
+@media (orientation: portrait) and (max-device-width: 775px){
+  .ebl-beer-archive{
+    flex-basis:50%;
+  }
+}
+
+@media (orientation: portrait) and (max-device-width: 600px), (orientation: landscape) and (max-device-width: 750px){
+  .ebl-beer-archive{
+    flex-basis:calc(100% - 40px);
+  }
 }

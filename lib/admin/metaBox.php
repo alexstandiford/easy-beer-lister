@@ -31,7 +31,7 @@ class metaBox extends fieldLoop{
        'description' => 'Enter the gravity of the beer here.',
        'input_args'  => [
          'type' => 'number',
-         'step' => 0.01,
+         'step' => 0.001,
        ],
       ],
       ['name'           => 'On Tap',
@@ -108,7 +108,7 @@ class metaBox extends fieldLoop{
   public $meta;
 
   public function __construct($meta_box_name, $post_type, $context = 'normal', $priority = 'default'){
-    self::$postID = $_GET['post'];
+    if(isset($_GET['post'])) self::$postID = $_GET['post'];
     $this->title = esc_html__($meta_box_name);
     $this->postType = $post_type;
     $this->context = $context;

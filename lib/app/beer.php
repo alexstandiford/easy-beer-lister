@@ -11,6 +11,7 @@ namespace ebl\app;
 
 use DateTime;
 use ebl\core\ebl;
+use ebl\core\option;
 
 if(!defined('ABSPATH')) exit;
 
@@ -119,7 +120,7 @@ class beer extends ebl{
     $this->$taxonomy = $terms;
 
     do_action($this->prefix('before_get_terms'), $this, $taxonomy, $single);
-    if($single == true) $terms = apply_filters($this->prefix('get_single_term'), $terms[0]);
+    if($single == true && isset($terms[0])) $terms = apply_filters($this->prefix('get_single_term'), $terms[0]);
 
     return $terms;
   }
@@ -160,15 +161,15 @@ class beer extends ebl{
   /**
    * Gets both the glass and the bottle, based on the layout provided
    *
-   * @param bool  $echo - Set to false to prevent this function from echoing the results
+   * @param bool  $echo   - Set to false to prevent this function from echoing the results
    * @param array $layout - Layout Arguments
    *
    * @return array
    */
-  public function getGlassLayout($echo = true,$layout = []){
+  public function getGlassLayout($echo = true, $layout = []){
     do_action($this->prefix('before_get_glass_layout'), $this);
     if(!$this->glassLayout){
-      $this->glassLayout = new glassLayout($this, apply_filters($this->prefix('beer_glass_layout'), $layout,$layout, $this));
+      $this->glassLayout = new glassLayout($this, apply_filters($this->prefix('beer_glass_layout'), $layout, $layout, $this));
     }
     do_action($this->prefix('after_get_glass_layout'), $this);
 
@@ -212,7 +213,7 @@ class beer extends ebl{
   public function getPrice(){
     do_action($this->prefix('before_get_price'), $this);
 
-    return apply_filters($this->prefix('get_price'), (float)$this->getMetaValue('price').$this->getOption('currency_symbol'), $this);
+    return apply_filters($this->prefix('get_price'), $this->getOption('currency_symbol').(float)$this->getMetaValue('price'), $this);
   }
 
   /**
@@ -242,8 +243,8 @@ class beer extends ebl{
   public function getGalleryItems($as_string = false){
     do_action($this->prefix('before_process_gallery_items'), $this, $as_string);
     $gallery = apply_filters($this->prefix('get_gallery_items_array'), $this->getMetaValue('gallery'), $this, $as_string);
-    if($as_string){
-      $gallery = apply_filters($this->prefix('get_gallery_items_string'), implode(',', $gallery), $this, $as_string);
+    if(!$as_string){
+      if($gallery !== false) $gallery = apply_filters($this->prefix('get_gallery_items_string'), explode(',', $gallery), $this, $as_string);
     }
     do_action($this->prefix('before_get_gallery_items'), $this, $as_string);
 
@@ -268,6 +269,27 @@ class beer extends ebl{
     do_action($this->prefix('before_get_untappd_url'), $this);
 
     return apply_filters($this->prefix('get_untappd_url'), (string)$this->getMetaValue('untappd_url'), $this);
+  }
+
+  /**
+   * Get the URL of the current beer
+   *
+   * @param string $content - the content that goes in-between the a tags
+   * @param array  $classes - The additional classes to add to this
+   * @param array  $atts    - The attribute values keyed by the attribute key
+   *
+   * @return string The a tag
+   */
+  public function permalink($content = '', $classes = [], $atts = []){
+    $wrapper = 'a';
+    if(option::get('disable_individual_beer_pages') == 'on'){
+      $wrapper = 'span';
+    }
+    $link = '<'.$wrapper.' href="'.get_post_permalink($this->post->ID).'" class="'.implode(' ', $classes).'"';
+    foreach($atts as $key => $value) $link .= ' '.$key.'"'.$value.'"';
+    $link .= '>'.$content.'</'.$wrapper.'>';
+
+    return $link;
   }
 
   /**
@@ -296,7 +318,7 @@ class beer extends ebl{
    */
   public function getAvailabilityEndDate($format = 'F'){
     do_action($this->prefix('before_get_availability_end_date'), $this);
-    if($this->getAvailabilityStartDate(null) == 0) return false;
+    if($this->getAvailabilityStartDate('m') == 0) return false;
     if($format){
       $date = DateTime::createFromFormat('m', $this->getMetaValue('availability_end_date'));
       $date = $date->format($format);
@@ -320,10 +342,10 @@ class beer extends ebl{
       $date = apply_filters($this->prefix('get_availability_start_date_year_round'), 'Year-Round', $format, $this);
     }
     elseif($start_date === -1){
-      $date = apply_filters($this->prefix('get_availability_start_date_unavailable'),'Unavailable',$format, $this);
+      $date = apply_filters($this->prefix('get_availability_start_date_unavailable'), 'Unavailable', $format, $this);
     }
     else{
-      if($format > 0){
+      if($start_date > 0){
         $date = DateTime::createFromFormat('m', $start_date);
         $date = $date->format($format);
       }
@@ -348,11 +370,12 @@ class beer extends ebl{
 
   /**
    * Gets the Style object
-   * @return object
+   * @return bool|object
    */
   public function getStyle($format = 'string'){
     do_action($this->prefix('before_style'), $this);
     $style = $this->getTerms('style', true);
+    if(empty($style)) return false;
     if($format == 'string' && $style instanceof \WP_Term){
       $style = $style->name;
     }
@@ -373,7 +396,7 @@ class beer extends ebl{
    */
   public function getSRM($format = 'value'){
     do_action($this->prefix('before_get_srm'), $this, $format);
-    $srm = apply_filters($this->prefix('get_srm_value'), (int)$this->getMetaValue('srm_value',false, apply_filters($this->prefix('default_srm'),10,$this)), $this, $format);
+    $srm = apply_filters($this->prefix('get_srm_value'), (int)$this->getMetaValue('srm_value', false, apply_filters($this->prefix('default_srm'), 10, $this)), $this, $format);
     $srm = $this->getSrmValue($format, $srm);
     do_action($this->prefix('before_get_srm'), $this, $format);
 
@@ -382,7 +405,7 @@ class beer extends ebl{
 
   /**
    * Gets the Pairing object
-   * @return object
+   * @return array
    */
   public function getPairings($args = []){
     do_action($this->prefix('before_pairings'), $this);

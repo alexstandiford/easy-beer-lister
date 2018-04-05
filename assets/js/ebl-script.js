@@ -26,6 +26,11 @@ jQuery(document).ready(function($){
     });
   }
 
+  function changeButtonSelection(self){
+    $(self).siblings().removeClass('mod--selected');
+    $(self).addClass('mod--selected');
+  }
+
   /**
    * Disables the bubble animation when there are too many items on the screen
    */
@@ -40,6 +45,7 @@ jQuery(document).ready(function($){
    * When the on-tap button is clicked, load the template containing all of the beers that are on-tap
    */
   $('.js--ebl-filter-on-tap').on('click',function(){
+    changeButtonSelection($(this));
     eblBeerFilter({type: 'tapList'});
   });
 
@@ -47,6 +53,7 @@ jQuery(document).ready(function($){
    * When the in-season button is clicked, load the template containing all of the beers that are in-season
    */
   $('.js--ebl-filter-in-season').on('click',function(){
+    changeButtonSelection($(this));
     eblBeerFilter({type: 'inSeason'});
   });
 
@@ -54,6 +61,7 @@ jQuery(document).ready(function($){
    * When the out-of-season button is clicked, load the template containing all of the beers that are out-of-season
    */
   $('.js--ebl-filter-out-of-season').on('click',function(){
+    changeButtonSelection($(this));
     eblBeerFilter({type: 'outOfSeason'});
   });
 
@@ -61,6 +69,7 @@ jQuery(document).ready(function($){
    * When the year-round button is clicked, load the template containing all of the beers that are year-round
    */
   $('.js--ebl-filter-year-round').on('click',function(){
+    changeButtonSelection($(this));
     eblBeerFilter({type: 'yearRound'});
   });
 
@@ -68,6 +77,7 @@ jQuery(document).ready(function($){
    * When the reset button is clicked, reset the query back to its original state
    */
   $('.js--ebl-filter-reset').on('click',function(){
+    $(this).siblings().removeClass('mod--selected');
     if(eblResetContent !== null){
       (eblWrapper).html(eblResetContent);
     }

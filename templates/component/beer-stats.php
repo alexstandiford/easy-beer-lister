@@ -13,11 +13,11 @@ $beer = ebl_get_beer($this->postID);
 ?>
 <div <?= $this->wrapperClasses() ?> <?= $this->wrapperArgs(); ?>>
   <?php if($beer->hasAny(['abv', 'ibu', 'og'])): ?>
-    <?php if($beer->getABV()): ?><strong class="ebl-stat-title ebl-abv">ABV:</strong>
+    <?php if($beer->getABV() !== false): ?><strong class="ebl-stat-title ebl-abv">ABV:</strong>
       <span class="ebl-stat ebl-abv"><?= $beer->getABV(); ?></span><?php endif; ?>
-    <?php if($beer->getIBU()): ?><strong class="ebl-stat-title ebl-ibu">IBU:</strong>
+    <?php if($beer->getIBU() !== false): ?><strong class="ebl-stat-title ebl-ibu">IBU:</strong>
       <span class="ebl-stat ebl-ibu"><?= $beer->getIBU(); ?></span><?php endif; ?>
-    <?php if($beer->getOG()): ?><strong class="ebl-stat-title ebl-og">OG:</strong>
+    <?php if($beer->getOG() !== false): ?><strong class="ebl-stat-title ebl-og">OG:</strong>
       <span class="ebl-stat ebl-og"><?= $beer->getOG(); ?></span><?php endif; ?>
   <?php endif; ?>
 </div>
