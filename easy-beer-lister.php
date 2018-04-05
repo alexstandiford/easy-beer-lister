@@ -122,7 +122,6 @@ class eblInit{
       self::$instance->_includeCoreFiles();
       self::$instance->_includeAppFiles();
       if(is_admin()) self::$instance->_includeAdminFiles();
-      add_action('wp_enqueue_scripts', [self::$instance, '_includeCoreScripts']);
       add_action('rest_api_init', [self::$instance, '_registerRestEndpoints']);
     }
 
@@ -144,18 +143,6 @@ class eblInit{
     define('EBL_REST_NAMESPACE', 'ebl/v2');
     define('EBL_VERSION', '2.0');
     define('EBL_DB_VERSION', '2.0');
-  }
-
-  /**
-   * Loads in the core scripts and styles
-   */
-  public function _includeCoreScripts(){
-    foreach($this->endpoints as $route_name => $route_args){
-      self::$eblCoreData[$route_args['route_nicename']] = trailingslashit(get_rest_url()).trailingslashit(EBL_REST_NAMESPACE).$route_name;
-    }
-    wp_register_script('ebl', EBL_ASSETS_URL.'js/ebl.js', ['jquery']);
-    wp_localize_script('ebl', 'eblArgs', self::$eblCoreData);
-    wp_enqueue_script('ebl');
   }
 
   /**

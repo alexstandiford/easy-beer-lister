@@ -15,7 +15,8 @@
   "autoload": {
     "psr-4": {
       "ebl\\admin\\": "/lib/admin",
-      "ebl\\app\\": "/lib/app"
+      "ebl\\app\\": "/lib/app",
+      "ebl\\core\\": "/core"
     },
     "files": [
       "easy-beer-lister.php",
