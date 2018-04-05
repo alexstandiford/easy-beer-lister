@@ -39,7 +39,6 @@ class eblInit{
     'beerList/yearRoundList.php',
     'glass.php',
     'glassLayout.php',
-    'functions.php',
     'widgets/randomBeer.php',
     'widgets/onTapWidget.php',
     'shortcode/beerShortcode.php',
