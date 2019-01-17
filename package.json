@@ -1,0 +1,50 @@
+{
+  "name": "easy-beer-lister",
+  "version": "1.0.0",
+  "description": "Helps Breweries Manage Their Beer Info Online",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "webpack",
+    "production": "webpack -p",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/fillyourtaproom/easy-beer-lister.git"
+  },
+  "author": "Alex Standiford (Fill Your Taproom)",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/fillyourtaproom/easy-beer-lister#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-0",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-es2015-template-literals": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^2.0.0",
+    "node-sass": "^4.8.3",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-livereload-plugin": "^1.2.0",
+    "webpack-shell-plugin": "^0.5.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@wordpress/components": "^7.0.6",
+    "@wordpress/compose": "^3.0.1",
+    "@wordpress/plugins": "^2.0.11",
+    "postcss-sass": "^0.3.5",
+    "postcss-scss": "^2.0.0"
+  }
+}
